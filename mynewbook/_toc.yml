@@ -1,0 +1,28 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+
+  - caption: Digital Collections
+    chapters:
+    - file: src/overview/page1
+    
+  - caption: Data Visualization
+    chapters:
+    - file: src/overview/page2
+      sections:
+      - file: src/wolfe_notebooks
+        title: "Data Visualization with Wolfe Notebooks"
+      - file: src/section_1
+        title: "Section 1"
+    
+  - caption: Research Data Management
+    chapters:
+    - file: src/overview/page3
+
+  - caption: Artificial Intelligence
+    chapters:
+    - file: src/overview/page4
+
