@@ -1,5 +1,5 @@
-# Breif Overview
-Artificial Intelligence breif overview
+# Brief Overview
+Artificial Intelligence brief overview
 
 ## Section 1
 Section 1 information
