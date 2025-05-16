@@ -1,5 +1,5 @@
-# Breif Overview
-Digital Collections breif overview
+# Brief Overview
+Digital Collections brief overview
 
 ## Section 1
 Section 1 information

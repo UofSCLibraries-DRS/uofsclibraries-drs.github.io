@@ -1,5 +1,5 @@
-# Breif Overview
-Data Visualization breif overview
+# Brief Overview
+Data Visualization brief overview
 
 ## Section 1
 Section 1 information
