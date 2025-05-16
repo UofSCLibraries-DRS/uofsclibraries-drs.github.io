@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Python</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Segoe UI; /*Arial, Segoe UI; */
+            /*line-height: 1.0; /* 1.6 */
+            display: flex;
+            min-height: 100vh;
+        }
+ 
+        /* Layout */
+        .container {
+            display: flex;
+            flex: 1;
+            margin: 20px;
+        }
+
+        /* Left Sidebar */
+        .sidebar-left {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 15px;
+        }
+
+        /* Middle Content */
+        .content {
+            width: 60%;
+            padding: 25px;
+            line-height: 1.5
+        }
+
+        /* Right Sidebar */
+        .sidebar-right {
+            width: 20%;
+            background-color: #f9f9f9;
+            padding: 15px;
+        }
+
+        /* Links */
+        .sidebar-left a, .sidebar-right a {
+            display: block;
+            margin-bottom: 8px; /* 10px */
+            color: #0645AD;
+            text-decoration: none;
+        }
+
+        .sidebar-left a:hover, .sidebar-right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        h2 {
+            margin-top: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar-left, .content, .sidebar-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar (Links to other pages) -->
+        <div class="sidebar-left">
+            <img src="USC_Libraries_logo_horizontal_RGB_2C.png" alt="University of South Carolina">
+            <br/><br/><br/>
+            <h3>Python Tutorials</h3><br/>
+            <h4>Basic</h4><br/>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/basic/python-basics-1.ipynb">Python-basics-1</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/basic/python-basics-2.ipynb">Python-basics-2</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/basic/python-basics-3.ipynb">Python-basics-3</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/basic/python-basics-3.ipynb">Python-basics-4</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/basic/python-basics-5.ipynb">Python-basics-5</a><br/>
+            <h4>Intermediate</h4><br/>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/intermediate/python-intermediate-1.ipynb">Python-intermediate-1</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/intermediate/python-intermediate-2.ipynb">Python-intermediate-2</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/intermediate/python-intermediate-3.ipynb">Python-intermediate-3</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/intermediate/python-intermediate-3.ipynb">Python-intermediate-4</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/intermediate/python-intermediate-5.ipynb">Python-intermediate-5</a><br/>
+            <h4>Advanced - pandas</h4><br/>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/pandas/pandas-1.ipynb">Pandas-1</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/pandas/pandas-2.ipynb">Pandas-2</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/pandas/pandas-3.ipynb">Pandas-3</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/pandas/pandas-intermediate-1.ipynb">Pandas-4</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/pandas/pandas-intermediate-2.ipynb">Pandas-4</a>
+            <a href="https://github.com/UofSCLibraries-DRS/Constellate-Notebooks/blob/master/python-tutorials/pandas/pandas-intermediate-3.ipynb">Pandas-5</a><br/>
+            <br/>
+            <br/>
+            <h3>Projects</h3><br/>
+            <a href="Data-Analysis.html">On the books - ML for text analysis</a>
+            <a href="COnstellate.html">"Constellate" for text analysis</a>
+            <br/>
+            <br/>
+            <h3>Genrative AI</h3><br/>
+            <a href="Data-Analysis.html">Generative AI and Ethics</a>
+            <a href="Text-Analysis.html">Safe and responsible usage of generative AI</a>
+            <a href="Text-Analysis.html">Citing generative AI tools</a><br/><br/>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1>Introduction to python</h1><br/>
+            <p> We have provided many notebooks to learn python, from basic to advanced concepts. These notebooks are sources from <a href= "https://constellate.org/"> Constellate </a>, which is a free resource to 
+                learn and teach text analysis in python. </p></br></br>
+            Constellate provide end-to-end support for learning data analysis and text-analysis. It allows access to millions of documents across humanities, social sciences, and STEM fields from trusted sources like JSTOR and Portico.
+            The users can also use their own dataset for practising. </p>
+    
+            <p> The Constellate can be accessed from <a href= "https://constellate.org/"> here</a>. It uses the same credentials as JSTOR. You can either use JSTOR credentials or 
+             create a new account for free.
+            </p>
+            
+            <h2 id="Learn python"> What </h2>
+            <p> The notebooks provided here can be downloaded on your computer. It can be run using one of the following methods:
+                
+            </p>
+            
+        </div>
+
+        <!-- Right Sidebar (Links to subsections) -->
+        <div class="sidebar-right">
+            <h3>On This Page</h3>
+            <a href="#section1">Section 1</a>
+            <a href="#section2">Section 2</a>
+        </div>
+    </div>
+</body>
+</html>
