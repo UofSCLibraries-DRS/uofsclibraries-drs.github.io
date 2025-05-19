@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction - Notebooks for practice</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Segoe UI;
+            line-height: 1.0; /* changed from 1.6 */
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            flex: 1;
+            margin: 20px;
+        }
+
+        /* Left Sidebar */
+        .sidebar-left {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        /* Middle Content */
+        .content {
+            width: 60%;
+            padding: 25px;
+        }
+
+        /* Right Sidebar */
+        .sidebar-right {
+            width: 20%;
+            background-color: #f9f9f9;
+            padding: 10px; /* changed from 25px */
+        }
+
+        /* Links */
+        .sidebar-left a, .sidebar-right a {
+            display: block;
+            margin-bottom: 10px;
+            color: #0645AD;
+            text-decoration: none;
+        }
+
+        .sidebar-left a:hover, .sidebar-right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        h2 {
+            margin-top: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar-left, .content, .sidebar-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar (Links to other pages) -->
+        <div class="sidebar-left">
+            <img src="images/USC_Libraries_logo_horizontal_RGB_2C.png" alt="University of South Carolina">
+            <br/><br/><br/>
+            <h3>Tutorials</h3>
+            <br/>
+            <a href="Data-Analysis.html">What are Notebooks?</a>
+            <a href="constellate.html">"Constellate" for text analysis</a>
+            <br/>
+            <br/>
+            <h3>Projects</h3>
+            <br/>
+            <a href="Data-Analysis.html">On the books - ML for text analysis</a>
+            <a href="A.html">Project 2</a>
+            <br/>
+            <br/>
+            <h3>Genrative AI</h3>
+            <br/>
+            <a href="Data-Analysis.html">Generative AI and Ethics</a>
+            <a href="Text-Analysis.html">Safe and responsible usage of generative AI</a>
+            <a href="Text-Analysis.html">Citing generative AI tools</a>
+            <br/>
+            <br/>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1>USC Libraries - DRS Resources for Data Literacy </h1>
+            <p>This is the initiative of Digital Research Services (DRS), University Libraries at University of South Carolina to provide AI and Data Science resources to its students, faculty, and other academic stakeholders. </p>
+            
+            <h2 id="section1">Highlights</h2>
+            <p>This page contains links to various resources like tutorials, libguides, softwares, codes, and data analysis projects.</p>
+            
+            <h2 id="section2">Section 2</h2>
+            <p>This is the content for Section 2.</p>
+            
+            <h2 id="section3">Section 3</h2>
+            <p>This is the content for Section 3.</p>
+            
+            <h2 id="section4">Section 4</h2>
+            <p>This is the content for Section 4.</p>
+        </div>
+
+        <!-- Right Sidebar (Links to subsections) -->
+        <div class="sidebar-right">
+            <h3>On This Page</h3>
+            <a href="#section1">Section 1</a>
+            <a href="#section2">Section 2</a>
+            <a href="#section3">Section 3</a>
+            <a href="#section4">Section 4</a>
+        </div>
+    </div>
+</body>
+</html>
