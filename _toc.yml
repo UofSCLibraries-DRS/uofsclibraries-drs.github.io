@@ -1,5 +1,5 @@
 # Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
+# Learn more at https://jupyterbook.org/customize/jupyter-book build uofsclibraries-drs.github.io/toc.html
 
 format: jb-book
 root: intro
@@ -12,11 +12,17 @@ parts:
   - caption: Data Visualization
     chapters:
     - file: src/overview/page2
+    - file: src/wolfe_notebooks
       sections:
-      - file: src/wolfe_notebooks
-        title: "Data Visualization with Wolfe Notebooks"
-      - file: src/section_1
-        title: "Section 1"
+      - file: src/Wolfe-notebooks/BarChart
+      - file: src/Wolfe-notebooks/LineChart
+      - file: src/Wolfe-notebooks/ScatterPlot
+      - file: src/Wolfe-notebooks/Maps
+        title: Maps
+      - file: src/Wolfe-notebooks/Text_Analysis
+        title: Text Analysis
+
+
     
   - caption: Research Data Management
     chapters:
