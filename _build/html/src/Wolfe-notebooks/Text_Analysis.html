@@ -455,68 +455,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Hi there, how are you? I am doing well, thanks for asking. It is really nice out today!</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="s2"> Think it will rain tomorrow? The weather caster predicted a 40</span><span class="si">% c</span><span class="s2">hance of precipitation. Maybe, I will bring a jacket with me tomorrow just in case.&quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">sentence_tokens</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sentence Tokens: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sentence_tokens</span><span class="p">))</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/nltk/tokenize/__init__.py:106,</span> in <span class="ni">sent_tokenize</span><span class="nt">(text, language)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="k">def</span><span class="w"> </span><span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="sd">     Return a sentence-tokenized copy of *text*,</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="sd">     using NLTK&#39;s recommended sentence tokenizer</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="sd">     :param language: the model name in the Punkt corpus</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">106</span>     <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tokenizers/punkt/</span><span class="si">{</span><span class="n">language</span><span class="si">}</span><span class="s2">.pickle&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="k">return</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/nltk/data.py:750,</span> in <span class="ni">load</span><span class="nt">(resource_url, format, cache, verbose, logic_parser, fstruct_reader, encoding)</span>
-<span class="g g-Whitespace">    </span><span class="mi">747</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;&lt;Loading </span><span class="si">{</span><span class="n">resource_url</span><span class="si">}</span><span class="s2">&gt;&gt;&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">749</span> <span class="c1"># Load the resource.</span>
-<span class="ne">--&gt; </span><span class="mi">750</span> <span class="n">opened_resource</span> <span class="o">=</span> <span class="n">_open</span><span class="p">(</span><span class="n">resource_url</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">752</span> <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s2">&quot;raw&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">753</span>     <span class="n">resource_val</span> <span class="o">=</span> <span class="n">opened_resource</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/nltk/data.py:876,</span> in <span class="ni">_open</span><span class="nt">(resource_url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">873</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">path_</span> <span class="o">=</span> <span class="n">split_resource_url</span><span class="p">(</span><span class="n">resource_url</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">875</span> <span class="k">if</span> <span class="n">protocol</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">protocol</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;nltk&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">876</span>     <span class="k">return</span> <span class="n">find</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">877</span> <span class="k">elif</span> <span class="n">protocol</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">878</span>     <span class="c1"># urllib might not use mode=&#39;rb&#39;, so handle this one ourselves:</span>
-<span class="g g-Whitespace">    </span><span class="mi">879</span>     <span class="k">return</span> <span class="n">find</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/nltk/data.py:583,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="mi">70</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">583</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
-
-<span class="ne">LookupError</span>: 
-<span class="o">**********************************************************************</span>
-  <span class="n">Resource</span> <span class="n">punkt</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
-  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
-
-  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
-  
-  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
-
-  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">tokenizers</span><span class="o">/</span><span class="n">punkt</span><span class="o">/</span><span class="n">PY3</span><span class="o">/</span><span class="n">english</span><span class="o">.</span><span class="n">pickle</span>
-
-  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
-    <span class="o">-</span> <span class="s1">&#39;/Users/mearacox/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/Users/mearacox/opt/anaconda3/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/Users/mearacox/opt/anaconda3/share/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/Users/mearacox/opt/anaconda3/lib/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;&#39;</span>
-<span class="o">**********************************************************************</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sentence Tokens: [&#39;Hi there, how are you?&#39;, &#39;I am doing well, thanks for asking.&#39;, &#39;It is really nice out today!&#39;, &#39;Think it will rain tomorrow?&#39;, &#39;The weather caster predicted a 40% chance of precipitation.&#39;, &#39;Maybe, I will bring a jacket with me tomorrow just in case.&#39;]
 </pre></div>
 </div>
 </div>
