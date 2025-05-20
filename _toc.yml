@@ -8,9 +8,8 @@ parts:
   - caption: Data Visualization
     chapters:
     - file: src/overview/DataVisualization
-    - file: src/wolfe_notebooks
+    - file: src/Wolfe-notebooks/BarChart
       sections:
-      - file: src/Wolfe-notebooks/BarChart
       - file: src/Wolfe-notebooks/LineChart
       - file: src/Wolfe-notebooks/ScatterPlot
       - file: src/Wolfe-notebooks/Maps
@@ -18,8 +17,7 @@ parts:
       - file: src/Wolfe-notebooks/Text_Analysis
         title: Text Analysis
 
-
-    
+   
   - caption: Research Data Management
     chapters:
     - file: src/overview/page3
