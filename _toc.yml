@@ -11,7 +11,7 @@ parts:
     
   - caption: Data Visualization
     chapters:
-    - file: src/overview/page2
+    - file: src/overview/DataVisualization
     - file: src/wolfe_notebooks
       sections:
       - file: src/Wolfe-notebooks/BarChart
