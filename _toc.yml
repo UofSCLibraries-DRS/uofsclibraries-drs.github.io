@@ -14,8 +14,6 @@ parts:
       - file: src/Wolfe-notebooks/ScatterPlot
       - file: src/Wolfe-notebooks/Maps
         title: Maps
-      - file: src/Wolfe-notebooks/Text_Analysis
-        title: Text Analysis
 
    
   - caption: Research Data Management
@@ -25,7 +23,27 @@ parts:
   - caption: Artificial Intelligence
     chapters:
     - file: src/overview/page4
-  
+    - file: src/Python/PythonTutorialsOverview
+      sections:
+      - file: src/Python/basic/python-basics-1
+      - file: src/Python/basic/python-basics-2
+      - file: src/Python/basic/python-basics-3
+      - file: src/Python/basic/python-basics-4
+      - file: src/Python/basic/python-basics-5
+      - file: src/Python/intermediate/python-intermediate-1
+      - file: src/Python/intermediate/python-intermediate-2
+      - file: src/Python/intermediate/python-intermediate-3
+      - file: src/Python/intermediate/python-intermediate-4
+      - file: src/Python/intermediate/python-intermediate-5
+      - file: src/Python/pandas/pandas-1
+      - file: src/Python/pandas/pandas-2
+      - file: src/Python/pandas/pandas-3
+      - file: src/Python/pandas/pandas-intermediate-1
+      - file: src/Python/pandas/pandas-intermediate-2
+      - file: src/Python/pandas/pandas-intermediate-3
+      - file: src/Python/Text_Analysis
+        title: Text Analysis
+
   - caption: Digital Collections
     chapters:
     - file: src/overview/page1

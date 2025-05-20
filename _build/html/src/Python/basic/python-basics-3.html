@@ -1,0 +1,1815 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python Basics 3 &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/Python/basic/python-basics-3';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Python Basics 4" href="python-basics-4.html" />
+    <link rel="prev" title="Python Basics 2" href="python-basics-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataVisualization.html">Brief Overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Wolfe-notebooks/BarChart.html">Bar Charts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/LineChart.html">Line Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/ScatterPlot.html">Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Maps</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research Data Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page3.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial Intelligence</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page4.html">Brief Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../PythonTutorialsOverview.html">Python Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python-basics-1.html">Python Basics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-basics-2.html">Python Basics 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python Basics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-basics-4.html">Python Basics 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-basics-5.html">Python Basics 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-1.html">Python Intermediate 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-2.html">Python Intermediate 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-3.html">Python Intermediate 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-4.html">Python Intermediate 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-5.html">Python Intermediate 5</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../pandas/pandas-1.html">Pandas Basics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pandas/pandas-2.html">Pandas Basics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pandas/pandas-3.html">Pandas Basics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pandas/pandas-intermediate-1.html">Pandas Intermediate 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pandas/pandas-intermediate-2.html">Pandas Intermediate 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pandas/pandas-intermediate-3.html">Pandas Intermediate 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Text_Analysis.html">Text Analysis</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Collections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page1.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/Python/basic/python-basics-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/Python/basic/python-basics-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python Basics 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-index">List Index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-a-list">Slicing a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-in-and-not-in-operators">The <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-methods">List Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-index-method">The <code class="docutils literal notranslate"><span class="pre">index()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-append-method">The <code class="docutils literal notranslate"><span class="pre">append()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-insert-method">The <code class="docutils literal notranslate"><span class="pre">insert()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-remove-method">The <code class="docutils literal notranslate"><span class="pre">remove()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sort-method">The <code class="docutils literal notranslate"><span class="pre">sort()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterate-through-a-list-with-a-for-loop">Iterate through a list with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-methods">Dictionary Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-update-method">The <code class="docutils literal notranslate"><span class="pre">update()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-keys-and-values-methods">The <code class="docutils literal notranslate"><span class="pre">keys()</span></code> and <code class="docutils literal notranslate"><span class="pre">values()</span></code> Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-get-method">The <code class="docutils literal notranslate"><span class="pre">get()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-keys-values-and-items-with-flow-control-statements">Combining <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, and <code class="docutils literal notranslate"><span class="pre">items()</span></code> with Flow Control Statements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-python-basics-4">Start Next Lesson: <span class="xref myst">Python Basics 4</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-challenge-solutions">Coding Challenge! Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-challenge-level-1">Dictionaries Challenge Level 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-challenge-level-2">Dictionaries Challenge Level 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
+<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="python-basics-3">
+<h1>Python Basics 3<a class="headerlink" href="#python-basics-3" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong>
+This lesson describes the basics of <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a> and <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a> including:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#operator">operators</a></p></li>
+<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#list">Lists</a></p></li>
+<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#list">List</a> methods (<code class="docutils literal notranslate"><span class="pre">index()</span></code>, <code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">insert()</span></code>, <code class="docutils literal notranslate"><span class="pre">sort()</span></code>)</p></li>
+<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">Dictionaries</a></p></li>
+<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">Dictionary</a> methods (<code class="docutils literal notranslate"><span class="pre">update()</span></code>, <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, <code class="docutils literal notranslate"><span class="pre">items()</span></code>, <code class="docutils literal notranslate"><span class="pre">get()</span></code>)</p></li>
+</ul>
+<p>This is part 3 of 5 in the series <em>Python Basics</em> that will prepare you to do text analysis using the <a class="reference external" href="https://constellate.org/docs/key-terms/#python">Python</a> programming language.</p>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Beginner</p>
+<p><strong>Completion Time:</strong> 90 minutes</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#./getting-started-with-jupyter.ipynb"><span class="xref myst">Getting Started with Jupyter Notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="python-basics-1.html"><span class="std std-doc">Python Basics 1</span></a></p></li>
+<li><p><a class="reference internal" href="python-basics-2.html"><span class="std std-doc">Python Basics 2</span></a></p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong> None</p>
+<p><strong>Data Format:</strong> None</p>
+<p><strong>Libraries Used:</strong> None</p>
+<p><strong>Research Pipeline:</strong> None</p>
+<hr class="docutils" />
+<p>In <em>Python Basics 1</em>, we learned about three data types: <a class="reference external" href="https://constellate.org/docs/key-terms/#integer">integers</a>, <a class="reference external" href="https://constellate.org/docs/key-terms/#float">floats</a>, and <a class="reference external" href="https://constellate.org/docs/key-terms/#string">strings</a>. In this lesson, we will learn about two additional data types: <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a> and <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a>. <a class="reference external" href="https://constellate.org/docs/key-terms/#list">Lists</a> and <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a> help us store many values inside a single <a class="reference external" href="https://constellate.org/docs/key-terms/#variable">variable</a>. This is helpful for a few reasons.</p>
+<ul class="simple">
+<li><p>We can store many items in a single <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> or <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a>, making it easier to keep the data together</p></li>
+<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#list">Lists</a> and <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a> only require a single <a class="reference external" href="https://constellate.org/docs/key-terms/#assignment-statement">assignment statement</a></p></li>
+<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#list">Lists</a> and <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a> have additional capabilities that will make organizing our data easier</p></li>
+</ul>
+<p>The fundamental difference between a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> and a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> is that a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> stores items in sequential order (starting from 0) while a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> stores items in <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key/value pairs</a>. When we want to retrieve an item in a list, we use an <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> or a set of <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index numbers</a> called a <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> as a reference. When we want to retrieve an item from a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a>, we supply a <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> that returns the <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">value</a> (or set of values) associated with that <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a>. Each of these approaches can be beneficial depending on what kind of data we are working with (and what we intend to do with the data).</p>
+<section id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> can store anywhere from zero to millions of items. The items that can be stored in a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> include the data types we have already learned: <a class="reference external" href="https://constellate.org/docs/key-terms/#integer">integers</a>, <a class="reference external" href="https://constellate.org/docs/key-terms/#float">floats</a>, and <a class="reference external" href="https://constellate.org/docs/key-terms/#string">strings</a>. A <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> <a class="reference external" href="https://constellate.org/docs/key-terms/#assignment-statement">assignment statement</a> takes the form.
+<code class="docutils literal notranslate"><span class="pre">my_list</span> <span class="pre">=</span> <span class="pre">[item1,</span> <span class="pre">item2,</span> <span class="pre">item3,</span> <span class="pre">item4...]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A list containing integers</span>
+<span class="n">my_favorite_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_favorite_numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A list containing strings</span>
+<span class="n">my_inspirations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Harriet Tubman&#39;</span><span class="p">,</span> <span class="s1">&#39;Rosa Parks&#39;</span><span class="p">,</span> <span class="s1">&#39;Pauli Murray&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_inspirations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both <code class="docutils literal notranslate"><span class="pre">my_favorite_numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">my_inspirations</span></code> have three items, but we could have also initialized them with no items <code class="docutils literal notranslate"><span class="pre">my_favorite_numbers</span> <span class="pre">=</span> <span class="pre">[]</span></code> or many more items.</p>
+<section id="list-index">
+<h3>List Index<a class="headerlink" href="#list-index" title="Link to this heading">#</a></h3>
+<p>Each item has an <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> that depends on their order. The first item is 0, the second item is 1, the third item is 2, etc. In the <code class="docutils literal notranslate"><span class="pre">my_inspirations</span></code> list, <code class="docutils literal notranslate"><span class="pre">'Pauli</span> <span class="pre">Murray'</span></code> is item 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving an item in a list</span>
+<span class="n">my_inspirations</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>What happens if you change the index number to 1? What about 3? 2.0?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try out using different index numbers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://constellate.org/docs/key-terms/#list">Lists</a> can also contain other <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a>. To retrieve a value from a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> within a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>, we use two <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">indexes</a> (or indices).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving an item from a list within a list</span>
+<span class="n">my_inspirations</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Harriet Tubman&#39;</span><span class="p">,</span> <span class="s1">&#39;Rosa Parks&#39;</span><span class="p">,</span> <span class="s1">&#39;Pauli Murray&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Martin Luther King Jr.&#39;</span><span class="p">,</span> <span class="s1">&#39;Frederick Douglass&#39;</span><span class="p">,</span> <span class="s1">&#39;Malcolm X&#39;</span><span class="p">]]</span>
+<span class="n">my_inspirations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Can you change the index for <code class="docutils literal notranslate"><span class="pre">my_inspirations</span></code> to retrieve <code class="docutils literal notranslate"><span class="pre">'Malcolm</span> <span class="pre">X'</span></code>?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try retrieving Malcolm X from the my_inspirations list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also select items from a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> beginning from the end/right side of a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> by using negative <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index numbers</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving an item from the end of a list by using negative indices</span>
+<span class="n">my_inspirations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Harriet Tubman&#39;</span><span class="p">,</span> <span class="s1">&#39;Rosa Parks&#39;</span><span class="p">,</span> <span class="s1">&#39;Pauli Murray&#39;</span><span class="p">]</span>
+<span class="n">my_inspirations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is not uncommon for <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a> to be hundreds or thousands of items long. It would be a chore to count all those items to create a <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a>. If you want to know the length of a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>, you can use the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the len() function to discover the number of items in the list</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aaron Aston&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Brianna Barton&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Carla Cameron&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Delia Darcy&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Evelyn Elgin&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Frederick Federov&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Gaston Garbo&#39;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-a-list">
+<h3>Slicing a list<a class="headerlink" href="#slicing-a-list" title="Link to this heading">#</a></h3>
+<p>We can also retrieve a group of consecutive items from a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> using <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slices</a> instead of a single <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a>. We create a <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> by indicating a starting and ending <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a>. The <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> is a smaller <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> containing all the items between our starting and stopping <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Taking a slice of a list</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aaron Aston&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Brianna Barton&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Carla Cameron&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Delia Darcy&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Evelyn Elgin&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Frederick Federov&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Gaston Garbo&#39;</span><span class="p">]</span>
+<span class="n">staff</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice in our <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> that the second <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index</a> in a <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> is the stopping point. That is our return <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> contains <code class="docutils literal notranslate"><span class="pre">staff[1]</span></code> (<code class="docutils literal notranslate"><span class="pre">'Brianna</span> <span class="pre">Barton'</span></code>) and <code class="docutils literal notranslate"><span class="pre">staff[2]</span></code> (<code class="docutils literal notranslate"><span class="pre">'Carla</span> <span class="pre">Cameron'</span></code>), but it does not include <code class="docutils literal notranslate"><span class="pre">staff[3]</span></code> (<code class="docutils literal notranslate"><span class="pre">'Delia</span> <span class="pre">Darcy'</span></code>). This can be confusing if you were expecting three items instead of two. One way to remember this is by subtracting the <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">indexes</a> in your head (3 - 1 = 2 items).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">staff</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> is 7 items long, meaning the whole <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> is within the <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> <code class="docutils literal notranslate"><span class="pre">staff[0:7]</span></code>. When we take a <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> of a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> we can also leave out the first <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> (0 is assumed) or the stopping <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> (the last item is assumed).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Taking a slice of a list without a beginning index</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aaron Aston&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Brianna Barton&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Carla Cameron&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Delia Darcy&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Evelyn Elgin&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Frederick Federov&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Gaston Garbo&#39;</span><span class="p">]</span>
+<span class="n">staff</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Can you take a <a class="reference external" href="https://constellate.org/docs/key-terms/#slice">slice</a> from the staff <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> without using a an ending <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a>? What if we don’t use a starting or ending index?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try slicing the staff list without an ending index? What about no starting or ending index?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-in-and-not-in-operators">
+<h3>The <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> Operators<a class="headerlink" href="#the-in-and-not-in-operators" title="Link to this heading">#</a></h3>
+<p>If we have a long <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>, it may be helpful to check whether a value is in the <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>. We can do this with the <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> operators, which return a <a class="reference external" href="https://constellate.org/docs/key-terms/#boolean-value">boolean value</a>: <strong>True</strong> or <strong>False</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking whether an item is in a list using the `in` operator</span>
+
+<span class="c1"># Create a list called `staff`</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacqueline Gallagher&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Carlos Mcdowell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jeffrey Harris&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Danielle Griffith&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Craig&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vernon Vasquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Burton&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Erica Bryant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Patricia Walker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Karen Brown&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Terri Walker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Michelle Knight&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kathleen Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Debbie Estrada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Brewer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Taylor Rodriguez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Julie Hudson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christina Cox&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Nancy Patrick&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rita Mosley&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Nicholas Gordon&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Wanda Vasquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Lopez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anna Powers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tyler Perez&#39;</span><span class="p">]</span>
+
+<span class="c1"># Check whether a name is in staff</span>
+<span class="s1">&#39;Patricia Walker&#39;</span> <span class="ow">in</span> <span class="n">staff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Is Rita McDowell in <code class="docutils literal notranslate"><span class="pre">staff</span></code>? What about Erica Bryant?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if Rita McDowell and Erica Bryant are in staff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change the value of any item in a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> using an <a class="reference external" href="https://constellate.org/docs/key-terms/#assignment-statement">assignment statement</a> that contains the item’s <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Changing the value of an item in a list</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span> <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span> <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+
+<span class="c1"># Changing an item using an assignment state with index number</span>
+<span class="n">staff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Tammy Simons&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we know how to change an item in a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>. And can use the <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> operator to determine if an item is in the <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>. But if we don’t know the <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> of the item, we won’t know which <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> to change. We need a way to pass both the name of the <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> and the name of the item simultaneously to a <a class="reference external" href="https://constellate.org/docs/key-terms/#function">function</a>. To do that, we’ll use a special kind of <a class="reference external" href="https://constellate.org/docs/key-terms/#function">function</a> called a <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a>.</p>
+</section>
+</section>
+<section id="list-methods">
+<h2>List Methods<a class="headerlink" href="#list-methods" title="Link to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> is a kind of <a class="reference external" href="https://constellate.org/docs/key-terms/#function">function</a>. (Remember, <a class="reference external" href="https://constellate.org/docs/key-terms/#function">functions</a> end in parentheses.) <a class="reference external" href="https://constellate.org/docs/key-terms/#method">Methods</a>, however, act on objects (like <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a>) so they have a slightly different written form. We will take a look at five useful <a class="reference external" href="https://constellate.org/docs/key-terms/#method">methods</a> for working with <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method Name</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Form</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>index()</p></td>
+<td><p>search for an item in a list and return the index number</p></td>
+<td><p>list_name.index(item_name)</p></td>
+</tr>
+<tr class="row-odd"><td><p>append()</p></td>
+<td><p>add an item to the end of a list</p></td>
+<td><p>list_name.append(item_name)</p></td>
+</tr>
+<tr class="row-even"><td><p>insert()</p></td>
+<td><p>insert an item in the middle of a list</p></td>
+<td><p>list_name.insert(index_number, item_name)</p></td>
+</tr>
+<tr class="row-odd"><td><p>remove()</p></td>
+<td><p>remove an item from a list based on value</p></td>
+<td><p>list_name.remove(‘item_value’)</p></td>
+</tr>
+<tr class="row-even"><td><p>sort()</p></td>
+<td><p>sort the order of a list</p></td>
+<td><p>list_name.sort()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="the-index-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">index()</span></code> Method<a class="headerlink" href="#the-index-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">index()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> checks to see if a value is in a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>. If the value is found, it returns the <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> for the first item with that value. (Keep in mind, there could be multiple items with a single value in a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>). If the value is not found, the <code class="docutils literal notranslate"><span class="pre">index()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> returns a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the index() method to return the index number of an item by passing a value</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">]</span>
+
+<span class="c1"># Find the index number of a list item</span>
+<span class="n">staff</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Jessica Lee&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>What is the index number of Lisa Grant in <code class="docutils literal notranslate"><span class="pre">staff</span></code>?</strong></p>
+<hr class="docutils" />
+<p>Lists can contain multiple identical items. If there are multiple identical items, we need to use some flow control to return all the indices. The <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function allows us to keep track of the <code class="docutils literal notranslate"><span class="pre">index</span></code> and <code class="docutils literal notranslate"><span class="pre">element</span></code> at the same time. Notice that this <code class="docutils literal notranslate"><span class="pre">for</span></code> loop defines two variables. The first variable keeps track of the current index number in the loop, the second variable keeps track of the value for the current element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting all indices for items that repeat</span>
+
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;John Smith&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;John Smith&#39;</span><span class="p">]</span>
+
+<span class="c1"># Use the enumerate function</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">staff</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-append-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">append()</span></code> Method<a class="headerlink" href="#the-append-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">append()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> adds a value to the end of a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>.</p>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Can you add your name to <code class="docutils literal notranslate"><span class="pre">staff</span></code>?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the append() method to add an item to the end of a list</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">]</span>
+
+<span class="c1"># Append a staff member to the list</span>
+
+
+<span class="c1"># Prints `staff` in a vertical list format to check that the name was added. </span>
+<span class="c1"># The list() function will print our list in an easier to read format than the print() function.</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also add an item to the end of a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> by using an <a class="reference external" href="https://constellate.org/docs/key-terms/#assignment-statement">assignment statement</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding an item to a list using an assignment statement</span>
+<span class="c1"># We are concatenating two lists</span>
+
+<span class="n">staff</span> <span class="o">=</span> <span class="n">staff</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Dustin Henderson&#39;</span><span class="p">]</span> <span class="c1"># Concatenate staff list with the list [&#39;Dustin Henderson&#39;]</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-insert-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">insert()</span></code> Method<a class="headerlink" href="#the-insert-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">insert()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> is similar to <code class="docutils literal notranslate"><span class="pre">append()</span></code> but it takes an <a class="reference external" href="https://constellate.org/docs/key-terms/#argument">argument</a> that lets us choose an <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> to insert the new item.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the insert() method to add an item at a specific index number</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">]</span>
+
+<span class="n">staff</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Arya Stark&#39;</span><span class="p">)</span> <span class="c1"># Insert the name &#39;Arya Stark&#39; at index 5 (The sixth name on the list)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span> <span class="c1"># Prints `staff` to check that the name was added at the right spot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Can you make your name the third item on <code class="docutils literal notranslate"><span class="pre">staff</span></code>?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add your name to the staff list</span>
+
+
+<span class="c1"># Show the new staff list after your addition</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-remove-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">remove()</span></code> Method<a class="headerlink" href="#the-remove-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">remove()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> removes the first item from the <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> that has a matching value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the remove() method to remove the first item with a matching value</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">]</span>
+<span class="c1"># Write your remove statement under this comment</span>
+<span class="n">staff</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;Richard Pearson&#39;</span><span class="p">)</span>
+<span class="c1"># Print `staff` to check that the name was removed</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Can you remove Glenn Allen from <code class="docutils literal notranslate"><span class="pre">staff</span></code>?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove Glenn Allen from the staff list</span>
+
+
+<span class="c1"># Show the staff list again to confirm the change was made</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Like the <code class="docutils literal notranslate"><span class="pre">.index()</span></code> method, the <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> only works on the first item it finds in the list. If there are repeating items on the list, you can use some flow control to make sure you remove them all.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Removing an item that appears multiple times on the list</span>
+
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;John Smith&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;John Smith&#39;</span><span class="p">]</span>
+
+<span class="c1"># Use a while loop for flow control</span>
+<span class="k">while</span> <span class="s1">&#39;John Smith&#39;</span> <span class="ow">in</span> <span class="n">staff</span><span class="p">:</span>
+    <span class="n">staff</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;John Smith&#39;</span><span class="p">)</span>
+
+<span class="c1"># List the staff members after the removal</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you know the value you wish to remove then the <code class="docutils literal notranslate"><span class="pre">remove()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> is the best option. If you know the <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">index number</a> of the item, you can use a <code class="docutils literal notranslate"><span class="pre">del</span></code> statement to delete <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> items.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using a `del` statement to delete a list item</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">staff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Delete the final item in the list. In this case, &#39;Glenn Allen&#39;.</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-sort-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">sort()</span></code> Method<a class="headerlink" href="#the-sort-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">sort()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> sorts a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> in alphabetical order, where strings with capital letters are sorted A-Z, then strings with lowercase letters are sorted A-Z.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the `sort()` method to sort a list in alpha-numeric order</span>
+<span class="n">staff</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tara Richards&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Tammy French&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Douglas&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lauren Marquez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Aaron Wilson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Dennis Howell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brandon Reed&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Kelly Baker&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Justin Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sarah Myers&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Vanessa Burgess&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Timothy Davidson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jessica Lee&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Miller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Lisa Grant&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Ryan Chan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Gary Carson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Anthony Mitchell&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jacob Turner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jennifer Bonilla&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Gonzalez&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Andrew Clark&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Richard Pearson&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Glenn Allen&#39;</span><span class="p">]</span>
+<span class="n">staff</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">sort()</span></code> method can take the argument <code class="docutils literal notranslate"><span class="pre">reverse=True</span></code>. Try applying it to the <code class="docutils literal notranslate"><span class="pre">sort()</span></code> method above. What does it do?</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try out sorting in reverse order</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterate-through-a-list-with-a-for-loop">
+<h3>Iterate through a list with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop<a class="headerlink" href="#iterate-through-a-list-with-a-for-loop" title="Link to this heading">#</a></h3>
+<p>We can use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate through all the items in a list. The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop will <em>create</em> a new temporary variable to store the current item in the list (no assignment statement required).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using a for loop with a list</span>
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">staff</span><span class="p">:</span> <span class="c1"># Whatever is after `for` becomes the temporary variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p><strong>Using your knowledge of flow control statements and lists, can you solve the following challenges? To complete these challenges, we will use a list called <code class="docutils literal notranslate"><span class="pre">ranking</span></code> based on FIFA’s rankings of the Women’s National Teams before the World Cup.</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 1 Challenge</span>
+<span class="c1"># The data has some errors in it. Correct the following errors:</span>
+<span class="c1"># Correct the spelling of Canada in the rankings</span>
+<span class="c1"># Remove Uruguay from the rankings and add Australia at the bottom</span>
+<span class="c1"># Add England to the rankings after Sweden</span>
+
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Uruguay&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Canda&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Netherlands&#39;</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 2 Challenge</span>
+<span class="c1"># Write a program that lets the user input any country and check if they are in the top ten ranking</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;England&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 3 Challenge</span>
+<span class="c1"># Write a program that lets a user input a country and receive their rank</span>
+
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;England&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 4 Challenge</span>
+<span class="c1"># Write a program that lets a user input a country and return all the teams with a higher rank</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;England&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
+<p>Like a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>, a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> can hold many values within a single <a class="reference external" href="https://constellate.org/docs/key-terms/#variable">variable</a>. We have seen that the items of a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> are stored in a strictly-ordered fashion, starting from item 0. In a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a>, each <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">value</a> is stored in relation to a descriptive <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> forming a <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key/value pair</a>. Technically, as of <a class="reference external" href="https://constellate.org/docs/key-terms/#python">Python</a> 3.7 (June 2018), <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a> are also ordered by insertion. In practice, however, the most useful aspect of a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> is the ability to supply a <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> and receive a <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">value</a> without reference to <a class="reference external" href="https://constellate.org/docs/key-terms/#index-number">indices</a>. Whereas a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a> is typed with brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>, a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> is typed with braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>. The <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> and/or <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">value</a> can be an <a class="reference external" href="https://constellate.org/docs/key-terms/#integer">integer</a>, <a class="reference external" href="https://constellate.org/docs/key-terms/#float">float</a>, or <a class="reference external" href="https://constellate.org/docs/key-terms/#string">string</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">example_dictionary</span> <span class="pre">=</span> <span class="pre">{key1</span> <span class="pre">:</span> <span class="pre">value1,</span> <span class="pre">key2</span> <span class="pre">:</span> <span class="pre">value2,</span> <span class="pre">key3</span> <span class="pre">:</span> <span class="pre">value3}</span></code></p>
+<p>We could imagine, for example, a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> with our professional contacts’ names as <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">keys</a> and their occupations as <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">values</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example of a dictionary storing names and occupations</span>
+<span class="n">contacts</span> <span class="o">=</span><span class="p">{</span>
+ <span class="s1">&#39;Amanda Bennett&#39;</span><span class="p">:</span> <span class="s1">&#39;Engineer, electrical&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bryan Miller&#39;</span><span class="p">:</span> <span class="s1">&#39;Radiation protection practitioner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Garrison&#39;</span><span class="p">:</span> <span class="s1">&#39;Planning and development surveyor&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Debra Allen&#39;</span><span class="p">:</span> <span class="s1">&#39;Intelligence analyst&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Donna Decker&#39;</span><span class="p">:</span> <span class="s1">&#39;Architect&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Heather Bullock&#39;</span><span class="p">:</span> <span class="s1">&#39;Media planner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Brown&#39;</span><span class="p">:</span> <span class="s1">&#39;Energy manager&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Soto&#39;</span><span class="p">:</span> <span class="s1">&#39;Lighting technician, broadcasting/film/video&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Marissa Munoz&#39;</span><span class="p">:</span> <span class="s1">&#39;Further education lecturer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Matthew Mccall&#39;</span><span class="p">:</span> <span class="s1">&#39;Chief Technology Officer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Michael Norman&#39;</span><span class="p">:</span> <span class="s1">&#39;Translator&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Nicole Leblanc&#39;</span><span class="p">:</span> <span class="s1">&#39;Financial controller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Noah Delgado&#39;</span><span class="p">:</span> <span class="s1">&#39;Engineer, land&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Charles&#39;</span><span class="p">:</span> <span class="s1">&#39;Physicist, medical&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Stephanie Petty&#39;</span><span class="p">:</span> <span class="s1">&#39;Architect&#39;</span><span class="p">}</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">pprint</span> <span class="c1"># We import the pretty print function which prints out dictionaries in a neater fashion than the built-in print() function</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span> <span class="c1"># Use the pretty print function to print `contacts`</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can add a new <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key/value pair</a> to our <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> using an <a class="reference external" href="https://constellate.org/docs/key-terms/#assignment-statement">assignment statement</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding the key &#39;Nathan Kelber&#39; with the value &#39;Constellate Education Manager&#39; to the dictionary contact</span>
+<span class="n">contacts</span><span class="p">[</span><span class="s1">&#39;Nathan Kelber&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Constellate Education Manager&#39;</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span> <span class="c1"># Use the pretty print function to print `contacts`</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h3 style="color:red; display:inline">Try it! &lt; / &gt; </h3>
+<p><strong>Can you add your name to the contacts dictionary?</strong></p>
+<hr class="docutils" />
+<p>Similar to deleting an item from a <a class="reference external" href="https://constellate.org/docs/key-terms/#list">list</a>, we can use a <code class="docutils literal notranslate"><span class="pre">del</span></code> statement to delete a <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key/value pair</a>. We do not need to worry about duplicates because every key in a dictionary must be unique.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deleting a key/value pair from the dictionary contacts</span>
+<span class="k">del</span> <span class="n">contacts</span><span class="p">[</span><span class="s1">&#39;Bryan Miller&#39;</span><span class="p">]</span> 
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span> <span class="c1"># Use the pretty print function to print `contacts`</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionary-methods">
+<h2>Dictionary Methods<a class="headerlink" href="#dictionary-methods" title="Link to this heading">#</a></h2>
+<p>We’ll take a look at five useful <a class="reference external" href="https://constellate.org/docs/key-terms/#method">methods</a> for working with <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a>: <code class="docutils literal notranslate"><span class="pre">update()</span></code>, <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, <code class="docutils literal notranslate"><span class="pre">items()</span></code>, and <code class="docutils literal notranslate"><span class="pre">get()</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method Name</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Form</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>update()</p></td>
+<td><p>add new key/value pairs to a dictionary</p></td>
+<td><p>dict_name.update({key1:value1, key2:value2})</p></td>
+</tr>
+<tr class="row-odd"><td><p> </p></td>
+<td><p>combine two dictionaries</p></td>
+<td><p>dict_name.update(dict_name2)</p></td>
+</tr>
+<tr class="row-even"><td><p>keys()</p></td>
+<td><p>check if a key is in a dictionary (True/False)</p></td>
+<td><p>key_name in dict_name.keys()</p></td>
+</tr>
+<tr class="row-odd"><td><p> </p></td>
+<td><p>Loop through the keys in a dictionary</p></td>
+<td><p>for k in dict.keys():</p></td>
+</tr>
+<tr class="row-even"><td><p>values()</p></td>
+<td><p>check if a value is in a dictionary (True/False)</p></td>
+<td><p>value_name in dict_name.values()</p></td>
+</tr>
+<tr class="row-odd"><td><p> </p></td>
+<td><p>Loop through the values in a dictionary</p></td>
+<td><p>for v in dict.values():</p></td>
+</tr>
+<tr class="row-even"><td><p>items()</p></td>
+<td><p>Loop through the keys and values in a dictionary</p></td>
+<td><p>for k, v in dict.items():</p></td>
+</tr>
+<tr class="row-odd"><td><p>get()</p></td>
+<td><p>retrieve the value for a specific key</p></td>
+<td><p>dict_name.get(key_name)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="the-update-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">update()</span></code> Method<a class="headerlink" href="#the-update-method" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">update()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> is useful for adding many <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key/value pairs</a> to a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> at once. The <code class="docutils literal notranslate"><span class="pre">update()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a> accepts a single <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key/value pair</a>, multiple pairs, or even other <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionaries</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a single key/value pair to the dictionary contacts using the update() method</span>
+<span class="n">contacts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;Nathan Kelber&#39;</span><span class="p">:</span> <span class="s1">&#39;Constellate Education Manager&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span> <span class="c1"># Use the pretty print function to print `contacts`</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding several key/value pairs to the dictionary contacts using the update() method</span>
+<span class="n">contacts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Matt Lincoln&quot;</span><span class="p">:</span> <span class="s2">&quot;Software Engineer&quot;</span><span class="p">,</span>
+     <span class="s1">&#39;Ian DesJardins&#39;</span><span class="p">:</span> <span class="s1">&#39;Software Engineer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Zhuo Chen&#39;</span><span class="p">:</span> <span class="s1">&#39;Text Analysis Instructor&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span> <span class="c1"># Use the pretty print function to print `contacts`</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-keys-and-values-methods">
+<h3>The <code class="docutils literal notranslate"><span class="pre">keys()</span></code> and <code class="docutils literal notranslate"><span class="pre">values()</span></code> Methods<a class="headerlink" href="#the-keys-and-values-methods" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, and <code class="docutils literal notranslate"><span class="pre">items()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">methods</a> are useful for when checking whether a particular <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> or <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">value</a> exists in a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a>. We can pair them with <code class="docutils literal notranslate"><span class="pre">in</span></code> or <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> operators to check whether a value is in our <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a> (just like we did with <a class="reference external" href="https://constellate.org/docs/key-terms/#list">lists</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking if a key is in the contacts dictionary</span>
+<span class="c1"># Do I know a Noah Delgado?</span>
+<span class="s1">&#39;Noah Delgado&#39;</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking if a value is in the contacts dictionary</span>
+<span class="c1"># Do I know an Architect?</span>
+<span class="s1">&#39;Architect&#39;</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-get-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">get()</span></code> Method<a class="headerlink" href="#the-get-method" title="Link to this heading">#</a></h3>
+<p>If we are sure a <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> exists, we can return the corresponding value using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">dict_name[key_name]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return a value for a particular key</span>
+<span class="n">contacts</span><span class="p">[</span><span class="s1">&#39;Noah Delgado&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, if the <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> is not found, the result will be a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Asking for a key that does not exist</span>
+<span class="n">contacts</span><span class="p">[</span><span class="s1">&#39;Mickey Mouse&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The more robust approach is to use the <code class="docutils literal notranslate"><span class="pre">get()</span></code> <a class="reference external" href="https://constellate.org/docs/key-terms/#method">method</a>. If the <a class="reference external" href="https://constellate.org/docs/key-terms/#key-value-pair">key</a> is not found, the <code class="docutils literal notranslate"><span class="pre">None</span></code> value will be returned. (Optionally, we can also specify a default message to return.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">dict_name.get('key_name',</span> <span class="pre">'key_not_found_message')</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the get() method to retrieve the value for the key &#39;Marissa Munoz&#39;</span>
+<span class="n">contacts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Marissa Munoz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="combining-keys-values-and-items-with-flow-control-statements">
+<h3>Combining <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, and <code class="docutils literal notranslate"><span class="pre">items()</span></code> with Flow Control Statements<a class="headerlink" href="#combining-keys-values-and-items-with-flow-control-statements" title="Link to this heading">#</a></h3>
+<p>It is often usful to combine <code class="docutils literal notranslate"><span class="pre">for</span></code> loops with the keys(), values(), or items() <a class="reference external" href="https://constellate.org/docs/key-terms/#method">methods</a> to repeat a task for each entry in a <a class="reference external" href="https://constellate.org/docs/key-terms/#dictionary">dictionary</a>. We have the following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.keys()</span></code> iterates through only the dictionary keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.values()</span></code> iterates through only the dictionary values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.items()</span></code> iterates through the keys <em>and</em> values</p></li>
+</ul>
+<p>Just like a list <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, a temporary variable will be created based on whatever name comes after <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print every key in our contacts dictionary</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1"># The variable `name` could be any variable name we choose</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print every value in our contacts dictionary</span>
+<span class="k">for</span> <span class="n">occupation</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">values</span><span class="p">():</span> <span class="c1"># The variable `occupation` here could be any variable name we choose</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">occupation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we use the <code class="docutils literal notranslate"><span class="pre">.items()</span></code> method, we need to define <em>two</em> variable names. It is valid Python to define two variables at once.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define two variables at once in Python and assign two strings</span>
+<span class="n">word1</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Basics&#39;</span>
+
+<span class="c1"># Verify the variables have been properly assigned</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print every key and value in our contacts dictionary</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">occupation</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> has the job: </span><span class="si">{</span><span class="n">occupation</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p><strong>Using your knowledge of flow control statements and dictionaries, can you write a program that lists all the architects in your contacts? Check the end of this notebook for possible solutions.</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 1 Challenge</span>
+<span class="c1"># A challenge to search a contacts dictionary and output any individuals who are architects. The result</span>
+<span class="c1"># should contain the name of any contacts who are architects.</span>
+
+<span class="n">contacts</span> <span class="o">=</span><span class="p">{</span>
+ <span class="s1">&#39;Amanda Bennett&#39;</span><span class="p">:</span> <span class="s1">&#39;Engineer, electrical&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bryan Miller&#39;</span><span class="p">:</span> <span class="s1">&#39;Radiation protection practitioner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Garrison&#39;</span><span class="p">:</span> <span class="s1">&#39;Planning and development surveyor&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Debra Allen&#39;</span><span class="p">:</span> <span class="s1">&#39;Intelligence analyst&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Donna Decker&#39;</span><span class="p">:</span> <span class="s1">&#39;Architect&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Heather Bullock&#39;</span><span class="p">:</span> <span class="s1">&#39;Media planner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Brown&#39;</span><span class="p">:</span> <span class="s1">&#39;Energy manager&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Soto&#39;</span><span class="p">:</span> <span class="s1">&#39;Lighting technician, broadcasting/film/video&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Marissa Munoz&#39;</span><span class="p">:</span> <span class="s1">&#39;Further education lecturer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Matthew Mccall&#39;</span><span class="p">:</span> <span class="s1">&#39;Chief Technology Officer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Michael Norman&#39;</span><span class="p">:</span> <span class="s1">&#39;Translator&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Nicole Leblanc&#39;</span><span class="p">:</span> <span class="s1">&#39;Financial controller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Noah Delgado&#39;</span><span class="p">:</span> <span class="s1">&#39;Engineer, land&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Charles&#39;</span><span class="p">:</span> <span class="s1">&#39;Physicist, medical&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Stephanie Petty&#39;</span><span class="p">:</span> <span class="s1">&#39;Architect&#39;</span><span class="p">}</span>
+
+<span class="c1"># Write your solution here. Example solutions at the end of this notebook.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 2 Challenge</span>
+<span class="c1"># From the dictionary called contacts, create a Python list called `leads` containing the names of people </span>
+<span class="c1"># who are architects, translators, or media planners.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lesson-complete">
+<h2>Lesson Complete<a class="headerlink" href="#lesson-complete" title="Link to this heading">#</a></h2>
+<p>Congratulations! You have completed <em>Python Basics 3</em>. There are two more lessons in <em>Python Basics</em>:</p>
+<ul class="simple">
+<li><p><em>Python Basics 4</em></p></li>
+<li><p><em>Python Basics 5</em></p></li>
+</ul>
+<section id="start-next-lesson-python-basics-4">
+<h3>Start Next Lesson: <a class="reference internal" href="python-basics-4.html"><span class="std std-doc">Python Basics 4</span></a><a class="headerlink" href="#start-next-lesson-python-basics-4" title="Link to this heading">#</a></h3>
+</section>
+<section id="coding-challenge-solutions">
+<h3>Coding Challenge! Solutions<a class="headerlink" href="#coding-challenge-solutions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 1 Solution</span>
+<span class="c1"># Correct the errors in the ranking list</span>
+
+<span class="c1"># Create the list</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Uruguay&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Canda&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Netherlands&#39;</span><span class="p">,]</span>
+
+<span class="c1"># Correct the spelling of Canada</span>
+<span class="n">ranking</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Canada&#39;</span>
+
+<span class="c1"># Remove Uruguay and add Australia</span>
+<span class="k">if</span> <span class="s1">&#39;Uruguay&#39;</span> <span class="ow">in</span> <span class="n">ranking</span><span class="p">:</span>
+    <span class="n">ranking</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;Uruguay&#39;</span><span class="p">)</span>
+
+<span class="n">ranking</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Australia&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add England after Sweden</span>
+<span class="k">if</span> <span class="s1">&#39;Sweden&#39;</span> <span class="ow">in</span> <span class="n">ranking</span><span class="p">:</span>
+    <span class="n">england_index</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Sweden&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">ranking</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">england_index</span><span class="p">,</span> <span class="s1">&#39;England&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 2 Solution</span>
+<span class="c1"># Write a program that lets the user input any country and check if they are in the top ten ranking</span>
+
+<span class="c1"># Create the ranking list</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;England&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get the country from the user</span>
+<span class="n">country</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Which country are you interested in? &#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">ranking</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s1"> is in the top ten!&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s1"> is not in the top ten.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 3 Solution</span>
+<span class="c1"># Write a program that lets a user input a country and receive their rank</span>
+
+<span class="c1"># Create the ranking list</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;England&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get the country from the user</span>
+<span class="n">country</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Which country are you interested in? &#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">ranking</span><span class="p">:</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">country</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s1"> is ranked </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s1"> is not in the top ten.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 4 Solution</span>
+<span class="c1"># Write a program that lets a user input a country and return all the teams with a higher rank</span>
+
+<span class="c1"># Create the ranking list</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Germany&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;England&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Canada&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get the country from the user</span>
+<span class="n">country</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Which country are you interested in? &#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">ranking</span><span class="p">:</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That country is not in the top ten.&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">index</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;These countries have a higher rank:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">each_country</span> <span class="ow">in</span> <span class="n">ranking</span><span class="p">[:</span><span class="n">index</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">each_country</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dictionaries-challenge-level-1">
+<h4>Dictionaries Challenge Level 1<a class="headerlink" href="#dictionaries-challenge-level-1" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 1 Challenge Solution</span>
+<span class="c1"># A challenge to search a contacts dictionary and output any individuals who are architects. The result</span>
+<span class="c1"># should contain the name of any contacts who are architects.</span>
+
+<span class="n">contacts</span> <span class="o">=</span><span class="p">{</span>
+ <span class="s1">&#39;Amanda Bennett&#39;</span><span class="p">:</span> <span class="s1">&#39;Engineer, electrical&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bryan Miller&#39;</span><span class="p">:</span> <span class="s1">&#39;Radiation protection practitioner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Christopher Garrison&#39;</span><span class="p">:</span> <span class="s1">&#39;Planning and development surveyor&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Debra Allen&#39;</span><span class="p">:</span> <span class="s1">&#39;Intelligence analyst&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Donna Decker&#39;</span><span class="p">:</span> <span class="s1">&#39;Architect&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Heather Bullock&#39;</span><span class="p">:</span> <span class="s1">&#39;Media planner&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Brown&#39;</span><span class="p">:</span> <span class="s1">&#39;Energy manager&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jason Soto&#39;</span><span class="p">:</span> <span class="s1">&#39;Lighting technician, broadcasting/film/video&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Marissa Munoz&#39;</span><span class="p">:</span> <span class="s1">&#39;Further education lecturer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Matthew Mccall&#39;</span><span class="p">:</span> <span class="s1">&#39;Chief Technology Officer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Michael Norman&#39;</span><span class="p">:</span> <span class="s1">&#39;Translator&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Nicole Leblanc&#39;</span><span class="p">:</span> <span class="s1">&#39;Financial controller&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Noah Delgado&#39;</span><span class="p">:</span> <span class="s1">&#39;Engineer, land&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Rachel Charles&#39;</span><span class="p">:</span> <span class="s1">&#39;Physicist, medical&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Stephanie Petty&#39;</span><span class="p">:</span> <span class="s1">&#39;Architect&#39;</span><span class="p">}</span>
+
+<span class="c1"># Write your solution here. Example solutions at the end of this notebook.</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">occupation</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">occupation</span> <span class="o">==</span> <span class="s1">&#39;Architect&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionaries-challenge-level-2">
+<h4>Dictionaries Challenge Level 2<a class="headerlink" href="#dictionaries-challenge-level-2" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Level 2 Challenge</span>
+<span class="c1"># From the dictionary called contacts, create a Python list called `leads` containing the names of people </span>
+<span class="c1"># who are architects, translators, or media planners.</span>
+<span class="n">leads</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">occupation</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">occupation</span> <span class="o">==</span> <span class="s1">&#39;Architect&#39;</span> <span class="ow">or</span> <span class="n">occupation</span> <span class="o">==</span> <span class="s1">&#39;Translator&#39;</span> <span class="ow">or</span> <span class="n">occupation</span> <span class="o">==</span><span class="s1">&#39;Media planner&#39;</span><span class="p">:</span>
+        <span class="n">leads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">leads</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/Python/basic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python-basics-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python Basics 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python-basics-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python Basics 4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-index">List Index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-a-list">Slicing a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-in-and-not-in-operators">The <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-methods">List Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-index-method">The <code class="docutils literal notranslate"><span class="pre">index()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-append-method">The <code class="docutils literal notranslate"><span class="pre">append()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-insert-method">The <code class="docutils literal notranslate"><span class="pre">insert()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-remove-method">The <code class="docutils literal notranslate"><span class="pre">remove()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sort-method">The <code class="docutils literal notranslate"><span class="pre">sort()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterate-through-a-list-with-a-for-loop">Iterate through a list with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-methods">Dictionary Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-update-method">The <code class="docutils literal notranslate"><span class="pre">update()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-keys-and-values-methods">The <code class="docutils literal notranslate"><span class="pre">keys()</span></code> and <code class="docutils literal notranslate"><span class="pre">values()</span></code> Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-get-method">The <code class="docutils literal notranslate"><span class="pre">get()</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-keys-values-and-items-with-flow-control-statements">Combining <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, and <code class="docutils literal notranslate"><span class="pre">items()</span></code> with Flow Control Statements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-python-basics-4">Start Next Lesson: <span class="xref myst">Python Basics 4</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-challenge-solutions">Coding Challenge! Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-challenge-level-1">Dictionaries Challenge Level 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-challenge-level-2">Dictionaries Challenge Level 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
