@@ -420,9 +420,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-maps-from-csvs-with-plotly">Creating Maps from CSVs with Plotly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-csv-files-not-used-as-often-for-spatial-data">Why are CSV files not used as often for spatial data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geopandas">Geopandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-reference-systems-crs">Coordinate Reference Systems (CRS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-north-carolina-public-schools-with-two-geojson-files">Plotting North Carolina Public Schools with Two GeoJson Files</a></li>
 </ul>
             </nav>
         </div>
@@ -436,10 +439,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="basic-mapping-skills-with-python">
 <h1>Basic Mapping Skills with Python<a class="headerlink" href="#basic-mapping-skills-with-python" title="Link to this heading">#</a></h1>
-<section id="acknowledgments">
-<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
-<p>This notebook includes contributions and insights from <strong>Patrick Wolfe, MLIS graduate, 2023</strong>.</p>
-</section>
 <section id="maps">
 <h2>Maps<a class="headerlink" href="#maps" title="Link to this heading">#</a></h2>
 <p>Maps are visual representations of geographic or spatial information. They are used to display the physical features of an area, such as terrain, bodies of water, and landmarks, as well as human-made features like roads, buildings, and cities. Maps can be created at a range of scales, from small-scale world maps that show the entire planet, to large-scale maps that show detailed information about a single city block.</p>
@@ -710,11 +709,17 @@ if (outputEl) {{
 
                         })                };                });            </script>        </div></div></div>
 </div>
-<h2>Why are CSV files not used as often for spatial data?</h2><p>CSV (Comma Separated Values) files are not as good for spatial data because they lack the additional information that is needed to accurately represent geographic features and their relationships to one another. CSV files are simply text files with rows and columns of data, and they do not have any built-in spatial reference information or the ability to store geometric data.</p>
+</section>
+<section id="why-are-csv-files-not-used-as-often-for-spatial-data">
+<h2>Why are CSV files not used as often for spatial data?<a class="headerlink" href="#why-are-csv-files-not-used-as-often-for-spatial-data" title="Link to this heading">#</a></h2>
+<p>CSV (Comma Separated Values) files are not as good for spatial data because they lack the additional information that is needed to accurately represent geographic features and their relationships to one another. CSV files are simply text files with rows and columns of data, and they do not have any built-in spatial reference information or the ability to store geometric data.</p>
 <p>Spatial data, on the other hand, is complex and requires additional information to be properly represented. Spatial data often includes geographic coordinates (such as latitude and longitude) and topological relationships between geographic features (such as adjacency or containment). To store this information and accurately represent spatial data, specialized file formats are needed.</p>
 <p>One common file format for spatial data is the shapefile format, which is commonly used in GIS (geographic information system) software. Shapefiles store not only the geographic coordinates of features, but also information about the shape, size, and attributes of those features. This makes them better suited for spatial analysis and visualization than CSV files.</p>
 <p>In addition, there are other file formats designed specifically for spatial data, such as GeoJSON and KML, which also include spatial reference information and the ability to store geometric data. These file formats are more versatile and provide more functionality for spatial data analysis and visualization than CSV files.</p>
-<h2>Geopandas</h2><p>Geopandas is a Python library that provides tools for working with geospatial data in a tabular format. It is built on top of pandas and extends its functionality to include spatial data analysis. It provides a set of tools for working with vector data (e.g., points, lines, polygons) and includes functions for spatial operations such as spatial joins, buffering, and distance calculations. Geopandas uses the shapely library for handling geometric objects, and also includes support for reading and writing spatial data in various file formats. With geopandas, you can read, write, and manipulate vector data in a variety of formats, including shapefiles, GeoJSON, and others.</p>
+</section>
+<section id="geopandas">
+<h2>Geopandas<a class="headerlink" href="#geopandas" title="Link to this heading">#</a></h2>
+<p>Geopandas is a Python library that provides tools for working with geospatial data in a tabular format. It is built on top of pandas and extends its functionality to include spatial data analysis. It provides a set of tools for working with vector data (e.g., points, lines, polygons) and includes functions for spatial operations such as spatial joins, buffering, and distance calculations. Geopandas uses the shapely library for handling geometric objects, and also includes support for reading and writing spatial data in various file formats. With geopandas, you can read, write, and manipulate vector data in a variety of formats, including shapefiles, GeoJSON, and others.</p>
 <p>Geopandas provides a simple and efficient way to perform common spatial data operations, such as spatial joins, spatial buffering, and spatial overlays. It also supports advanced data analysis techniques, such as clustering and machine learning on spatial data.</p>
 <p>Some of the key features of geopandas include:</p>
 <ul>
@@ -743,7 +748,10 @@ if (outputEl) {{
 </div>
 </div>
 </div>
-<h2>Coordinate Reference Systems (CRS)</h2><p>A Coordinate Reference System (CRS) is a system that is used to define the positions of geographic features on the Earth’s surface. A CRS is based on a set of coordinates that specify a location in space, and a set of rules for interpreting those coordinates in terms of latitude, longitude, and elevation.</p>
+</section>
+<section id="coordinate-reference-systems-crs">
+<h2>Coordinate Reference Systems (CRS)<a class="headerlink" href="#coordinate-reference-systems-crs" title="Link to this heading">#</a></h2>
+<p>A Coordinate Reference System (CRS) is a system that is used to define the positions of geographic features on the Earth’s surface. A CRS is based on a set of coordinates that specify a location in space, and a set of rules for interpreting those coordinates in terms of latitude, longitude, and elevation.</p>
 <p>Many different CRSs are used in spatial data analysis and visualization, each with its own set of rules and conventions. The most commonly used CRSs are based on the WGS84 datum, which is a global standard for defining geographic coordinates.</p>
 <p>The choice of CRS can have a significant impact on the accuracy and reliability of spatial data analysis and visualization. Different CRSs are used for different purposes, depending on factors such as the scale of the data, the geographic extent of the data, and the specific analysis or visualization task.</p>
 <p>Some common types of CRSs include:</p>
@@ -990,7 +998,10 @@ Datum: World Geodetic System 1984
 <img alt="../../_images/b90268aa513dca2e05eaaa5b7ed79dab0cc8903c31852b1caa785ba40c3b9e24.png" src="../../_images/b90268aa513dca2e05eaaa5b7ed79dab0cc8903c31852b1caa785ba40c3b9e24.png" />
 </div>
 </div>
-<h2>Plotting North Carolina Public Schools with Two GeoJson Files</h2><p>It is important to note that you can use multiple files to create a map. Let’s use a practical example to illustrate this. In this example, we will use two geojson files to make one map of North Carolina Public Schools found on <a href= 'https://www.nconemap.gov/explore?collection=Dataset&layout=list'>NC OneMap</a>.</p>
+</section>
+<section id="plotting-north-carolina-public-schools-with-two-geojson-files">
+<h2>Plotting North Carolina Public Schools with Two GeoJson Files<a class="headerlink" href="#plotting-north-carolina-public-schools-with-two-geojson-files" title="Link to this heading">#</a></h2>
+<p>It is important to note that you can use multiple files to create a map. Let’s use a practical example to illustrate this. In this example, we will use two geojson files to make one map of North Carolina Public Schools found on <a href= 'https://www.nconemap.gov/explore?collection=Dataset&layout=list'>NC OneMap</a>.</p>
 <p>Go ahead and read in the file “Public_Schools.geojson.” Go ahead and take a look at the data. Notice anything interesting about it?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1374,9 +1385,12 @@ Datum: World Geodetic System 1984
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-maps-from-csvs-with-plotly">Creating Maps from CSVs with Plotly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-csv-files-not-used-as-often-for-spatial-data">Why are CSV files not used as often for spatial data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geopandas">Geopandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-reference-systems-crs">Coordinate Reference Systems (CRS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-north-carolina-public-schools-with-two-geojson-files">Plotting North Carolina Public Schools with Two GeoJson Files</a></li>
 </ul>
   </nav></div>
 
