@@ -1,0 +1,1454 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pandas Basics 2 &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/Python/pandas/pandas-2';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Pandas Basics 3" href="pandas-3.html" />
+    <link rel="prev" title="Pandas Basics 1" href="pandas-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataVisualization.html">Brief Overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Wolfe-notebooks/BarChart.html">Bar Charts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/LineChart.html">Line Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/ScatterPlot.html">Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Maps</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research Data Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page3.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial Intelligence</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page4.html">Brief Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../PythonTutorialsOverview.html">Python Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-1.html">Python Basics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-2.html">Python Basics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-3.html">Python Basics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-4.html">Python Basics 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-5.html">Python Basics 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-1.html">Python Intermediate 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-2.html">Python Intermediate 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-3.html">Python Intermediate 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-4.html">Python Intermediate 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-5.html">Python Intermediate 5</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pandas-1.html">Pandas Basics 1</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pandas Basics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-3.html">Pandas Basics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-intermediate-1.html">Pandas Intermediate 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-intermediate-2.html">Pandas Intermediate 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-intermediate-3.html">Pandas Intermediate 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Text_Analysis.html">Text Analysis</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Collections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page1.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/Python/pandas/pandas-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/Python/pandas/pandas-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas Basics 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-data-in-a-dataframe">Filter data in a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-drop-method">The drop() method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-with-missing-values">Work with missing values</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-rows-and-columns-with-missing-values">Drop rows and columns with missing values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-data-using-conditionals">Filter data using conditionals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conjunction-of-multiple-filtering-conditions">Conjunction of multiple filtering conditions: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disjunction-of-multiple-filtering-conditions">Disjunction of multiple filtering conditions: <code class="docutils literal notranslate"><span class="pre">|</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#negation-of-a-certain-condition">Negation of a certain condition:<code class="docutils literal notranslate"><span class="pre">~</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-a-dataframe">Index a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-reset-and-use-indexes">Set, reset and use indexes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-a-dataframe">Sort a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-by-one-column">Sort by one column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-by-multiple-columns">Sort by multiple columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-indexing">Hierarchical indexing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-pandas-3">Start Next Lesson: <span class="xref myst">Pandas 3 -&gt;</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-solutions">Exercise Solutions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
+<p>This notebook is adapted by Zhuo Chen from the notebooks created by <a class="reference external" href="https://github.com/ithaka/tdm-notebooks/blob/e6275296c010280909e90e3ea47922d52d99c5a7/pandas-2.ipynb">Nathan Kelber</a>, <a class="reference external" href="https://github.com/wjbmattingly/tap-2022-pandas">William Mattingly</a> and <a class="reference external" href="https://github.com/melaniewalsh/Data-Analysis-with-Pandas">Melanie Walsh</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+For questions/comments/improvements, email <a class="reference external" href="mailto:zhuo&#46;chen&#37;&#52;&#48;ithaka&#46;org">zhuo<span>&#46;</span>chen<span>&#64;</span>ithaka<span>&#46;</span>org</a> or <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="pandas-basics-2">
+<h1>Pandas Basics 2<a class="headerlink" href="#pandas-basics-2" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong> This notebook describes how to:</p>
+<ul class="simple">
+<li><p>Filter data in a dataframe</p></li>
+<li><p>Work with missing values in a dataframe</p></li>
+<li><p>Index a dataframe</p></li>
+<li><p>Sort a dataframe</p></li>
+</ul>
+<p>This is the second notebook in a series on learning to use Pandas.</p>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Beginner</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pandas-1.html"><span class="std std-doc">Pandas 1</span></a></p></li>
+<li><p>Python Basics (<a class="reference internal" href="#./python-basics-1.ipynb"><span class="xref myst">Start Python Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#./python-intermediate-2.ipynb"><span class="xref myst">Python Intermediate 2</span></a></p></li>
+<li><p><a class="reference internal" href="#./python-intermediate-4.ipynb"><span class="xref myst">Python Intermediate 4</span></a></p></li>
+</ul>
+<p><strong>Completion Time:</strong> 90 minutes</p>
+<p><strong>Data Format:</strong> CSV (.csv)</p>
+<p><strong>Libraries Used:</strong> Pandas</p>
+<p><strong>Research Pipeline:</strong> None</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pandas library, `as pd` allows us to shorten typing `pandas` to `pd` when we call pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the display setting</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.min_rows&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># set the minimum number of rows to display to 20</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="filter-data-in-a-dataframe">
+<h2>Filter data in a dataframe<a class="headerlink" href="#filter-data-in-a-dataframe" title="Link to this heading">#</a></h2>
+<p>A common pipeline in data processing in Pandas is that you create a dataframe from a file and then reduce the dataframe only to the rows and columns that you are interested in.</p>
+<p>We have learned how to use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> to select part of a dataframe in <a class="reference internal" href="pandas-1.html"><span class="std std-doc">Pandas Basics 1</span></a>. We will learn more ways to do data selection in this section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download the sample file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas1_failed_banks_since_2000.csv&#39;</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;../data/failed_banks.csv&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample file ready.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Read in the data</span>
+<span class="n">banks_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">banks_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-drop-method">
+<h3>The drop() method<a class="headerlink" href="#the-drop-method" title="Link to this heading">#</a></h3>
+<p>After creating a dataframe from a file, oftentimes we will drop certain rows or columns because we will not use them in the analysis anyways. In this case, we will use the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method to remove those rows or columns.</p>
+<p>We can specify which column(s) to drop by using the ‘columns’ parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop a column by setting the columns parameter</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Fund&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also drop multiple columns at one time. In this case, we just put the names for the columns we want to drop in a list and set the value of the <code class="docutils literal notranslate"><span class="pre">columns</span></code> parameter to the list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop multiple columns by setting the columns parameter</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Fund&#39;</span><span class="p">,</span> <span class="s1">&#39;Cert&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way to drop a column is to give the label of the column you want to drop and then set the axis parameter to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop a column by setting the axis parameter</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Fund&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It might not be intuitive to you that axis 1 refers to the columns. Luckily, Pandas also allows us to set the axis parameter to <code class="docutils literal notranslate"><span class="pre">columns</span></code> when dropping columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop a column</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Fund&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also drop multiple columns by setting the axis parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop multiple columns by setting the axis parameter</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Fund&#39;</span><span class="p">,</span> <span class="s1">&#39;Cert&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To drop a row, you just pass the index number of the row to the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop a row </span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you assign the index number of the row to drop to the parameter <code class="docutils literal notranslate"><span class="pre">index</span></code>, you will get the same result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop a row by setting the index parameter</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To drop multiple rows, we just pass a list of index numbers to the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method. Note that we don’t need to specify the axis parameter. By default, Pandas knows that the list of index numbers are for the rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop multiple rows </span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, you could specify the axis parameter to 0 or ‘rows’ to tell Pandas that you want to drop the rows with the given index numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop rows by setting the axis parameter</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop rows by setting the axis parameter </span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method only returns a copy. This means that any change you make using the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method will not affect the original dataframe. To make the change permanent, you can assign the result to the variable where you store the original dataframe to update it.</p>
+<h3 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h3>
+<p>In the exercises in this notebook, we’ll work on a dataset built from Constellate.</p>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">constellate</span></code> client to automatically retrieve the <a class="reference external" href="https://constellate.org/docs/key-terms/#metadata">metadata</a> for a <a class="reference external" href="https://constellate.org/docs/key-terms/#dataset">dataset</a>. We can retrieve the <a class="reference external" href="https://constellate.org/docs/key-terms/#metadata">metadata</a> in a <a class="reference external" href="https://constellate.org/docs/key-terms/#csv-file">CSV file</a> using the <code class="docutils literal notranslate"><span class="pre">get_metadata</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a variable `dataset_id` to hold our dataset ID</span>
+<span class="c1"># The default dataset is Shakespeare Quarterly, 1950-present</span>
+<span class="c1"># retrieve the metadata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">constellate</span>
+<span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;7e41317e-740f-e86a-4729-20dab492e925&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the type of the value stored in metadata</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out the string stored in metadata</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The metadata is stored in a .csv file. In the following code cell, read in the data using Pandas. Give the dataframe a name. Then print out the dataframe to take a look.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the csv file to a dataframe</span>
+<span class="n">shake_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+<span class="n">shake_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use a Pandas method to explore the dataframe. How many rows does it have? How many columns does it have? What is the data type of the data in each column?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use a Pandas method to explore the data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you explore the Shakespeare dataframe, what did you find about the column <code class="docutils literal notranslate"><span class="pre">doi</span></code>? What did you find about the column <code class="docutils literal notranslate"><span class="pre">placeOfPublication</span></code>? Drop the two columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop the &#39;doi&#39; and &#39;placeOfPublication&#39; columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="work-with-missing-values">
+<h3>Work with missing values<a class="headerlink" href="#work-with-missing-values" title="Link to this heading">#</a></h3>
+<p>It is a common case that datasets have missing values. As you may have already noticed, blank cells in a csv file show up as NaN in a Pandas DataFrame. For example, in the dataset of failed banks, the <code class="docutils literal notranslate"><span class="pre">Acquiring</span> <span class="pre">Institution</span></code> column gives the name when a failed bank was acquired by another institution and has a value of NaN otherwise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a look at the missing values in banks_df</span>
+<span class="n">banks_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To quickly get an idea of whether a dataframe has missing values, we can always use the <code class="docutils literal notranslate"><span class="pre">info()</span></code> method introduced in <a class="reference internal" href="pandas-1.html"><span class="std std-doc">Pandas Basics 1</span></a> to explore the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use info() to see whether there are missing values</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In Pandas, we can also use the <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> method to check whether a pandas series or a dataframe has missing values. What this method does is it creates a boolean mask over the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use isna() to check whether a dataframe has missing values</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the cells with a non-null value are masked with the boolean value of <code class="docutils literal notranslate"><span class="pre">False</span></code>. The cells with a null value are masked with the boolean value of <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">isna()</span></code> can check whether a pandas series has missing values, we can use <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> to see whether a specific column in a dataframe has missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use isna() to check whether a column has missing values</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Acquiring Institution&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="drop-rows-and-columns-with-missing-values">
+<h4>Drop rows and columns with missing values<a class="headerlink" href="#drop-rows-and-columns-with-missing-values" title="Link to this heading">#</a></h4>
+<p>If you want to exclude the rows and columns with missing values from your data analysis, you can use the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method to do that.</p>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method drops the rows with at least one missing value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use .dropna() to remove all rows with at least one missing value</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="c1"># no argument passed in</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Based on what you have learned about the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method, you now know that you can also set the axis parameter to 0 or ‘rows’ to drop the rows with missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use .dropna() to remove all rows with at least one missing value</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Set the axis to 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use .dropna() to remove all rows with at least one missing value</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">)</span> <span class="c1"># Set the axis to &#39;rows&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you set the axis parameter to 1 or ‘columns’, you will drop the columns with missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use .dropna() to remove all columns with at least one missing value</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># set the axis to 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use .dropna() to remove all columns with at least one missing value</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> <span class="c1"># set the axis to &#39;columns&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes we would want to drop a row only if that row has a missing value in a specific column. We can use the subset parameter to specify the column(s) to look for missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify the columns to look for missing values</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Acquiring Institution&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method only returns a copy. This means that any change you make using the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method will not affect the original dataframe. To make the change permanent, you can assign the result to the variable where you store the original dataframe to update it.</p>
+<p>Oftentimes, you would want to maintain the rows and columns that have missing values. However, you would want to fill the cells with NaN values with some values which are of the same data type as the other cells in the same column. In this way, when you apply a certain function to a column in a dataframe, you will not run into type error. A common practice to deal with this kind of problem is to use the <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fill the missing values</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Acquiring Institution&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No Acquirer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h3>
+<p>Let’s grab the Shakespeare dataframe we have created and do some further filtering.</p>
+<p>When you explore the Shakespeare dataframe, what did you find about the column <code class="docutils literal notranslate"><span class="pre">pagestart</span></code>? What did you find about the column <code class="docutils literal notranslate"><span class="pre">pageEnd</span></code>? Suppose you will need the page range information in your analysis. Therefore, you will want to drop any rows with missing values in these two columns. How do you do it?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop any rows with missing values in &#39;pageStart&#39; or &#39;pageEnd&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-data-using-conditionals">
+<h4>Filter data using conditionals<a class="headerlink" href="#filter-data-using-conditionals" title="Link to this heading">#</a></h4>
+<p>Conditional selection using <code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code> is a very common method to filter a dataframe.</p>
+<p>You write a filtering condition to filter a target column. The condition then checks, for each cell in the target column, whether it fulfills the condition or not. The results will be returned as a Series of True/False values. The <code class="docutils literal notranslate"><span class="pre">.loc</span></code> indexer then uses this Series to select the rows that have True values.</p>
+<p>Suppose you are interested in the banks that failed since 2000 in the state of Georgia. From the original dataframe, you would like to get all the rows of the failed banks in Georgia. How do you do it?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write a filtering condition</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;GA&#39;</span> <span class="c1"># Create a boolean mask over the column &#39;State&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign the filtering condition to a variable</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;GA&#39;</span><span class="p">)</span> <span class="c1"># Use parenthesis for better reading</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put the Series returned by the filtering condition within the hard brackets of banks_df.loc[]</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Out of the rows that fulfill the filtering condition, we can further specify which columns to be returned.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify a single column to be returned</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">,</span> <span class="s1">&#39;Bank Name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, we can select muliple columns to be returned out of the filtered rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify multiple columns to be returned</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Bank Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Fund&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now suppose you want to get all the failed banks whose name contains the word ‘community’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all the banks with the word &#39;community&#39; in their name</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Bank Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Community&#39;</span><span class="p">))</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Bank Name&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conjunction-of-multiple-filtering-conditions">
+<h4>Conjunction of multiple filtering conditions: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code><a class="headerlink" href="#conjunction-of-multiple-filtering-conditions" title="Link to this heading">#</a></h4>
+<p>Oftentimes, you would want to filter a dataframe based on more complex conditions. For example, suppose you would like to get the banks in GA that were closed between 2008 and 2010. How do you use <code class="docutils literal notranslate"><span class="pre">df.loc[</span> <span class="pre">]</span></code> to achieve it?</p>
+<p>The location of the failed banks is stored in the <code class="docutils literal notranslate"><span class="pre">State</span></code> column. The closing year of the banks is stored in the <code class="docutils literal notranslate"><span class="pre">Closing</span> <span class="pre">Date</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the first filtering condition restricting the state</span>
+<span class="n">filt1</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;GA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>How to get the closing year of the banks?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data type of the &#39;Closing Date&#39; column</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column storing the closing year of the banks</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2000</span>
+<span class="n">banks_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the second filtering condition restricting the closing year</span>
+<span class="n">filt2</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2007</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2011</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the two filtering conditions, we are ready to extract the banks in GA that failed between 2008 and 2010.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use filt1 and filt2 to get the target rows</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt1</span> <span class="o">&amp;</span> <span class="n">filt2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that when we extract rows that fulfill multiple conditions, we use <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> in Pandas, not <code class="docutils literal notranslate"><span class="pre">and</span></code>. If you replace <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> with <code class="docutils literal notranslate"><span class="pre">and</span></code>, you will get an error. This is different than what we have learned about boolean operators in <a class="reference internal" href="#./python-basics-2.ipynb"><span class="xref myst">Python basics 2</span></a>. In Python, we use <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>. In Pandas, we use <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code> and <code class="docutils literal notranslate"><span class="pre">~</span></code> intead.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pandas Operator</p></th>
+<th class="head"><p>Boolean</p></th>
+<th class="head"><p>Requires</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&amp;</p></td>
+<td><p>and</p></td>
+<td><p>All required to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>|</p></td>
+<td><p>or</p></td>
+<td><p>If any are <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>~</p></td>
+<td><p>not</p></td>
+<td><p>The opposite</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Although we use different symbols for these boolean operators, the truth table for them stays the same. For a quick review of the truth table, see <a class="reference internal" href="#./python-basics-2.ipynb"><span class="xref myst">Python basics 2</span></a>.</p>
+</section>
+<section id="disjunction-of-multiple-filtering-conditions">
+<h4>Disjunction of multiple filtering conditions: <code class="docutils literal notranslate"><span class="pre">|</span></code><a class="headerlink" href="#disjunction-of-multiple-filtering-conditions" title="Link to this heading">#</a></h4>
+<p>Suppose you would like to take a look at all the failed banks in the state of Georgia or the state of New York. How do you use <code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code> to get the target rows?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the two filtering conditions restricting the state to GA and NY</span>
+<span class="n">filt1</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;GA&#39;</span><span class="p">)</span>
+<span class="n">filt2</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;NY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use filt1 and filt2 to get the target rows</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt1</span><span class="o">|</span><span class="n">filt2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you would like to get the data of the failed banks in the following six states — Georgia, New York, New Jersey, Florida, California and West Virginia, you will not want to write six filtering conditions and use the vertical bar <code class="docutils literal notranslate"><span class="pre">|</span></code> to connect all of them. That would be too repetitive. In this case, we can use the <code class="docutils literal notranslate"><span class="pre">.isin()</span></code> method to create a filtering condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a list of the states</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GA&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;NJ&#39;</span><span class="p">,</span> <span class="s1">&#39;FL&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;WV&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a filtering condition</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">states</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use filt to find all failed banks in the six states</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="negation-of-a-certain-condition">
+<h4>Negation of a certain condition:<code class="docutils literal notranslate"><span class="pre">~</span></code><a class="headerlink" href="#negation-of-a-certain-condition" title="Link to this heading">#</a></h4>
+<p>Now, suppose you would like to get all the failed banks that were <strong>not</strong> closed in 2008. How do you do it?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the filtering condition restricting the closing year to non-2008</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2008</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the filtering condition to get the target rows with specified columns</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Bank Name&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h3>
+<p>Let’s do some filtering!</p>
+<p>From the Shakespeare dataframe, get the title and the creator of the documents published between 2000 <strong>and</strong> 2010.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the title and creator of docs published between 2000 and 2010</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the Shakespeare dataframe, get the creator of the documents shorter than 10 pages <strong>or</strong> longer than 50 pages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the creator of the docs shorter than 10 pages or longer than 50 pages</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the Shakespeare dataframe, get the title of the documents whose publisher is <strong>not</strong> Folger Shakespeare Library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the title of the docs whose publisher is NOT Folger Shakespeare Library</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="index-a-dataframe">
+<h2>Index a dataframe<a class="headerlink" href="#index-a-dataframe" title="Link to this heading">#</a></h2>
+<p>In this section, we’ll continue to work with the dataframe we created in <a class="reference internal" href="pandas-1.html"><span class="std std-doc">Pandas 1</span></a> storing data on the most recent 10 World Cup games.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dataframe with world cup data</span>
+<span class="n">wcup</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2022</span><span class="p">,</span> 
+                              <span class="mi">2018</span><span class="p">,</span> 
+                              <span class="mi">2014</span><span class="p">,</span> 
+                              <span class="mi">2010</span><span class="p">,</span> 
+                              <span class="mi">2006</span><span class="p">,</span> 
+                              <span class="mi">2002</span><span class="p">,</span> 
+                              <span class="mi">1998</span><span class="p">,</span> 
+                              <span class="mi">1994</span><span class="p">,</span> 
+                              <span class="mi">1990</span><span class="p">,</span>
+                              <span class="mi">1986</span><span class="p">],</span> 
+                     <span class="s2">&quot;Champion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Argentina&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;France&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Spain&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Italy&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Brazil&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;France&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Brazil&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> 
+                                  <span class="s2">&quot;Argentina&quot;</span><span class="p">],</span> 
+                     <span class="s2">&quot;Host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Qatar&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;Russia&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;Brazil&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;South Africa&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;Korea/Japan&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;France&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;USA&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;Italy&quot;</span><span class="p">,</span> 
+                              <span class="s2">&quot;Mexico&quot;</span><span class="p">],</span>
+                     <span class="s2">&quot;Score&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;7-5&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;4-2&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;1-0&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;1-0&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;6-4&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;2-0&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;3-0&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;3-2&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;1-0&quot;</span><span class="p">,</span> 
+                               <span class="s2">&quot;3-2&quot;</span><span class="p">]</span>
+                    <span class="p">})</span>
+<span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Scored&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Conceded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Difference&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Scored&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Conceded&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">wcup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="set-reset-and-use-indexes">
+<h3>Set, reset and use indexes<a class="headerlink" href="#set-reset-and-use-indexes" title="Link to this heading">#</a></h3>
+<p>We have seen that by default, the rows in a dataframe are numbered by integer indexes starting from 0. The indexes look like a column to the far left without a name.</p>
+<p>We can set the index column to one of the columns in the dataframe. This is desirable because a range of integers is not descriptive but a column with a name is descriptive. When we want to locate specific data, descriptive labels are much more useful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the index column to &#39;Year&#39;</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Take a look at the original dataframe, is it changed?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a look at the original dataframe</span>
+<span class="n">wcup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The original dataframe is <strong>NOT</strong> changed after we use the <code class="docutils literal notranslate"><span class="pre">.set_index()</span></code> method to change the index column. The <code class="docutils literal notranslate"><span class="pre">.set_index()</span></code> method returns a copy, this is why the original dataframe is not affected.</p>
+<p>If you want to make the change permanent, you can assign the returned object to the variable where you store the original dataframe to update it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the index column and commit the change</span>
+<span class="n">wcup</span> <span class="o">=</span> <span class="n">wcup</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">wcup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can change the index column back to the default integer index column using the <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reset the indexes to the integer indexes</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sort-a-dataframe">
+<h2>Sort a dataframe<a class="headerlink" href="#sort-a-dataframe" title="Link to this heading">#</a></h2>
+<p>A common use of the index column is to sort a dataframe. Here, we have ‘Year’, a numerical column as our index column. When we sort the indexes, by default, the dataframe will be sorted by the index column in an ascending order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the dataframe by the index column</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You could set the parameter <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> to sort the indexes in a descending order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify the ascending order</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sort-by-one-column">
+<h3>Sort by one column<a class="headerlink" href="#sort-by-one-column" title="Link to this heading">#</a></h3>
+<p>We can sort the entire dataframe by a column other than the index column. The <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code> method helps us do it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the dataframe by the column &#39;Goals Scored&#39;</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Goals Scored&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sort-by-multiple-columns">
+<h3>Sort by multiple columns<a class="headerlink" href="#sort-by-multiple-columns" title="Link to this heading">#</a></h3>
+<p>It is a convention to sort the soccer results first by difference (i.e. how many more goals the champion scored than the runner-up) and then by goals conceded (i.e. how many goals the champion lost). Pandas can easily do that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the dataframe by Difference column in descending order </span>
+<span class="c1"># then by Goals Conceded column in ascending order</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Goals Conceded&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset the index for later use</span>
+<span class="n">wcup</span> <span class="o">=</span> <span class="n">wcup</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hierarchical-indexing">
+<h3>Hierarchical indexing<a class="headerlink" href="#hierarchical-indexing" title="Link to this heading">#</a></h3>
+<p>Sorting by multiple columns helps us group the data in a certain way. For example, in the world cup dataframe, if we would like to group the data first by the champions and then by the years, we can sort the dataframe by these two columns and set the two columns as the a multi-level index of the dataframe. The <code class="docutils literal notranslate"><span class="pre">Champion</span></code> column will be the level 0 index and the <code class="docutils literal notranslate"><span class="pre">Year</span></code> column will be the level 1 index. The hierarchical indexing allows us to work with higher dimension data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First,sort the two columns we will use for multi-level indexing</span>
+<span class="c1"># Then, set the index to the composite of Champion and Year</span>
+<span class="n">wcup</span> <span class="o">=</span> <span class="n">wcup</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Champion&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Champion&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+<span class="n">wcup</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If a dataframe has a multi-level index, to access a certain row, we will need to provide a multi-level index in order to access it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data on the 1986 world cup game won by Argentina</span>
+<span class="n">wcup</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s1">&#39;Argentina&#39;</span><span class="p">,</span> <span class="mi">1986</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h3>
+<p>In this coding challenge, we’ll use the Shakespeare dataframe. Use what you have learned about sorting and indexing a dataframe to answer the following questions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a look at the Shakespeare df</span>
+<span class="n">shake_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which doc(s) are the longest in this dataset?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the longest doc(s) in the df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Among the docs published in 1983, how many were published by Folger Shakespeare Library?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Among the docs published in 1983, how many were published by Folger Shakespeare Library</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lesson-complete">
+<h2>Lesson Complete<a class="headerlink" href="#lesson-complete" title="Link to this heading">#</a></h2>
+<p>Congratulations! You have completed <em>Pandas Basics 2</em>.</p>
+<section id="start-next-lesson-pandas-3">
+<h3>Start Next Lesson: <a class="reference internal" href="pandas-3.html"><span class="std std-doc">Pandas 3 -&gt;</span></a><a class="headerlink" href="#start-next-lesson-pandas-3" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-solutions">
+<h3>Exercise Solutions<a class="headerlink" href="#exercise-solutions" title="Link to this heading">#</a></h3>
+<p>Here are a few solutions for exercises in this lesson.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a variable `dataset_id` to hold our dataset ID</span>
+<span class="c1"># The default dataset is Shakespeare Quarterly, 1950-present</span>
+<span class="c1"># retrieve the metadata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">constellate</span>
+<span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;7e41317e-740f-e86a-4729-20dab492e925&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">)</span>
+
+<span class="c1"># Create a dataframe</span>
+<span class="n">shake_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+
+<span class="c1"># Explore the dataframe</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1"># Drop the columns of doi and the placeofPublication, make the change permanent</span>
+<span class="n">shake_df</span> <span class="o">=</span> <span class="n">shake_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;doi&#39;</span><span class="p">,</span> <span class="s1">&#39;placeOfPublication&#39;</span><span class="p">])</span>
+
+<span class="c1"># Drop the rows with missing values in &#39;pageStart&#39; or &#39;pageEnd&#39;</span>
+<span class="n">shake_df</span> <span class="o">=</span> <span class="n">shake_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pageStart&#39;</span><span class="p">,</span> <span class="s1">&#39;pageEnd&#39;</span><span class="p">])</span>
+
+<span class="n">shake_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the title and the creator of the documents published between 2000 and 2010</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1999</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">2011</span><span class="p">)</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;creator&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the creator of the documents shorter than 10 pages or longer than 50 pages</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;pageCount&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;pageCount&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filt</span><span class="p">,</span> <span class="s1">&#39;creator&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the title of the documents whose publisher is not Folger Shakespeare Library</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;publisher&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Folger Shakespeare Library&#39;</span><span class="p">)</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">filt</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the longest doc(s) in the dataset</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;pageCount&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;pageCount&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the number of docs published by Folger Shakespeare Library in 1983</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> <span class="s1">&#39;publisher&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="mi">1983</span><span class="p">,</span> <span class="s1">&#39;Folger Shakespeare Library&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/Python/pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pandas-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandas Basics 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pandas-3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pandas Basics 3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-data-in-a-dataframe">Filter data in a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-drop-method">The drop() method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-with-missing-values">Work with missing values</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-rows-and-columns-with-missing-values">Drop rows and columns with missing values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-data-using-conditionals">Filter data using conditionals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conjunction-of-multiple-filtering-conditions">Conjunction of multiple filtering conditions: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disjunction-of-multiple-filtering-conditions">Disjunction of multiple filtering conditions: <code class="docutils literal notranslate"><span class="pre">|</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#negation-of-a-certain-condition">Negation of a certain condition:<code class="docutils literal notranslate"><span class="pre">~</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-a-dataframe">Index a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-reset-and-use-indexes">Set, reset and use indexes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-a-dataframe">Sort a dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-by-one-column">Sort by one column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-by-multiple-columns">Sort by multiple columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-indexing">Hierarchical indexing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-pandas-3">Start Next Lesson: <span class="xref myst">Pandas 3 -&gt;</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-solutions">Exercise Solutions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

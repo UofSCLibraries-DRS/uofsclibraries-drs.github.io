@@ -1,0 +1,1315 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pandas Basics 3 &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/Python/pandas/pandas-3';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Pandas Intermediate 1" href="pandas-intermediate-1.html" />
+    <link rel="prev" title="Pandas Basics 2" href="pandas-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataVisualization.html">Brief Overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Wolfe-notebooks/BarChart.html">Bar Charts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/LineChart.html">Line Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/ScatterPlot.html">Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Maps</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research Data Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page3.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial Intelligence</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page4.html">Brief Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../PythonTutorialsOverview.html">Python Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-1.html">Python Basics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-2.html">Python Basics 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-3.html">Python Basics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-4.html">Python Basics 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/python-basics-5.html">Python Basics 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-1.html">Python Intermediate 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-2.html">Python Intermediate 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-3.html">Python Intermediate 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-4.html">Python Intermediate 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intermediate/python-intermediate-5.html">Python Intermediate 5</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pandas-1.html">Pandas Basics 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-2.html">Pandas Basics 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pandas Basics 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-intermediate-1.html">Pandas Intermediate 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-intermediate-2.html">Pandas Intermediate 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas-intermediate-3.html">Pandas Intermediate 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Text_Analysis.html">Text Analysis</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Collections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/page1.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/Python/pandas/pandas-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/Python/pandas/pandas-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas Basics 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-and-concatenate-dataframes">Merge and concatenate dataframes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">merge()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">inner join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">outer join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-outer-join">left outer join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#right-outer-join">right outer join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-suffix-parameter">The suffix parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concat">concat()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicates-and-unique-values">Duplicates and unique values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-duplicates">drop_duplicates()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operations-in-pandas">Vectorized operations in Pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-shape">The importance of shape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-examples-of-vectorized-operations">Some more examples of vectorized operations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-and-where">apply() and where()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-exercises">Solutions to exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
+<p>This notebook is created by Zhuo Chen under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+For questions/comments/improvements, email <a class="reference external" href="mailto:zhuo&#46;chen&#37;&#52;&#48;ithaka&#46;org">zhuo<span>&#46;</span>chen<span>&#64;</span>ithaka<span>&#46;</span>org</a> or <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a><br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="pandas-basics-3">
+<h1>Pandas Basics 3<a class="headerlink" href="#pandas-basics-3" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong> This notebook describes how to:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">merge()</span></code> and <code class="docutils literal notranslate"><span class="pre">concat()</span></code> to combine multiple dataframes</p></li>
+<li><p>Handle duplicates and get unique values</p></li>
+<li><p>Understand vectorized operations in Pandas</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">where()</span></code> to process the data in a dataframe</p></li>
+</ul>
+<p>This is the third notebook in a series on learning to use Pandas.</p>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Beginner</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pandas-1.html"><span class="std std-doc">Pandas Basics 1</span></a></p></li>
+<li><p><a class="reference internal" href="pandas-2.html"><span class="std std-doc">Pandas Basics 2</span></a></p></li>
+<li><p>Python Basics (<a class="reference internal" href="#./python-basics-1.ipynb"><span class="xref myst">Start Python Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#./python-intermediate-1.ipynb"><span class="xref myst">Python Intermediate 1</span></a></p></li>
+<li><p><a class="reference internal" href="#./python-intermediate-2.ipynb"><span class="xref myst">Python Intermediate 2</span></a></p></li>
+<li><p><a class="reference internal" href="#./python-intermediate-4.ipynb"><span class="xref myst">Python Intermediate 4</span></a></p></li>
+</ul>
+<p><strong>Completion Time:</strong> 90 minutes</p>
+<p><strong>Data Format:</strong> csv</p>
+<p><strong>Libraries Used:</strong> Pandas</p>
+<p><strong>Research Pipeline:</strong> None</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pandas library, `as pd` allows us to shorten typing `pandas` to `pd` when we call pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="merge-and-concatenate-dataframes">
+<h2>Merge and concatenate dataframes<a class="headerlink" href="#merge-and-concatenate-dataframes" title="Link to this heading">#</a></h2>
+<p>In this section, we will learn two methods to combine multiple dataframes in Pandas.</p>
+<section id="merge">
+<h3>merge()<a class="headerlink" href="#merge" title="Link to this heading">#</a></h3>
+<p>When dealing with tabular data, we often find ourselves in a situation where we need to merge two or more dataframes as we want a subset of the data from each. Pandas provides a <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> method that allows us to merge dataframes easily.</p>
+<p>The data we use in this section is the unemployment data in Massachusetts from 2023 January to February.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the urls to the files and download the sample files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Download the files</span>
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas3_unemp_jan.csv&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas3_unemp_feb.csv&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span><span class="o">+</span><span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    
+<span class="c1"># Success message</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample files ready.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataframe from the csv files</span>
+<span class="n">unemp_jan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Pandas3_unemp_jan.csv&#39;</span><span class="p">)</span>
+<span class="n">unemp_feb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Pandas3_unemp_feb.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take a look at unemp_jan</span>
+<span class="n">unemp_jan</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take a look at unemp_feb</span>
+<span class="n">unemp_feb</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The two dataframes have a column in common, the <code class="docutils literal notranslate"><span class="pre">COUNTY</span></code> column. This column contains the names of the 14 counties in the state of Massachusetts.</p>
+</section>
+<section id="inner-join">
+<h3>inner join<a class="headerlink" href="#inner-join" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge the two dfs</span>
+<span class="n">unemp_jan</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By convention, we’ll call the dataframe on which we call the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> method the left dataframe. We’ll call the dataframe passed into the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> method the right dataframe.</p>
+<p>As you can see, the parameter ‘on’ specifies the <strong>key column</strong> we use to merge the two dataframes. By default, the type of merge performed is ‘inner’, which uses the intersection of the keys from the <strong>key column</strong>. You can explicitly specify the type of merge by setting the ‘how’ parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the parameter &#39;how&#39; to specify the merge type</span>
+<span class="n">unemp_jan</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In an inner join, you’ll lose the rows that do not have a matching key in the two dataframes. In other words, only rows from the two dataframes that have a matching value in the <strong>key column</strong> will appear after the merge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># see what happens when there are non-matching keys </span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">unemp_jan</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">unemp_feb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, we have lost the data for Barnstable and Worcester after the merge. This is because the former has been dropped from the left dataframe and the latter has been dropped from the right dataframe.</p>
+</section>
+<section id="outer-join">
+<h3>outer join<a class="headerlink" href="#outer-join" title="Link to this heading">#</a></h3>
+<p>There are other types of merge, of course. Instead of using the intersection of keys from two dataframes, we can use the union of keys from two dataframes. The type of merge in this case is ‘outer’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the merge type and see what happens</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">unemp_jan</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">unemp_feb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, the union of the values in the ‘COUNTY’ column from the two dataframes is used to merge the two. For keys that only exist in one dataframe, unmatched columns will be filled in with NaN.</p>
+</section>
+<section id="left-outer-join">
+<h3>left outer join<a class="headerlink" href="#left-outer-join" title="Link to this heading">#</a></h3>
+<p>Still another type of merge is to use the keys from the left dataframe in the merge. The values in the key column from the left dataframe will be used to merge the two dataframes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the keys from the left df in the merge</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">unemp_jan</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">unemp_feb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># see what happens if right df has a non-matching key</span>
+<span class="n">unemp_jan</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="right-outer-join">
+<h3>right outer join<a class="headerlink" href="#right-outer-join" title="Link to this heading">#</a></h3>
+<p>Or, you can use the keys from the right dataframe in the merge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the keys from the right df in the merge</span>
+<span class="n">unemp_jan</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># see what happens if left df has a non-matching key</span>
+<span class="n">unemp_jan</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-suffix-parameter">
+<h3>The suffix parameter<a class="headerlink" href="#the-suffix-parameter" title="Link to this heading">#</a></h3>
+<p>By default, Pandas does not allow duplicate column names. Therefore, if the two dataframes have a column other than the key column that has the same name, Pandas automatically uses suffixes to distinguish them after the merge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a df with the unemployment data of MA in Feb of 2022</span>
+<span class="n">unemp_feb_22</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">:</span>
+                               <span class="p">[</span><span class="s1">&#39;BARNSTABLE&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;BERKSHIRE&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;BRISTOL&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;DUKES&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;ESSEX&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;FRANKLIN&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;HAMPDEN&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;HAMPSHIRE&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;MIDDLESEX&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;NANTUCKET&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;NORFOLK&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;PLYMOUTH&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;SUFFOLK&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;WORCESTER&#39;</span><span class="p">],</span>
+                               <span class="s1">&#39;Feb Unemployment&#39;</span><span class="p">:</span>
+                               <span class="p">[</span><span class="mi">7952</span><span class="p">,</span>
+                                <span class="mi">3366</span><span class="p">,</span>
+                                <span class="mi">17777</span><span class="p">,</span>
+                                <span class="mi">804</span><span class="p">,</span>
+                                <span class="mi">19134</span><span class="p">,</span>
+                                <span class="mi">1653</span><span class="p">,</span>
+                                <span class="mi">12830</span><span class="p">,</span>
+                                <span class="mi">3305</span><span class="p">,</span>
+                                <span class="mi">29335</span><span class="p">,</span>
+                                <span class="mi">1071</span><span class="p">,</span>
+                                <span class="mi">14045</span><span class="p">,</span>
+                                <span class="mi">14072</span><span class="p">,</span>
+                                <span class="mi">17043</span><span class="p">,</span>
+                                <span class="mi">20000</span><span class="p">]})</span>
+<span class="n">unemp_feb_22</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge the two and see what happens</span>
+<span class="n">unemp_feb</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb_22</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The suffix ‘_x’ indicates that the column is from the left dataframe. The suffix ‘_y’ indicates that the column is from the right dataframe. You can make the suffixes more descriptive by setting the the value of the parameter ‘suffixes’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the suffixes more descriptive</span>
+<span class="n">unemp_feb</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">unemp_feb_22</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39; 2023&#39;</span><span class="p">,</span> <span class="s1">&#39; 2022&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="concat">
+<h3>concat()<a class="headerlink" href="#concat" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.concat()</span></code> method stitches two dataframes together along the row axis or the column axis. It is often used to combine two datasets to form a larger one for further processing.</p>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">concat()</span></code> method concatenates multiple dataframes along the row axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatenate unemp_feb and unemp_feb_22</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">unemp_feb</span><span class="p">,</span> <span class="n">unemp_feb_22</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see that the indexes from the original dataframes are preserved after the concatenation. If you would like to reset the index after concatenation, you can set the parameter <code class="docutils literal notranslate"><span class="pre">ignore_index</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set ignore_index to False</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">unemp_feb</span><span class="p">,</span> <span class="n">unemp_feb_22</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The two dataframes <code class="docutils literal notranslate"><span class="pre">unemp_feb</span></code> and <code class="docutils literal notranslate"><span class="pre">unemp_feb_22</span></code> have the same columns. Both have a column <code class="docutils literal notranslate"><span class="pre">COUNTY</span></code> and a column <code class="docutils literal notranslate"><span class="pre">Feb</span> <span class="pre">Unemployment</span></code>. What if we have two dataframes that have non-matching columns? For example, the dataframe <code class="docutils literal notranslate"><span class="pre">unemp_jan</span></code> has a <code class="docutils literal notranslate"><span class="pre">COUNTY</span></code> column and a <code class="docutils literal notranslate"><span class="pre">Jan</span> <span class="pre">Unemployment</span></code> column. If we concatenate <code class="docutils literal notranslate"><span class="pre">unemp_feb</span></code> and <code class="docutils literal notranslate"><span class="pre">unemp_jan</span></code>, what will happen?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatenate two dfs that have non-matching columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">unemp_feb</span><span class="p">,</span> <span class="n">unemp_jan</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you would like to concatenate two dataframes along the column axis, just set the value of the ‘axis’ parameter to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatenate along the column axis</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">unemp_jan</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">),</span> <span class="n">unemp_feb</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="duplicates-and-unique-values">
+<h2>Duplicates and unique values<a class="headerlink" href="#duplicates-and-unique-values" title="Link to this heading">#</a></h2>
+<p>After we combine several dataframes into a big one, a common practice is to remove the duplicates in the big dataframe.</p>
+<section id="drop-duplicates">
+<h3>drop_duplicates()<a class="headerlink" href="#drop-duplicates" title="Link to this heading">#</a></h3>
+<p>There is a handy method in Pandas that can remove duplicates, i.e.  <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a df with duplicates</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s1">&#39;Pandas&#39;</span><span class="p">,</span> <span class="s1">&#39;Morning&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> 
+                     <span class="p">[</span><span class="s1">&#39;Pandas&#39;</span><span class="p">,</span> <span class="s1">&#39;Morning&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+                     <span class="p">[</span><span class="s1">&#39;Pandas&#39;</span><span class="p">,</span> <span class="s1">&#39;Evening&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+                     <span class="p">[</span><span class="s1">&#39;PythonBasics&#39;</span><span class="p">,</span><span class="s1">&#39;Morning&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Course&#39;</span><span class="p">,</span> <span class="s1">&#39;Session&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">])</span>
+<span class="n">rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">.drop_duplicates()</span></code> considers all columns when removing duplicates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop duplicates</span>
+<span class="n">rate</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can specify the column(s) to look for duplicates by setting the <code class="docutils literal notranslate"><span class="pre">subset</span></code> parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the &#39;subset&#39; parameter</span>
+<span class="n">rate</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Course&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the first occurrence of the duplicates will be kept. If you would like to keep the last occurrence, you can set the <code class="docutils literal notranslate"><span class="pre">keep</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">last</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the &#39;keep&#39; parameter to &#39;last&#39;</span>
+<span class="n">rate</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Course&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To drop all duplicates, you can set the <code class="docutils literal notranslate"><span class="pre">keep</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop all duplicates</span>
+<span class="n">rate</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Course&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After you remove all duplicates from a column, the values left in that column are unique.</p>
+<p>There is another useful method to find the unique values in a certain column in a dataframe is the <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> method</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the unique courses in df rate</span>
+<span class="n">rate</span><span class="p">[</span><span class="s1">&#39;Course&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p>In this coding challenge, we’ll work with the data on the 2021 and 2022 Boston Marathon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the urls to the files and download the files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/DataViz3_BostonMarathon2021.csv&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/DataViz3_BostonMarathon2022.csv&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span> <span class="o">+</span> <span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">9</span><span class="p">:])</span>
+    
+<span class="c1"># Success message</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample files ready.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dfs out of the files</span>
+<span class="n">bm_21</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/BostonMarathon2021.csv&#39;</span><span class="p">)</span>
+<span class="n">bm_22</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/BostonMarathon2022.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explore bm_21</span>
+<span class="n">bm_21</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explore bm_22</span>
+<span class="n">bm_22</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using what you have learned so far, can you find out which countries have runners in 2021 Boston Marathon but not 2022 Boston Marathon? Which countries have runners in 2022 Boston Marathon but not 2021 Boston Marathon? Let’s get the countries using the <code class="docutils literal notranslate"><span class="pre">CountryOfResName</span></code> column in this exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find out which countries have runners in 2021 but not in 2022</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find out which countries have runners in 2022 but not in 2021</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="vectorized-operations-in-pandas">
+<h2>Vectorized operations in Pandas<a class="headerlink" href="#vectorized-operations-in-pandas" title="Link to this heading">#</a></h2>
+<p>As you have seen so far, a lot of the methods in Pandas can work on the values in a row or a column in a batch. For example, if you call <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> on a column, it checks, for each value in that column, whether it is NaN or not. This kind of operation where values are taken and operated on in a batch is called <strong>vectorized operations</strong> in Pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a simple example of vectorized operation</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;number&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+                  <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">2023</span><span class="p">]})</span>
+
+<span class="c1"># grab the &#39;number&#39; column and add 2 to it</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, the addition is applied element-wise to the integers in the <code class="docutils literal notranslate"><span class="pre">number</span></code> column. How do we understand this operation? Why don’t we need to write a for loop to iterate over the values in the <code class="docutils literal notranslate"><span class="pre">number</span></code> column and add 2 to each of them?</p>
+<p>Actually, this vectorized addition can be broken down into two steps.</p>
+<ul class="simple">
+<li><p>First of all, the addend 2 undergoes a process called <strong>broadcasting</strong>. It is stretched into a vector of the same shape as the <code class="docutils literal notranslate"><span class="pre">number</span></code> column.</p></li>
+</ul>
+<center><img src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas3_vectorized2.png" width="40"></center>
+<ul class="simple">
+<li><p>Second, we add the integers in the <code class="docutils literal notranslate"><span class="pre">number</span></code> column and the vector of 2s in the same way that we add two vectors in mathematics. We have <strong>vectorized</strong> the addition in this case.</p></li>
+</ul>
+<center><img src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas3_vector.png" width="200"></center>
+<p>When we add two vectors, the two numbers in the corresponding positions in the two vectors are added together.</p>
+<section id="the-importance-of-shape">
+<h3>The importance of shape<a class="headerlink" href="#the-importance-of-shape" title="Link to this heading">#</a></h3>
+<p>A prerequisite for applying an operation to two vectors is to make sure that they have compatible shapes. In the previous example, we are able to add 2 to the <code class="docutils literal notranslate"><span class="pre">number</span></code> column in a vectorized way because the value 2 can be <strong>broadcast</strong> into a vector whose shape is compatible with the <code class="docutils literal notranslate"><span class="pre">number</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># applying an operation to two vectors of incompatible shapes</span>
+<span class="c1"># throws an error</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that because the vectorized operations apply element-wise, we do not need to write a for loop to iterate over the values in a column and repeat the desired operation to each value.</p>
+<p>Whenever you are tempted to write a for loop when processing data in Pandas, take a pause and think about whether there is a vectorized way to do it. In most cases, vectorized operations are <strong>faster and more efficient</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a df with 1000 rows of random ints between 1 and 1000</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+                    <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s use a for loop to add two columns and get the execution time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">row</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add two columns in a vectorized way and get the execution time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="some-more-examples-of-vectorized-operations">
+<h3>Some more examples of vectorized operations<a class="headerlink" href="#some-more-examples-of-vectorized-operations" title="Link to this heading">#</a></h3>
+<p>With numerical data, it is really convenient to use vectorized operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the unemployment rate in MA in feb 2023</span>
+<span class="n">unemp_feb</span><span class="p">[</span><span class="s1">&#39;Feb Labor Force&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">108646</span><span class="p">,</span>
+                                <span class="mi">61320</span><span class="p">,</span>
+                                <span class="mi">300028</span><span class="p">,</span>
+                                <span class="mi">8403</span><span class="p">,</span>
+                                <span class="mi">424616</span><span class="p">,</span>
+                                <span class="mi">40085</span><span class="p">,</span>
+                                <span class="mi">225735</span><span class="p">,</span>
+                                <span class="mi">90085</span><span class="p">,</span>
+                                <span class="mi">914953</span><span class="p">,</span>
+                                <span class="mi">6837</span><span class="p">,</span>
+                                <span class="mi">395358</span><span class="p">,</span>
+                                <span class="mi">285373</span><span class="p">,</span>
+                                <span class="mi">455084</span><span class="p">,</span>
+                                <span class="mi">446151</span><span class="p">]</span>
+<span class="n">unemp_feb</span><span class="p">[</span><span class="s1">&#39;Feb Unemployment Rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">unemp_feb</span><span class="p">[</span><span class="s1">&#39;Feb Unemployment&#39;</span><span class="p">]</span><span class="o">/</span>
+                                     <span class="n">unemp_feb</span><span class="p">[</span><span class="s1">&#39;Feb Labor Force&#39;</span><span class="p">])</span>
+<span class="n">unemp_feb</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You have learned a bunch of string methods in <a class="reference internal" href="#./python-basics-1.ipynb"><span class="xref myst">Python Basics</span></a>. Almost all Python’s built-in string methods have counterparts in Pandas’s vectorized string methods, e.g., <code class="docutils literal notranslate"><span class="pre">upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">lower()</span></code>, <code class="docutils literal notranslate"><span class="pre">isalpha()</span></code>, <code class="docutils literal notranslate"><span class="pre">startswith()</span></code>, <code class="docutils literal notranslate"><span class="pre">split()</span></code>, so on and so forth.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make all county names in lower case</span>
+<span class="n">unemp_jan</span><span class="p">[</span><span class="s1">&#39;COUNTY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we will first use <code class="docutils literal notranslate"><span class="pre">.str</span></code> to access the values in a column as strings and then call a certain method. Let’s see an example of another method <code class="docutils literal notranslate"><span class="pre">.split()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a df with some full names</span>
+<span class="n">full_name</span> <span class="o">=</span> <span class="n">bm_21</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">full_name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the names into first names and last names</span>
+<span class="n">full_name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With strings, a common operation is to search for a certain substring in them. You have seen an example in Pandas basics 2 where we extract all failed banks whose name contains the word ‘Community’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a reminder of the contains() method</span>
+<span class="n">full_name</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">full_name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Leo&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another common operation with strings is to find out all strings that match a certain pattern. There are some string methods that accept regular expressions which can be used to specify patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># search strings of a certain pattern</span>
+<span class="n">full_name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(^L.*[nu]$)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are interested in learning more about regular expressions, check out <a class="reference internal" href="#./regular-expressions.ipynb"><span class="xref myst">this</span></a> constellate notebook.</p>
+</section>
+</section>
+<section id="apply-and-where">
+<h2>apply() and where()<a class="headerlink" href="#apply-and-where" title="Link to this heading">#</a></h2>
+<p>There are a lot of methods in Pandas used for data processing. In this section, we focus our attention on two: <code class="docutils literal notranslate"><span class="pre">apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">where()</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method allows you to apply a self-defined function to rows and columns in a dataframe.</p>
+<p>Suppose you have a dataframe that contains the words produced by a baby each day.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use apply to process data</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[{</span><span class="s1">&#39;duck&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;bird&#39;</span><span class="p">}],</span>
+                    <span class="p">[{</span><span class="s1">&#39;hippo&#39;</span><span class="p">,</span> <span class="s1">&#39;sky&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;sky&#39;</span><span class="p">,</span> <span class="s1">&#39;cloud&#39;</span><span class="p">}]],</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day1&#39;</span><span class="p">,</span> <span class="s1">&#39;day2&#39;</span><span class="p">],</span>
+                    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Alex&#39;</span><span class="p">,</span> <span class="s1">&#39;Ben&#39;</span><span class="p">])</span>
+<span class="n">vocab</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, suppose for each baby, you would like to extract the words that appear in both days so that you know which words were consistently produced them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### use apply to get the intersection between sets in each row</span>
+
+<span class="c1"># define a function that takes a row and returns the desired intersection</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_common_words</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;day1&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;day2&#39;</span><span class="p">]</span> 
+
+<span class="c1"># pass the function to .apply()</span>
+<span class="n">vocab</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_common_words</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are more comfortable with the lambda function, you can pass a lambda function directly to the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pass a lambda function to apply()</span>
+<span class="n">vocab</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;day1&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;day2&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function may look a little bit complicated to read. A good way to read this function is to break it down into two parts. What goes before the colon is the input to this function; what goes after the colon is the output of this function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.where()</span></code> method allows you to manipulate the data using the if-else logic. The syntax of the <code class="docutils literal notranslate"><span class="pre">.where()</span></code> method is <code class="docutils literal notranslate"><span class="pre">.where(condition,</span> <span class="pre">other)</span></code>. The values fulfilling the condition will be kept and the values that do not fulfill the condition are changed to the value specified by ‘other’.</p>
+<p>Suppose you are a middle school teacher. You have a report of the grades for the most English test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a df containing English grades</span>
+<span class="n">eng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;grade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">55</span><span class="p">]},</span>
+                  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Becky&#39;</span><span class="p">,</span> <span class="s1">&#39;Cindy&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave&#39;</span><span class="p">])</span>
+<span class="n">eng</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And you would like to change any grade below 60 to ‘F’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use .where() to change any grade below 60 to &#39;F&#39;</span>
+<span class="n">eng</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">eng</span><span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">60</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can do the same thing using the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method. However, the if-else logic will need to be written into the function passed into <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use apply to change the grades below 60 to &#39;F&#39;</span>
+<span class="n">eng</span><span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">60</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have seen how to apply the if-else logic to the data in a dataframe. How about if-elif-else? Suppose you would like to change any grade 90 and above to ‘A’, any grade between 80-89 to ‘B’, 70-79 to ‘C’, 60-69 to ‘D’, and any grade below 60 to ‘F’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the number grades to letter grades</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_grade</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;A&#39;</span>
+    <span class="k">elif</span> <span class="mi">80</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">89</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;B&#39;</span>
+    <span class="k">elif</span> <span class="mi">70</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">79</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;C&#39;</span>
+    <span class="k">elif</span> <span class="mi">60</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">69</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;D&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;F&#39;</span>
+<span class="n">eng</span><span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">convert_grade</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p>In this coding challenge, we’ll work with the data on the 2022 Marathon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the original data</span>
+<span class="n">bm_22</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Can you use <code class="docutils literal notranslate"><span class="pre">apply()</span></code> to update the <code class="docutils literal notranslate"><span class="pre">OfficialTime</span></code> column such that completion time between 2 and 3 hours are changed to the string ‘Extremely fast’ and completion time between 3 - 4 hours are changed to the string ‘fast’ with all other values unchanged in this column?</p>
+</section>
+<section id="solutions-to-exercises">
+<h2>Solutions to exercises<a class="headerlink" href="#solutions-to-exercises" title="Link to this heading">#</a></h2>
+<p>Here are the solutions to some of the exercises in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### find out which countries have runners in 2021 but not in 2022</span>
+<span class="c1">### this solution may look a bit convoluted to you and it&#39;s intended to be so</span>
+
+<span class="c1"># drop duplicate countries in bm_21 and get two columns after dropping the duplicates</span>
+<span class="n">bm_21_ctry</span> <span class="o">=</span> <span class="n">bm_21</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">)[[</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">,</span> <span class="s1">&#39;FullName&#39;</span><span class="p">]]</span>
+
+<span class="c1"># drop duplicate countries in bm_22 and get the same two columns after dropping the duplicates</span>
+<span class="n">bm_22_ctry</span> <span class="o">=</span> <span class="n">bm_22</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">)[[</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">,</span> <span class="s1">&#39;FullName&#39;</span><span class="p">]]</span>
+
+<span class="c1"># merge the two new dfs on the CountryOfResName column with the merge type being left outer join</span>
+<span class="n">bm_merge</span> <span class="o">=</span> <span class="n">bm_21_ctry</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bm_22_ctry</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">)</span>
+
+<span class="c1"># get the rows from the merged df where the non-matching keys in bm_22 get a value of NaN</span>
+<span class="n">bm_merge</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bm_merge</span><span class="p">[</span><span class="s1">&#39;FullName_y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;CountryOfResName&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### find out which countries have runners in 2021 but not in 2022</span>
+<span class="c1"># this is a non-convoluted solution to the same exercise</span>
+<span class="n">bm_21_country</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">bm_21</span><span class="p">[</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">bm_22_country</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;CountryOfResName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">bm_21_country</span> <span class="o">-</span> <span class="n">bm_22_country</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use apply() to change the completion time</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_time</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">):</span>
+        <span class="n">r</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Extremely fast&#39;</span>
+    <span class="k">elif</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">):</span>
+        <span class="n">r</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Fast&#39;</span>
+    <span class="k">return</span> <span class="n">r</span>
+<span class="n">bm_22</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">convert_time</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use lambda function in apply to change the completion time</span>
+<span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Extremely fast&#39;</span> \
+                                                    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> \
+                                                    <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;Fast&#39;</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/Python/pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pandas-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandas Basics 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pandas-intermediate-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pandas Intermediate 1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-and-concatenate-dataframes">Merge and concatenate dataframes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">merge()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">inner join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">outer join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-outer-join">left outer join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#right-outer-join">right outer join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-suffix-parameter">The suffix parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concat">concat()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicates-and-unique-values">Duplicates and unique values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-duplicates">drop_duplicates()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operations-in-pandas">Vectorized operations in Pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-shape">The importance of shape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-examples-of-vectorized-operations">Some more examples of vectorized operations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-and-where">apply() and where()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-exercises">Solutions to exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
