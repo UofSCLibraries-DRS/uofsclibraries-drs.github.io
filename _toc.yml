@@ -5,10 +5,6 @@ format: jb-book
 root: intro
 parts:
 
-  - caption: Digital Collections
-    chapters:
-    - file: src/overview/page1
-    
   - caption: Data Visualization
     chapters:
     - file: src/overview/DataVisualization
@@ -31,4 +27,8 @@ parts:
   - caption: Artificial Intelligence
     chapters:
     - file: src/overview/page4
+  
+  - caption: Digital Collections
+    chapters:
+    - file: src/overview/page1
 
