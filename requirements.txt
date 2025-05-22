@@ -1,3 +1,9 @@
-jupyter-book
+jupyter-book>=0.13.0
+sphinx>=4.0
 matplotlib
 numpy
+
+# If you're using specific content types
+pandas                     # If you're working with data
+plotly                     # If you need interactive visualizations
+ipywidgets 

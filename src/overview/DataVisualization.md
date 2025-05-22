@@ -3,6 +3,18 @@ Data visualization is the practice of representing data graphically to better un
 
 As part of these offerings, the notebooks provide a hands-on introduction to Python for data visualization and analysis. Through interactive notebooks on bar charts, line charts, scatter plots, basic mapping with geopandas, and text analysis, users can learn essential skills for exploring data and uncovering insights.
 
-[UofSC Library Resources](https://sc.edu/about/offices_and_divisions/university_libraries/find_services/digital_research_services/data_visualization_gis/index.php)  
+## Lessons
+[Bar Chart](../Wolfe-notebooks/BarChart.ipynb)
+<br>
+[Line Chart](../Wolfe-notebooks/LineChart.ipynb)
+<br>
+[Scatter Plot](../Wolfe-notebooks/ScatterPlot.ipynb)
+<br>
+[Maps](../Wolfe-notebooks/Maps.ipynb)  
 
+## Links
+[UofSC Library Resources](https://sc.edu/about/offices_and_divisions/university_libraries/find_services/digital_research_services/data_visualization_gis/index.php)  
+<br>
 [Data Visualization GitHub Notebooks](https://github.com/UofSCLibraries-DRS/Wolfe-notebooks)
+
+

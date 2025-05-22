@@ -5,46 +5,34 @@ format: jb-book
 root: intro
 parts:
 
+  - caption: Data Wrangling with Python
+    chapters:
+    - file: src/Python/BasicPython
+    - file: src/Python/IntermediatePython
+    - file: src/Python/PandasPython
+
+  - caption: Text Mining
+    chapters:
+    - file: src/TextMining/Text_Analysis
+
   - caption: Data Visualization
     chapters:
     - file: src/overview/DataVisualization
-    - file: src/Wolfe-notebooks/BarChart
-      sections:
-      - file: src/Wolfe-notebooks/LineChart
-      - file: src/Wolfe-notebooks/ScatterPlot
-      - file: src/Wolfe-notebooks/Maps
-        title: Maps
+#    - file: src/Wolfe-notebooks/BarChart
+#    - file: src/Wolfe-notebooks/LineChart
+#    - file: src/Wolfe-notebooks/ScatterPlot
+#    - file: src/Wolfe-notebooks/Maps
+#      title: Maps
 
-   
-  - caption: Research Data Management
+  - caption: Data Extraction
     chapters:
     - file: src/overview/page3
 
-  - caption: Artificial Intelligence
-    chapters:
-    - file: src/overview/page4
-    - file: src/Python/PythonTutorialsOverview
-      sections:
-      - file: src/Python/basic/python-basics-1
-      - file: src/Python/basic/python-basics-2
-      - file: src/Python/basic/python-basics-3
-      - file: src/Python/basic/python-basics-4
-      - file: src/Python/basic/python-basics-5
-      - file: src/Python/intermediate/python-intermediate-1
-      - file: src/Python/intermediate/python-intermediate-2
-      - file: src/Python/intermediate/python-intermediate-3
-      - file: src/Python/intermediate/python-intermediate-4
-      - file: src/Python/intermediate/python-intermediate-5
-      - file: src/Python/pandas/pandas-1
-      - file: src/Python/pandas/pandas-2
-      - file: src/Python/pandas/pandas-3
-      - file: src/Python/pandas/pandas-intermediate-1
-      - file: src/Python/pandas/pandas-intermediate-2
-      - file: src/Python/pandas/pandas-intermediate-3
-      - file: src/Python/Text_Analysis
-        title: Text Analysis
-
-  - caption: Digital Collections
+  - caption: Data Wrangling with R
     chapters:
     - file: src/overview/page1
+
+  - caption: Machine Learning
+    chapters:
+    - file: src/overview/page2
 
