@@ -4,4 +4,5 @@ Welcome to the [Data Research Services (DRS)](https://sc.edu/about/offices_and_d
 
 ## Getting Started 
 [Getting Started with Jupyter Notebooks](./src/getting-started-with-jupyter.ipynb)
-[Command Line Skills](./src/command-line-skills.ipynb)
+<br>
+[Basic Linux and Command Line Skills](./src/command-line-skills.ipynb)
