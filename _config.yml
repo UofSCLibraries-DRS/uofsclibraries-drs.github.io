@@ -5,7 +5,7 @@ title: USC Libraries - DRS Resources for Data Literacy
 author: University of South Carolina Libraries 
 logo: images/USC_Libraries_logo_horizontal_RGB_2C.png
 exclude_patterns: [README.md, old, conversion_scripts]
-copyright: 2025
+copyright: '2025'
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

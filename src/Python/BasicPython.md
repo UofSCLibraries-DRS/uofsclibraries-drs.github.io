@@ -11,3 +11,5 @@ These five basic Python tutorials teach the fundamentals of Python programming, 
 [Python Basics 4](./basic/python-basics-4.ipynb)
 <br>
 [Python Basics 5](./basic/python-basics-5.ipynb)
+<br>
+[Counter Objects](./basic/counter-objects.ipynb)
