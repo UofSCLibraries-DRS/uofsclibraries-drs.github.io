@@ -100,7 +100,110 @@ Basic Authentication encodes user credentials in a simple format, but is less se
   - They <span style="color:red">allow 500 requests per day and 5 requests per minute.</span>
   - You should <span style="color:red">sleep 12 seconds between calls</span> to avoid hitting the per minute rate limit.
   - If you need a higher rate limit, pleact contact code@nytimes.com  
-      (https://developer.nytimes.com/faq).
+      [NY Times FAQ](https://developer.nytimes.com/faq).
 
 ### Step 1: Getting API Key
-1. Go to <i>developer.nytimes.com/apis</i>
+1. Go to <i>developer.nytimes.com/apis</i>  
+
+![Step 0:Image 1](./image/step0_1.png)  
+
+<br>
+
+![Step 0:Image 2](./image/step0_2.png)  
+
+<br>
+
+![Step 0:Image 2](./image/step0_3.png)  
+
+### Extracting Data Using Python
+
+![Step 1:Image 1](./image/step1_1.png)
+
+<br>
+
+![Step 1:Image 2](./image/step1_2.png)
+
+### Storing API Data
+
+![Step 2:Image 1](./image/storing.png)
+
+### Making API Requests (GET, POST, PUT, DELETE)
+**GET Method**  
+The GET method is used to retrieve data from a server. It is the most commonly used HTTP request method.
+
+**POST Method**  
+The POST method is used to send data to a server. It is typically used for submitting forms or creating new resources.
+
+**PUT Method**  
+The PUT method is used to update existing data on a server. It replaces the current representation of the target resource.
+
+**DELETE Method**  
+The DELETE method is used to remove data from a server. It is a way to delete resources from a web application.
+
+### Handling Responses and Error Codes
+
+**Importance of Response Handling**  
+Proper response handling is crucial for understanding the data returned by API calls and ensuring correct application behavior.
+
+**Parsing Returned Data**  
+Parsing the returned data allows developers to extract necessary information and utilize it effectively within applications.
+
+**Managing Error Codes**  
+Managing error codes is essential for troubleshooting and ensuring that applications can gracefully handle unexpected issues.
+
+## Data Processing and Storage
+### Storing Data in Databases
+**Importance of Storage**  
+Storing processed data correctly in a database is essential for maintaining data integrity and availability.
+
+**Choosing the Right Database**  
+Selecting the appropriate database system is crucial for achieving optimal performance and scalability based on the data needs.
+
+**Schema Design**  
+Effective schema design is key to ensuring efficient data retrieval and management within the database.
+
+### Data Cleaning and Validation
+**Importance of Data Accuracy**  
+Ensuring data accuracy is crucial for making informed decisions based on reliable information.
+
+**Filtering Invalid Entries**  
+The cleaning process involves identifying and removing invalid or irrelevant data entries to improve data quality.
+
+**Correcting Inconsistencies**  
+Data validation includes correcting discrepancies in datasets to maintain uniformity and reliability.
+
+## Best Practices and Considerations
+### Optimizing Performance and Efficiency
+**API Performance Optimization**  
+Optimizing API calls can significantly enhance application performance by reducing latency and improving response times.
+
+**Caching Responses**  
+Implementing caching mechanisms for API responses helps in reducing repeated data fetches, leading to improved efficiency.
+
+**Minimizing Request Payloads**  
+Reducing the size of request payloads can decrease processing time and enhance overall application speed.
+
+### Monitoring and Maintaining APIs
+**Importance of Monitoring**  
+Regular monitoring is essential to maintain the performance of API integrations and prevent disruptions in service.
+
+**Tracking Usage Patterns**  
+Keeping track of usage patterns helps identify trends and optimize API performance based on user needs.
+
+**Updating API Keys**  
+Regularly updating API keys is crucial for security and ensuring uninterrupted access to API services.
+
+**Troubleshooting Issues**  
+Prompt troubleshooting of issues as they arise ensures that API integrations continue to function smoothly.
+
+### Library Support for Extracting Data
+- Assist with data extraction issues
+  - Copyright issues
+  - Format issues
+  - Storage and access issues
+- Consult on methods and coding
+  - Which platform ?
+  - What toolset of methods ?
+- Introductory and Intermediate Workshops
+- Contact: vandana@email.sc.edu
+- Join our listserv at https://sc.libwizard.com/f/digireslib
