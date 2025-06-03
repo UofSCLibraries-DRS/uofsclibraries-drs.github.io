@@ -14,6 +14,7 @@ parts:
   - caption: Text Mining
     chapters:
     - file: src/TextMining/IntroductionTextAnalysis
+    - file: src/TextMining/AdvancedTextAnalysis
     - file: src/TextMining/MultiLingualNer
     - file: src/API/API
       title: Using APIs
