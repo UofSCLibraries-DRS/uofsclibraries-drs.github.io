@@ -20,7 +20,9 @@ parts:
 
   - caption: Data Visualization
     chapters:
-    - file: src/overview/DataVisualization
+    - file: src/overview/Charts
+    - file: src/Wolfe-notebooks/Maps
+      title: Creating Maps with Python
 
   - caption: Data Extraction
     chapters:

@@ -1,0 +1,1700 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>STEP 1: READING DATA &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/DataProcessingBasics/DataCleaning_Basics';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Python/BasicPython.html">Basic Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/MultiLingualNer.html">MultiLingual NER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/API.html">Using APIs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Wolfe-notebooks/Maps.html">Creating Maps with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/DataExtraction.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/DataWranglingR.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/MachineLearning.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/DataProcessingBasics/DataCleaning_Basics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/src/DataProcessingBasics/DataCleaning_Basics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>STEP 1: READING DATA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">STEP 1: READING DATA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">STEP 2: EXPLORING DATA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">DATA CLEANING</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">DATA ANALYSIS AND VISUALIZATION</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="step-1-reading-data">
+<h1>STEP 1: READING DATA<a class="headerlink" href="#step-1-reading-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;NYC_Leading_Death_Causes.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># If we want to upload only certain columns of the dataset --- example Year, Leading Cause and Deaths</span>
+<span class="c1">#new_df = pd.read_csv(&#39;NYC_Leading_Death_Causes.csv&#39;, usecols = [&#39;Year&#39;,&#39;Leading Cause&#39;, &#39;Deaths&#39;])</span>
+
+<span class="c1"># OR</span>
+<span class="c1"># pandas drop columns using list of column names </span>
+<span class="c1">#new_df = df.drop([&#39;Sex&#39;,&#39;Death Rate&#39;, &#39;Age Adjusted Death Rate&#39;], axis=1)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-2-exploring-data">
+<h1>STEP 2: EXPLORING DATA<a class="headerlink" href="#step-2-exploring-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to get summary statistics of data(all numerical columns ONLY)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1096.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2010.474453</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.292191</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2007.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2008.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2010.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2012.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2014.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of rows and columns of data frame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1096, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print top 10 rows of the dataframe. &quot;head()&quot; will print top 5 rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Leading Cause</th>
+      <th>Sex</th>
+      <th>Race Ethnicity</th>
+      <th>Deaths</th>
+      <th>Death Rate</th>
+      <th>Age Adjusted Death Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2010</td>
+      <td>Influenza (Flu) and Pneumonia (J09-J18)</td>
+      <td>F</td>
+      <td>Hispanic</td>
+      <td>228</td>
+      <td>18.7</td>
+      <td>23.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2008</td>
+      <td>Accidents Except Drug Posioning (V01-X39, X43,...</td>
+      <td>F</td>
+      <td>Hispanic</td>
+      <td>68</td>
+      <td>5.8</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>Accidents Except Drug Posioning (V01-X39, X43,...</td>
+      <td>M</td>
+      <td>White Non-Hispanic</td>
+      <td>271</td>
+      <td>20.1</td>
+      <td>17.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Cerebrovascular Disease (Stroke: I60-I69)</td>
+      <td>M</td>
+      <td>Hispanic</td>
+      <td>140</td>
+      <td>12.3</td>
+      <td>21.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2009</td>
+      <td>Assault (Homicide: Y87.1, X85-Y09)</td>
+      <td>M</td>
+      <td>Black Non-Hispanic</td>
+      <td>255</td>
+      <td>30</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2012</td>
+      <td>Mental and Behavioral Disorders due to Acciden...</td>
+      <td>F</td>
+      <td>Other Race/ Ethnicity</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2012</td>
+      <td>Cerebrovascular Disease (Stroke: I60-I69)</td>
+      <td>F</td>
+      <td>Asian and Pacific Islander</td>
+      <td>102</td>
+      <td>17.5</td>
+      <td>20.7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2009</td>
+      <td>Essential Hypertension and Renal Diseases (I10...</td>
+      <td>M</td>
+      <td>Asian and Pacific Islander</td>
+      <td>26</td>
+      <td>5.1</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2010</td>
+      <td>All Other Causes</td>
+      <td>F</td>
+      <td>White Non-Hispanic</td>
+      <td>2140</td>
+      <td>149.7</td>
+      <td>93.9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2009</td>
+      <td>Alzheimer's Disease (G30)</td>
+      <td>F</td>
+      <td>Other Race/ Ethnicity</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#display last 5 rows / for displaying any other number of last rows, put value inside ();ex tail(10)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Leading Cause</th>
+      <th>Sex</th>
+      <th>Race Ethnicity</th>
+      <th>Deaths</th>
+      <th>Death Rate</th>
+      <th>Age Adjusted Death Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1084</th>
+      <td>2008</td>
+      <td>Nephritis, Nephrotic Syndrome and Nephrisis (N...</td>
+      <td>F</td>
+      <td>Asian and Pacific Islander</td>
+      <td>13</td>
+      <td>2.4</td>
+      <td>3.3</td>
+    </tr>
+    <tr>
+      <th>1085</th>
+      <td>2014</td>
+      <td>Chronic Lower Respiratory Diseases (J40-J47)</td>
+      <td>F</td>
+      <td>Not Stated/Unknown</td>
+      <td>12</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>1086</th>
+      <td>2007</td>
+      <td>Human Immunodeficiency Virus Disease (HIV: B20...</td>
+      <td>F</td>
+      <td>Black Non-Hispanic</td>
+      <td>248</td>
+      <td>23.6</td>
+      <td>22.1</td>
+    </tr>
+    <tr>
+      <th>1087</th>
+      <td>2010</td>
+      <td>Atherosclerosis (I70)</td>
+      <td>F</td>
+      <td>Not Stated/Unknown</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>1088</th>
+      <td>2014</td>
+      <td>All Other Causes</td>
+      <td>F</td>
+      <td>Black Non-Hispanic</td>
+      <td>1536</td>
+      <td>146.4</td>
+      <td>126.4</td>
+    </tr>
+    <tr>
+      <th>1089</th>
+      <td>2009</td>
+      <td>Nephritis, Nephrotic Syndrome and Nephrisis (N...</td>
+      <td>F</td>
+      <td>Black Non-Hispanic</td>
+      <td>75</td>
+      <td>7.2</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>1090</th>
+      <td>2008</td>
+      <td>Chronic Liver Disease and Cirrhosis (K70, K73)</td>
+      <td>F</td>
+      <td>Other Race/ Ethnicity</td>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>1091</th>
+      <td>2012</td>
+      <td>Influenza (Flu) and Pneumonia (J09-J18)</td>
+      <td>F</td>
+      <td>Not Stated/Unknown</td>
+      <td>6</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>1092</th>
+      <td>2014</td>
+      <td>Accidents Except Drug Posioning (V01-X39, X43,...</td>
+      <td>F</td>
+      <td>White Non-Hispanic</td>
+      <td>169</td>
+      <td>11.9</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>1093</th>
+      <td>2009</td>
+      <td>Malignant Neoplasms (Cancer: C00-C97)</td>
+      <td>M</td>
+      <td>White Non-Hispanic</td>
+      <td>3236</td>
+      <td>240.5</td>
+      <td>205.6</td>
+    </tr>
+    <tr>
+      <th>1094</th>
+      <td>2009</td>
+      <td>Intentional Self-Harm (Suicide: X60-X84, Y87.0)</td>
+      <td>M</td>
+      <td>White Non-Hispanic</td>
+      <td>191</td>
+      <td>14.2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1095</th>
+      <td>2013</td>
+      <td>Essential Hypertension and Renal Diseases (I10...</td>
+      <td>M</td>
+      <td>Black Non-Hispanic</td>
+      <td>148</td>
+      <td>17.2</td>
+      <td>20.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to display all column names</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Leading Cause&#39;, &#39;Sex&#39;, &#39;Race Ethnicity&#39;, &#39;Deaths&#39;,
+       &#39;Death Rate&#39;, &#39;Age Adjusted Death Rate&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Rename one column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sex&#39;</span><span class="p">:</span><span class="s1">&#39;Gender&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># #Rename multiple column</span>
+<span class="c1">#df.rename(columns = {&#39;Leading Cause&#39;:&#39;Leading_Cause&#39;, &#39;Race Ethnicity&#39;:&#39;Race_Ethnicity&#39;, </span>
+                              <span class="c1">#&#39;Death Rate&#39;:&#39;Death_Rate&#39;, &#39;Age Adjusted Death Rate&#39;: &#39;Age_Adjusted_Death_Rate&#39;}, inplace = True)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Leading Cause&#39;, &#39;Gender&#39;, &#39;Race Ethnicity&#39;, &#39;Deaths&#39;,
+       &#39;Death Rate&#39;, &#39;Age Adjusted Death Rate&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the count of rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                       1096
+Leading Cause              1096
+Gender                     1096
+Race Ethnicity             1096
+Deaths                     1096
+Death Rate                 1096
+Age Adjusted Death Rate    1096
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print ALL rows and ALL columns by index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Leading Cause</th>
+      <th>Gender</th>
+      <th>Race Ethnicity</th>
+      <th>Deaths</th>
+      <th>Death Rate</th>
+      <th>Age Adjusted Death Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2010</td>
+      <td>Influenza (Flu) and Pneumonia (J09-J18)</td>
+      <td>F</td>
+      <td>Hispanic</td>
+      <td>228</td>
+      <td>18.7</td>
+      <td>23.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2008</td>
+      <td>Accidents Except Drug Posioning (V01-X39, X43,...</td>
+      <td>F</td>
+      <td>Hispanic</td>
+      <td>68</td>
+      <td>5.8</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>Accidents Except Drug Posioning (V01-X39, X43,...</td>
+      <td>M</td>
+      <td>White Non-Hispanic</td>
+      <td>271</td>
+      <td>20.1</td>
+      <td>17.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Cerebrovascular Disease (Stroke: I60-I69)</td>
+      <td>M</td>
+      <td>Hispanic</td>
+      <td>140</td>
+      <td>12.3</td>
+      <td>21.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2009</td>
+      <td>Assault (Homicide: Y87.1, X85-Y09)</td>
+      <td>M</td>
+      <td>Black Non-Hispanic</td>
+      <td>255</td>
+      <td>30</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1091</th>
+      <td>2012</td>
+      <td>Influenza (Flu) and Pneumonia (J09-J18)</td>
+      <td>F</td>
+      <td>Not Stated/Unknown</td>
+      <td>6</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>1092</th>
+      <td>2014</td>
+      <td>Accidents Except Drug Posioning (V01-X39, X43,...</td>
+      <td>F</td>
+      <td>White Non-Hispanic</td>
+      <td>169</td>
+      <td>11.9</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>1093</th>
+      <td>2009</td>
+      <td>Malignant Neoplasms (Cancer: C00-C97)</td>
+      <td>M</td>
+      <td>White Non-Hispanic</td>
+      <td>3236</td>
+      <td>240.5</td>
+      <td>205.6</td>
+    </tr>
+    <tr>
+      <th>1094</th>
+      <td>2009</td>
+      <td>Intentional Self-Harm (Suicide: X60-X84, Y87.0)</td>
+      <td>M</td>
+      <td>White Non-Hispanic</td>
+      <td>191</td>
+      <td>14.2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1095</th>
+      <td>2013</td>
+      <td>Essential Hypertension and Renal Diseases (I10...</td>
+      <td>M</td>
+      <td>Black Non-Hispanic</td>
+      <td>148</td>
+      <td>17.2</td>
+      <td>20.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>1096 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access 101 - 124th rows and 5th, 6th and 7th columns by index. Both Row and Column Index starts from 0</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">125</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Deaths</th>
+      <th>Death Rate</th>
+      <th>Age Adjusted Death Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>100</th>
+      <td>1940</td>
+      <td>226.8</td>
+      <td>280.7</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>3366</td>
+      <td>234.5</td>
+      <td>160.5</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>563</td>
+      <td>39.7</td>
+      <td>20.4</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>180</td>
+      <td>12.7</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>7</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>47</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>63</td>
+      <td>5.3</td>
+      <td>6.2</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>10</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>36</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>1230</td>
+      <td>116.8</td>
+      <td>113.4</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>279</td>
+      <td>26.5</td>
+      <td>25.3</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>37</td>
+      <td>6.7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>6</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>1852</td>
+      <td>176.5</td>
+      <td>148.4</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>530</td>
+      <td>39.6</td>
+      <td>32.9</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>11</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>554</td>
+      <td>96.5</td>
+      <td>118.5</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>186</td>
+      <td>21.5</td>
+      <td>21.5</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>.</td>
+      <td>.</td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>235</td>
+      <td>20.6</td>
+      <td>38.9</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>2282</td>
+      <td>217.7</td>
+      <td>194.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access columns by column name</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;Leading Cause&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                 Influenza (Flu) and Pneumonia (J09-J18)
+1       Accidents Except Drug Posioning (V01-X39, X43,...
+2       Accidents Except Drug Posioning (V01-X39, X43,...
+3               Cerebrovascular Disease (Stroke: I60-I69)
+4                      Assault (Homicide: Y87.1, X85-Y09)
+                              ...                        
+1091              Influenza (Flu) and Pneumonia (J09-J18)
+1092    Accidents Except Drug Posioning (V01-X39, X43,...
+1093                Malignant Neoplasms (Cancer: C00-C97)
+1094      Intentional Self-Harm (Suicide: X60-X84, Y87.0)
+1095    Essential Hypertension and Renal Diseases (I10...
+Name: Leading Cause, Length: 1096, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Another way to access columns (by column name)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       2010
+1       2008
+2       2013
+3       2010
+4       2009
+        ... 
+1091    2012
+1092    2014
+1093    2009
+1094    2009
+1095    2013
+Name: Year, Length: 1096, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Another way to access columns (by column name). The only problem is that it does not work if the</span>
+<span class="c1">#column name has space between them</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Leading</span> <span class="n">Cause</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">Leading</span> <span class="n">Cause</span>
+               <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-cleaning">
+<h1>DATA CLEANING<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#[A]Handling duplicate rows*******</span>
+
+<span class="c1"># Select duplicate rows except first occurrence based on all columns</span>
+<span class="n">dupRowsDF</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Duplicate Rows except first occurrence based on all columns are :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dupRowsDF</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicate Rows except first occurrence based on all columns are :
+     Year                       Leading Cause Gender      Race Ethnicity  \
+32   2009  Assault (Homicide: Y87.1, X85-Y09)      M  Black Non-Hispanic   
+149  2009  Assault (Homicide: Y87.1, X85-Y09)      M  Black Non-Hispanic   
+
+    Deaths Death Rate Age Adjusted Death Rate  
+32     255         30                      30  
+149    255         30                      30  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### dropping ALL duplicte values except first </span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span> 
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+
+<span class="c1">### displaying data </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the length of the df after deleting duplicate rows is&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1094
+the length of the df after deleting duplicate rows is 1094
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the data types of all columns</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                        int64
+Leading Cause              object
+Gender                     object
+Race Ethnicity             object
+Deaths                     object
+Death Rate                 object
+Age Adjusted Death Rate    object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the total number of deaths in 8 years; datatype of &quot;Deaths&quot; column is &quot;object&quot;</span>
+<span class="c1"># without converting the column to numeric, the matematical operation &quot;sum&quot; returns a garbage result</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;22868271140255.102262140.191281761770.102121..9018313123554845929132610746635616803222.15926271204.5168290281.6..829.229314645124448145155271163846951721464.30052811231.55510214716147.7.12631667.2951912161057.410511627221493319299.449519403366563.180747.6310361230279376185253011554..186.23522826538.297156.5714.526119313755727327581291055651570820461.29019710075.896674535219153218119113.116633627126501621486206192521065620916927722693352222.191138216517.533081824631882522721779337120081784..189371.3639221033121379519109710.2851201..1482212715.115629716250211991543938013375202625418227.228521189764317135742044340266229134111252151316558247135133048.267431422722196130590605351313217063391142831877550.36.75507215108853384951278124615950227266.320112172156145262455..5253514178792991455503155171268.14415115434383028.9882798322210399016518244415850229340155.184398358206742463528312517018689164171245951080.622134205265.952743775.4145571124964507..94718229411876.141418.43629.1540.22551163.105258163.26126311349414721756200222.2431281..7911110238797688209113542201686962983518177.11124022998308.18531431082101082146562243750239549622121023820594204423610255155710721829289154711200969.174970145632388263612201557603647824...115501588151.12084.1932581071857648.116780783451354618219379735103482316464156.51565429186177190511116.1154.199224318357118007917026227546250614731583.469258193215173701871871684148513161155569651523408522017162224325529.50.8371533185146.26531538333..1793027.14832851024624881431551012547.46718166867751222352278394114638223842329211632445..174..2235881511443408203450249.206.1091735716751061414727724432051371047158286.7707471910416446137123534511891751230981842725259152266334619952365395.464245322221168.551180.11473871887819572659382011772841013139910675407110660.3016520756561327.11154242.1069645358186.13148102861428196621201523756199402104520451089186114619332191391262532151235.40414094371391231536571541918131782721382.14114923383414533370507398208398781840.19..5015145219123444210859325578.393024021853488521.311512421013.99012121768169202971348.587314983116312221941307200.2678050689272422128567101521195.729223122030710..13192267302713277632.11265314581822383907014633841261582194245146194132191.5627954619583356.1133.12307143.134644474..96961802578622276011822858.17614831810259513220768.618144519611.2182741814992.646..104615636103329557336166.344161740207747339.1818292372199120734721170.20410749903256108.48644272727128615061.184456.8296.613142132209686168276818.89931841216272.7139.13206013611314242258206851115901493622036276156183.683622752.1109341566254..25921521312248.153675.61693236191148&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#replace &quot;.&quot; with &quot;NaN&quot; and change datatype of &quot;Deaths&quot; to float</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finding the total number of deaths after converting the datatype of &quot;Deaths&quot; column into Numeric, returns correct result</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>424998.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-analysis-and-visualization">
+<h1>DATA ANALYSIS AND VISUALIZATION<a class="headerlink" href="#data-analysis-and-visualization" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the unique causes of death --- find the unique labels of categorical/qualitative data in the column</span>
+<span class="n">causeDeath</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Leading Cause&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">causeDeath</span><span class="p">)</span>
+
+<span class="c1"># count of unique labels of &quot;leading cause&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The number of unique causes of deaths are:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">causeDeath</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Influenza (Flu) and Pneumonia (J09-J18)&#39;
+ &#39;Accidents Except Drug Posioning (V01-X39, X43, X45-X59, Y85-Y86)&#39;
+ &#39;Cerebrovascular Disease (Stroke: I60-I69)&#39;
+ &#39;Assault (Homicide: Y87.1, X85-Y09)&#39;
+ &#39;Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use (F11-F16, F18-F19, X40-X42, X44)&#39;
+ &#39;Essential Hypertension and Renal Diseases (I10, I12)&#39; &#39;All Other Causes&#39;
+ &quot;Alzheimer&#39;s Disease (G30)&quot;
+ &#39;Diseases of Heart (I00-I09, I11, I13, I20-I51)&#39;
+ &#39;Intentional Self-Harm (Suicide: X60-X84, Y87.0)&#39;
+ &#39;Human Immunodeficiency Virus Disease (HIV: B20-B24)&#39;
+ &#39;Chronic Liver Disease and Cirrhosis (K70, K73)&#39;
+ &#39;Malignant Neoplasms (Cancer: C00-C97)&#39;
+ &#39;Chronic Lower Respiratory Diseases (J40-J47)&#39;
+ &#39;Diabetes Mellitus (E10-E14)&#39;
+ &#39;Certain Conditions originating in the Perinatal Period (P00-P96)&#39;
+ &#39;Septicemia (A40-A41)&#39; &#39;Aortic Aneurysm and Dissection (I71)&#39;
+ &#39;Mental and Behavioral Disorders due to Use of Alcohol (F10)&#39;
+ &#39;Insitu or Benign / Uncertain Neoplasms (D00-D48)&#39;
+ &quot;Parkinson&#39;s Disease (G20)&quot;
+ &#39;Nephritis, Nephrotic Syndrome and Nephrisis (N00-N07, N17-N19, N25-N27)&#39;
+ &#39;Viral Hepatitis (B15-B19)&#39;
+ &#39;Congenital Malformations, Deformations, and Chromosomal Abnormalities (Q00-Q99)&#39;
+ &#39;Atherosclerosis (I70)&#39; &#39;Tuberculosis (A16-A19)&#39;]
+
+ The number of unique causes of deaths are: 26
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................using &quot;groupby&quot; function</span>
+<span class="c1">#By year</span>
+<span class="n">totalDeaths_year</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total number of deaths every year:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalDeaths_year</span><span class="p">)</span>
+
+<span class="c1">#By Gender</span>
+<span class="n">totalDeaths_gender</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Gender&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The total number of deaths of males and females are:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalDeaths_gender</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of deaths every year:
+ Year
+2007    53996.0
+2008    54138.0
+2009    52820.0
+2010    52505.0
+2011    52726.0
+2012    52420.0
+2013    53387.0
+2014    53006.0
+Name: Deaths, dtype: float64
+
+ The total number of deaths of males and females are:
+ Gender
+F    217071.0
+M    207927.0
+Name: Deaths, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................</span>
+<span class="c1">#By Race Ethnicity and sort the answers in descending order</span>
+<span class="n">totalDeaths_Race</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Race Ethnicity&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total number of deaths by Ethnicity:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalDeaths_Race</span><span class="p">)</span>
+
+<span class="c1"># Make a bar diagram for the total deaths by Race</span>
+<span class="n">totalDeaths_Race</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Total number of deaths by Ethnicity&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of deaths by Ethnicity:
+ Race Ethnicity
+White Non-Hispanic            206487.0
+Black Non-Hispanic            111116.0
+Hispanic                       74802.0
+Asian and Pacific Islander     26355.0
+Not Stated/Unknown              4099.0
+Other Race/ Ethnicity           2139.0
+Name: Deaths, dtype: float64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20357d101c0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/ac7ea31382ec5aaea8c32f52d7eca9a118282bf222ab65d6707e82df86de415e.png" src="../../_images/ac7ea31382ec5aaea8c32f52d7eca9a118282bf222ab65d6707e82df86de415e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................</span>
+<span class="c1"># By Leading Cause of Death and write the answer in seperate file &quot;Death_LC.csv&quot;. Find only top 5 causes</span>
+
+<span class="n">totalDeaths_LC</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Leading Cause&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">totalDeaths_LC</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Deaths_LC.csv&quot;</span><span class="p">)</span> <span class="c1"># write the result in another file</span>
+<span class="n">totalDeaths_LC</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20358486730&gt;
+</pre></div>
+</div>
+<img alt="../../_images/1bc4140e2e347b9a6d3872cee470d02f6b0efe733fcd94c048893e74da47bb32.png" src="../../_images/1bc4140e2e347b9a6d3872cee470d02f6b0efe733fcd94c048893e74da47bb32.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Number of deaths every year by Gender.......</span>
+<span class="n">total_lc_gender</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span><span class="s2">&quot;Gender&quot;</span><span class="p">])[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total_lc_gender</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year  Gender
+2007  F         27749.0
+      M         26247.0
+2008  F         27816.0
+      M         26322.0
+2009  F         26941.0
+      M         25879.0
+2010  F         26675.0
+      M         25830.0
+2011  F         27075.0
+      M         25651.0
+2012  F         26766.0
+      M         25654.0
+2013  F         27133.0
+      M         26254.0
+2014  F         26916.0
+      M         26090.0
+Name: Deaths, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw a stacked bar graph of each year showing Male/female proportion in total deaths</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])[</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;Gender&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Gender Distribution in Deaths Each Year&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20358505490&gt;
+</pre></div>
+</div>
+<img alt="../../_images/02dbb709a23a185bf2270426f5b08a7335d4239301f7ddc6f41fd35ee2bb3afe.png" src="../../_images/02dbb709a23a185bf2270426f5b08a7335d4239301f7ddc6f41fd35ee2bb3afe.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw a GROUPED bar graph of each year showing the comparison of Male/female deaths each year</span>
+<span class="c1"># width = .55 ------  sets the width of the bars </span>
+<span class="c1"># legend = False ---  Turns the Legend off</span>
+<span class="c1"># figsize ----------  Sets size of plot in inches</span>
+<span class="c1"># legend(bbox_to_anchor = (....)) --------- sets the position of the legend</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison of Male/female deaths Each Year&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="s2">&quot;red&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x20358587c10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/0fc79e8ef49c1cc5f0069312a655d71086e388c9df0d815d5dcbed8bb8dea89f.png" src="../../_images/0fc79e8ef49c1cc5f0069312a655d71086e388c9df0d815d5dcbed8bb8dea89f.png" />
+</div>
+</div>
+<p>#dropping all rows with NaN in ANY column — CAN BE A WRONG APPROACH FOR THIS DATASET</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#dropping all rows with NaN in ANY column --- CAN BE A WRONG APPROACH FOR THIS DATASET</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of df1 after dropping all rows that have NaN in ANY column is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find the data related to 2010....</span>
+<span class="n">df1_2010</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">Year</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/DataProcessingBasics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">STEP 1: READING DATA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">STEP 2: EXPLORING DATA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">DATA CLEANING</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">DATA ANALYSIS AND VISUALIZATION</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
