@@ -196,14 +196,3 @@ Regularly updating API keys is crucial for security and ensuring uninterrupted a
 **Troubleshooting Issues**  
 Prompt troubleshooting of issues as they arise ensures that API integrations continue to function smoothly.
 
-### Library Support for Extracting Data
-- Assist with data extraction issues
-  - Copyright issues
-  - Format issues
-  - Storage and access issues
-- Consult on methods and coding
-  - Which platform ?
-  - What toolset of methods ?
-- Introductory and Intermediate Workshops
-- Contact: vandana@email.sc.edu
-- Join our listserv at https://sc.libwizard.com/f/digireslib
