@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>STEP 1: READING DATA &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+    <title>Data Cleaning Basics &#8212; USC Libraries - DRS Resources for Data Literacy</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -393,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>STEP 1: READING DATA</h1>
+    <h1>Data Cleaning Basics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,10 +403,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">STEP 1: READING DATA</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">STEP 2: EXPLORING DATA</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">DATA CLEANING</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">DATA ANALYSIS AND VISUALIZATION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Cleaning Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-data">Step 1: Reading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">Step 2: Exploring Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">Data Analysis and Visualization</a></li>
 </ul>
 
             </nav>
@@ -419,8 +422,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="step-1-reading-data">
-<h1>STEP 1: READING DATA<a class="headerlink" href="#step-1-reading-data" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-cleaning-basics">
+<h1>Data Cleaning Basics<a class="headerlink" href="#data-cleaning-basics" title="Link to this heading">#</a></h1>
+<section id="step-1-reading-data">
+<h2>Step 1: Reading Data<a class="headerlink" href="#step-1-reading-data" title="Link to this heading">#</a></h2>
+<p>Data can be read from various file formats such as CSV, JSON, and Excel files. Read more about it <a class="reference external" href="https://www.prowesstics.com/blogs/python-data-file-formats/">here</a></p>
+<p>This code demonstrates how to load and customize a dataset using the Pandas library. It shows how to read a full CSV file into a DataFrame or, alternatively, import only specific columns using the <code class="docutils literal notranslate"><span class="pre">usecols</span></code> parameter to focus on relevant data like year, leading cause, and number of deaths. Another option illustrated is how to remove unnecessary columns after loading the dataset using the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> method to streamline the data for analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -439,8 +446,9 @@ document.write(`
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="step-2-exploring-data">
-<h1>STEP 2: EXPLORING DATA<a class="headerlink" href="#step-2-exploring-data" title="Link to this heading">#</a></h1>
+<section id="step-2-exploring-data">
+<h2>Step 2: Exploring Data<a class="headerlink" href="#step-2-exploring-data" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">describe()</span></code> function is used to generate summary statistics for all numerical columns in the dataset. It provides useful metrics such as count, mean, standard deviation, minimum and maximum values, as well as the 25th, 50th (median), and 75th percentiles. This summary offers a quick overview of the distribution, central tendency, and variability of the numerical data, helping identify patterns or potential outliers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to get summary statistics of data(all numerical columns ONLY)</span>
@@ -507,6 +515,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> attribute is used to find the number of rows and columns in a DataFrame. It returns a tuple where the first value represents the number of rows and the second value represents the number of columns. This provides a quick way to understand the overall size and structure of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of rows and columns of data frame</span>
@@ -520,6 +529,7 @@ document.write(`
 </div>
 </div>
 </div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">head()</span></code> returns the top 5 rows, but specifying a number in parentheses lets you control how many rows are shown. So, the <code class="docutils literal notranslate"><span class="pre">head(10)</span></code> function displays the first 10 rows of the DataFrame, allowing you to quickly view a sample of the dataset.  This is helpful for getting an initial look at the data’s structure, column names, and sample values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print top 10 rows of the dataframe. &quot;head()&quot; will print top 5 rows</span>
@@ -660,6 +670,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">tail()</span></code> shows the last 5 rows, but you can specify any number inside the parentheses to customize how many rows you want to see. SO, the <code class="docutils literal notranslate"><span class="pre">tail(12)</span></code> function displays the last 12 rows of the DataFrame, giving you a look at the most recent or bottom entries in the dataset.  This is useful for reviewing the end of the dataset, checking for missing data, or understanding how the data concludes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#display last 5 rows / for displaying any other number of last rows, put value inside ();ex tail(10)</span>
@@ -820,6 +831,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">columns</span></code> attribute is used to display all the column names in a DataFrame. It returns an index object containing the names of each column, which helps you understand the structure and available variables in the dataset. This is especially useful when working with large datasets or when you want to reference specific columns for further analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to display all column names</span>
@@ -835,6 +847,7 @@ document.write(`
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">rename()</span></code> function is used to change column names in a DataFrame. In the first example, the column <code class="docutils literal notranslate"><span class="pre">'Sex'</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">'Gender'</span></code>, and the <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> argument ensures the change is applied directly to the existing DataFrame without needing to assign it to a new variable. The second (commented-out) example shows how to rename multiple columns at once by passing a dictionary where each key is the current column name and each value is the new name. This is especially helpful for making column names more descriptive or easier to work with (e.g., removing spaces or standardizing naming conventions). After renaming, using <code class="docutils literal notranslate"><span class="pre">df.columns</span></code> lets you confirm the changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Rename one column</span>
@@ -855,6 +868,7 @@ document.write(`
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">count()</span></code> function is used to find the number of non-null (non-missing) entries in each column of the DataFrame. It returns a count for every column, helping you identify if there are any missing values. This is useful for quickly checking data completeness and ensuring that columns contain the expected number of entries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the count of rows</span>
@@ -875,6 +889,7 @@ dtype: int64
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">iloc[:,</span> <span class="pre">:]</span></code> function is used to print <strong>all rows and all columns</strong> of a DataFrame by index-based selection. The colon before the comma (<code class="docutils literal notranslate"><span class="pre">:</span></code>) selects all rows, and the colon after the comma (<code class="docutils literal notranslate"><span class="pre">:</span></code>) selects all columns. This is helpful when you want to view the entire dataset explicitly, although in practice, large DataFrames may be truncated in the output display for performance reasons.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print ALL rows and ALL columns by index</span>
@@ -1026,6 +1041,7 @@ dtype: int64
 <p>1096 rows × 7 columns</p>
 </div></div></div>
 </div>
+<p>This code uses <code class="docutils literal notranslate"><span class="pre">iloc</span></code> to access a specific subset of the DataFrame by integer position. It selects rows from index 100 to 124 (which corresponds to the 101st through 125th rows, since indexing starts at 0) and columns from index 4 to 6 (the 5th, 6th, and 7th columns). This allows you to extract and work with a precise slice of the data based on row and column positions rather than labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access 101 - 124th rows and 5th, 6th and 7th columns by index. Both Row and Column Index starts from 0</span>
@@ -1212,6 +1228,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> accessor is used to select data by label. Here, <code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;]</span></code> retrieves <strong>all rows</strong> (<code class="docutils literal notranslate"><span class="pre">:</span></code>) but only the column named <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code>. This method is useful when you want to access one or more columns directly by their names instead of by their integer positions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access columns by column name</span>
@@ -1236,6 +1253,7 @@ Name: Leading Cause, Length: 1096, dtype: object
 </div>
 </div>
 </div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">df.Year</span></code> retrieves the entire <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> column directly using dot notation by referencing the column name as an attribute of the DataFrame. This is a quick and convenient way to access columns with simple names, though it only works when the column name is a valid Python identifier (no spaces or special characters).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Another way to access columns (by column name)</span>
@@ -1260,6 +1278,7 @@ Name: Year, Length: 1096, dtype: int64
 </div>
 </div>
 </div>
+<p>The code <code class="docutils literal notranslate"><span class="pre">df.Leading</span> <span class="pre">Cause</span></code> attempts to access a column using dot notation, but it will cause an error because the column name contains a space. Dot notation only works for column names that are valid Python identifiers—meaning no spaces or special characters. For columns with spaces (like <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code>), you need to use bracket notation instead, such as <code class="docutils literal notranslate"><span class="pre">df[&quot;Leading</span> <span class="pre">Cause&quot;]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Another way to access columns (by column name). The only problem is that it does not work if the</span>
@@ -1269,7 +1288,7 @@ Name: Year, Length: 1096, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]</span>
     <span class="n">df</span><span class="o">.</span><span class="n">Leading</span> <span class="n">Cause</span>
                <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
@@ -1278,8 +1297,10 @@ Name: Year, Length: 1096, dtype: int64
 </div>
 </div>
 </section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-cleaning">
-<h1>DATA CLEANING<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h1>
+<h1>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h1>
+<p>This code handles duplicate rows in the DataFrame by identifying all rows that are duplicates except for their first occurrence. The <code class="docutils literal notranslate"><span class="pre">duplicated()</span></code> function returns a Boolean series marking True for every duplicate row after the first one based on all columns by default. By using this Boolean series to filter <code class="docutils literal notranslate"><span class="pre">df</span></code>, the code creates a new DataFrame <code class="docutils literal notranslate"><span class="pre">dupRowsDF</span></code> containing only these duplicate rows. Printing <code class="docutils literal notranslate"><span class="pre">dupRowsDF</span></code> lets you see which rows have repeated values across the entire dataset, which is useful for data cleaning and ensuring data quality.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#[A]Handling duplicate rows*******</span>
@@ -1304,6 +1325,7 @@ Name: Year, Length: 1096, dtype: int64
 </div>
 </div>
 </div>
+<p>This code removes all duplicate rows from the DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> while keeping only the first occurrence of each duplicated row. The <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> function returns a new DataFrame <code class="docutils literal notranslate"><span class="pre">df1</span></code> without duplicates. The length of this cleaned DataFrame (<code class="docutils literal notranslate"><span class="pre">len(df1)</span></code>) is printed to show how many unique rows remain after duplicates are removed, helping you understand the impact of duplicate data on the dataset size.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### dropping ALL duplicte values except first </span>
@@ -1322,6 +1344,7 @@ the length of the df after deleting duplicate rows is 1094
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute is used to find the data types of all columns in the DataFrame <code class="docutils literal notranslate"><span class="pre">df1</span></code>. It returns a series where each column name is paired with its corresponding data type, such as <code class="docutils literal notranslate"><span class="pre">int64</span></code> for integers or <code class="docutils literal notranslate"><span class="pre">object</span></code> for text. This information is important for understanding how data is stored and for choosing appropriate methods for analysis or manipulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the data types of all columns</span>
@@ -1342,6 +1365,7 @@ dtype: object
 </div>
 </div>
 </div>
+<p>This code attempts to find the total number of deaths over 8 years by summing the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column. However, since the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column is stored as an <code class="docutils literal notranslate"><span class="pre">object</span></code> type (often meaning it’s treated as text), using <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> in this case will concatenate the values like strings instead of performing a numeric addition. As a result, the output will be a meaningless string rather than a valid total. To get an accurate sum, the column should first be converted to a numeric data type using <code class="docutils literal notranslate"><span class="pre">pd.to_numeric()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the total number of deaths in 8 years; datatype of &quot;Deaths&quot; column is &quot;object&quot;</span>
@@ -1356,6 +1380,7 @@ dtype: object
 </div>
 </div>
 </div>
+<p>This code prepares the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column for numerical analysis by cleaning and converting its values. First, <code class="docutils literal notranslate"><span class="pre">df1.replace('.',</span> <span class="pre">np.nan)</span></code> replaces any occurrences of the string <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code> in the entire DataFrame with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not a Number), which represents missing or undefined values. Then, <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(df1[&quot;Deaths&quot;])</span></code> converts the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column from an object (text) type to a numeric type (<code class="docutils literal notranslate"><span class="pre">float64</span></code> by default), allowing for accurate mathematical operations like summing or averaging. This step is essential when the column contains non-numeric characters that would otherwise interfere with calculations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#replace &quot;.&quot; with &quot;NaN&quot; and change datatype of &quot;Deaths&quot; to float</span>
@@ -1365,6 +1390,7 @@ dtype: object
 </div>
 </div>
 </div>
+<p>This code calculates the total number of deaths by summing the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column <strong>after</strong> it has been successfully converted to a numeric data type. Unlike earlier, when the column was stored as an object and resulted in a string concatenation, this time the <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> function performs a proper mathematical operation. The result is the accurate total number of deaths across the dataset, which can now be used for further analysis or reporting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finding the total number of deaths after converting the datatype of &quot;Deaths&quot; column into Numeric, returns correct result</span>
@@ -1380,7 +1406,8 @@ dtype: object
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-analysis-and-visualization">
-<h1>DATA ANALYSIS AND VISUALIZATION<a class="headerlink" href="#data-analysis-and-visualization" title="Link to this heading">#</a></h1>
+<h1>Data Analysis and Visualization<a class="headerlink" href="#data-analysis-and-visualization" title="Link to this heading">#</a></h1>
+<p>This code identifies all the unique causes of death listed in the <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code> column. The <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> function returns an array of distinct labels (i.e., categories) found in that column, which helps in understanding the different qualitative or categorical values present in the data. The second line prints the total number of unique causes by using <code class="docutils literal notranslate"><span class="pre">len(causeDeath)</span></code>, which counts how many distinct death causes are represented in the dataset. This is useful for summarizing and preparing for grouped analysis or visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the unique causes of death --- find the unique labels of categorical/qualitative data in the column</span>
@@ -1422,6 +1449,7 @@ dtype: object
 </div>
 </div>
 </div>
+<p>This code calculates the total number of deaths using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function to aggregate data based on specific categories. First, it groups the data by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and then sums the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column within each year, showing the total number of deaths for every year in the dataset. This helps reveal trends over time. Next, it groups the data by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> (previously renamed from <code class="docutils literal notranslate"><span class="pre">&quot;Sex&quot;</span></code>) and sums the deaths for each gender, giving a comparison of the total number of deaths among males and females. This grouped analysis is useful for identifying patterns and making category-based comparisons in the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................using &quot;groupby&quot; function</span>
@@ -1457,6 +1485,7 @@ Name: Deaths, dtype: float64
 </div>
 </div>
 </div>
+<p>This code calculates and visualizes the total number of deaths by race/ethnicity using grouping and sorting techniques. First, it groups the DataFrame by the <code class="docutils literal notranslate"><span class="pre">&quot;Race</span> <span class="pre">Ethnicity&quot;</span></code> column and sums the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column for each group. The <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False)</span></code> function then arranges the results in descending order, showing which ethnic groups had the highest to lowest number of deaths. Then, <code class="docutils literal notranslate"><span class="pre">totalDeaths_Race.plot.bar()</span></code> creates a bar chart to visually represent these totals, with a title <code class="docutils literal notranslate"><span class="pre">&quot;Total</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">deaths</span> <span class="pre">by</span> <span class="pre">Ethnicity&quot;</span></code>. This visualization makes it easier to compare death counts across different racial and ethnic groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................</span>
@@ -1481,12 +1510,13 @@ Other Race/ Ethnicity           2139.0
 Name: Deaths, dtype: float64
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20357d101c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Total number of deaths by Ethnicity&#39;}, xlabel=&#39;Race Ethnicity&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/ac7ea31382ec5aaea8c32f52d7eca9a118282bf222ab65d6707e82df86de415e.png" src="../../_images/ac7ea31382ec5aaea8c32f52d7eca9a118282bf222ab65d6707e82df86de415e.png" />
+<img alt="../../_images/c716334ba962fab6333de6f5329b32f6a9e899ce478d084da249590b60789e16.png" src="../../_images/c716334ba962fab6333de6f5329b32f6a9e899ce478d084da249590b60789e16.png" />
 </div>
 </div>
+<p>This code calculates the total number of deaths for each <strong>Leading Cause of Death</strong>, identifies the <strong>top 5 causes</strong>, saves the results to a new CSV file, and visualizes them in a bar chart. It groups the dataset by <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code> and sums the deaths in each category. The <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False).head()</span></code> part sorts these totals in descending order and selects the top 5 leading causes with the highest death counts. Then, <code class="docutils literal notranslate"><span class="pre">totalDeaths_LC.to_csv(&quot;Deaths_LC.csv&quot;)</span></code> writes this summarized result to a new CSV file named <strong>“Deaths_LC.csv”</strong>. Finally, <code class="docutils literal notranslate"><span class="pre">totalDeaths_LC.plot.bar()</span></code> creates a bar chart that visually displays these top 5 causes of death, making it easier to interpret and compare their impact.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................</span>
@@ -1499,10 +1529,10 @@ Name: Deaths, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20358486730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Leading Cause&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/1bc4140e2e347b9a6d3872cee470d02f6b0efe733fcd94c048893e74da47bb32.png" src="../../_images/1bc4140e2e347b9a6d3872cee470d02f6b0efe733fcd94c048893e74da47bb32.png" />
+<img alt="../../_images/d5c6355f3fd7d46054879332672a4c08aaf675db3a4145fa46dc67cfc24d7c87.png" src="../../_images/d5c6355f3fd7d46054879332672a4c08aaf675db3a4145fa46dc67cfc24d7c87.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1546,10 +1576,10 @@ Name: Deaths, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20358505490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Gender Distribution in Deaths Each Year&#39;}, xlabel=&#39;Year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/02dbb709a23a185bf2270426f5b08a7335d4239301f7ddc6f41fd35ee2bb3afe.png" src="../../_images/02dbb709a23a185bf2270426f5b08a7335d4239301f7ddc6f41fd35ee2bb3afe.png" />
+<img alt="../../_images/09b917d2ece2bd6fcb6fa1974f7865d8f213d5ec0cd25eea4711c68826371ecb.png" src="../../_images/09b917d2ece2bd6fcb6fa1974f7865d8f213d5ec0cd25eea4711c68826371ecb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1564,10 +1594,10 @@ Name: Deaths, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x20358587c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe1f0abf820&gt;
 </pre></div>
 </div>
-<img alt="../../_images/0fc79e8ef49c1cc5f0069312a655d71086e388c9df0d815d5dcbed8bb8dea89f.png" src="../../_images/0fc79e8ef49c1cc5f0069312a655d71086e388c9df0d815d5dcbed8bb8dea89f.png" />
+<img alt="../../_images/ad2b5bc82ece5d8dc8ba6c1802d68dc14684e000ce74e6fa4563f39723c9cae3.png" src="../../_images/ad2b5bc82ece5d8dc8ba6c1802d68dc14684e000ce74e6fa4563f39723c9cae3.png" />
 </div>
 </div>
 <p>#dropping all rows with NaN in ANY column — CAN BE A WRONG APPROACH FOR THIS DATASET</p>
@@ -1579,6 +1609,14 @@ Name: Deaths, dtype: float64
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of df1 after dropping all rows that have NaN in ANY column is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
 
 <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The length of df1 after dropping all rows that have NaN in ANY column is: 708
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>418760.0
 </pre></div>
 </div>
 </div>
@@ -1639,10 +1677,13 @@ Name: Deaths, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">STEP 1: READING DATA</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">STEP 2: EXPLORING DATA</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">DATA CLEANING</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">DATA ANALYSIS AND VISUALIZATION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Cleaning Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-data">Step 1: Reading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">Step 2: Exploring Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">Data Analysis and Visualization</a></li>
 </ul>
 
   </nav></div>
