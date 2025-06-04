@@ -6,6 +6,6 @@ Text analysis, or text mining, is the process of extracting meaningful informati
 <br>
 [Concordance and Collocation](./concordance.ipynb)
 <br>
-[Creating a Stopworks List](./creating-stopwords-list.ipynb)
+[Creating a Stopwords List](./creating-stopwords-list.ipynb)
 <br>
 [Exploring Word Frequencies](./exploring-word-frequencies.ipynb)
