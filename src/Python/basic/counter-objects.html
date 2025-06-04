@@ -452,6 +452,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;a&#39;: 7, &#39;c&#39;: 3, &#39;b&#39;: 4})
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also create a Counter object from a dictionary.</p>
 <div class="cell docutils container">
@@ -459,6 +464,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A Counter object created from a dictionary</span>
 <span class="n">sample_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 <span class="n">Counter</span><span class="p">(</span><span class="n">sample_dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;a&#39;: 4, &#39;b&#39;: 13, &#39;c&#39;: 2})
 </pre></div>
 </div>
 </div>
@@ -480,6 +490,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;word_e&#39;: 32, &#39;word_a&#39;: 23, &#39;word_c&#39;: 4, &#39;word_d&#39;: 4, &#39;word_b&#39;: 3})
+</pre></div>
+</div>
+</div>
 </div>
 <p>The Counter object looks just like a dictionary inside the parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> of <code class="docutils literal notranslate"><span class="pre">Counter()</span></code>. Both dictionaries and counters can return a <strong>value</strong> from a <strong>key</strong>.</p>
 <div class="cell docutils container">
@@ -490,12 +505,23 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23
+23
+</pre></div>
+</div>
+</div>
 </div>
 <p>However, the <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> has some helpful differences from a dictionary. One difference is that a <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> returns a 0 when no such key exists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With a Counter, the value of the made-up key `no_such_key_exists` is 0. </span>
 <span class="nb">print</span><span class="p">(</span><span class="n">wordcounts_counter</span><span class="p">[</span><span class="s1">&#39;no_such_key_exists&#39;</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -518,11 +544,22 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+No such key
+</pre></div>
+</div>
+</div>
 </div>
 <p>The Counter object, however, is also useful for a second purpose. Counter objects can be easily sorted using the <code class="docutils literal notranslate"><span class="pre">most_common()</span></code> method. We can specify an argument with this method to receive a certain number of results. Let’s try it on our example <code class="docutils literal notranslate"><span class="pre">wordcounts_counter</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wordcounts_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Print the top 3 most common items in `counter_demo`</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;word_e&#39;, 32), (&#39;word_a&#39;, 23), (&#39;word_c&#39;, 4), (&#39;word_d&#39;, 4), (&#39;word_b&#39;, 3)]
 </pre></div>
 </div>
 </div>
@@ -532,6 +569,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The least common element is at index -1</span>
 <span class="n">wordcounts_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;word_b&#39;, 3)
 </pre></div>
 </div>
 </div>
