@@ -1535,6 +1535,7 @@ Name: Deaths, dtype: float64
 <img alt="../../_images/d5c6355f3fd7d46054879332672a4c08aaf675db3a4145fa46dc67cfc24d7c87.png" src="../../_images/d5c6355f3fd7d46054879332672a4c08aaf675db3a4145fa46dc67cfc24d7c87.png" />
 </div>
 </div>
+<p>This code calculates the <strong>number of deaths for each year, broken down by gender</strong> using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function with multiple grouping columns. It groups the DataFrame first by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and then by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code>, and for each combination, it sums the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column. This results in a multi-level index (also called a hierarchical index) where each row represents the total deaths for a specific gender in a specific year. The final output provides a detailed breakdown of how death counts vary by gender across different years, which is helpful for identifying trends or disparities over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Number of deaths every year by Gender.......</span>
@@ -1567,6 +1568,7 @@ Name: Deaths, dtype: float64
 </div>
 </div>
 </div>
+<p>This code groups the data by both <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> and sums the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> for each combination. The <code class="docutils literal notranslate"><span class="pre">.unstack('Gender')</span></code> method pivots the <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> level of the grouped data into separate columns—typically one for <code class="docutils literal notranslate"><span class="pre">&quot;F&quot;</span></code> (Female) and one for <code class="docutils literal notranslate"><span class="pre">&quot;M&quot;</span></code> (Male)—creating a table where each row represents a year and each column shows the total deaths by gender. Then, <code class="docutils literal notranslate"><span class="pre">df2[['F','M']].plot(...)</span></code> generates a <strong>stacked bar graph</strong> using these gender-based totals, with bars stacked vertically to show each year’s total deaths divided into male and female contributions. The <code class="docutils literal notranslate"><span class="pre">figsize=(12,6)</span></code> ensures the plot is wide and readable, and the title highlights the focus on gender distribution across years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw a stacked bar graph of each year showing Male/female proportion in total deaths</span>
@@ -1582,6 +1584,7 @@ Name: Deaths, dtype: float64
 <img alt="../../_images/09b917d2ece2bd6fcb6fa1974f7865d8f213d5ec0cd25eea4711c68826371ecb.png" src="../../_images/09b917d2ece2bd6fcb6fa1974f7865d8f213d5ec0cd25eea4711c68826371ecb.png" />
 </div>
 </div>
+<p>This code creates a <strong>grouped bar chart</strong> to visually compare male and female death counts for each year. Using the <code class="docutils literal notranslate"><span class="pre">df2</span></code> DataFrame (which contains total deaths grouped by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and separated by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code>), the <code class="docutils literal notranslate"><span class="pre">.plot.bar()</span></code> function generates side-by-side bars for each year, with one bar for females and one for males. The <code class="docutils literal notranslate"><span class="pre">width=0.55</span></code> parameter controls the thickness of the bars, while <code class="docutils literal notranslate"><span class="pre">figsize=(12,5)</span></code> sets the overall size of the plot for better visibility. The bars are colored green and red to distinguish between genders. The <code class="docutils literal notranslate"><span class="pre">.legend(bbox_to_anchor=(1.2,</span> <span class="pre">0.5))</span></code> command positions the legend outside the main plot area, making it clearer and less cluttered. This grouped bar chart makes it easy to compare gender-specific death counts across multiple years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw a GROUPED bar graph of each year showing the comparison of Male/female deaths each year</span>
@@ -1600,7 +1603,8 @@ Name: Deaths, dtype: float64
 <img alt="../../_images/ad2b5bc82ece5d8dc8ba6c1802d68dc14684e000ce74e6fa4563f39723c9cae3.png" src="../../_images/ad2b5bc82ece5d8dc8ba6c1802d68dc14684e000ce74e6fa4563f39723c9cae3.png" />
 </div>
 </div>
-<p>#dropping all rows with NaN in ANY column — CAN BE A WRONG APPROACH FOR THIS DATASET</p>
+<p>This code removes all rows from the DataFrame <code class="docutils literal notranslate"><span class="pre">df1</span></code> that contain <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (missing values) in <strong>any</strong> column using the <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> method. After the rows are dropped, the length of the new DataFrame is printed to show how much data remains. Then, it calculates the total number of deaths from the cleaned dataset.</p>
+<p>However, dropping rows with <strong>any missing values</strong> can be a risky or inappropriate approach—especially for this dataset—because it might remove rows where only non-critical fields (like a category label or metadata) are missing, while still containing valid numeric death counts. This could lead to underreporting or misrepresentation of the actual data. In such cases, it’s better to consider imputing missing values or selectively dropping only rows where essential data (like <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code>) is missing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#dropping all rows with NaN in ANY column --- CAN BE A WRONG APPROACH FOR THIS DATASET</span>
@@ -1621,6 +1625,7 @@ Name: Deaths, dtype: float64
 </div>
 </div>
 </div>
+<p>This code filters the dataset to extract only the rows where the <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> column has the value <strong>2010</strong>. The result is stored in a new DataFrame called <code class="docutils literal notranslate"><span class="pre">df1_2010</span></code>, which contains all data entries specifically from the year 2010. This subset can then be used for focused analysis, such as identifying leading causes of death or demographic patterns during that particular year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#find the data related to 2010....</span>
