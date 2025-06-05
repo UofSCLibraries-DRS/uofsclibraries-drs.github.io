@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Total Unique words &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+    <title>Text Preprocessing Methods &#8212; USC Libraries - DRS Resources for Data Literacy</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/TextPreprocessing/TextPreprocessingMethods';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Bar, Line, Scatter Plot" href="../../overview/Charts.html" />
+    <link rel="prev" title="Extracting Data From Websites Using API - A Beginners Guide" href="../../API/API.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -186,11 +186,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Python/PandasPython.html">Pandas Python Tutorials</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">MultiLingual NER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text Preprocessing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -380,7 +381,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -391,11 +394,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Total Unique words</h1>
+    <h1>Text Preprocessing Methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-unique-words">Total Unique words</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -405,29 +416,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="text-preprocessing-methods">
+<h1>Text Preprocessing Methods<a class="headerlink" href="#text-preprocessing-methods" title="Link to this heading">#</a></h1>
+<p>The line <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">nltk</span></code> is used to install the <strong>Natural Language Toolkit (NLTK)</strong>, a popular Python library for natural language processing (NLP).</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">!</span></code> at the beginning is specific to environments like Jupyter Notebooks, where it allows shell commands to be run directly from a code cell.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nltk</span></code> tells Python’s package manager (<code class="docutils literal notranslate"><span class="pre">pip</span></code>) to download and install the NLTK library and its dependencies.</p></li>
+</ul>
+<p>Once installed, you can use NLTK for tasks like tokenization, stemming, sentiment analysis, and working with corpora or linguistic datasets.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nltk
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nltk in c:\users\bipva\anaconda3\lib\site-packages (3.5)
-Requirement already satisfied: tqdm in c:\users\bipva\anaconda3\lib\site-packages (from nltk) (4.47.0)
-Requirement already satisfied: joblib in c:\users\bipva\anaconda3\lib\site-packages (from nltk) (0.16.0)
-Requirement already satisfied: regex in c:\users\bipva\anaconda3\lib\site-packages (from nltk) (2020.6.8)
-Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packages (from nltk) (7.1.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting nltk
+  Using cached nltk-3.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting click (from nltk)
+  Using cached click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
+Collecting joblib (from nltk)
+  Using cached joblib-1.5.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting regex&gt;=2021.8.3 (from nltk)
+  Using cached regex-2024.11.6-cp313-cp313-macosx_11_0_arm64.whl.metadata (40 kB)
+Collecting tqdm (from nltk)
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Using cached nltk-3.9.1-py3-none-any.whl (1.5 MB)
+Using cached regex-2024.11.6-cp313-cp313-macosx_11_0_arm64.whl (284 kB)
+Using cached click-8.2.1-py3-none-any.whl (102 kB)
+Using cached joblib-1.5.1-py3-none-any.whl (307 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Installing collected packages: tqdm, regex, joblib, click, nltk
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5/5</span> [nltk][32m4/5 [nltk]b]
+Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-4.67.1
 </pre></div>
 </div>
 </div>
 </div>
+<p>This code block sets up the tools needed for basic text processing and analysis. It imports the NLTK library for natural language processing, Python’s built-in <code class="docutils literal notranslate"><span class="pre">string</span></code> module for handling punctuation, and <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> for creating visualizations. It also downloads two essential NLTK resources: <code class="docutils literal notranslate"><span class="pre">punkt_tab</span></code> for advanced word tokenization and <code class="docutils literal notranslate"><span class="pre">stopwords</span></code> for filtering out common words that usually don’t carry meaningful information. Finally, it imports <code class="docutils literal notranslate"><span class="pre">word_tokenize</span></code> to split text into individual words and <code class="docutils literal notranslate"><span class="pre">FreqDist</span></code> to calculate the frequency of those words for further analysis or visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt&quot;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt_tab&quot;</span><span class="p">)</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;stopwords&quot;</span><span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">nltk</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span>
@@ -438,16 +471,17 @@ Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packag
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to
-[nltk_data]     C:\Users\bipva\AppData\Roaming\nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /Users/mearacox/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
 [nltk_data] Downloading package stopwords to
-[nltk_data]     C:\Users\bipva\AppData\Roaming\nltk_data...
+[nltk_data]     /Users/mearacox/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
 </pre></div>
 </div>
 </div>
 </div>
+<p>This code is using <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> to convert all characters in the text to lowercase, which is a common step in text preprocessing to ensure consistency (so that words like “This” and “this” are treated the same). Similarly, the <code class="docutils literal notranslate"><span class="pre">.upper()</span></code> method converts all characters to uppercase. Finally, <code class="docutils literal notranslate"><span class="pre">print(text)</span></code> outputs the lowercase version of the text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#sample text</span>
@@ -463,6 +497,9 @@ Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packag
 </div>
 </div>
 </div>
+<p>This code defines a function <code class="docutils literal notranslate"><span class="pre">read_book(title)</span></code> that reads the full contents of a text file and returns it as a single cleaned-up string.</p>
+<p>Inside the function, the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open(...)</span></code> statement opens the file specified by <code class="docutils literal notranslate"><span class="pre">title</span></code> in read mode with UTF-8 encoding, ensuring it can handle most characters properly. The <code class="docutils literal notranslate"><span class="pre">read()</span></code> method loads the entire file content into the variable <code class="docutils literal notranslate"><span class="pre">text</span></code>. The line <code class="docutils literal notranslate"><span class="pre">text.replace(&quot;\n&quot;,</span> <span class="pre">&quot;&quot;).replace(&quot;\r&quot;,</span> <span class="pre">&quot;&quot;)</span></code> removes newline and carriage return characters, flattening the text into a continuous string.</p>
+<p>After defining the function, the line <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">=</span> <span class="pre">read_book(&quot;RomeoAndJuliet.txt&quot;)</span></code> calls it to load the contents of <em>Romeo and Juliet</em>. The following line, <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">=</span> <span class="pre">text.lower()</span></code>, converts the entire text to lowercase. Finally, <code class="docutils literal notranslate"><span class="pre">print(text)</span></code> displays the cleaned, lowercase version of the text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Reading text from a file in python</span>
@@ -495,6 +532,8 @@ Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packag
 </div>
 </div>
 </div>
+<p>This code removes all punctuation marks from the text by replacing them with spaces.</p>
+<p>It loops through each character in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>, which contains common punctuation symbols (like <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code>, etc.). For every punctuation mark found, <code class="docutils literal notranslate"><span class="pre">text.replace(x,</span> <span class="pre">&quot;</span> <span class="pre">&quot;)</span></code> replaces it, <code class="docutils literal notranslate"><span class="pre">x</span></code>,  with a space, helping to separate words cleanly without merging them accidentally. After the loop finishes, the text is free of punctuation. The <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements then display a message and the cleaned version of the text, making it ready for further processing like tokenization or frequency analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># traverse the given string and if any punctuation marks occur replace it with null </span>
@@ -514,19 +553,30 @@ Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packag
 </div>
 </div>
 </div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">print(len(text))</span></code> to print the <strong>number of characters</strong> in the string <code class="docutils literal notranslate"><span class="pre">text</span> </code>, including letters, spaces, and any remaining symbols.
+For example, if <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">=</span> <span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">len(text)</span></code> returns <code class="docutils literal notranslate"><span class="pre">11</span></code> (5 letters + 1 space + 5 letters).
+This is useful for checking the length of the entire string, but it doesn’t tell you how many words there are.</p>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">print(len(text.split()))</span></code> to print the <strong>number of words</strong> in the string <code class="docutils literal notranslate"><span class="pre">text</span></code>. <code class="docutils literal notranslate"><span class="pre">text.split()</span></code> breaks the string into a list of words using whitespace (spaces, tabs, line breaks) as the default separator.
+For example, if <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">=</span> <span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code>, then <code class="docutils literal notranslate"><span class="pre">text.split()</span></code> returns <code class="docutils literal notranslate"><span class="pre">[&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;]</span></code>, and <code class="docutils literal notranslate"><span class="pre">len(text.split())</span></code> returns <code class="docutils literal notranslate"><span class="pre">2</span></code>.
+This is commonly used in text analysis to count how many words are in a document or sentence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count the number of words after removing punctuations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count the number of characters after removing punctuations</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+<span class="c1"># Count the number of words after removing punctuations</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169275
+29806
 </pre></div>
 </div>
 </div>
 </div>
+<p>This line of code breaks the input text into individual tokens, which are typically words and punctuation marks. First, the text is converted to lowercase using <code class="docutils literal notranslate"><span class="pre">text.lower()</span></code> to ensure consistency in analysis. Then, the <code class="docutils literal notranslate"><span class="pre">word_tokenize()</span></code> function from NLTK is used to intelligently split the text into a list of tokens, accounting for punctuation, contractions, and special characters. The resulting tokens are stored in the variable <code class="docutils literal notranslate"><span class="pre">token</span></code>, making them ready for further processing such as frequency analysis or filtering.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BREAK THE STRING INTO TOKENS</span>
@@ -535,6 +585,7 @@ Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packag
 </div>
 </div>
 </div>
+<p>This code removes common stopwords from the list of tokens in the text. It first imports the list of English stopwords from the NLTK corpus and stores them as a set <code class="docutils literal notranslate"><span class="pre">a</span></code> for faster lookup. Then, it uses a list comprehension to create a new list <code class="docutils literal notranslate"><span class="pre">no_stopwords</span></code> containing only the tokens that are <strong>not</strong> in the stopwords set. Finally, it prints the cleaned list of tokens, which now excludes common words like “the”, “is”, and “and”—helping to focus analysis on more meaningful content.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
@@ -603,11 +654,11 @@ Requirement already satisfied: click in c:\users\bipva\anaconda3\lib\site-packag
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 10 artists&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/e647549193bc8423ec190c4c9a9b94e8aed29fea11a9b51c868d81faf63f2857.png" src="../../../_images/e647549193bc8423ec190c4c9a9b94e8aed29fea11a9b51c868d81faf63f2857.png" />
+<img alt="../../../_images/65892d57fe07f7d5fe5f3347e01a075fdc3a8f7956e009cf7a4632b52ebef4af.png" src="../../../_images/65892d57fe07f7d5fe5f3347e01a075fdc3a8f7956e009cf7a4632b52ebef4af.png" />
 </div>
 </div>
 <section id="total-unique-words">
-<h1>Total Unique words<a class="headerlink" href="#total-unique-words" title="Link to this heading">#</a></h1>
+<h2>Total Unique words<a class="headerlink" href="#total-unique-words" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Design function called word_stats(), which will take the word frequency dictionary( output of count_words_fast():count_words() ) as a parameter.</p></li>
 <li><p>The function will return the total no of unique words and a dict_values holding total count of them together, as a tuple.</p></li>
@@ -704,6 +755,7 @@ Successfully installed wordcloud-1.8.0
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -735,12 +787,45 @@ Successfully installed wordcloud-1.8.0
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../API/API.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Extracting Data From Websites Using API - A Beginners Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../overview/Charts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bar, Line, Scatter Plot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-unique-words">Total Unique words</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
