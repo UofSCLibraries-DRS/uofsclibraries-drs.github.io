@@ -18,6 +18,8 @@ parts:
     - file: src/TextMining/MultiLingualNer
     - file: src/API/API
       title: Using APIs
+    - file: src/TextMining/TextPreprocessing/TextPreprocessingMethods
+      title: Text Preprocessing
 
   - caption: Data Visualization
     chapters:
