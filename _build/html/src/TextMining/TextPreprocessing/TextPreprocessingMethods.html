@@ -191,7 +191,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">MultiLingual NER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text Preprocessing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text Preprocessing Methods</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -404,8 +405,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Text Preprocessing Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-lower-to-make-text-uniform">Using <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> to make text uniform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-replace-to-remove-punctuation">Using <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> to remove punctuation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-len">Using <code class="docutils literal notranslate"><span class="pre">len()</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-unique-words">Total Unique words</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -431,24 +441,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting nltk
-  Using cached nltk-3.9.1-py3-none-any.whl.metadata (2.9 kB)
-Collecting click (from nltk)
-  Using cached click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
-Collecting joblib (from nltk)
-  Using cached joblib-1.5.1-py3-none-any.whl.metadata (5.6 kB)
-Collecting regex&gt;=2021.8.3 (from nltk)
-  Using cached regex-2024.11.6-cp313-cp313-macosx_11_0_arm64.whl.metadata (40 kB)
-Collecting tqdm (from nltk)
-  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
-Using cached nltk-3.9.1-py3-none-any.whl (1.5 MB)
-Using cached regex-2024.11.6-cp313-cp313-macosx_11_0_arm64.whl (284 kB)
-Using cached click-8.2.1-py3-none-any.whl (102 kB)
-Using cached joblib-1.5.1-py3-none-any.whl (307 kB)
-Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
-Installing collected packages: tqdm, regex, joblib, click, nltk
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5/5</span> [nltk][32m4/5 [nltk]b]
-Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-4.67.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nltk in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (3.9.1)
+Requirement already satisfied: click in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from nltk) (8.2.1)
+Requirement already satisfied: joblib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from nltk) (1.5.1)
+Requirement already satisfied: regex&gt;=2021.8.3 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: tqdm in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from nltk) (4.67.1)
 </pre></div>
 </div>
 </div>
@@ -473,7 +470,7 @@ Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt_tab to
 [nltk_data]     /Users/mearacox/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
+[nltk_data]   Package punkt_tab is already up-to-date!
 [nltk_data] Downloading package stopwords to
 [nltk_data]     /Users/mearacox/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
@@ -481,6 +478,8 @@ Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-
 </div>
 </div>
 </div>
+<section id="using-lower-to-make-text-uniform">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> to make text uniform<a class="headerlink" href="#using-lower-to-make-text-uniform" title="Link to this heading">#</a></h2>
 <p>This code is using <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> to convert all characters in the text to lowercase, which is a common step in text preprocessing to ensure consistency (so that words like “This” and “this” are treated the same). Similarly, the <code class="docutils literal notranslate"><span class="pre">.upper()</span></code> method converts all characters to uppercase. Finally, <code class="docutils literal notranslate"><span class="pre">print(text)</span></code> outputs the lowercase version of the text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -532,6 +531,9 @@ Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-
 </div>
 </div>
 </div>
+</section>
+<section id="using-replace-to-remove-punctuation">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> to remove punctuation<a class="headerlink" href="#using-replace-to-remove-punctuation" title="Link to this heading">#</a></h2>
 <p>This code removes all punctuation marks from the text by replacing them with spaces.</p>
 <p>It loops through each character in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>, which contains common punctuation symbols (like <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code>, etc.). For every punctuation mark found, <code class="docutils literal notranslate"><span class="pre">text.replace(x,</span> <span class="pre">&quot;</span> <span class="pre">&quot;)</span></code> replaces it, <code class="docutils literal notranslate"><span class="pre">x</span></code>,  with a space, helping to separate words cleanly without merging them accidentally. After the loop finishes, the text is free of punctuation. The <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements then display a message and the cleaned version of the text, making it ready for further processing like tokenization or frequency analysis.</p>
 <div class="cell docutils container">
@@ -553,6 +555,10 @@ Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-
 </div>
 </div>
 </div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="using-len">
+<h1>Using <code class="docutils literal notranslate"><span class="pre">len()</span></code><a class="headerlink" href="#using-len" title="Link to this heading">#</a></h1>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">print(len(text))</span></code> to print the <strong>number of characters</strong> in the string <code class="docutils literal notranslate"><span class="pre">text</span> </code>, including letters, spaces, and any remaining symbols.
 For example, if <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">=</span> <span class="pre">&quot;hello</span> <span class="pre">world&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">len(text)</span></code> returns <code class="docutils literal notranslate"><span class="pre">11</span></code> (5 letters + 1 space + 5 letters).
 This is useful for checking the length of the entire string, but it doesn’t tell you how many words there are.</p>
@@ -604,6 +610,8 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 </div>
 </div>
+<p>The line <code class="docutils literal notranslate"><span class="pre">len(no_stopwords)</span></code> returns the <strong>number of tokens remaining after stopwords have been removed</strong> from the original text.</p>
+<p>This is useful for understanding how much of the text consists of meaningful or content-rich words (i.e., words that aren’t basic connectors like <em>“and”</em>, <em>“the”</em>, or <em>“is”</em>). The result gives you a clearer sense of the size of your cleaned, analysis-ready dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">no_stopwords</span><span class="p">)</span>
@@ -616,6 +624,7 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 </div>
 </div>
+<p>This code calculates and displays the frequency of the most common words in the cleaned text. First, it creates a <code class="docutils literal notranslate"><span class="pre">FreqDist</span></code> object from the <code class="docutils literal notranslate"><span class="pre">no_stopwords</span></code> list, which counts how often each token appears. Then, <code class="docutils literal notranslate"><span class="pre">fdist.most_common(10)</span></code> returns the top 10 most frequent words along with their counts, and this result is stored in <code class="docutils literal notranslate"><span class="pre">fdist1</span></code>. After printing the top words, the code separates this list of word-frequency pairs into two separate lists: <code class="docutils literal notranslate"><span class="pre">x</span></code> holds the words and <code class="docutils literal notranslate"><span class="pre">y</span></code> holds their corresponding frequencies. This separation is useful for plotting or further analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the frequency of tokens</span>
@@ -643,6 +652,12 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 </div>
 </div>
+<p>The line <code class="docutils literal notranslate"><span class="pre">plt.bar(x,</span> <span class="pre">y)</span></code> creates a <strong>bar chart</strong> using the two lists:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> contains the <strong>words</strong> (labels for the x-axis), and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> contains the <strong>frequencies</strong> (heights of the bars on the y-axis).</p></li>
+</ul>
+<p>This visualizes the top 10 most common words (after removing stopwords) and shows how frequently each one appears in the text. It’s a helpful way to quickly identify which meaningful words are most prominent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
@@ -663,6 +678,8 @@ This is commonly used in text analysis to count how many words are in a document
 <li><p>Design function called word_stats(), which will take the word frequency dictionary( output of count_words_fast():count_words() ) as a parameter.</p></li>
 <li><p>The function will return the total no of unique words and a dict_values holding total count of them together, as a tuple.</p></li>
 </ul>
+<p>This code calculates the frequency of all tokens in the text, including common stopwords and punctuation (if not previously removed).</p>
+<p>First, it uses <code class="docutils literal notranslate"><span class="pre">FreqDist(token)</span></code> to create a frequency distribution object that counts how many times each token appears. Then, <code class="docutils literal notranslate"><span class="pre">fdist.most_common(10)</span></code> retrieves the top 10 most frequent tokens along with their counts, and prints them. Next, it separates this list of (word, frequency) pairs into two separate lists: <code class="docutils literal notranslate"><span class="pre">x</span></code> contains the top 10 words, and <code class="docutils literal notranslate"><span class="pre">y</span></code> contains their corresponding frequencies. These lists can then be used to plot a bar graph or perform other forms of analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the frequency of tokens</span>
@@ -690,6 +707,7 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 </div>
 </div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">plt.bar(x,</span> <span class="pre">y)</span></code> to draw the bars, where <code class="docutils literal notranslate"><span class="pre">x</span></code> contains the words and <code class="docutils literal notranslate"><span class="pre">y</span></code> their corresponding frequencies. Then, the plot is labeled with <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code>, and <code class="docutils literal notranslate"><span class="pre">title</span></code> to give it context. Instead of just displaying the graph on the screen, <code class="docutils literal notranslate"><span class="pre">plt.savefig(&quot;plot.png&quot;)</span></code> saves the figure as an image file named <strong>plot.png</strong> in the current directory. This is useful if you want to include the graph in a report or presentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting the points  </span>
@@ -709,9 +727,11 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/49a3b99a7cd2bb88967a06a09875f882c5388909038f7fd17a4a2f475e282b7d.png" src="../../../_images/49a3b99a7cd2bb88967a06a09875f882c5388909038f7fd17a4a2f475e282b7d.png" />
+<img alt="../../../_images/cc72ec9d4484aa24620d84b2718310d443d315d03dddfea6196dad6b5b6ff36b.png" src="../../../_images/cc72ec9d4484aa24620d84b2718310d443d315d03dddfea6196dad6b5b6ff36b.png" />
 </div>
 </div>
+<p>The command <code class="docutils literal notranslate"><span class="pre">!</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">wordcloud</span></code> is used in environments like Jupyter Notebook to install the <strong><code class="docutils literal notranslate"><span class="pre">wordcloud</span></code></strong> library.</p>
+<p>This library allows you to generate <strong>word clouds</strong>, which are visual representations of text data where more frequent words appear larger and bolder. The exclamation mark <code class="docutils literal notranslate"><span class="pre">!</span></code> at the beginning tells the notebook to run the command as a shell command, just like you would in a terminal. After installation, you can use the library to easily create word clouds from token lists, frequency distributions, or raw text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>wordcloud
@@ -720,21 +740,27 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting wordcloud
-  Downloading wordcloud-1.8.0-cp38-cp38-win_amd64.whl (159 kB)
-Requirement already satisfied: matplotlib in c:\users\bipva\anaconda3\lib\site-packages (from wordcloud) (3.2.2)
-Requirement already satisfied: numpy&gt;=1.6.1 in c:\users\bipva\anaconda3\lib\site-packages (from wordcloud) (1.18.5)
-Requirement already satisfied: pillow in c:\users\bipva\anaconda3\lib\site-packages (from wordcloud) (7.2.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in c:\users\bipva\anaconda3\lib\site-packages (from matplotlib-&gt;wordcloud) (2.4.7)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\bipva\anaconda3\lib\site-packages (from matplotlib-&gt;wordcloud) (1.2.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in c:\users\bipva\anaconda3\lib\site-packages (from matplotlib-&gt;wordcloud) (2.8.1)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\bipva\anaconda3\lib\site-packages (from matplotlib-&gt;wordcloud) (0.10.0)
-Requirement already satisfied: six&gt;=1.5 in c:\users\bipva\anaconda3\lib\site-packages (from python-dateutil&gt;=2.1-&gt;matplotlib-&gt;wordcloud) (1.15.0)
+  Downloading wordcloud-1.9.4-cp313-cp313-macosx_11_0_arm64.whl.metadata (3.4 kB)
+Requirement already satisfied: numpy&gt;=1.6.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from wordcloud) (2.2.6)
+Requirement already satisfied: pillow in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from wordcloud) (11.2.1)
+Requirement already satisfied: matplotlib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from wordcloud) (3.10.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (1.3.2)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (4.58.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (25.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from matplotlib-&gt;wordcloud) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.13/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;wordcloud) (1.17.0)
+Downloading wordcloud-1.9.4-cp313-cp313-macosx_11_0_arm64.whl (167 kB)
 Installing collected packages: wordcloud
-Successfully installed wordcloud-1.8.0
+Successfully installed wordcloud-1.9.4
 </pre></div>
 </div>
 </div>
 </div>
+<p>This code generates and displays a <strong>word cloud</strong> from the list of meaningful tokens stored in <code class="docutils literal notranslate"><span class="pre">no_stopwords</span></code>.</p>
+<p>It starts by importing <code class="docutils literal notranslate"><span class="pre">WordCloud</span></code> and other useful tools from the <code class="docutils literal notranslate"><span class="pre">wordcloud</span></code> library. A figure is created using <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> with a size of 12x12 inches. The word cloud is then generated with specified dimensions (<code class="docutils literal notranslate"><span class="pre">width=1800</span></code>, <code class="docutils literal notranslate"><span class="pre">height=1400</span></code>) by converting the list of tokens (<code class="docutils literal notranslate"><span class="pre">no_stopwords</span></code>) into a single string using <code class="docutils literal notranslate"><span class="pre">str(no_stopwords)</span></code>. The <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code> function displays the word cloud image, and <code class="docutils literal notranslate"><span class="pre">plt.axis(&quot;off&quot;)</span></code> removes the axis for a cleaner look. Finally, <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> renders the visual, where the size of each word reflects its frequency in the text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span><span class="p">,</span> <span class="n">STOPWORDS</span><span class="p">,</span> <span class="n">ImageColorGenerator</span>
@@ -751,7 +777,7 @@ Successfully installed wordcloud-1.8.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/81a7c7f50b893cc8b6b196d73d4fad9fab91a60ab338d8bb7bcf0fe641c240d8.png" src="../../../_images/81a7c7f50b893cc8b6b196d73d4fad9fab91a60ab338d8bb7bcf0fe641c240d8.png" />
+<img alt="../../../_images/d7b4b4fcd5f89660649b8f380ffc66aa9d0db2564098f92f9f4dfdf06793b5c7.png" src="../../../_images/d7b4b4fcd5f89660649b8f380ffc66aa9d0db2564098f92f9f4dfdf06793b5c7.png" />
 </div>
 </div>
 </section>
@@ -821,8 +847,17 @@ Successfully installed wordcloud-1.8.0
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Text Preprocessing Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-lower-to-make-text-uniform">Using <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> to make text uniform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-replace-to-remove-punctuation">Using <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> to remove punctuation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-len">Using <code class="docutils literal notranslate"><span class="pre">len()</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-unique-words">Total Unique words</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
