@@ -1,6 +1,9 @@
 # Introduction
 
-Welcome to the [Data Research Services (DRS)](https://sc.edu/about/offices_and_divisions/university_libraries/find_services/digital_research_services/) at the University of South Carolina Libraries Lab Notebooks! These notebooks support many stages of the research process, including data management, analysis, visualization. DRS aims to lower technological barriers, making modern research tools more accessible and effective. Hence, this repository is set up to share notebooks, code, and tutorials that can help a researcher get started with a new tool wherever they are with their research and skills.
+Welcome to the University of South Carolina Libraries [Data Services](https://sc.edu/about/offices_and_divisions/university_libraries/find_services/digital_research_services/) Lab Notebooks! These notebooks support many stages of the research process, including data management, analysis, visualization. DRS aims to lower technological barriers, making modern research tools more accessible and effective. Hence, this repository is set up to share notebooks, code, and tutorials that can help a researcher get started with a new tool wherever they are with their research and skills.
+
+## Acknowledgements
+This is a compilation of notebooks from several people. Big thank you to Ithaka, Constellate,  and JSTOR Labs Team, Nathan Kelber and Ted Lawless for writing many of these notebooks.  Also, thank you to William Mattingly from the TAP Institute Patrick Wolfe, ISchool Intern from Spring 2022 
 
 ## What are Jupyter Notebooks?
 
