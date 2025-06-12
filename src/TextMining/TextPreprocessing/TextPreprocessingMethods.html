@@ -414,7 +414,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ner-concepts">Using NER concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">Topic Modeling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bi-gram-and-tri-gram-analysis">Bi-gram and Tri-gram Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bigram-and-trigram-analysis">Bigram and Trigram Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance-and-collocation">Concordance and Collocation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance">Concordance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collocation">Collocation</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -443,23 +448,61 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nltk in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (3.9.1)
-Requirement already satisfied: click in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk) (8.2.1)
-Requirement already satisfied: joblib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk) (1.5.1)
-Requirement already satisfied: regex&gt;=2021.8.3 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk) (2024.11.6)
-Requirement already satisfied: tqdm in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk) (4.67.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting nltk
+  Using cached nltk-3.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting click (from nltk)
+  Using cached click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
+Collecting joblib (from nltk)
+  Using cached joblib-1.5.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting regex&gt;=2021.8.3 (from nltk)
+  Using cached regex-2024.11.6-cp311-cp311-macosx_11_0_arm64.whl.metadata (40 kB)
+Collecting tqdm (from nltk)
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Using cached nltk-3.9.1-py3-none-any.whl (1.5 MB)
+Using cached regex-2024.11.6-cp311-cp311-macosx_11_0_arm64.whl (284 kB)
+Using cached click-8.2.1-py3-none-any.whl (102 kB)
+Using cached joblib-1.5.1-py3-none-any.whl (307 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Installing collected packages: tqdm, regex, joblib, click, nltk
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5/5</span> [nltk][32m4/5 [nltk]b]
+Successfully installed click-8.2.1 joblib-1.5.1 nltk-3.9.1 regex-2024.11.6 tqdm-4.67.1
 Note: you may need to restart the kernel to use updated packages.
-Requirement already satisfied: matplotlib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (3.10.3)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (1.3.2)
-Requirement already satisfied: cycler&gt;=0.10 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (4.58.2)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (1.4.8)
-Requirement already satisfied: numpy&gt;=1.23 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (1.24.4)
-Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (11.2.1)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (3.2.3)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+Collecting matplotlib
+  Using cached matplotlib-3.10.3-cp311-cp311-macosx_11_0_arm64.whl.metadata (11 kB)
+Collecting contourpy&gt;=1.0.1 (from matplotlib)
+  Using cached contourpy-1.3.2-cp311-cp311-macosx_11_0_arm64.whl.metadata (5.5 kB)
+Collecting cycler&gt;=0.10 (from matplotlib)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools&gt;=4.22.0 (from matplotlib)
+  Using cached fonttools-4.58.2-cp311-cp311-macosx_10_9_universal2.whl.metadata (106 kB)
+Collecting kiwisolver&gt;=1.3.1 (from matplotlib)
+  Using cached kiwisolver-1.4.8-cp311-cp311-macosx_11_0_arm64.whl.metadata (6.2 kB)
+Collecting numpy&gt;=1.23 (from matplotlib)
+  Using cached numpy-2.3.0-cp311-cp311-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting packaging&gt;=20.0 (from matplotlib)
+  Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pillow&gt;=8 (from matplotlib)
+  Using cached pillow-11.2.1-cp311-cp311-macosx_11_0_arm64.whl.metadata (8.9 kB)
+Collecting pyparsing&gt;=2.3.1 (from matplotlib)
+  Using cached pyparsing-3.2.3-py3-none-any.whl.metadata (5.0 kB)
+Collecting python-dateutil&gt;=2.7 (from matplotlib)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six&gt;=1.5 (from python-dateutil&gt;=2.7-&gt;matplotlib)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Using cached matplotlib-3.10.3-cp311-cp311-macosx_11_0_arm64.whl (8.1 MB)
+Using cached contourpy-1.3.2-cp311-cp311-macosx_11_0_arm64.whl (254 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached fonttools-4.58.2-cp311-cp311-macosx_10_9_universal2.whl (2.8 MB)
+Using cached kiwisolver-1.4.8-cp311-cp311-macosx_11_0_arm64.whl (65 kB)
+Using cached numpy-2.3.0-cp311-cp311-macosx_14_0_arm64.whl (5.4 MB)
+Using cached packaging-25.0-py3-none-any.whl (66 kB)
+Using cached pillow-11.2.1-cp311-cp311-macosx_11_0_arm64.whl (3.0 MB)
+Using cached pyparsing-3.2.3-py3-none-any.whl (111 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: six, pyparsing, pillow, packaging, numpy, kiwisolver, fonttools, cycler, python-dateutil, contourpy, matplotlib
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11/11</span> [matplotlib]1 [matplotlib]util]
+Successfully installed contourpy-1.3.2 cycler-0.12.1 fonttools-4.58.2 kiwisolver-1.4.8 matplotlib-3.10.3 numpy-2.3.0 packaging-25.0 pillow-11.2.1 pyparsing-3.2.3 python-dateutil-2.9.0.post0 six-1.17.0
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -810,8 +853,9 @@ This is commonly used in text analysis to count how many words are in a document
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wordcloud in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (1.9.4)
-Requirement already satisfied: numpy&gt;=1.6.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from wordcloud) (1.24.4)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting wordcloud
+  Using cached wordcloud-1.9.4-cp311-cp311-macosx_11_0_arm64.whl.metadata (3.4 kB)
+Requirement already satisfied: numpy&gt;=1.6.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from wordcloud) (2.3.0)
 Requirement already satisfied: pillow in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from wordcloud) (11.2.1)
 Requirement already satisfied: matplotlib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from wordcloud) (3.10.3)
 Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib-&gt;wordcloud) (1.3.2)
@@ -822,6 +866,9 @@ Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/library_wor
 Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib-&gt;wordcloud) (3.2.3)
 Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib-&gt;wordcloud) (2.9.0.post0)
 Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;wordcloud) (1.17.0)
+Using cached wordcloud-1.9.4-cp311-cp311-macosx_11_0_arm64.whl (167 kB)
+Installing collected packages: wordcloud
+Successfully installed wordcloud-1.9.4
 </pre></div>
 </div>
 </div>
@@ -847,7 +894,7 @@ Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/b4027256d95c8f973962935664f0824f08bb1b6a7cd2481848e3b645402aba16.png" src="../../../_images/b4027256d95c8f973962935664f0824f08bb1b6a7cd2481848e3b645402aba16.png" />
+<img alt="../../../_images/b47e2ad63e91627994420bec208d04f3858c54bf4dbf7ae7ccf9094b8c1ee2e9.png" src="../../../_images/b47e2ad63e91627994420bec208d04f3858c54bf4dbf7ae7ccf9094b8c1ee2e9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -876,65 +923,132 @@ Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (3.8.7)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (3.0.12)
-Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (1.0.5)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (1.0.13)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (2.0.11)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (3.0.10)
-Requirement already satisfied: thinc&lt;8.4.0,&gt;=8.3.4 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (8.3.6)
-Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (1.1.3)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (2.5.1)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (2.0.10)
-Requirement already satisfied: weasel&lt;0.5.0,&gt;=0.1.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (0.4.1)
-Requirement already satisfied: typer&lt;1.0.0,&gt;=0.3.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (0.16.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting spacy
+  Using cached spacy-3.8.7-cp311-cp311-macosx_11_0_arm64.whl.metadata (27 kB)
+Collecting spacy-legacy&lt;3.1.0,&gt;=3.0.11 (from spacy)
+  Using cached spacy_legacy-3.0.12-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting spacy-loggers&lt;2.0.0,&gt;=1.0.0 (from spacy)
+  Using cached spacy_loggers-1.0.5-py3-none-any.whl.metadata (23 kB)
+Collecting murmurhash&lt;1.1.0,&gt;=0.28.0 (from spacy)
+  Using cached murmurhash-1.0.13-cp311-cp311-macosx_11_0_arm64.whl.metadata (2.2 kB)
+Collecting cymem&lt;2.1.0,&gt;=2.0.2 (from spacy)
+  Using cached cymem-2.0.11-cp311-cp311-macosx_11_0_arm64.whl.metadata (8.5 kB)
+Collecting preshed&lt;3.1.0,&gt;=3.0.2 (from spacy)
+  Using cached preshed-3.0.10-cp311-cp311-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting thinc&lt;8.4.0,&gt;=8.3.4 (from spacy)
+  Using cached thinc-8.3.6-cp311-cp311-macosx_11_0_arm64.whl.metadata (15 kB)
+Collecting wasabi&lt;1.2.0,&gt;=0.9.1 (from spacy)
+  Using cached wasabi-1.1.3-py3-none-any.whl.metadata (28 kB)
+Collecting srsly&lt;3.0.0,&gt;=2.4.3 (from spacy)
+  Using cached srsly-2.5.1-cp311-cp311-macosx_11_0_arm64.whl.metadata (19 kB)
+Collecting catalogue&lt;2.1.0,&gt;=2.0.6 (from spacy)
+  Using cached catalogue-2.0.10-py3-none-any.whl.metadata (14 kB)
+Collecting weasel&lt;0.5.0,&gt;=0.1.0 (from spacy)
+  Using cached weasel-0.4.1-py3-none-any.whl.metadata (4.6 kB)
+Collecting typer&lt;1.0.0,&gt;=0.3.0 (from spacy)
+  Using cached typer-0.16.0-py3-none-any.whl.metadata (15 kB)
 Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (4.67.1)
-Requirement already satisfied: numpy&gt;=1.19.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (1.24.4)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (2.32.4)
-Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (2.11.5)
-Requirement already satisfied: jinja2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (3.1.6)
+Requirement already satisfied: numpy&gt;=1.19.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (2.3.0)
+Collecting requests&lt;3.0.0,&gt;=2.13.0 (from spacy)
+  Using cached requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4 (from spacy)
+  Using cached pydantic-2.11.5-py3-none-any.whl.metadata (67 kB)
+Collecting jinja2 (from spacy)
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
 Requirement already satisfied: setuptools in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (80.9.0)
 Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (25.0)
-Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from spacy) (3.5.0)
-Requirement already satisfied: language-data&gt;=1.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy) (1.3.0)
-Requirement already satisfied: annotated-types&gt;=0.6.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (0.7.0)
-Requirement already satisfied: pydantic-core==2.33.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (2.33.2)
-Requirement already satisfied: typing-extensions&gt;=4.12.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (4.14.0)
-Requirement already satisfied: typing-inspection&gt;=0.4.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (0.4.1)
-Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.4.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.10)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.4.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2025.4.26)
-Requirement already satisfied: blis&lt;1.4.0,&gt;=1.3.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy) (1.3.0)
-Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy) (0.1.5)
-Collecting numpy&gt;=1.19.0 (from spacy)
-  Using cached numpy-2.3.0-cp311-cp311-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting langcodes&lt;4.0.0,&gt;=3.2.0 (from spacy)
+  Using cached langcodes-3.5.0-py3-none-any.whl.metadata (29 kB)
+Collecting language-data&gt;=1.2 (from langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy)
+  Using cached language_data-1.3.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting annotated-types&gt;=0.6.0 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.33.2 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Using cached pydantic_core-2.33.2-cp311-cp311-macosx_11_0_arm64.whl.metadata (6.8 kB)
+Collecting typing-extensions&gt;=4.12.2 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Using cached typing_extensions-4.14.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting typing-inspection&gt;=0.4.0 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Using cached typing_inspection-0.4.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting charset_normalizer&lt;4,&gt;=2 (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy)
+  Using cached charset_normalizer-3.4.2-cp311-cp311-macosx_10_9_universal2.whl.metadata (35 kB)
+Collecting idna&lt;4,&gt;=2.5 (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy)
+  Using cached idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3&lt;3,&gt;=1.21.1 (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy)
+  Using cached urllib3-2.4.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi&gt;=2017.4.17 (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy)
+  Using cached certifi-2025.4.26-py3-none-any.whl.metadata (2.5 kB)
+Collecting blis&lt;1.4.0,&gt;=1.3.0 (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy)
+  Using cached blis-1.3.0-cp311-cp311-macosx_11_0_arm64.whl.metadata (7.4 kB)
+Collecting confection&lt;1.0.0,&gt;=0.0.1 (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy)
+  Using cached confection-0.1.5-py3-none-any.whl.metadata (19 kB)
 Requirement already satisfied: click&gt;=8.0.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (8.2.1)
-Requirement already satisfied: shellingham&gt;=1.3.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (1.5.4)
-Requirement already satisfied: rich&gt;=10.11.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (14.0.0)
-Requirement already satisfied: cloudpathlib&lt;1.0.0,&gt;=0.7.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy) (0.21.1)
-Requirement already satisfied: smart-open&lt;8.0.0,&gt;=5.2.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy) (7.1.0)
-Requirement already satisfied: wrapt in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from smart-open&lt;8.0.0,&gt;=5.2.1-&gt;weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy) (1.17.2)
-Requirement already satisfied: marisa-trie&gt;=1.1.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from language-data&gt;=1.2-&gt;langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy) (1.2.1)
-Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (3.0.0)
-Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (2.19.1)
-Requirement already satisfied: mdurl~=0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (0.1.2)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from jinja2-&gt;spacy) (3.0.2)
-Using cached numpy-2.3.0-cp311-cp311-macosx_14_0_arm64.whl (5.4 MB)
-Installing collected packages: numpy
-  Attempting uninstall: numpy
-    Found existing installation: numpy 1.24.4
-    Uninstalling numpy-1.24.4:
-      Successfully uninstalled numpy-1.24.4
-<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
-<span class=" -Color -Color-Red">gensim 4.3.3 requires numpy&lt;2.0,&gt;=1.18.5, but you have numpy 2.3.0 which is incompatible.</span>
-<span class=" -Color -Color-Red">scipy 1.13.1 requires numpy&lt;2.3,&gt;=1.22.4, but you have numpy 2.3.0 which is incompatible.</span>
-Successfully installed numpy-2.3.0
+Collecting shellingham&gt;=1.3.0 (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting rich&gt;=10.11.0 (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Using cached rich-14.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting cloudpathlib&lt;1.0.0,&gt;=0.7.0 (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy)
+  Using cached cloudpathlib-0.21.1-py3-none-any.whl.metadata (14 kB)
+Collecting smart-open&lt;8.0.0,&gt;=5.2.1 (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy)
+  Using cached smart_open-7.1.0-py3-none-any.whl.metadata (24 kB)
+Collecting wrapt (from smart-open&lt;8.0.0,&gt;=5.2.1-&gt;weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy)
+  Using cached wrapt-1.17.2-cp311-cp311-macosx_11_0_arm64.whl.metadata (6.4 kB)
+Collecting marisa-trie&gt;=1.1.0 (from language-data&gt;=1.2-&gt;langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy)
+  Using cached marisa_trie-1.2.1-cp311-cp311-macosx_11_0_arm64.whl.metadata (9.0 kB)
+Collecting markdown-it-py&gt;=2.2.0 (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Using cached markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting pygments&lt;3.0.0,&gt;=2.13.0 (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Using cached pygments-2.19.1-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting MarkupSafe&gt;=2.0 (from jinja2-&gt;spacy)
+  Using cached MarkupSafe-3.0.2-cp311-cp311-macosx_11_0_arm64.whl.metadata (4.0 kB)
+Using cached spacy-3.8.7-cp311-cp311-macosx_11_0_arm64.whl (6.4 MB)
+Using cached catalogue-2.0.10-py3-none-any.whl (17 kB)
+Using cached cymem-2.0.11-cp311-cp311-macosx_11_0_arm64.whl (41 kB)
+Using cached langcodes-3.5.0-py3-none-any.whl (182 kB)
+Using cached murmurhash-1.0.13-cp311-cp311-macosx_11_0_arm64.whl (26 kB)
+Using cached preshed-3.0.10-cp311-cp311-macosx_11_0_arm64.whl (127 kB)
+Using cached pydantic-2.11.5-py3-none-any.whl (444 kB)
+Using cached pydantic_core-2.33.2-cp311-cp311-macosx_11_0_arm64.whl (1.9 MB)
+Using cached requests-2.32.4-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.2-cp311-cp311-macosx_10_9_universal2.whl (198 kB)
+Using cached idna-3.10-py3-none-any.whl (70 kB)
+Using cached spacy_legacy-3.0.12-py2.py3-none-any.whl (29 kB)
+Using cached spacy_loggers-1.0.5-py3-none-any.whl (22 kB)
+Using cached srsly-2.5.1-cp311-cp311-macosx_11_0_arm64.whl (634 kB)
+Using cached thinc-8.3.6-cp311-cp311-macosx_11_0_arm64.whl (845 kB)
+Using cached blis-1.3.0-cp311-cp311-macosx_11_0_arm64.whl (1.3 MB)
+Using cached confection-0.1.5-py3-none-any.whl (35 kB)
+Using cached typer-0.16.0-py3-none-any.whl (46 kB)
+Using cached urllib3-2.4.0-py3-none-any.whl (128 kB)
+Using cached wasabi-1.1.3-py3-none-any.whl (27 kB)
+Using cached weasel-0.4.1-py3-none-any.whl (50 kB)
+Using cached cloudpathlib-0.21.1-py3-none-any.whl (52 kB)
+Using cached smart_open-7.1.0-py3-none-any.whl (61 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached certifi-2025.4.26-py3-none-any.whl (159 kB)
+Using cached language_data-1.3.0-py3-none-any.whl (5.4 MB)
+Using cached marisa_trie-1.2.1-cp311-cp311-macosx_11_0_arm64.whl (174 kB)
+Using cached rich-14.0.0-py3-none-any.whl (243 kB)
+Using cached pygments-2.19.1-py3-none-any.whl (1.2 MB)
+Using cached markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Using cached typing_extensions-4.14.0-py3-none-any.whl (43 kB)
+Using cached typing_inspection-0.4.1-py3-none-any.whl (14 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached MarkupSafe-3.0.2-cp311-cp311-macosx_11_0_arm64.whl (12 kB)
+Using cached wrapt-1.17.2-cp311-cp311-macosx_11_0_arm64.whl (38 kB)
+Installing collected packages: cymem, wrapt, wasabi, urllib3, typing-extensions, spacy-loggers, spacy-legacy, shellingham, pygments, murmurhash, mdurl, MarkupSafe, marisa-trie, idna, cloudpathlib, charset_normalizer, certifi, catalogue, blis, annotated-types, typing-inspection, srsly, smart-open, requests, pydantic-core, preshed, markdown-it-py, language-data, jinja2, rich, pydantic, langcodes, typer, confection, weasel, thinc, spacy
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">37/37</span> [spacy]m36/37 [spacy]des]ata]]
+Successfully installed MarkupSafe-3.0.2 annotated-types-0.7.0 blis-1.3.0 catalogue-2.0.10 certifi-2025.4.26 charset_normalizer-3.4.2 cloudpathlib-0.21.1 confection-0.1.5 cymem-2.0.11 idna-3.10 jinja2-3.1.6 langcodes-3.5.0 language-data-1.3.0 marisa-trie-1.2.1 markdown-it-py-3.0.0 mdurl-0.1.2 murmurhash-1.0.13 preshed-3.0.10 pydantic-2.11.5 pydantic-core-2.33.2 pygments-2.19.1 requests-2.32.4 rich-14.0.0 shellingham-1.5.4 smart-open-7.1.0 spacy-3.8.7 spacy-legacy-3.0.12 spacy-loggers-1.0.5 srsly-2.5.1 thinc-8.3.6 typer-0.16.0 typing-extensions-4.14.0 typing-inspection-0.4.1 urllib3-2.4.0 wasabi-1.1.3 weasel-0.4.1 wrapt-1.17.2
 Note: you may need to restart the kernel to use updated packages.
 Collecting en-core-web-sm==3.8.0
   Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl (12.8 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.8/12.8 MB</span> <span class=" -Color -Color-Red">43.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span> <span class=" -Color -Color-Cyan">0:00:01</span>
-?25h<span class=" -Color -Color-C2">✔ Download and installation successful</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.8/12.8 MB</span> <span class=" -Color -Color-Red">29.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:010:01
+?25hInstalling collected packages: en-core-web-sm
+Successfully installed en-core-web-sm-3.8.0
+<span class=" -Color -Color-C2">✔ Download and installation successful</span>
 You can now load the package via spacy.load(&#39;en_core_web_sm&#39;)
 </pre></div>
 </div>
@@ -1653,19 +1767,32 @@ Juliet PERSON
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (2.3.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pandas
+  Using cached pandas-2.3.0-cp311-cp311-macosx_11_0_arm64.whl.metadata (91 kB)
 Requirement already satisfied: numpy&gt;=1.23.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2.3.0)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2.9.0.post0)
-Requirement already satisfied: pytz&gt;=2020.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2025.2)
+Collecting pytz&gt;=2020.1 (from pandas)
+  Using cached pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata&gt;=2022.7 (from pandas)
+  Using cached tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
 Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Using cached pandas-2.3.0-cp311-cp311-macosx_11_0_arm64.whl (10.8 MB)
+Using cached pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Using cached tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+Installing collected packages: pytz, tzdata, pandas
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3/3</span> [pandas]2m2/3 [pandas]
+Successfully installed pandas-2.3.0 pytz-2025.2 tzdata-2025.2
 Note: you may need to restart the kernel to use updated packages.
-Requirement already satisfied: textblob in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (0.19.0)
+Collecting textblob
+  Using cached textblob-0.19.0-py3-none-any.whl.metadata (4.4 kB)
 Requirement already satisfied: nltk&gt;=3.9 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from textblob) (3.9.1)
 Requirement already satisfied: click in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk&gt;=3.9-&gt;textblob) (8.2.1)
 Requirement already satisfied: joblib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk&gt;=3.9-&gt;textblob) (1.5.1)
 Requirement already satisfied: regex&gt;=2021.8.3 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk&gt;=3.9-&gt;textblob) (2024.11.6)
 Requirement already satisfied: tqdm in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from nltk&gt;=3.9-&gt;textblob) (4.67.1)
+Using cached textblob-0.19.0-py3-none-any.whl (624 kB)
+Installing collected packages: textblob
+Successfully installed textblob-0.19.0
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -1777,25 +1904,42 @@ Installing collected packages: numpy
 <span class=" -Color -Color-Red">thinc 8.3.6 requires numpy&lt;3.0.0,&gt;=2.0.0, but you have numpy 1.24.4 which is incompatible.</span>
 Successfully installed numpy-1.24.4
 Note: you may need to restart the kernel to use updated packages.
-Requirement already satisfied: gensim in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (4.3.3)
-Requirement already satisfied: pyLDAvis in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (3.4.1)
+Collecting gensim
+  Using cached gensim-4.3.3-cp311-cp311-macosx_11_0_arm64.whl.metadata (8.1 kB)
+Collecting pyLDAvis
+  Using cached pyLDAvis-3.4.1-py3-none-any.whl.metadata (4.2 kB)
 Requirement already satisfied: numpy&lt;2.0,&gt;=1.18.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from gensim) (1.24.4)
-Requirement already satisfied: scipy&lt;1.14.0,&gt;=1.7.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from gensim) (1.13.1)
+Collecting scipy&lt;1.14.0,&gt;=1.7.0 (from gensim)
+  Using cached scipy-1.13.1-cp311-cp311-macosx_12_0_arm64.whl.metadata (60 kB)
 Requirement already satisfied: smart-open&gt;=1.8.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from gensim) (7.1.0)
 Requirement already satisfied: pandas&gt;=2.0.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (2.3.0)
 Requirement already satisfied: joblib&gt;=1.2.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (1.5.1)
 Requirement already satisfied: jinja2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (3.1.6)
-Requirement already satisfied: numexpr in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (2.11.0)
-Requirement already satisfied: funcy in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (2.0)
-Requirement already satisfied: scikit-learn&gt;=1.0.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (1.7.0)
+Collecting numexpr (from pyLDAvis)
+  Using cached numexpr-2.11.0-cp311-cp311-macosx_11_0_arm64.whl.metadata (9.0 kB)
+Collecting funcy (from pyLDAvis)
+  Using cached funcy-2.0-py2.py3-none-any.whl.metadata (5.9 kB)
+Collecting scikit-learn&gt;=1.0.0 (from pyLDAvis)
+  Using cached scikit_learn-1.7.0-cp311-cp311-macosx_12_0_arm64.whl.metadata (31 kB)
 Requirement already satisfied: setuptools in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pyLDAvis) (80.9.0)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas&gt;=2.0.0-&gt;pyLDAvis) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas&gt;=2.0.0-&gt;pyLDAvis) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas&gt;=2.0.0-&gt;pyLDAvis) (2025.2)
 Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=2.0.0-&gt;pyLDAvis) (1.17.0)
-Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from scikit-learn&gt;=1.0.0-&gt;pyLDAvis) (3.6.0)
+Collecting threadpoolctl&gt;=3.1.0 (from scikit-learn&gt;=1.0.0-&gt;pyLDAvis)
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
 Requirement already satisfied: wrapt in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from smart-open&gt;=1.8.1-&gt;gensim) (1.17.2)
 Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from jinja2-&gt;pyLDAvis) (3.0.2)
+Using cached gensim-4.3.3-cp311-cp311-macosx_11_0_arm64.whl (24.0 MB)
+Using cached scipy-1.13.1-cp311-cp311-macosx_12_0_arm64.whl (30.3 MB)
+Using cached pyLDAvis-3.4.1-py3-none-any.whl (2.6 MB)
+Using cached scikit_learn-1.7.0-cp311-cp311-macosx_12_0_arm64.whl (10.7 MB)
+Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Using cached funcy-2.0-py2.py3-none-any.whl (30 kB)
+Using cached numexpr-2.11.0-cp311-cp311-macosx_11_0_arm64.whl (136 kB)
+Installing collected packages: funcy, threadpoolctl, scipy, numexpr, scikit-learn, gensim, pyLDAvis
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7/7</span> [pyLDAvis]6/7 [pyLDAvis]arn]
+Successfully installed funcy-2.0 gensim-4.3.3 numexpr-2.11.0 pyLDAvis-3.4.1 scikit-learn-1.7.0 scipy-1.13.1 threadpoolctl-3.6.0
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -1901,7 +2045,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coherence Score: 0.3074
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coherence Score: 0.3100
 </pre></div>
 </div>
 </div>
@@ -1918,12 +2062,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0: romeo tybalt go dead death friar love juliet lady give
-Topic 1: romeo death tybalt upon come would like night eyes god
-Topic 2: friar good say come day laurence sweet man make mus
-Topic 3: romeo man one come old would men speak capulet tyb
-Topic 4: friar juliet yet man help heart good lips romeo love
-Topic 5: love lady night come fair one tell farewell go good
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0: love yet night speak one romeo stand give light would
+Topic 1: romeo death man come friar dead go love let upon
+Topic 2: romeo tybalt mercutio lady say villain mus benvolio heart fair
+Topic 3: good name romeo come tell dead peter love well night
+Topic 4: friar go romeo juliet well man capulet lady death may
+Topic 5: come night watch friar lips back till holy good lie
 </pre></div>
 </div>
 </div>
@@ -1943,8 +2087,8 @@ Topic 5: love lady night come fair one tell farewell go good
 </div>
 </div>
 </section>
-<section id="bi-gram-and-tri-gram-analysis">
-<h2>Bi-gram and Tri-gram Analysis<a class="headerlink" href="#bi-gram-and-tri-gram-analysis" title="Link to this heading">#</a></h2>
+<section id="bigram-and-trigram-analysis">
+<h2>Bigram and Trigram Analysis<a class="headerlink" href="#bigram-and-trigram-analysis" title="Link to this heading">#</a></h2>
 <p>This code imports two useful tools for text analysis:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ngrams</span></code> from nltk.util: This allows you to generate n-grams, which are continuous sequences of n items (usually words or tokens) from a given text. For example, <code class="docutils literal notranslate"><span class="pre">bigrams</span></code> (n=2) and <code class="docutils literal notranslate"><span class="pre">trigrams</span></code> (n=3) are often used to study word pairings or common phrases.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Counter</span></code> from collections: This is a dictionary subclass that helps count the frequency of items in a list. It’s commonly used to tally up <code class="docutils literal notranslate"><span class="pre">n-grams</span></code> or other tokens.</p>
@@ -2013,6 +2157,167 @@ Topic 5: love lady night come fair one tell farewell go good
 <img alt="../../../_images/b3800e619fded30d4de4ea737c017a5a33352f9ff537ff125010b1aa22ffc7dc.png" src="../../../_images/b3800e619fded30d4de4ea737c017a5a33352f9ff537ff125010b1aa22ffc7dc.png" />
 </div>
 </div>
+</section>
+<section id="concordance-and-collocation">
+<h2>Concordance and Collocation<a class="headerlink" href="#concordance-and-collocation" title="Link to this heading">#</a></h2>
+<p>For more information please refer to <a class="reference internal" href="../concordance.html"><span class="std std-doc">Concordance and Collocation</span></a></p>
+<section id="concordance">
+<h3>Concordance<a class="headerlink" href="#concordance" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use token variable from above for word tokenization version of raw_text</span>
+<span class="c1"># Create an NLTK Text object</span>
+<span class="n">con_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nltk.text.Text
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code uses <code class="docutils literal notranslate"><span class="pre">.concordance</span></code> to output all occurrences of the word <code class="docutils literal notranslate"><span class="pre">love</span></code> in the text, showing the word in its immediate context (a few words before and after). This helps understand how <code class="docutils literal notranslate"><span class="pre">love</span></code> is used in different parts of the text — useful for analyzing themes, tone, or character relationships (especially in a play like Romeo and Juliet). The search is <strong>case-sensitive</strong>, so make sure <code class="docutils literal notranslate"><span class="pre">love</span></code> matches the casing in your token list. <code class="docutils literal notranslate"><span class="pre">love</span></code> can be changed to other words like <code class="docutils literal notranslate"><span class="pre">death</span></code>, <code class="docutils literal notranslate"><span class="pre">juliet</span></code>, or <code class="docutils literal notranslate"><span class="pre">romeo</span></code> to explore more. By default, the first 25 matches are printed along with 80 charactes on each side. This can be changed by sending <code class="docutils literal notranslate"><span class="pre">lines</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> attributes with your given word.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for the given word</span>
+<span class="n">con_text</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="s1">&#39;love&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 137 matches:
+ fearful passage of their deathmarkd love and the continuance of their parents
+which having makes them short ben in love rom out ben of love rom out of her f
+hem short ben in love rom out ben of love rom out of her favour where i am in 
+ rom out of her favour where i am in love ben alas that love so gentle in his 
+our where i am in love ben alas that love so gentle in his view should be so t
+ous and rough in proof rom alas that love whose view is muffled still should w
+s much to do with hate but more with love why then o brawling love o loving ha
+t more with love why then o brawling love o loving hate o anything of nothing 
+ng sleep that is not what it is this love feel i that feel no love in this dos
+ it is this love feel i that feel no love in this dost thou not laugh ben no c
+ave it prest with more of thine this love that thou hast shown doth add more g
+d more grief to too much of mine own love is a smoke raisd with the fume of si
+n tell me in sadness who is that you love rom what shall i groan and tell thee
+hat is so ill in sadness cousin i do love a woman ben i aimd so near when i su
+a right good markman and shes fair i love ben a right fair mark fair coz is so
+king me despair she hath forsworn to love and in that vow do i live dead that 
+ have invited many a guest such as i love and you among the store one more mos
+e burnt for liars one fairer than my love the allseeing sun neer saw her match
+cales let there be weighd your ladys love against some other maid that i will 
+ the valiant paris seeks you for his love nurse a man young lady lady such a m
+ery flower wife what say you can you love the gentleman this night you shall b
+nt of his eyes this precious book of love this unbound lover to beautify him o
+ speak briefly can you like of paris love jul ill look to like if looking liki
+and to sink in it should you burthen love too great oppression for a tender th
+oppression for a tender thing rom is love a tender thing it is too rough too r
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.concordance</span></code> can accept a bigram, trigram, or longer construction, they are supplied as individual strings within a Python list. (If you try to supply a string with a space in the middle, there will be no results.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for a sequence of words</span>
+<span class="n">con_text</span><span class="o">.</span><span class="n">concordance</span><span class="p">([</span><span class="s1">&#39;romeo&#39;</span><span class="p">,</span> <span class="s1">&#39;juliet&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 1 of 1 matches:
+hat word is father mother tybalt romeo juliet all slain all dead romeo is bani
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="collocation">
+<h3>Collocation<a class="headerlink" href="#collocation" title="Link to this heading">#</a></h3>
+<p>This code imports the necessary tools from NLTK to find collocations — frequent or statistically significant combinations of words — using bigrams and trigrams.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.collocations</span><span class="w"> </span><span class="kn">import</span> <span class="n">BigramCollocationFinder</span><span class="p">,</span> <span class="n">TrigramCollocationFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">BigramAssocMeasures</span><span class="p">,</span> <span class="n">TrigramAssocMeasures</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code initializes objects that provide statistical association measures for evaluating how strongly two (bigram) or three (trigram) words are associated with each other in a corpus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bigram_measures</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">collocations</span><span class="o">.</span><span class="n">BigramAssocMeasures</span><span class="p">()</span>
+<span class="n">trigram_measures</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">collocations</span><span class="o">.</span><span class="n">TrigramAssocMeasures</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code snippet identifies the top 10 bigram collocations in your tokenized text using <strong>Pointwise Mutual Information (PMI)</strong>, a statistical measure of association between two words. It first wraps your list of word tokens (<code class="docutils literal notranslate"><span class="pre">token</span></code>) in an <code class="docutils literal notranslate"><span class="pre">nltk.Text</span></code> object to enable advanced NLP methods like concordances and collocations. Next, it initializes a <code class="docutils literal notranslate"><span class="pre">BigramCollocationFinder</span></code>, which scans through the text to find all word pairs (bigrams) and filters out all bigrams that occur fewer than 3 times in your text. Then, it uses <strong>PMI</strong> to rank how strongly word pairs are associated and returns the top <strong>10 highest-scoring bigrams</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocation_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">collocation_text</span><span class="p">)</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">apply_freq_filter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">pmi</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;saint&#39;, &#39;peters&#39;),
+ (&#39;princes&#39;, &#39;doom&#39;),
+ (&#39;peters&#39;, &#39;church&#39;),
+ (&#39;thousand&#39;, &#39;times&#39;),
+ (&#39;hearts&#39;, &#39;ease&#39;),
+ (&#39;laurences&#39;, &#39;cell&#39;),
+ (&#39;1&#39;, &#39;mus&#39;),
+ (&#39;silver&#39;, &#39;sound&#39;),
+ (&#39;chief&#39;, &#39;watch&#39;),
+ (&#39;capulets&#39;, &#39;orchard&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code is identifying the <strong>top 25 trigram collocations</strong> using <strong>PMI (Pointwise Mutual Information)</strong> after applying a frequency filter. First, it initializes a trigram finder using your list of tokens (<code class="docutils literal notranslate"><span class="pre">collocation_text</span></code>). Then, it looks for all 3-word combinations (<code class="docutils literal notranslate"><span class="pre">trigrams</span></code>). It removes trigrams that appear fewer than <strong>3 times</strong>, this helps eliminate statistically unreliable or noisy phrases. Finally, it returns the <strong>25 trigrams with the highest PMI scores</strong>. <strong>PMI</strong> emphasizes strong, non-random associations between words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finder</span> <span class="o">=</span> <span class="n">TrigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">collocation_text</span><span class="p">)</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">apply_freq_filter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#finder.apply_word_filter(lambda w: w in (&#39;I&#39;, &#39;me&#39;)) Remove particular words with a lambda function</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">trigram_measures</span><span class="o">.</span><span class="n">pmi</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;saint&#39;, &#39;peters&#39;, &#39;church&#39;),
+ (&#39;scene&#39;, &#39;v&#39;, &#39;capulets&#39;),
+ (&#39;scene&#39;, &#39;ii&#39;, &#39;capulets&#39;),
+ (&#39;exeunt&#39;, &#39;scene&#39;, &#39;ii&#39;),
+ (&#39;exeunt&#39;, &#39;scene&#39;, &#39;v&#39;),
+ (&#39;laurences&#39;, &#39;cell&#39;, &#39;enter&#39;),
+ (&#39;exeunt&#39;, &#39;scene&#39;, &#39;iv&#39;),
+ (&#39;friar&#39;, &#39;laurences&#39;, &#39;cell&#39;),
+ (&#39;exeunt&#39;, &#39;scene&#39;, &#39;iii&#39;),
+ (&#39;whose&#39;, &#39;names&#39;, &#39;are&#39;),
+ (&#39;capulets&#39;, &#39;orchard&#39;, &#39;enter&#39;),
+ (&#39;plague&#39;, &#39;o&#39;, &#39;both&#39;),
+ (&#39;bite&#39;, &#39;my&#39;, &#39;thumb&#39;),
+ (&#39;her&#39;, &#39;silver&#39;, &#39;sound&#39;),
+ (&#39;both&#39;, &#39;your&#39;, &#39;houses&#39;),
+ (&#39;farewell&#39;, &#39;exeunt&#39;, &#39;scene&#39;),
+ (&#39;the&#39;, &#39;princes&#39;, &#39;doom&#39;),
+ (&#39;a&#39;, &#39;thousand&#39;, &#39;times&#39;),
+ (&#39;capulets&#39;, &#39;house&#39;, &#39;enter&#39;),
+ (&#39;enter&#39;, &#39;friar&#39;, &#39;laurence&#39;),
+ (&#39;then&#39;, &#39;dreams&#39;, &#39;he&#39;),
+ (&#39;son&#39;, &#39;and&#39;, &#39;heir&#39;),
+ (&#39;cell&#39;, &#39;enter&#39;, &#39;friar&#39;),
+ (&#39;orchard&#39;, &#39;enter&#39;, &#39;romeo&#39;),
+ (&#39;enter&#39;, &#39;old&#39;, &#39;capulet&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -2090,7 +2395,12 @@ Topic 5: love lady night come fair one tell farewell go good
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ner-concepts">Using NER concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">Topic Modeling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bi-gram-and-tri-gram-analysis">Bi-gram and Tri-gram Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bigram-and-trigram-analysis">Bigram and Trigram Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance-and-collocation">Concordance and Collocation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance">Concordance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collocation">Collocation</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
