@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Text Preprocessing Methods &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+    <title>Example of Text Mining Concepts &#8212; USC Libraries - DRS Resources for Data Literacy</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/TextPreprocessing/TextPreprocessingMethods';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Bar, Line, Scatter Plot" href="../../overview/Charts.html" />
-    <link rel="prev" title="Extracting Data From Websites Using API - A Beginners Guide" href="../../API/API.html" />
+    <link rel="next" title="Named Entity Recognition (NER)" href="../MultiLingualNer.html" />
+    <link rel="prev" title="Advanced Text Analysis" href="../AdvancedTextAnalysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,26 +185,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Python/PandasPython.html">Pandas Python Tutorials</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataWranglingR.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataExtraction.html">Brief Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text Preprocessing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Creating Maps with Python</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../overview/DataExtraction.html">Brief Overview</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../overview/DataWranglingR.html">Brief Overview</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -394,7 +394,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Text Preprocessing Methods</h1>
+    <h1>Example of Text Mining Concepts</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,8 +431,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="text-preprocessing-methods">
-<h1>Text Preprocessing Methods<a class="headerlink" href="#text-preprocessing-methods" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="example-of-text-mining-concepts">
+<h1>Example of Text Mining Concepts<a class="headerlink" href="#example-of-text-mining-concepts" title="Link to this heading">#</a></h1>
 <p>Throughout this notebook we will be using a <a class="reference download internal" download="" href="../../../_downloads/c557b1a0fe6d7a10bc91a1f56f0fd5f3/RomeoAndJuliet.txt"><span class="xref download myst">Romeo and Juliet ebook</span></a></p>
 <p>The line <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">nltk</span></code> is used to install the <strong>Natural Language Toolkit (NLTK)</strong>, a popular Python library for natural language processing (NLP).</p>
 <ul class="simple">
@@ -2352,20 +2352,20 @@ hat word is father mother tybalt romeo juliet all slain all dead romeo is bani
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../API/API.html"
+       href="../AdvancedTextAnalysis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Extracting Data From Websites Using API - A Beginners Guide</p>
+        <p class="prev-next-title">Advanced Text Analysis</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../overview/Charts.html"
+       href="../MultiLingualNer.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bar, Line, Scatter Plot</p>
+        <p class="prev-next-title">Named Entity Recognition (NER)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
