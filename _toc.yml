@@ -11,29 +11,29 @@ parts:
     - file: src/Python/IntermediatePython
     - file: src/Python/PandasPython
 
+  - caption: Data Wrangling with R
+    chapters:
+    - file: src/overview/DataWranglingR
+
+  - caption: Data Extraction
+    chapters:
+    - file: src/overview/DataExtraction
+    - file: src/API/API
+      title: Using APIs    
+
   - caption: Text Mining
     chapters:
     - file: src/TextMining/IntroductionTextAnalysis
     - file: src/TextMining/AdvancedTextAnalysis
-    - file: src/TextMining/MultiLingualNer
-    - file: src/API/API
-      title: Using APIs
     - file: src/TextMining/TextPreprocessing/TextPreprocessingMethods
-      title: Text Preprocessing
+      title: Example   
+    - file: src/TextMining/MultiLingualNer
 
   - caption: Data Visualization
     chapters:
     - file: src/overview/Charts
     - file: src/Wolfe-notebooks/Maps
       title: Creating Maps with Python
-
-  - caption: Data Extraction
-    chapters:
-    - file: src/overview/DataExtraction
-
-  - caption: Data Wrangling with R
-    chapters:
-    - file: src/overview/DataWranglingR
 
   - caption: Machine Learning
     chapters:
