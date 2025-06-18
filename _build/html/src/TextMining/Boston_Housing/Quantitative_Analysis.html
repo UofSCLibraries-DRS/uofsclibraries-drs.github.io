@@ -1,0 +1,2103 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quantitative Analysis &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/Boston_Housing/Quantitative_Analysis';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Python/BasicPython.html">Basic Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataWranglingR.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataExtraction.html">Brief Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Creating Maps with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/MachineLearning.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/TextMining/Boston_Housing/Quantitative_Analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/TextMining/Boston_Housing/Quantitative_Analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quantitative Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-libraries">Installing Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-dataframes">Printing DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-retrieving-data">Indexing and Retrieving Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-cells-columns-and-rows">Applying Functions to Cells, Columns and Rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">Grouping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-tables">Summary Tables</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="quantitative-analysis">
+<h1>Quantitative Analysis<a class="headerlink" href="#quantitative-analysis" title="Link to this heading">#</a></h1>
+<section id="installing-libraries">
+<h2>Installing Libraries<a class="headerlink" href="#installing-libraries" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install numpy 
+<span class="o">%</span><span class="k">pip</span> install pandas
+<span class="o">%</span><span class="k">pip</span> install seaborn
+<span class="o">%</span><span class="k">pip</span> install matplotlib
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (2.3.0)
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: pandas in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (2.3.0)
+Requirement already satisfied: numpy&gt;=1.23.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2.3.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: seaborn in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (0.13.2)
+Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from seaborn) (2.3.0)
+Requirement already satisfied: pandas&gt;=1.2 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from seaborn) (2.3.0)
+Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.4 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from seaborn) (3.10.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.3.2)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (4.58.4)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (25.0)
+Requirement already satisfied: pillow&gt;=8 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (11.2.1)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: matplotlib in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (3.10.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (1.3.2)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (4.58.4)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: numpy&gt;=1.23 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (2.3.0)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (11.2.1)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/library_work/uofsclibraries-drs.github.io/.venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploratory-data-analysis">
+<h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h2>
+<p>Using <code class="docutils literal notranslate"><span class="pre">set_option</span></code> in pandas so that floating-point numbers (decimals) are shown with only <strong>2 digits after the decimal point</strong> when printed. It helps make data tables easier to read.</p>
+<p>For more arguments <code class="docutils literal notranslate"><span class="pre">set_option</span></code> can take checkout <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.set_option.html">Pandas Documentation on set_options</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set pandas options for better display of floating point numbers</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.precision&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> to load a CSV file named <code class="docutils literal notranslate"><span class="pre">&quot;Boston.csv&quot;</span></code> into a pandas <strong>DataFrame</strong> called <code class="docutils literal notranslate"><span class="pre">df</span></code>. The using <code class="docutils literal notranslate"><span class="pre">head()</span></code> to display the first 5 rows, by default. Could use <code class="docutils literal notranslate"><span class="pre">head(10)</span></code> to display the first 10 rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the Boston housing dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./Boston.csv&quot;</span><span class="p">)</span>
+<span class="c1"># Display the first few rows of the dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>black</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.32e-03</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0</td>
+      <td>0.54</td>
+      <td>6.58</td>
+      <td>65.2</td>
+      <td>4.09</td>
+      <td>1</td>
+      <td>296</td>
+      <td>15.3</td>
+      <td>396.90</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2.73e-02</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0</td>
+      <td>0.47</td>
+      <td>6.42</td>
+      <td>78.9</td>
+      <td>4.97</td>
+      <td>2</td>
+      <td>242</td>
+      <td>17.8</td>
+      <td>396.90</td>
+      <td>9.14</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2.73e-02</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0</td>
+      <td>0.47</td>
+      <td>7.18</td>
+      <td>61.1</td>
+      <td>4.97</td>
+      <td>2</td>
+      <td>242</td>
+      <td>17.8</td>
+      <td>392.83</td>
+      <td>4.03</td>
+      <td>34.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>3.24e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0</td>
+      <td>0.46</td>
+      <td>7.00</td>
+      <td>45.8</td>
+      <td>6.06</td>
+      <td>3</td>
+      <td>222</td>
+      <td>18.7</td>
+      <td>394.63</td>
+      <td>2.94</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.91e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0</td>
+      <td>0.46</td>
+      <td>7.15</td>
+      <td>54.2</td>
+      <td>6.06</td>
+      <td>3</td>
+      <td>222</td>
+      <td>18.7</td>
+      <td>396.90</td>
+      <td>5.33</td>
+      <td>36.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">drop()</span></code> removes the column named ‘Unnamed: 0’ from the DataFrame df in place (without creating a new DataFrame). <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> means you’re dropping a column (not a row). <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> means the change is made directly to df — no need to reassign it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop the &#39;Unnamed: 0&#39; column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="printing-dataframes">
+<h3>Printing DataFrames<a class="headerlink" href="#printing-dataframes" title="Link to this heading">#</a></h3>
+<p>Displays the <strong>number of rows and columns</strong> in the dataset <code class="docutils literal notranslate"><span class="pre">df</span></code>. <code class="docutils literal notranslate"><span class="pre">.shape</span></code> returns a <strong>tuple</strong>: <code class="docutils literal notranslate"><span class="pre">(num_rows,</span> <span class="pre">num_columns)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the number of rows and columns in the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(506, 14)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Prints the <strong>column names</strong> of the DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>. <code class="docutils literal notranslate"><span class="pre">.columns</span></code> returns an <strong>Index object</strong> containing all column labels. This helps you quickly see what features (columns) are included in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the column names of the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;crim&#39;, &#39;zn&#39;, &#39;indus&#39;, &#39;chas&#39;, &#39;nox&#39;, &#39;rm&#39;, &#39;age&#39;, &#39;dis&#39;, &#39;rad&#39;, &#39;tax&#39;,
+       &#39;ptratio&#39;, &#39;black&#39;, &#39;lstat&#39;, &#39;medv&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.info</span></code> displays a summary of the dataset, including: number of rows and columns, column names, number of non-null (non-missing) values in each column, column data types, and memory usage. This is helpful to see if the data has any missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the summary information of the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 506 entries, 0 to 505
+Data columns (total 14 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   crim     506 non-null    float64
+ 1   zn       506 non-null    float64
+ 2   indus    506 non-null    float64
+ 3   chas     506 non-null    int64  
+ 4   nox      506 non-null    float64
+ 5   rm       506 non-null    float64
+ 6   age      506 non-null    float64
+ 7   dis      506 non-null    float64
+ 8   rad      506 non-null    int64  
+ 9   tax      506 non-null    int64  
+ 10  ptratio  506 non-null    float64
+ 11  black    506 non-null    float64
+ 12  lstat    506 non-null    float64
+ 13  medv     506 non-null    float64
+dtypes: float64(11), int64(3)
+memory usage: 55.5 KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<p>The column <code class="docutils literal notranslate"><span class="pre">chas</span></code> represents Charles River dummy variable (= 1 if tract bounds river; 0 otherwise). If this variable was not already of type <code class="docutils literal notranslate"><span class="pre">int</span></code> and was of type <code class="docutils literal notranslate"><span class="pre">boolean</span></code> we could use <code class="docutils literal notranslate"><span class="pre">astype()</span></code> to change its type from <code class="docutils literal notranslate"><span class="pre">boolean</span></code> to <code class="docutils literal notranslate"><span class="pre">int</span></code>. This would allow for easier numerical analysis.</p>
+<p>Since, <code class="docutils literal notranslate"><span class="pre">chas</span></code> is already of type <code class="docutils literal notranslate"><span class="pre">int</span></code> we will leave the next line commented out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df[&quot;chas&quot;] = df[&quot;chas&quot;].astype(&quot;int64&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">describe()</span></code> displays basic statistical summaries for each numeric column in the dataset df.</p>
+<p>Output includes:
+count – number of non-missing values
+mean – average
+std – standard deviation
+min – minimum value
+25%, 50% (median), 75% – quartiles
+max – maximum value</p>
+<p>Using this can help you understand your data by seeing the ranges, detect outliers or skews, check for data issues, and help guide you in processing the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display basic statistics of the dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>black</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5.06e+02</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+      <td>506.00</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3.61e+00</td>
+      <td>11.36</td>
+      <td>11.14</td>
+      <td>0.07</td>
+      <td>0.55</td>
+      <td>6.28</td>
+      <td>68.57</td>
+      <td>3.80</td>
+      <td>9.55</td>
+      <td>408.24</td>
+      <td>18.46</td>
+      <td>356.67</td>
+      <td>12.65</td>
+      <td>22.53</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>8.60e+00</td>
+      <td>23.32</td>
+      <td>6.86</td>
+      <td>0.25</td>
+      <td>0.12</td>
+      <td>0.70</td>
+      <td>28.15</td>
+      <td>2.11</td>
+      <td>8.71</td>
+      <td>168.54</td>
+      <td>2.16</td>
+      <td>91.29</td>
+      <td>7.14</td>
+      <td>9.20</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>6.32e-03</td>
+      <td>0.00</td>
+      <td>0.46</td>
+      <td>0.00</td>
+      <td>0.39</td>
+      <td>3.56</td>
+      <td>2.90</td>
+      <td>1.13</td>
+      <td>1.00</td>
+      <td>187.00</td>
+      <td>12.60</td>
+      <td>0.32</td>
+      <td>1.73</td>
+      <td>5.00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>8.20e-02</td>
+      <td>0.00</td>
+      <td>5.19</td>
+      <td>0.00</td>
+      <td>0.45</td>
+      <td>5.89</td>
+      <td>45.02</td>
+      <td>2.10</td>
+      <td>4.00</td>
+      <td>279.00</td>
+      <td>17.40</td>
+      <td>375.38</td>
+      <td>6.95</td>
+      <td>17.02</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2.57e-01</td>
+      <td>0.00</td>
+      <td>9.69</td>
+      <td>0.00</td>
+      <td>0.54</td>
+      <td>6.21</td>
+      <td>77.50</td>
+      <td>3.21</td>
+      <td>5.00</td>
+      <td>330.00</td>
+      <td>19.05</td>
+      <td>391.44</td>
+      <td>11.36</td>
+      <td>21.20</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>3.68e+00</td>
+      <td>12.50</td>
+      <td>18.10</td>
+      <td>0.00</td>
+      <td>0.62</td>
+      <td>6.62</td>
+      <td>94.07</td>
+      <td>5.19</td>
+      <td>24.00</td>
+      <td>666.00</td>
+      <td>20.20</td>
+      <td>396.23</td>
+      <td>16.96</td>
+      <td>25.00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>8.90e+01</td>
+      <td>100.00</td>
+      <td>27.74</td>
+      <td>1.00</td>
+      <td>0.87</td>
+      <td>8.78</td>
+      <td>100.00</td>
+      <td>12.13</td>
+      <td>24.00</td>
+      <td>711.00</td>
+      <td>22.00</td>
+      <td>396.90</td>
+      <td>37.97</td>
+      <td>50.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="sorting">
+<h3>Sorting<a class="headerlink" href="#sorting" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> <strong>sorts the dataset by the <code class="docutils literal notranslate"><span class="pre">tax</span></code> column in descending order</strong> (from highest to lowest) and then uses <code class="docutils literal notranslate"><span class="pre">head()</span></code> to display the <strong>top 5 rows</strong> of the result. This helps you <strong>quickly find the most heavily taxed areas</strong> in the dataset and can reveal <strong>extreme values or outliers</strong> in the <code class="docutils literal notranslate"><span class="pre">tax</span></code> column.</p>
+<p>If you wanted the <strong>lowest</strong> tax values, you would set <code class="docutils literal notranslate"><span class="pre">ascending=True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the first 5 rows of the dataset,  sorted by a specific column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;tax&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>black</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>492</th>
+      <td>0.11</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.98</td>
+      <td>83.5</td>
+      <td>2.11</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>396.90</td>
+      <td>13.35</td>
+      <td>20.1</td>
+    </tr>
+    <tr>
+      <th>491</th>
+      <td>0.11</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.98</td>
+      <td>98.8</td>
+      <td>1.87</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>390.11</td>
+      <td>18.07</td>
+      <td>13.6</td>
+    </tr>
+    <tr>
+      <th>490</th>
+      <td>0.21</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.09</td>
+      <td>98.0</td>
+      <td>1.82</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>318.43</td>
+      <td>29.68</td>
+      <td>8.1</td>
+    </tr>
+    <tr>
+      <th>489</th>
+      <td>0.18</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.41</td>
+      <td>98.3</td>
+      <td>1.76</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>344.05</td>
+      <td>23.97</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>488</th>
+      <td>0.15</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.45</td>
+      <td>92.7</td>
+      <td>1.82</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>395.09</td>
+      <td>18.06</td>
+      <td>15.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can also sort by more than one column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the first 5 rows of the dataset, sorted by &#39;chas&#39; and &#39;tax&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;chas&quot;</span><span class="p">,</span> <span class="s2">&quot;tax&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>black</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>488</th>
+      <td>0.15</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.45</td>
+      <td>92.7</td>
+      <td>1.82</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>395.09</td>
+      <td>18.06</td>
+      <td>15.2</td>
+    </tr>
+    <tr>
+      <th>489</th>
+      <td>0.18</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.41</td>
+      <td>98.3</td>
+      <td>1.76</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>344.05</td>
+      <td>23.97</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>490</th>
+      <td>0.21</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.09</td>
+      <td>98.0</td>
+      <td>1.82</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>318.43</td>
+      <td>29.68</td>
+      <td>8.1</td>
+    </tr>
+    <tr>
+      <th>491</th>
+      <td>0.11</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.98</td>
+      <td>98.8</td>
+      <td>1.87</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>390.11</td>
+      <td>18.07</td>
+      <td>13.6</td>
+    </tr>
+    <tr>
+      <th>492</th>
+      <td>0.11</td>
+      <td>0.0</td>
+      <td>27.74</td>
+      <td>0</td>
+      <td>0.61</td>
+      <td>5.98</td>
+      <td>83.5</td>
+      <td>2.11</td>
+      <td>4</td>
+      <td>711</td>
+      <td>20.1</td>
+      <td>396.90</td>
+      <td>13.35</td>
+      <td>20.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="indexing-and-retrieving-data">
+<h3>Indexing and Retrieving Data<a class="headerlink" href="#indexing-and-retrieving-data" title="Link to this heading">#</a></h3>
+<p>To get a single column, you can use a <code class="docutils literal notranslate"><span class="pre">DataFrame['Name']</span></code> construction. Using this we can get the proportion of homes near the Charles River.  We can wrap it in <code class="docutils literal notranslate"><span class="pre">float()</span></code> to convert it to a regular python float value.</p>
+<p>Our result tells us that <strong>6.92%</strong> of these homes are along the Charles River.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the mean of the &#39;chas&#39; column</span>
+<span class="nb">float</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;chas&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0691699604743083
+</pre></div>
+</div>
+</div>
+</div>
+<p>Boolean indexing with a single column is simple and powerful. You use the syntax <code class="docutils literal notranslate"><span class="pre">df[P(df['Name'])]</span></code>, where <code class="docutils literal notranslate"><span class="pre">P</span></code> is a condition applied to each value in the <code class="docutils literal notranslate"><span class="pre">'Name'</span></code> column. This returns a new DataFrame that includes <strong>only the rows</strong> where the <code class="docutils literal notranslate"><span class="pre">'Name'</span></code> values meet the condition <code class="docutils literal notranslate"><span class="pre">P</span></code>.</p>
+<p>We can use this to get the average numerical values for housed that are along the Charles River.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;chas&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>crim         1.85
+zn           7.71
+indus       12.72
+chas         1.00
+nox          0.59
+rm           6.52
+age         77.50
+dis          3.03
+rad          9.31
+tax        386.26
+ptratio     17.49
+black      373.00
+lstat       11.24
+medv        28.44
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>What is the average number of rooms per dwelling of houses that are on the Charles River?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;chas&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s2">&quot;rm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.5196000000000005
+</pre></div>
+</div>
+</div>
+</div>
+<p>DataFrames can be accessed using column labels, row labels (index), or row numbers. The <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> method is used for indexing by labels, while <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> is used for indexing by position (row/column numbers).</p>
+<p>In the first example, we’re asking for all rows with index values from 0 to 5 <strong>and</strong> all columns from <code class="docutils literal notranslate"><span class="pre">'crim'</span></code> to <code class="docutils literal notranslate"><span class="pre">'indus'</span></code>, <strong>including both endpoints</strong>. In the second example, we’re requesting the values from the <strong>first five rows</strong> and the <strong>first three columns</strong>, using standard Python slicing—so the end index is <strong>not included</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;crim&quot;</span><span class="p">:</span><span class="s2">&quot;indus&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.32e-03</td>
+      <td>18.0</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.73e-02</td>
+      <td>0.0</td>
+      <td>7.07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.73e-02</td>
+      <td>0.0</td>
+      <td>7.07</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.24e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.91e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.99e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.32e-03</td>
+      <td>18.0</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.73e-02</td>
+      <td>0.0</td>
+      <td>7.07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.73e-02</td>
+      <td>0.0</td>
+      <td>7.07</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.24e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.91e-02</td>
+      <td>0.0</td>
+      <td>2.18</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To access the first or the last line of the data frame, we can use the df[:1] or df[-1:] construct:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>black</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.32e-03</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0</td>
+      <td>0.54</td>
+      <td>6.58</td>
+      <td>65.2</td>
+      <td>4.09</td>
+      <td>1</td>
+      <td>296</td>
+      <td>15.3</td>
+      <td>396.9</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>black</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>505</th>
+      <td>0.05</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.57</td>
+      <td>6.03</td>
+      <td>80.8</td>
+      <td>2.5</td>
+      <td>1</td>
+      <td>273</td>
+      <td>21.0</td>
+      <td>396.9</td>
+      <td>7.88</td>
+      <td>11.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="applying-functions-to-cells-columns-and-rows">
+<h3>Applying Functions to Cells, Columns and Rows<a class="headerlink" href="#applying-functions-to-cells-columns-and-rows" title="Link to this heading">#</a></h3>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">apply()</span></code> to apply functions to each column. Here we are getting the max value from each column. You can also use <code class="docutils literal notranslate"><span class="pre">apply()</span></code> on each row by setting <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>crim        88.98
+zn         100.00
+indus       27.74
+chas         1.00
+nox          0.87
+rm           8.78
+age        100.00
+dis         12.13
+rad         24.00
+tax        711.00
+ptratio     22.00
+black      396.90
+lstat       37.97
+medv        50.00
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="grouping">
+<h3>Grouping<a class="headerlink" href="#grouping" title="Link to this heading">#</a></h3>
+<p>This code <strong>Groups the DataFrame by the <code class="docutils literal notranslate"><span class="pre">'chas'</span></code> column</strong> and shows summary statistics for the specified columns (<code class="docutils literal notranslate"><span class="pre">&quot;crim&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;zn&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;indus&quot;</span></code>).</p>
+<p><strong>Step-by-step explanation</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">columns_to_show</span> <span class="pre">=</span> <span class="pre">[...]</span></code></strong>
+Selects the three columns you want to summarize.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">df.groupby([&quot;chas&quot;])</span></code></strong>
+Splits the data into two groups based on the binary <code class="docutils literal notranslate"><span class="pre">'chas'</span></code> column:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = not near Charles River</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> = near Charles River</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">[columns_to_show]</span></code></strong>
+Limits the output to just the <code class="docutils literal notranslate"><span class="pre">&quot;crim&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;zn&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;indus&quot;</span></code> columns.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">.describe(percentiles=[])</span></code></strong>
+Returns descriptive statistics for each group:</p>
+<ul class="simple">
+<li><p><strong>count</strong>, <strong>mean</strong>, <strong>std</strong>, <strong>min</strong>, <strong>50% (median)</strong>, <strong>max</strong></p></li>
+<li><p>No extra percentiles (like 25% and 75%) are included because <code class="docutils literal notranslate"><span class="pre">percentiles=[]</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Why it’s useful</strong>:</p>
+<p>This lets you <strong>compare basic statistics</strong> (e.g., mean crime rate or zoning area) <strong>between homes near and not near the Charles River</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;crim&quot;</span><span class="p">,</span> <span class="s2">&quot;zn&quot;</span><span class="p">,</span> <span class="s2">&quot;indus&quot;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;chas&quot;</span><span class="p">])[</span><span class="n">columns_to_show</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">crim</th>
+      <th colspan="6" halign="left">zn</th>
+      <th colspan="6" halign="left">indus</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>50%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>50%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>50%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>471.0</td>
+      <td>3.74</td>
+      <td>8.88</td>
+      <td>6.32e-03</td>
+      <td>0.25</td>
+      <td>88.98</td>
+      <td>471.0</td>
+      <td>11.63</td>
+      <td>23.62</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>471.0</td>
+      <td>11.02</td>
+      <td>6.91</td>
+      <td>0.46</td>
+      <td>8.56</td>
+      <td>27.74</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>35.0</td>
+      <td>1.85</td>
+      <td>2.49</td>
+      <td>1.50e-02</td>
+      <td>0.45</td>
+      <td>8.98</td>
+      <td>35.0</td>
+      <td>7.71</td>
+      <td>18.80</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>35.0</td>
+      <td>12.72</td>
+      <td>5.96</td>
+      <td>1.21</td>
+      <td>13.89</td>
+      <td>19.58</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can do the same as above but use <code class="docutils literal notranslate"><span class="pre">.agg</span></code> by passing it a list of funcions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;crim&quot;</span><span class="p">,</span> <span class="s2">&quot;zn&quot;</span><span class="p">,</span> <span class="s2">&quot;indus&quot;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;chas&quot;</span><span class="p">])[</span><span class="n">columns_to_show</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">crim</th>
+      <th colspan="4" halign="left">zn</th>
+      <th colspan="4" halign="left">indus</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.74</td>
+      <td>8.88</td>
+      <td>6.32e-03</td>
+      <td>88.98</td>
+      <td>11.63</td>
+      <td>23.62</td>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>11.02</td>
+      <td>6.91</td>
+      <td>0.46</td>
+      <td>27.74</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.85</td>
+      <td>2.49</td>
+      <td>1.50e-02</td>
+      <td>8.98</td>
+      <td>7.71</td>
+      <td>18.80</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>12.72</td>
+      <td>5.96</td>
+      <td>1.21</td>
+      <td>19.58</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summary-tables">
+<h3>Summary Tables<a class="headerlink" href="#summary-tables" title="Link to this heading">#</a></h3>
+<p>Suppose we want to see how the observations in our sample are distributed in the context of two variables - <code class="docutils literal notranslate"><span class="pre">chas</span></code> and <code class="docutils literal notranslate"><span class="pre">rad</span></code>. To do so, we can build a contingency table using the <code class="docutils literal notranslate"><span class="pre">crosstab</span></code> method. This can be used to help you see the relationship between two variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;chas&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;rad&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rad</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>24</th>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19</td>
+      <td>24</td>
+      <td>36</td>
+      <td>102</td>
+      <td>104</td>
+      <td>26</td>
+      <td>17</td>
+      <td>19</td>
+      <td>124</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>8</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> creates a <strong>pivot table</strong> that shows the <strong>average values</strong> of the <code class="docutils literal notranslate"><span class="pre">&quot;zn&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;indus&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;nox&quot;</span></code> columns, <strong>grouped by</strong> the values in the <code class="docutils literal notranslate"><span class="pre">&quot;chas&quot;</span></code> column.</p>
+<p><strong>What it does</strong>:</p>
+<ul class="simple">
+<li><p><strong>Rows (<code class="docutils literal notranslate"><span class="pre">index</span></code>)</strong>: Unique values in <code class="docutils literal notranslate"><span class="pre">&quot;chas&quot;</span></code> (usually 0 or 1 — whether a home is near the Charles River).</p></li>
+<li><p><strong>Values</strong>: The columns <code class="docutils literal notranslate"><span class="pre">&quot;zn&quot;</span></code> (proportion of residential land zoned for lots over 25,000 sq.ft.), <code class="docutils literal notranslate"><span class="pre">&quot;indus&quot;</span></code> (proportion of non-retail business acres per town), and <code class="docutils literal notranslate"><span class="pre">&quot;nox&quot;</span></code> (nitric oxides concentration (parts per 10 million)).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">aggfunc=&quot;mean&quot;</span></code></strong>: Calculates the <strong>mean</strong> for each group.</p></li>
+</ul>
+<p><strong>Why it’s useful</strong>:</p>
+<p>It helps you <strong>compare average zoning, industrial proportion, and pollution</strong> between homes near the river and those that aren’t.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;zn&quot;</span><span class="p">,</span> <span class="s2">&quot;indus&quot;</span><span class="p">,</span> <span class="s2">&quot;nox&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;chas&quot;</span><span class="p">],</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>indus</th>
+      <th>nox</th>
+      <th>zn</th>
+    </tr>
+    <tr>
+      <th>chas</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11.02</td>
+      <td>0.55</td>
+      <td>11.63</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12.72</td>
+      <td>0.59</td>
+      <td>7.71</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Uses, <code class="docutils literal notranslate"><span class="pre">sns.displot</span></code>, Seaborn to create a distribution plot (histogram) of the <code class="docutils literal notranslate"><span class="pre">medv</span></code> column, which represents median home values in the Boston housing dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;medv&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c4937c60735669c16515620c16369b475d2a694c61cee618f8716f1ed4b85f06.png" src="../../../_images/c4937c60735669c16515620c16369b475d2a694c61cee618f8716f1ed4b85f06.png" />
+</div>
+</div>
+<p>This code block creates a <strong>heatmap of the correlation matrix</strong> for the dataset <code class="docutils literal notranslate"><span class="pre">df</span></code> using Matplotlib and Seaborn:</p>
+<p><strong>What this does</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">df.corr()</span></code></strong> calculates the <strong>Pearson correlation</strong> between all numeric features.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sns.heatmap()</span></code></strong> visualizes this correlation matrix:</p>
+<ul>
+<li><p>Cells are <strong>color-coded</strong> by strength of correlation (red = stronger).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">annot=True</span></code></strong> shows the numeric correlation values in each cell.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">fmt='.2f'</span></code></strong> ensures values are shown with 2 decimal places.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Why it’s useful</strong>:</p>
+<ul class="simple">
+<li><p>Helps you <strong>spot strong positive or negative relationships</strong> between variables.</p></li>
+<li><p>Useful for <strong>feature selection</strong> or identifying <strong>multicollinearity</strong> in models.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">cor</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cor</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/e1fa6fc07555156ba657bb797489c7b3b8906302b9a65b9105e2648c729f782b.png" src="../../../_images/e1fa6fc07555156ba657bb797489c7b3b8906302b9a65b9105e2648c729f782b.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/TextMining/Boston_Housing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-libraries">Installing Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-dataframes">Printing DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-retrieving-data">Indexing and Retrieving Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-cells-columns-and-rows">Applying Functions to Cells, Columns and Rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping">Grouping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-tables">Summary Tables</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
