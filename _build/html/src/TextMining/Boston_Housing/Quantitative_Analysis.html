@@ -198,7 +198,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
@@ -404,6 +403,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-libraries">Installing Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-dataframes">Printing DataFrames</a></li>
@@ -427,6 +427,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quantitative-analysis">
 <h1>Quantitative Analysis<a class="headerlink" href="#quantitative-analysis" title="Link to this heading">#</a></h1>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
+<p>Information, code examples, and dataset insights in this notebook were adapted or inspired by the following Kaggle resources:</p>
+<p>Kashnitsky, A. – <a class="reference external" href="https://www.kaggle.com/code/kashnitsky/topic-1-exploratory-data-analysis-with-pandas#2.-First-attempt-at-predicting-telecom-churn">Topic 1: Exploratory Data Analysis with Pandas</a><br />
+Ziad Hamada Fathy – <a class="reference external" href="https://www.kaggle.com/code/ziadhamadafathy/boston-house-price-predictions">Boston House Price Predictions</a><br />
+Willian Leite – <a class="reference external" href="https://www.kaggle.com/datasets/willianleite/boston-housing-dataset/code">Boston Housing Dataset</a></p>
+<p>Thanks to these contributors for their valuable work.</p>
+<p>This notebook was created by Meara Cox, June 2024, as a part of her summer internship.</p>
+</section>
 <section id="installing-libraries">
 <h2>Installing Libraries<a class="headerlink" href="#installing-libraries" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -503,7 +512,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-<p>Using <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> to load a CSV file named <code class="docutils literal notranslate"><span class="pre">&quot;Boston.csv&quot;</span></code> into a pandas <strong>DataFrame</strong> called <code class="docutils literal notranslate"><span class="pre">df</span></code>. The using <code class="docutils literal notranslate"><span class="pre">head()</span></code> to display the first 5 rows, by default. Could use <code class="docutils literal notranslate"><span class="pre">head(10)</span></code> to display the first 10 rows.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> to load a CSV file named <code class="docutils literal notranslate"><span class="pre">&quot;Boston.csv&quot;</span></code> into a pandas <strong>DataFrame</strong> called <code class="docutils literal notranslate"><span class="pre">df</span></code>. The using <code class="docutils literal notranslate"><span class="pre">head()</span></code> to display the first 5 rows, by default. We could also use <code class="docutils literal notranslate"><span class="pre">head(10)</span></code> if we wanted to display the first 10 rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the Boston housing dataset</span>
@@ -1974,6 +1983,7 @@ Returns descriptive statistics for each group:</p>
 <li><p>Helps you <strong>spot strong positive or negative relationships</strong> between variables.</p></li>
 <li><p>Useful for <strong>feature selection</strong> or identifying <strong>multicollinearity</strong> in models.</p></li>
 </ul>
+<p><strong>Multicollinearity</strong> occurs when two or more predictor variables are highly correlated, which can make it difficult to determine their individual effects in a regression model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
@@ -2036,6 +2046,7 @@ Returns descriptive statistics for each group:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-libraries">Installing Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-dataframes">Printing DataFrames</a></li>
