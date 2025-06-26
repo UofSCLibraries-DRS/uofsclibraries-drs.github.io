@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Performing Analysis on Tidy Text &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/With_R/Tidy_Text_Analysis';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Python/BasicPython.html">Basic Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataWranglingR.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Creating Maps with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/MachineLearning.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/TextMining/With_R/Tidy_Text_Analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/TextMining/With_R/Tidy_Text_Analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Performing Analysis on Tidy Text</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-to-install">Packages to Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sentiments-dataset">The <code class="docutils literal notranslate"><span class="pre">sentiments</span></code> Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis-with-inner-join">Sentiment Analysis with Inner Join</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="performing-analysis-on-tidy-text">
+<h1>Performing Analysis on Tidy Text<a class="headerlink" href="#performing-analysis-on-tidy-text" title="Link to this heading">#</a></h1>
+<section id="packages-to-install">
+<h2>Packages to Install<a class="headerlink" href="#packages-to-install" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tidytext&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;textdata&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;stringr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;janeaustenr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmpkIayK9/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmpkIayK9/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmpkIayK9/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmpkIayK9/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmpkIayK9/downloaded_packages
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sentiment-analysis">
+<h2>Sentiment Analysis<a class="headerlink" href="#sentiment-analysis" title="Link to this heading">#</a></h2>
+<p>In the previous chapter, we explored the tidy text format and how it helps analyze word frequency and compare documents. Now, we shift focus to opinion mining or sentiment analysis, where we assess the emotional tone of a text. Just as human readers infer emotions like positivity, negativity, surprise, or disgust from words, we can use text mining tools to programmatically analyze a text’s emotional content. A common approach to sentiment analysis is to break the text into individual words, assign sentiment scores to those words, and sum them to understand the overall sentiment of the text. While this isn’t the only method for sentiment analysis, it is widely used and fits naturally within the tidy data framework and toolset.</p>
+<section id="the-sentiments-dataset">
+<h3>The <code class="docutils literal notranslate"><span class="pre">sentiments</span></code> Dataset<a class="headerlink" href="#the-sentiments-dataset" title="Link to this heading">#</a></h3>
+<p>As discussed earlier, there are several methods and dictionaries available for evaluating opinion or emotion in text. The <strong>tidytext</strong> package provides access to three commonly used general-purpose sentiment lexicons: <strong>AFINN</strong>, developed by <a class="reference external" href="https://www2.imm.dtu.dk/pubdb/pubs/6010-full.html">Finn Årup Nielsen</a>; <strong>bing</strong>, from <a class="reference external" href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html">Bing Liu and collaborators</a>; and <strong>nrc</strong>, created by <a class="reference external" href="https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm">Saif Mohammad and Peter Turney</a>. All three lexicons are based on unigrams, meaning they assign sentiment scores to individual words. The <em>nrc</em> lexicon categorizes words as positive, negative, or into specific emotions like joy, anger, sadness, and trust, using a simple “yes”/”no” system. The <em>bing</em> lexicon also applies a binary positive or negative label to each word, while the <em>AFINN</em> lexicon assigns numerical sentiment scores ranging from -5 (most negative) to 5 (most positive). These lexicons are distributed under different licenses, so it’s important to review the terms and ensure they align with your project requirements before use.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_sentiments()</span></code> function allows us to easily access specific sentiment lexicons along with their corresponding sentiment measures. By specifying the lexicon name (such as <code class="docutils literal notranslate"><span class="pre">&quot;afinn&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bing&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;nrc&quot;</span></code>), we can retrieve the appropriate set of words and their sentiment scores or categories, making it straightforward to incorporate sentiment analysis into a tidy text workflow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">get_sentiments</span><span class="p">(</span><span class="s">&quot;afinn&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 2,477 x 2
+   word       value
+   &lt;chr&gt;      &lt;dbl&gt;
+ 1 abandon       -<span class=" -Color -Color-Red">2</span>
+ 2 abandoned     -<span class=" -Color -Color-Red">2</span>
+ 3 abandons      -<span class=" -Color -Color-Red">2</span>
+ 4 abducted      -<span class=" -Color -Color-Red">2</span>
+ 5 abduction     -<span class=" -Color -Color-Red">2</span>
+ 6 abductions    -<span class=" -Color -Color-Red">2</span>
+ 7 abhor         -<span class=" -Color -Color-Red">3</span>
+ 8 abhorred      -<span class=" -Color -Color-Red">3</span>
+ 9 abhorrent     -<span class=" -Color -Color-Red">3</span>
+10 abhors        -<span class=" -Color -Color-Red">3</span>
+# i 2,467 more rows
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">get_sentiments</span><span class="p">(</span><span class="s">&quot;bing&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 6,786 x 2
+   word        sentiment
+   &lt;chr&gt;       &lt;chr&gt;    
+ 1 2-faces     negative 
+ 2 abnormal    negative 
+ 3 abolish     negative 
+ 4 abominable  negative 
+ 5 abominably  negative 
+ 6 abominate   negative 
+ 7 abomination negative 
+ 8 abort       negative 
+ 9 aborted     negative 
+10 aborts      negative 
+# i 6,776 more rows
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">get_sentiments</span><span class="p">(</span><span class="s">&quot;nrc&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 13,872 x 2
+   word        sentiment
+   &lt;chr&gt;       &lt;chr&gt;    
+ 1 abacus      trust    
+ 2 abandon     fear     
+ 3 abandon     negative 
+ 4 abandon     sadness  
+ 5 abandoned   anger    
+ 6 abandoned   fear     
+ 7 abandoned   negative 
+ 8 abandoned   sadness  
+ 9 abandonment anger    
+10 abandonment fear     
+# i 13,862 more rows
+</pre></div>
+</div>
+</div>
+</div>
+<p>The sentiment lexicons used in text mining were developed through either crowdsourcing platforms like Amazon Mechanical Turk or the manual effort of individual researchers, and they were validated using datasets such as crowdsourced opinions, movie or restaurant reviews, or Twitter posts. Because of this, applying these lexicons to texts that differ greatly in style or era—like 200-year-old narrative fiction—may produce less precise results, although shared vocabulary still allows meaningful sentiment analysis. In addition to these general-purpose lexicons, domain-specific options exist, such as those designed for financial texts. These dictionary-based methods work by summing the sentiment scores of individual words but have limitations, as they don’t account for context, qualifiers, or negation (e.g., “not good”). For many types of narrative text where sarcasm or constant negation is minimal, this limitation is less significant, though later chapters explore strategies for handling negation. It’s also important to choose an appropriate text chunk size for analysis—large text sections can have sentiment scores that cancel each other out, whereas sentence- or paragraph-level analysis often yields clearer results.</p>
+</section>
+<section id="sentiment-analysis-with-inner-join">
+<h3>Sentiment Analysis with Inner Join<a class="headerlink" href="#sentiment-analysis-with-inner-join" title="Link to this heading">#</a></h3>
+<p>When text data is in a tidy format, performing sentiment analysis becomes as simple as using an inner join. This highlights one of the key advantages of approaching text mining as a tidy data task—the tools and workflows remain consistent and intuitive. Just as removing stop words involves an <code class="docutils literal notranslate"><span class="pre">anti_join</span></code>, sentiment analysis works by applying an <code class="docutils literal notranslate"><span class="pre">inner_join</span></code> to combine the tokenized text with a sentiment lexicon, matching words in the text to their corresponding sentiment values. This tidy approach simplifies the process and integrates seamlessly with other tidyverse functions.</p>
+<p>To find the most common joy-related words in <em>Emma</em> using the NRC lexicon, we first need to convert the novel’s text into a tidy format with one word per row, using <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code>, just like we did earlier. To preserve important context, we can also create additional columns that track which line and chapter each word appears in. This is done using <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> to organize the text by book and <code class="docutils literal notranslate"><span class="pre">mutate()</span></code> to assign line numbers and detect chapters, often using a regular expression. Once the text is structured this way, we can easily filter for words associated with joy in the NRC lexicon and analyze their frequency within the novel.</p>
+<p>Notice that we named the output column from <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code> as <strong>word</strong>, which is a practical and consistent choice. The sentiment lexicons and stop word datasets provided by <strong>tidytext</strong> also use <strong>word</strong> as the column name for individual tokens. By keeping this naming consistent, performing operations like <code class="docutils literal notranslate"><span class="pre">inner_join()</span></code> for sentiment analysis or <code class="docutils literal notranslate"><span class="pre">anti_join()</span></code> for removing stop words becomes straightforward and seamless, avoiding unnecessary renaming or data wrangling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">janeaustenr</span><span class="p">)</span>
+<span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">))</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+
+<span class="n">tidy_books</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">austen_books</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">    </span><span class="n">linenumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">row_number</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">chapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cumsum</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                </span><span class="nf">regex</span><span class="p">(</span><span class="s">&quot;^chapter [\\divxlc]&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                      </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">unnest_tokens</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that the text is in a tidy format with one word per row, we can easily perform sentiment analysis. First, we use the NRC lexicon and apply <code class="docutils literal notranslate"><span class="pre">filter()</span></code> to select only the words associated with the emotion <em>joy</em>. Next, we filter the text data to include only words from <em>Emma</em> and use <code class="docutils literal notranslate"><span class="pre">inner_join()</span></code> to connect the text with the joy words from the lexicon. Finally, we use <code class="docutils literal notranslate"><span class="pre">count()</span></code> from <strong>dplyr</strong> to find the most common joy-related words in the novel. The results show mostly positive, happy words like <em>hope</em>, <em>friendship</em>, and <em>love</em>, which align with the theme of joy. However, some words like <em>found</em> or <em>present</em> may not always carry joyful meaning in Austen’s writing, a nuance that will be explored further in Section 2.4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nrc_joy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">get_sentiments</span><span class="p">(</span><span class="s">&quot;nrc&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">sentiment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;joy&quot;</span><span class="p">)</span>
+
+<span class="n">tidy_books</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">book</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Emma&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">inner_join</span><span class="p">(</span><span class="n">nrc_joy</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joining with `by = join_by(word)`
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 301 x 2
+   word          n
+   &lt;chr&gt;     &lt;int&gt;
+ 1 good        359
+ 2 friend      166
+ 3 hope        143
+ 4 happy       125
+ 5 love        117
+ 6 deal         92
+ 7 found        92
+ 8 present      89
+ 9 kind         82
+10 happiness    76
+# i 291 more rows
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also explore how sentiment shifts across the course of each novel using just a few lines of code, mostly relying on <strong>dplyr</strong> functions. First, we apply <code class="docutils literal notranslate"><span class="pre">inner_join()</span></code> with the Bing lexicon to assign a sentiment score (positive or negative) to each word in the tidy text. Then, we count the number of positive and negative words within specific sections of each book to track changes in sentiment over time. To divide the text into sections, we create an <strong>index</strong> column that marks every 80 lines of text using integer division. The <code class="docutils literal notranslate"><span class="pre">%/%</span></code> operator performs integer division, meaning <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%/%</span> <span class="pre">y</span></code> returns the largest whole number less than or equal to <code class="docutils literal notranslate"><span class="pre">x/y</span></code>. This gives us consistent, sequential sections of 80 lines, allowing us to visualize how positive and negative sentiment patterns vary throughout the narrative.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./src/TextMining/With_R"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-to-install">Packages to Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sentiments-dataset">The <code class="docutils literal notranslate"><span class="pre">sentiments</span></code> Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis-with-inner-join">Sentiment Analysis with Inner Join</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
