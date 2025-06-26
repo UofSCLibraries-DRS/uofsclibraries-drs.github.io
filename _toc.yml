@@ -10,6 +10,7 @@ parts:
     - file: src/Python/BasicPython
     - file: src/Python/IntermediatePython
     - file: src/Python/PandasPython
+    - file: src/DataProcessingBasics/DataCleaning_Basics
 
   - caption: Data Wrangling with R
     chapters:
@@ -17,7 +18,6 @@ parts:
 
   - caption: Data Extraction
     chapters:
-    - file: src/overview/DataExtraction
     - file: src/API/API
       title: Using APIs    
 
