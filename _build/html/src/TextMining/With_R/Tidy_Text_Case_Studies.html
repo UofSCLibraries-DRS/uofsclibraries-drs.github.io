@@ -1,0 +1,1070 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tidy Text Case Studies &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/With_R/Tidy_Text_Case_Studies';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Python/BasicPython.html">Basic Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/DataWranglingR.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Wolfe-notebooks/Maps.html">Creating Maps with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/MachineLearning.html">Brief Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/TextMining/With_R/Tidy_Text_Case_Studies.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/TextMining/With_R/Tidy_Text_Case_Studies.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tidy Text Case Studies</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-packages">Install Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-comparing-twitter-archives">Case study: Comparing Twitter Archives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-data-and-distribution">Getting the Data and Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-frequencies">Word Frequencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-word-usage">Comparing Word Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changes-in-word-use">Changes in Word Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#favorites-and-retweets">Favorites and Retweets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-mining-nasa-metadata">Case study: Mining NASA Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-data-is-organized-at-nasa">How Data is Organized at NASA</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wrangling-and-tidying-the-data">Wrangling and Tidying the Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tidy-text-case-studies">
+<h1>Tidy Text Case Studies<a class="headerlink" href="#tidy-text-case-studies" title="Link to this heading">#</a></h1>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
+<p>We would like to acknowledge the work of Julia Silge and David Robinson, whose materials were used under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License. Their contributions to open data science education, particularly the <a class="reference external" href="https://www.tidytextmining.com">Text Mining with R</a>, provided valuable resources for this project.</p>
+<p>This notebook was created by Meara Cox using their code and examples as a foundation, with additional explanations and adaptations to support the goals of this project.</p>
+</section>
+<section id="install-packages">
+<h2>Install Packages<a class="headerlink" href="#install-packages" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;lubridate&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;readr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-study-comparing-twitter-archives">
+<h2>Case study: Comparing Twitter Archives<a class="headerlink" href="#case-study-comparing-twitter-archives" title="Link to this heading">#</a></h2>
+<p>Online text, especially from platforms like Twitter, receives a lot of attention in text analysis. Many sentiment lexicons used in this book were specifically designed for or validated on tweets, reflecting the unique language and style found there. Both authors of this book are active Twitter users, so this case study explores a comparison between the entire Twitter archives of <a class="reference external" href="https://x.com/juliasilge">Julia</a> and <a class="reference external" href="https://x.com/drob">David</a>.</p>
+<section id="getting-the-data-and-distribution">
+<h3>Getting the Data and Distribution<a class="headerlink" href="#getting-the-data-and-distribution" title="Link to this heading">#</a></h3>
+<p>Individuals can download their own Twitter archives by following <a class="reference external" href="https://help.x.com/en/managing-your-account/how-to-download-your-x-archive">instructions provided on Twitter’s website</a>. After downloading their archives, the next step is to load the data and use the <strong>lubridate</strong> package to convert the string-formatted timestamps into proper date-time objects. This conversion enables easier analysis of tweeting patterns over time. Initially, we can explore overall tweeting behavior by summarizing or visualizing the frequency and timing of tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+
+<span class="n">tweets_julia</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/tweets_julia.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">tweets_dave</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/tweets_dave.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">tweets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bind_rows</span><span class="p">(</span><span class="n">tweets_julia</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">                      </span><span class="nf">mutate</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Julia&quot;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">tweets_dave</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">                      </span><span class="nf">mutate</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;David&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ymd_hms</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">tweets</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>David and Julia currently tweet at roughly the same rate and joined Twitter about a year apart, but there was a period of about five years when David was inactive on the platform while Julia remained active. As a result, Julia has accumulated approximately four times as many tweets as David overall.</p>
+</section>
+<section id="word-frequencies">
+<h3>Word Frequencies<a class="headerlink" href="#word-frequencies" title="Link to this heading">#</a></h3>
+<p>We’ll start by using <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code> to convert our tweets into a tidy format with one token per row, but because tweets often include unique structures like hashtags, mentions, links, and special characters, we’ll apply some preprocessing first. We’ll exclude retweets to focus only on original content, then clean the text by removing URLs and unwanted characters such as ampersands.</p>
+<p>When tokenizing, we’ll use a regular expression within <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code> to preserve mentions (starting with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>) and hashtags (starting with <code class="docutils literal notranslate"><span class="pre">#</span></code>), which are meaningful in Twitter data. Since hashtags and mentions are retained, we can’t rely solely on <code class="docutils literal notranslate"><span class="pre">anti_join()</span></code> with a standard stop word list. Instead, we’ll use <code class="docutils literal notranslate"><span class="pre">filter()</span></code> with <code class="docutils literal notranslate"><span class="pre">str_detect()</span></code> from the stringr package to exclude common stop words, while still keeping elements like usernames and hashtags intact for analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+
+<span class="n">replace_reg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://t.co/[A-Za-z\\d]+|http://[A-Za-z\\d]+|&amp;amp;|&amp;lt;|&amp;gt;|RT|https&quot;</span>
+<span class="n">unnest_reg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;([^A-Za-z_\\d#@&#39;]|&#39;(?![A-Za-z_\\d#@]))&quot;</span>
+
+<span class="n">tidy_tweets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;^RT&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str_replace_all</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">replace_reg</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">unnest_tokens</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;regex&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unnest_reg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="n">word</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">stop_words</span><span class="o">$</span><span class="n">word</span><span class="p">,</span>
+<span class="w">         </span><span class="o">!</span><span class="n">word</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">str_remove_all</span><span class="p">(</span><span class="n">stop_words</span><span class="o">$</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">),</span>
+<span class="w">         </span><span class="nf">str_detect</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[a-z]&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now compute word frequencies for each individual. To do this, we first group the data by person and word, counting the number of times each word appears per person. Next, we perform a <code class="docutils literal notranslate"><span class="pre">left\_join()</span></code> to bring in the total word counts for each person — Julia’s total is larger since she has more tweets overall. Finally, we calculate the frequency of each word for each person by dividing the word count by the total words they used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">frequency</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">              </span><span class="nf">count</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;total&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="n">total</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us a clean and tidy data frame, but to visualize those frequencies with one person’s frequency on the x-axis and the other’s on the y-axis, we need to reshape the data. We can use tidyr’s <code class="docutils literal notranslate"><span class="pre">pivot\_wider()</span></code> function to transform the data frame so that each person’s word frequencies become separate columns, ready for plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="n">frequency</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">frequency</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">freq</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">pivot_wider</span><span class="p">(</span><span class="n">names_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">values_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">freq</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">Julia</span><span class="p">,</span><span class="w"> </span><span class="n">David</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This reshaped data is now ready for visualization. We can use <code class="docutils literal notranslate"><span class="pre">geom_jitter()</span></code> to help spread out the points, reducing the visual clumping that happens with low-frequency words. Additionally, setting <code class="docutils literal notranslate"><span class="pre">check_overlap</span> <span class="pre">=</span> <span class="pre">TRUE</span></code> on the text labels will prevent them from overlapping excessively, so only a subset of labels will appear clearly on the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">scales</span><span class="p">))</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">Julia</span><span class="p">,</span><span class="w"> </span><span class="n">David</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_jitter</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">),</span><span class="w"> </span><span class="n">check_overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_x_log10</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">percent_format</span><span class="p">())</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_y_log10</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">percent_format</span><span class="p">())</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_abline</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Words that fall close to the diagonal line on the plot are used at roughly equal rates by both David and Julia. In contrast, words that sit farther from the line are more heavily favored by one person over the other. The plot only shows words, hashtags, and usernames that both individuals have used at least once in their tweets.</p>
+<p>It’s clear from this visualization—and will continue to be throughout the chapter—that David and Julia have approached Twitter in very different ways over the years. David’s tweets have been almost entirely professional since he became active, whereas Julia’s early Twitter use was personal, and even now, her account retains more personal content than David’s. This difference in usage patterns is reflected immediately in how they use language on the platform.</p>
+</section>
+<section id="comparing-word-usage">
+<h3>Comparing Word Usage<a class="headerlink" href="#comparing-word-usage" title="Link to this heading">#</a></h3>
+<p>We’ve already visualized a comparison of raw word frequencies across the entire Twitter histories of David and Julia. Now, let’s dig deeper by identifying which words are more or less likely to originate from each person’s account using the log odds ratio. To keep the comparison meaningful, we’ll limit the analysis to tweets from 2016—a year when David was consistently active on Twitter and Julia was transitioning into her data science career.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">timestamp</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2016-01-01&quot;</span><span class="p">),</span>
+<span class="w">         </span><span class="n">timestamp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2017-01-01&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we’ll use <code class="docutils literal notranslate"><span class="pre">str_detect()</span></code> to filter out Twitter usernames from our word column. Otherwise, the analysis would be dominated by names of people David or Julia know, which doesn’t tell us much about broader word usage differences.</p>
+<p>Once usernames are removed, we count how many times each person uses each word and keep only words that appear more than 10 times to avoid results driven by very rare terms. After reshaping the data with <code class="docutils literal notranslate"><span class="pre">pivot_wider()</span></code>, we calculate the <strong>log odds ratio</strong> for each word as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{log odds ratio} = \ln \left( \frac{(n + 1) / (total + 1) \text{ for David}}{(n + 1) / (total + 1) \text{ for Julia}} \right)
+\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the count of the word for each person,</p></li>
+<li><p><span class="math notranslate nohighlight">\(total\)</span> is the total word count for each person,</p></li>
+<li><p>Adding 1 to both numerator and denominator prevents division by zero for rare words.</p></li>
+</ul>
+<p>This gives a clearer picture of which words are disproportionately associated with one person versus the other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_ratios</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;^@&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">pivot_wider</span><span class="p">(</span><span class="n">names_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">values_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">values_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate_if</span><span class="p">(</span><span class="n">is.numeric</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">logratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">David</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Julia</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">logratio</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are some words that have been about equally likely to come from David or Julia’s account during 2016.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_ratios</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">logratio</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To find the words most strongly associated with each account, we select the top 15 words with the highest positive log odds ratio (most likely from David’s account) and the top 15 words with the lowest (most negative) log odds ratio (most likely from Julia’s account).</p>
+<p>Plotting these words will clearly show which terms are most distinctive for each person’s tweets, highlighting the differences in their language use during 2016.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_ratios</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">logratio</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">slice_max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">logratio</span><span class="p">),</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">reorder</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">logratio</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">logratio</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logratio</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_col</span><span class="p">(</span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;log odds ratio (David/Julia)&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_discrete</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;David&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Julia&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>David’s tweets tend to focus on professional topics like conferences and programming, reflecting his career interests, while Julia’s tweets highlight personal themes like family and regional topics such as Utah and Census data.</p>
+</section>
+<section id="changes-in-word-use">
+<h3>Changes in Word Use<a class="headerlink" href="#changes-in-word-use" title="Link to this heading">#</a></h3>
+<p>The previous section focused on overall word usage, but now we want to explore a different question: which words have changed in frequency the most over time in the Twitter feeds? In other words, which words have they tweeted about more or less as time has gone on?</p>
+<p>To analyze this, we first create a new time variable in the data frame that groups each tweet into a specific time unit. Using lubridate’s <code class="docutils literal notranslate"><span class="pre">floor_date()</span></code> function, we round timestamps down to the start of each month, which works well for this year of tweets.</p>
+<p>Once these time bins are set, we count how often each person used each word within each month. Then, we add columns showing the total words tweeted by each person per month and the total uses of each word by each person overall. Finally, we filter the data to keep only words that appear at least 30 times, ensuring we focus on words with sufficient usage for meaningful analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">words_by_time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;^@&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">time_floor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">floor_date</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1 month&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">time_floor</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">time_floor</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">time_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">word_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">rename</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">word_total</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">30</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">words_by_time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each row in this data frame represents a single person’s use of a specific word within a particular time bin. The <code class="docutils literal notranslate"><span class="pre">count</span></code> column shows how many times that person used the word in that time period, <code class="docutils literal notranslate"><span class="pre">time_total</span></code> gives the total number of words the person tweeted during that time bin, and <code class="docutils literal notranslate"><span class="pre">word_total</span></code> indicates the total number of times that person used that word throughout the entire year. This dataset is ready to be used for modeling purposes.</p>
+<p>Next, we can apply <code class="docutils literal notranslate"><span class="pre">nest()</span></code> from tidyr to create a data frame where each word corresponds to a list-column containing smaller data frames—essentially mini datasets—for each word. Let’s go ahead and do that, then examine the structure of the resulting nested data frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">words_by_time</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">nest</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="o">-</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">person</span><span class="p">))</span><span class="w"> </span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">nested_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This data frame contains one row for each unique person-word pair, and the <code class="docutils literal notranslate"><span class="pre">data</span></code> column is a list-column holding smaller data frames for each of those pairs. We’ll use <code class="docutils literal notranslate"><span class="pre">map()</span></code> from the purrr package (Henry and Wickham 2018) to run our modeling function on each of these nested data frames.</p>
+<p>Since the data involves counts, we’ll fit a generalized linear model using <code class="docutils literal notranslate"><span class="pre">glm()</span></code> with a binomial family. Essentially, this model answers a question like: “Was this particular word mentioned during this time bin (yes or no)? How does the likelihood of mentioning this word change over time?”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">))</span>
+
+<span class="n">nested_models</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">nested_data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">time_total</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">time_floor</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                  </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;binomial&quot;</span><span class="p">)))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">nested_models</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we see a new column holding the modeling results—this is another list-column, each entry containing a <code class="docutils literal notranslate"><span class="pre">glm</span></code> model object. The next step is to use <code class="docutils literal notranslate"><span class="pre">map()</span></code> together with <code class="docutils literal notranslate"><span class="pre">tidy()</span></code> from the broom package to extract the slope coefficients from each model.</p>
+<p>Since we’re testing many slopes simultaneously and some won’t be statistically significant, we’ll adjust the p-values to account for multiple comparisons, helping to control for false positives.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
+
+<span class="n">slopes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">nested_models</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">models</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">unnest</span><span class="p">(</span><span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">models</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">term</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;time_floor&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">adjusted.p.value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">p.adjust</span><span class="p">(</span><span class="n">p.value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we’ll identify the most notable slopes—that is, the words whose usage frequencies have changed over time with moderate statistical significance in our tweets. By filtering the results for adjusted p-values below a chosen threshold (e.g., 0.05), we can pinpoint these words and understand which topics or terms have become more or less common during the period analyzed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">top_slopes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">slopes</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">adjusted.p.value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">top_slopes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize these findings, we can create plots showing how the usage of these words has changed over the course of the year for both David and Julia. This will help illustrate trends in word frequency over time, highlighting the differences and similarities in their tweeting patterns throughout the year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">words_by_time</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">inner_join</span><span class="p">(</span><span class="n">top_slopes</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;person&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;David&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">time_floor</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="o">/</span><span class="n">time_total</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Word frequency&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This shows that David tweeted extensively about the UseR conference during the event, but his mentions dropped off quickly afterward. Additionally, his tweets about Stack Overflow increased toward the end of the year, while references to ggplot2 declined over time.</p>
+<p>Now let’s plot words that have changed frequency in Julia’s tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">words_by_time</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">inner_join</span><span class="p">(</span><span class="n">top_slopes</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;person&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Julia&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">time_floor</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="o">/</span><span class="n">time_total</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Word frequency&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>All of Julia’s significant slopes are negative, indicating she hasn’t increased her use of any particular words over the year. Instead, she’s used a wider variety of words, with the ones shown in this plot appearing more frequently earlier in the year. For example, words related to sharing new blog posts—like the hashtag #rstats and the word “post”—have decreased in usage over time.</p>
+</section>
+<section id="favorites-and-retweets">
+<h3>Favorites and Retweets<a class="headerlink" href="#favorites-and-retweets" title="Link to this heading">#</a></h3>
+<p>Another key aspect of tweets is how often they get favorited or retweeted. To analyze which words are associated with higher engagement on Julia’s and David’s tweets, they created a separate dataset that includes favorites and retweets information. Since Twitter archives don’t include this data, they collected roughly 3,200 tweets for each of them directly from the Twitter API, covering about the last 18 months of activity—a period during which both of them increased their tweeting frequency and follower counts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_julia</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/juliasilge_tweets.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">tweets_dave</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/drob_tweets.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">tweets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bind_rows</span><span class="p">(</span><span class="n">tweets_julia</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">                      </span><span class="nf">mutate</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Julia&quot;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">tweets_dave</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">                      </span><span class="nf">mutate</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;David&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">created_at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ymd_hms</span><span class="p">(</span><span class="n">created_at</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have this smaller, more recent dataset, we’ll again use <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code> to convert the tweets into a tidy format. We’ll filter out all retweets and replies to focus solely on the original tweets posted directly by David and Julia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;^(RT|@)&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str_replace_all</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">replace_reg</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">unnest_tokens</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;regex&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unnest_reg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="n">word</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">stop_words</span><span class="o">$</span><span class="n">word</span><span class="p">,</span>
+<span class="w">         </span><span class="o">!</span><span class="n">word</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">str_remove_all</span><span class="p">(</span><span class="n">stop_words</span><span class="o">$</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">tidy_tweets</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, let’s examine how many times each person’s tweets were retweeted. We’ll calculate the total retweet count separately for David and Julia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">totals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">rts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="n">retweets</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">total_rts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">rts</span><span class="p">))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we group by person, tweet, and word to summarize the retweet counts per tweet-word-person combination, counting how many times each word was retweeted in each tweet. Then, we group again by person and word to calculate the median retweet count for each word-person pair and count the total usage of each word by each person, saving that in a column called <code class="docutils literal notranslate"><span class="pre">uses</span></code>. After that, we join this summary with the total retweet counts per person. Finally, we filter the data to include only words that were mentioned at least five times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_by_rts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">rts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="n">retweets</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">retweets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">rts</span><span class="p">),</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">retweets</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span>
+
+<span class="n">word_by_rts</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">uses</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">retweets</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At the top of this sorted data frame, the most retweeted words for both Julia and David relate to packages they contribute to, such as <em>gganimate</em> and <em>tidytext</em>. Next, we can create a plot showing the words with the highest median retweet counts for each account, highlighting which terms tend to garner more engagement on their tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_by_rts</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">uses</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">slice_max</span><span class="p">(</span><span class="n">retweets</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">retweets</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="n">word</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">retweets</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_col</span><span class="p">(</span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Median # of retweets for tweets containing each word&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We notice many words related to R packages, including <em>tidytext</em>—the very package this book focuses on! The “0” values for David come from tweets mentioning package version numbers, like “broom 0.4.0” and similar.</p>
+<p>Using a similar approach, we can analyze which words correspond to higher numbers of favorites. It will be interesting to see whether those words differ from the ones that lead to more retweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">totals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">favs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="n">favorites</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">total_favs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">favs</span><span class="p">))</span>
+
+<span class="n">word_by_favs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tidy_tweets</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">favs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="n">favorites</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">favorites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">favs</span><span class="p">),</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">favorites</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have built the data frames we need. Now let’s make our visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_by_favs</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">uses</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">slice_max</span><span class="p">(</span><span class="n">favorites</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">favorites</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="n">word</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">favorites</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_col</span><span class="p">(</span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Median # of favorites for tweets containing each word&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We notice some small differences between David and Julia, especially toward the lower end of the top 10 lists, but overall the words are mostly the same as those linked to retweets. Generally, the words that attract retweets also tend to attract favorites. A standout word for Julia in both charts is the hashtag for the NASA Datanauts program she’s been involved with.</p>
+</section>
+</section>
+<section id="case-study-mining-nasa-metadata">
+<h2>Case study: Mining NASA Metadata<a class="headerlink" href="#case-study-mining-nasa-metadata" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.nasa.gov">NASA</a> maintains over 32,000 datasets that span topics ranging from Earth science to aerospace engineering to NASA’s internal operations. To better understand the relationships between these datasets, we can analyze their metadata.</p>
+<p><strong>What is metadata?</strong>
+Metadata refers to information that describes other data. In the context of NASA’s datasets, this includes details like each dataset’s title, description, responsible NASA organization, and human-assigned keywords. The metadata helps users understand the content and purpose of a dataset but does <em>not</em> include the dataset’s actual measurements or results.</p>
+<p>NASA strongly emphasizes open science, requiring <a class="reference external" href="https://www.nasa.gov/news-release/nasa-unveils-new-public-web-portal-for-research-results/">publicly accessible research outputs</a>. As part of this commitment, the metadata for all NASA datasets is available <a class="reference external" href="https://data.nasa.gov/data.json">online in JSON format</a>.</p>
+<p>Below, we’ll treat NASA’s metadata as a text dataset and apply tidy text analysis methods to it. Using tools like word co-occurrence analysis, correlations, tf-idf, and topic modeling, we’ll explore questions such as:</p>
+<ul class="simple">
+<li><p>Can we identify relationships between datasets?</p></li>
+<li><p>Are there clusters of datasets with similar themes?</p></li>
+<li><p>How do different metadata fields (like titles, descriptions, and keywords) reveal patterns across NASA’s data catalog?</p></li>
+</ul>
+<p>This approach demonstrates how text mining techniques can be applied to real-world, domain-specific metadata—whether in the space industry or any other field dealing with large collections of text. Let’s dive into the NASA dataset and begin exploring.</p>
+<section id="how-data-is-organized-at-nasa">
+<h3>How Data is Organized at NASA<a class="headerlink" href="#how-data-is-organized-at-nasa" title="Link to this heading">#</a></h3>
+<p>We’ll start by downloading the JSON file and examining the field names contained in the metadata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span>
+<span class="n">metadata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fromJSON</span><span class="p">(</span><span class="s">&quot;https://data.nasa.gov/data.json&quot;</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this, we can pull details ranging from the publishing organization for each dataset to the type of license under which they’re released.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">class</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">title</span><span class="p">)</span>
+
+<span class="nf">class</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">description</span><span class="p">)</span>
+
+<span class="nf">class</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">keyword</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The title and description fields are saved as character vectors, while the keywords are stored as a list of character vectors.</p>
+<section id="wrangling-and-tidying-the-data">
+<h4>Wrangling and Tidying the Data<a class="headerlink" href="#wrangling-and-tidying-the-data" title="Link to this heading">#</a></h4>
+<p>We’ll create separate tidy data frames for the title, description, and keywords, making sure to keep the dataset IDs with each so we can link them together later if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+
+<span class="n">nasa_title</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">`_id`</span><span class="o">$</span><span class="n">`$oid`</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                     </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">title</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">nasa_title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are just a few sample dataset titles that we’ll be working with. You’ll notice the NASA-assigned IDs are included, and that some datasets share the same title.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nasa_desc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">`_id`</span><span class="o">$</span><span class="n">`$oid`</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                    </span><span class="n">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">description</span><span class="p">)</span>
+
+<span class="n">nasa_desc</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">sample_n</span><span class="p">(</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are excerpts from a few selected description fields in the metadata.</p>
+<p>Next, we’ll create a tidy data frame for the keywords. Since these are stored in a list-column, we’ll use tidyr’s <code class="docutils literal notranslate"><span class="pre">unnest()</span></code> function to expand them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+
+<span class="n">nasa_keyword</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">`_id`</span><span class="o">$</span><span class="n">`$oid`</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                       </span><span class="n">keyword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">keyword</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">unnest</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">nasa_keyword</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./src/TextMining/With_R"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-packages">Install Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-comparing-twitter-archives">Case study: Comparing Twitter Archives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-data-and-distribution">Getting the Data and Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-frequencies">Word Frequencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-word-usage">Comparing Word Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changes-in-word-use">Changes in Word Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#favorites-and-retweets">Favorites and Retweets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-mining-nasa-metadata">Case study: Mining NASA Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-data-is-organized-at-nasa">How Data is Organized at NASA</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wrangling-and-tidying-the-data">Wrangling and Tidying the Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
