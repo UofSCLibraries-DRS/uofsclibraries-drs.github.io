@@ -418,13 +418,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#favorites-and-retweets">Favorites and Retweets</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-mining-nasa-metadata">Case study: Mining NASA Metadata</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-data-is-organized-at-nasa">How Data is Organized at NASA</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wrangling-and-tidying-the-data">Wrangling and Tidying the Data</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-analyzing-usenet-text">Case Study: Analyzing Usenet Text</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">Pre-processing</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing-text">Pre-processing Text</a></li>
@@ -1149,95 +1142,6 @@ Joining with `by = join_by(person)`
 </div>
 </div>
 <p>We notice some small differences between David and Julia, especially toward the lower end of the top 10 lists, but overall the words are mostly the same as those linked to retweets. Generally, the words that attract retweets also tend to attract favorites. A standout word for Julia in both charts is the hashtag for the NASA Datanauts program she’s been involved with.</p>
-</section>
-</section>
-<section id="case-study-mining-nasa-metadata">
-<h2>Case study: Mining NASA Metadata<a class="headerlink" href="#case-study-mining-nasa-metadata" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://www.nasa.gov">NASA</a> maintains over 32,000 datasets that span topics ranging from Earth science to aerospace engineering to NASA’s internal operations. To better understand the relationships between these datasets, we can analyze their metadata.</p>
-<p><strong>What is metadata?</strong>
-Metadata refers to information that describes other data. In the context of NASA’s datasets, this includes details like each dataset’s title, description, responsible NASA organization, and human-assigned keywords. The metadata helps users understand the content and purpose of a dataset but does <em>not</em> include the dataset’s actual measurements or results.</p>
-<p>NASA strongly emphasizes open science, requiring <a class="reference external" href="https://www.nasa.gov/news-release/nasa-unveils-new-public-web-portal-for-research-results/">publicly accessible research outputs</a>. As part of this commitment, the metadata for all NASA datasets is available <a class="reference external" href="https://data.nasa.gov/data.json">online in JSON format</a>.</p>
-<p>Below, we’ll treat NASA’s metadata as a text dataset and apply tidy text analysis methods to it. Using tools like word co-occurrence analysis, correlations, tf-idf, and topic modeling, we’ll explore questions such as:</p>
-<ul class="simple">
-<li><p>Can we identify relationships between datasets?</p></li>
-<li><p>Are there clusters of datasets with similar themes?</p></li>
-<li><p>How do different metadata fields (like titles, descriptions, and keywords) reveal patterns across NASA’s data catalog?</p></li>
-</ul>
-<p>This approach demonstrates how text mining techniques can be applied to real-world, domain-specific metadata—whether in the space industry or any other field dealing with large collections of text. Let’s dive into the NASA dataset and begin exploring.</p>
-<section id="how-data-is-organized-at-nasa">
-<h3>How Data is Organized at NASA<a class="headerlink" href="#how-data-is-organized-at-nasa" title="Link to this heading">#</a></h3>
-<p>We’ll start by getting the contents from the <a class="reference external" href="https://data.nasa.gov/data.json">JSON file</a> and examining the field names contained in the metadata.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span>
-<span class="n">metadata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fromJSON</span><span class="p">(</span><span class="s">&quot;data/nasadata.json&quot;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [1] &quot;@type&quot;              &quot;title&quot;              &quot;description&quot;       
- [4] &quot;modified&quot;           &quot;accessLevel&quot;        &quot;identifier&quot;        
- [7] &quot;publisher&quot;          &quot;contactPoint&quot;       &quot;distribution&quot;      
-[10] &quot;bureauCode&quot;         &quot;programCode&quot;        &quot;theme&quot;             
-[13] &quot;keyword&quot;            &quot;spatial&quot;            &quot;temporal&quot;          
-[16] &quot;issued&quot;             &quot;landingPage&quot;        &quot;accrualPeriodicity&quot;
-[19] &quot;language&quot;           &quot;license&quot;            &quot;references&quot;        
-[22] &quot;dataQuality&quot;        &quot;rights&quot;             &quot;describedBy&quot;       
-[25] &quot;describedByType&quot;   
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can see that this data allows us to pull information such as who published each dataset and the license under which it was released.</p>
-<p>It’s likely that the title, description, and keywords associated with each dataset will be the most useful for identifying connections between them. Let’s take a closer look.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">class</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">title</span><span class="p">)</span>
-
-<span class="nf">class</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">description</span><span class="p">)</span>
-
-<span class="nf">class</span><span class="p">(</span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">keyword</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">'character'</div><div class="output text_html">'character'</div><div class="output text_html">'list'</div></div>
-</div>
-<p>The title and description fields are saved as character vectors, while the keywords are stored as a list of character vectors.</p>
-<section id="wrangling-and-tidying-the-data">
-<h4>Wrangling and Tidying the Data<a class="headerlink" href="#wrangling-and-tidying-the-data" title="Link to this heading">#</a></h4>
-<p>We’ll create separate tidy data frames for the title, description, and keywords, making sure to keep the dataset IDs with each so we can link them together later if needed.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-
-<span class="n">nasa_title</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">`identifier`</span><span class="p">,</span><span class="w"> </span>
-<span class="w">                     </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata</span><span class="o">$</span><span class="n">dataset</span><span class="o">$</span><span class="n">title</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">nasa_title</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 26,355 x 2
-   id                               title                                       
-   &lt;chr&gt;                            &lt;chr&gt;                                       
- 1 10.26030/y7yh-6a61               Apollo 17 Challenge System - Seed Germinati~
- 2 10.5067/SeaBASS/N01/DATA001      Zonal transect from Hawaii across the weste~
- 3 10.7265/N52R3PNT                 Yup&#39;ik Environmental Knowledge Project, Ver~
- 4 10.7265/27c5-gz36                Yup&#39;ik Environmental Knowledge Project (Com~
- 5 10.5067/SeaBASS/ARCTICCC/DATA001 Yukon Arctic Carbon Cycle Project           
- 6 10.5067/PRESW-YOJ10              Yongala Pre-SWOT Level-4 Hourly MITgcm LLC4~
- 7 10.3334/ORNLDAAC/1596            WRF-STILT Particle Trajectories for Boston,~
- 8 10.3334/ORNLDAAC/1572            WRF-STILT Gridded Footprints for Boston, MA~
- 9 10.57909/Maxar/WV04_Pan_L1B.001  WorldView-4 Level 1B Panchromatic Satellite~
-10 10.57909/Maxar/WV03_MSI_L2A.001  WorldView-3 Level 2A Multispectral 8-Band S~
-# i 26,345 more rows
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 <section id="case-study-analyzing-usenet-text">
@@ -1997,13 +1901,6 @@ Andrew--
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-word-usage">Comparing Word Usage</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changes-in-word-use">Changes in Word Use</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#favorites-and-retweets">Favorites and Retweets</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-mining-nasa-metadata">Case study: Mining NASA Metadata</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-data-is-organized-at-nasa">How Data is Organized at NASA</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wrangling-and-tidying-the-data">Wrangling and Tidying the Data</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-analyzing-usenet-text">Case Study: Analyzing Usenet Text</a><ul class="nav section-nav flex-column">
