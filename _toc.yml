@@ -26,7 +26,7 @@ parts:
     - file: src/TextMining/IntroductionTextAnalysis
     - file: src/TextMining/AdvancedTextAnalysis
     - file: src/TextMining/MultiLingualNer
-    - file: src/TextMining/With_R/Tidy_Text
+    - file: src/overview/Tidy_Text
       title: Tidy Text
 
   - caption: Data Visualization
