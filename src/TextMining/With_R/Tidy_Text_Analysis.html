@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tidy_Text.html">Tidy Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/Tidy_Text.html">Tidy Text</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -408,10 +408,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Performing Analysis on Tidy Text</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-to-install">Packages to Install</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-to-import">Libraries to Import</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sentiments-dataset">The <code class="docutils literal notranslate"><span class="pre">sentiments</span></code> Dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis-with-inner-join">Sentiment Analysis with Inner Join</a></li>
@@ -462,22 +460,14 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-great-library-heist">Example: The Great Library Heist</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-on-chapters">LDA on Chapters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#per-document-classification">Per-document classification</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#by-word-assignments-augment">By Word Assignments: <code class="docutils literal notranslate"><span class="pre">augment</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-lda-implementations">Alternative LDA Implementations</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#this-all-needs-reworded">THIS ALL NEEDS REWORDED !!!!!!!!!!!!!</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-document-classification">Per-document classification</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#look-into-fixing-below">Look into fixing below</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#by-word-assignments-augment">By Word Assignments: <code class="docutils literal notranslate"><span class="pre">augment</span></code></a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -514,6 +504,10 @@ document.write(`
 <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;rvest&quot;</span><span class="p">)</span>
 <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tibble&quot;</span><span class="p">)</span>
 <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;purrr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;mallet&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;httr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;jsonlite&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -562,58 +556,22 @@ The downloaded binary packages are in
 
 The downloaded binary packages are in
 	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmptdIsPl/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmptdIsPl/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmptdIsPl/downloaded_packages
+
+The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmptdIsPl/downloaded_packages
 </pre></div>
 </div>
-</div>
-</div>
-</section>
-<section id="libraries-to-import">
-<h2>Libraries to Import<a class="headerlink" href="#libraries-to-import" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">forcats</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">gutenbergr</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">igraph</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">ggraph</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">widyr</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>also installing the dependencies &#39;ps&#39;, &#39;sass&#39;, &#39;processx&#39;, &#39;highr&#39;, &#39;xfun&#39;, &#39;bslib&#39;, &#39;fontawesome&#39;, &#39;jquerylib&#39;, &#39;tinytex&#39;, &#39;blob&#39;, &#39;DBI&#39;, &#39;gargle&#39;, &#39;ids&#39;, &#39;rematch2&#39;, &#39;textshaping&#39;, &#39;callr&#39;, &#39;knitr&#39;, &#39;rmarkdown&#39;, &#39;conflicted&#39;, &#39;dbplyr&#39;, &#39;dtplyr&#39;, &#39;googledrive&#39;, &#39;googlesheets4&#39;, &#39;modelr&#39;, &#39;ragg&#39;, &#39;reprex&#39;
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: RColorBrewer
-
-
-Attaching package: &#39;reshape2&#39;
-
-
-The following object is masked from &#39;package:tidyr&#39;:
-
-    smiths
-
-
-
-Attaching package: &#39;igraph&#39;
-
-
-The following object is masked from &#39;package:tidyr&#39;:
-
-    crossing
-
-
-The following objects are masked from &#39;package:dplyr&#39;:
-
-    as_data_frame, groups, union
-
-
-The following objects are masked from &#39;package:stats&#39;:
-
-    decompose, spectrum
-
-
-The following object is masked from &#39;package:base&#39;:
-
-    union
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The downloaded binary packages are in
+	/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T//RtmptdIsPl/downloaded_packages
 </pre></div>
 </div>
 </div>
@@ -3264,85 +3222,13 @@ Weighting          : term frequency (tf)
 <p>For pre-processing, we split the texts into chapters, then use tidytext’s <a class="reference external" href="https://juliasilge.github.io/tidytext/reference/unnest_tokens.html"><code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code></a> to break them down into individual words, followed by removing stop words. Each chapter is treated as its own “document,” labeled with names like <code class="docutils literal notranslate"><span class="pre">Great</span> <span class="pre">Expectations\_1</span></code> or <code class="docutils literal notranslate"><span class="pre">Pride</span> <span class="pre">and</span> <span class="pre">Prejudice\_11</span></code>. (In other contexts, a document might be a single news article or blog post.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check what lines contain potential chapter markers</span>
-<span class="n">books</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
-<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nf">regex</span><span class="p">(</span><span class="s">&quot;^(chapter|[ivxlcdm]+)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
-<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-<span class="w">  </span><span class="nf">head</span><span class="p">(</span><span class="m">50</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="dataframe">
-<caption>A tibble: 50 x 2</caption>
-<thead>
-	<tr><th scope=col>title</th><th scope=col>text</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>The War of the Worlds</td><td>cover                                                                       </td></tr>
-	<tr><td>The War of the Worlds</td><td>Contents                                                                    </td></tr>
-	<tr><td>The War of the Worlds</td><td>I.                                                                          </td></tr>
-	<tr><td>The War of the Worlds</td><td>disillusionment.                                                            </td></tr>
-	<tr><td>The War of the Worlds</td><td>must be, if the nebular hypothesis has any truth, older than our world;     </td></tr>
-	<tr><td>The War of the Worlds</td><td>must have begun its course. The fact that it is scarcely one seventh of     </td></tr>
-	<tr><td>The War of the Worlds</td><td>intelligent life might have developed there far, or indeed at all,          </td></tr>
-	<tr><td>The War of the Worlds</td><td>Mars is older than our earth, with scarcely a quarter of the                </td></tr>
-	<tr><td>The War of the Worlds</td><td>it is not only more distant from time&lt;U+2019&gt;s beginning but nearer its end.</td></tr>
-	<tr><td>The War of the Worlds</td><td>largely a mystery, but we know now that even in its equatorial region       </td></tr>
-	<tr><td>The War of the Worlds</td><td>Its air is much more attenuated than ours, its oceans have shrunk until     </td></tr>
-	<tr><td>The War of the Worlds</td><td>inundate its temperate zones. That last stage of exhaustion, which to       </td></tr>
-	<tr><td>The War of the Worlds</td><td>inhabitants of Mars. The immediate pressure of necessity has brightened     </td></tr>
-	<tr><td>The War of the Worlds</td><td>looking across space with instruments, and intelligences such as we         </td></tr>
-	<tr><td>The War of the Worlds</td><td>cloud wisps of broad stretches of populous country and narrow,              </td></tr>
-	<tr><td>The War of the Worlds</td><td>least as alien and lowly as are the monkeys and lemurs to us. The           </td></tr>
-	<tr><td>The War of the Worlds</td><td>intellectual side of man already admits that life is an incessant           </td></tr>
-	<tr><td>The War of the Worlds</td><td>creeps upon them.                                                           </td></tr>
-	<tr><td>The War of the Worlds</td><td>immigrants, in the space of fifty years. Are we such apostles of mercy      </td></tr>
-	<tr><td>The War of the Worlds</td><td><span style=white-space:pre-wrap>countless centuries Mars has been the star of war&lt;U+2014&gt;but failed to      </span></td></tr>
-	<tr><td>The War of the Worlds</td><td>interpret the fluctuating appearances of the markings they mapped so        </td></tr>
-	<tr><td>The War of the Worlds</td><td>During the opposition of 1894 a great light was seen on the illuminated     </td></tr>
-	<tr><td>The War of the Worlds</td><td>into their planet, from which their shots were fired at us. Peculiar        </td></tr>
-	<tr><td>The War of the Worlds</td><td>markings, as yet unexplained, were seen near the site of that outbreak      </td></tr>
-	<tr><td>The War of the Worlds</td><td>during the next two oppositions.                                            </td></tr>
-	<tr><td>The War of the Worlds</td><td>incandescent gas upon the planet. It had occurred towards midnight of       </td></tr>
-	<tr><td>The War of the Worlds</td><td>indicated a mass of flaming gas, chiefly hydrogen, moving with an           </td></tr>
-	<tr><td>The War of the Worlds</td><td>invisible about a quarter past twelve. He compared it to a colossal         </td></tr>
-	<tr><td>The War of the Worlds</td><td>dangers that ever threatened the human race. I might not have heard of      </td></tr>
-	<tr><td>The War of the Worlds</td><td>In spite of all that has happened since, I still remember that vigil        </td></tr>
-	<tr><td>The War of the Worlds</td><td>very distinctly: the black and silent observatory, the shadowed lantern     </td></tr>
-	<tr><td>The War of the Worlds</td><td>circle of deep blue and the little round planet swimming in the field.      </td></tr>
-	<tr><td>The War of the Worlds</td><td>It seemed such a little thing, so bright and small and still, faintly       </td></tr>
-	<tr><td>The War of the Worlds</td><td>marked with transverse stripes, and slightly flattened from the perfect     </td></tr>
-	<tr><td>The War of the Worlds</td><td>millions of miles it was from us&lt;U+2014&gt;more than forty millions of miles of</td></tr>
-	<tr><td>The War of the Worlds</td><td>void. Few people realise the immensity of vacancy in which the dust of      </td></tr>
-	<tr><td>The War of the Worlds</td><td>darkness, to the little table where the siphon stood, while Ogilvy          </td></tr>
-	<tr><td>The War of the Worlds</td><td>light to smoke by, little suspecting the meaning of the minute gleam I      </td></tr>
-	<tr><td>The War of the Worlds</td><td>Martians inconvenience. Dense clouds of smoke or dust, visible through      </td></tr>
-	<tr><td>The War of the Worlds</td><td>its more familiar features.                                                 </td></tr>
-	<tr><td>The War of the Worlds</td><td>missiles the Martians had fired at us drew earthward, rushing now at a      </td></tr>
-	<tr><td>The War of the Worlds</td><td>incredibly wonderful that, with that swift fate hanging over us, men        </td></tr>
-	<tr><td>The War of the Worlds</td><td>could go about their petty concerns as they did. I remember how             </td></tr>
-	<tr><td>The War of the Worlds</td><td>illustrated paper he edited in those days. People in these latter times     </td></tr>
-	<tr><td>The War of the Worlds</td><td>developments of moral ideas as civilisation progressed.                     </td></tr>
-	<tr><td>The War of the Worlds</td><td>miles away) I went for a walk with my wife. It was starlight and I          </td></tr>
-	<tr><td>The War of the Worlds</td><td>music. There were lights in the upper windows of the houses as the          </td></tr>
-	<tr><td>The War of the Worlds</td><td>melody by the distance. My wife pointed out to me the brightness of the     </td></tr>
-	<tr><td>The War of the Worlds</td><td>II.                                                                         </td></tr>
-	<tr><td>The War of the Worlds</td><td>morning, rushing over Winchester eastward, a line of flame high in the      </td></tr>
-</tbody>
-</table>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
 
 <span class="c1"># divide into documents, each representing one chapter</span>
 <span class="n">by_chapter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="o">%&gt;%</span>
 <span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
 <span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">chapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cumsum</span><span class="p">(</span><span class="nf">str_detect</span><span class="p">(</span>
-<span class="w">    </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nf">regex</span><span class="p">(</span><span class="s">&quot;^(chapter\\s|^[ivxlc]+\\.$)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nf">regex</span><span class="p">(</span><span class="s">&quot;^chapter\\s+[ivxlcdm]+\\.?$|^[ivxlcdm]{2,}\\.$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 <span class="w">  </span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
 <span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
 <span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">chapter</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -3365,20 +3251,20 @@ Weighting          : term frequency (tf)
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joining with `by = join_by(word)`
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 106,659 x 3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 105,201 x 3
    document                 word        n
    &lt;chr&gt;                    &lt;chr&gt;   &lt;int&gt;
- 1 Great Expectations_59    joe        88
+ 1 Great Expectations_58    joe        88
  2 Great Expectations_7     joe        70
  3 Great Expectations_17    biddy      63
- 4 Great Expectations_27    joe        58
- 5 Great Expectations_38    estella    58
+ 4 Great Expectations_28    joe        58
+ 5 Great Expectations_39    estella    58
  6 Great Expectations_2     joe        56
- 7 Great Expectations_23    pocket     53
+ 7 Great Expectations_24    pocket     53
  8 Great Expectations_15    joe        50
  9 Great Expectations_18    joe        50
-10 The War of the Worlds_16 brother    50
-# i 106,649 more rows
+10 The War of the Worlds_13 brother    50
+# i 105,191 more rows
 </pre></div>
 </div>
 </div>
@@ -3396,8 +3282,8 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&lt;DocumentTermMatrix (documents: 196, terms: 18393)&gt;&gt;
-Non-/sparse entries: 106743/3498285
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&lt;DocumentTermMatrix (documents: 187, terms: 18316)&gt;&gt;
+Non-/sparse entries: 105201/3319891
 Sparsity           : 97%
 Maximal term length: 19
 Weighting          : term frequency (tf)
@@ -3405,13 +3291,7 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="this-all-needs-reworded">
-<h1>THIS ALL NEEDS REWORDED !!!!!!!!!!!!!<a class="headerlink" href="#this-all-needs-reworded" title="Link to this heading">#</a></h1>
-<p>We can then apply the <code class="docutils literal notranslate"><span class="pre">LDA()</span></code> function to build a four-topic model. In this example, we know to set four topics since we’re working with four books; in other situations, we may need to experiment with different values of <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
+<p>We can then apply the <a class="reference external" href="https://rdrr.io/cran/topicmodels/man/lda.html"><code class="docutils literal notranslate"><span class="pre">LDA()</span></code></a> function to build a four-topic model. In this example, we know to set four topics since we’re working with four books; in other situations, we may need to experiment with different values of <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">chapters_lda</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">LDA</span><span class="p">(</span><span class="n">chapters_dtm</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1234</span><span class="p">))</span>
@@ -3434,26 +3314,26 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 73,572 x 3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 73,264 x 3
    topic term         beta
    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1     1 joe     1.50e<span class=" -Color -Color-Red">- 51</span>
- 2     2 joe     5.37e<span class=" -Color -Color-Red">- 32</span>
- 3     3 joe     4.39e<span class=" -Color -Color-Red">- 32</span>
- 4     4 joe     1.26e<span class=" -Color -Color-Red">-  2</span>
- 5     1 biddy   1.31e<span class=" -Color -Color-Red">-180</span>
- 6     2 biddy   1.16e<span class=" -Color -Color-Red">- 22</span>
- 7     3 biddy   2.73e<span class=" -Color -Color-Red">- 27</span>
- 8     4 biddy   4.15e<span class=" -Color -Color-Red">-  3</span>
- 9     1 estella 2.70e<span class=" -Color -Color-Red">-191</span>
-10     2 estella 3.17e<span class=" -Color -Color-Red">- 12</span>
-# i 73,562 more rows
+ 1     1 joe     1.58e<span class=" -Color -Color-Red">- 41</span>
+ 2     2 joe     1.32e<span class=" -Color -Color-Red">-  2</span>
+ 3     3 joe     9.39e<span class=" -Color -Color-Red">- 33</span>
+ 4     4 joe     1.25e<span class=" -Color -Color-Red">- 65</span>
+ 5     1 biddy   1.79e<span class=" -Color -Color-Red">- 49</span>
+ 6     2 biddy   4.34e<span class=" -Color -Color-Red">-  3</span>
+ 7     3 biddy   1.74e<span class=" -Color -Color-Red">- 33</span>
+ 8     4 biddy   5.79e<span class=" -Color -Color-Red">-251</span>
+ 9     1 estella 9.70e<span class=" -Color -Color-Red">- 21</span>
+10     2 estella 4.52e<span class=" -Color -Color-Red">-  3</span>
+# i 73,254 more rows
 </pre></div>
 </div>
 </div>
 </div>
-<p>Notice that this has turned the model into a one-topic-per-term-per-row format. For each combination, the model computes the probability of that term being generated from that topic. For example, the term “joe” has an almost zero probability of being generated from topics 1, 2, or 3, but it makes up 0% of topic 4.</p>
-<p>We could use dplyr’s <a class="reference external" href="https://dplyr.tidyverse.org/reference/slice.html"><code class="docutils literal notranslate"><span class="pre">slice_max()</span></code></a> to find the top 5 terms within each topic.</p>
+<p>You’ll notice the model is now in a one-topic-per-term-per-row format. For each term-topic pair, the model estimates the probability that the term was generated from that topic. For instance, the term “joe” has near-zero probability for topics 1, 2, and 3, but contributes around 0% to topic 4.</p>
+<p>We can use <a class="reference external" href="https://dplyr.tidyverse.org/reference/slice.html"><code class="docutils literal notranslate"><span class="pre">slice_max()</span></code></a> from <strong>dplyr</strong> to extract the top 5 terms for each topic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">top_terms</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chapter_topics</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -3470,26 +3350,26 @@ Weighting          : term frequency (tf)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 20 x 3
    topic term          beta
    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
- 1     1 captain    0.0154 
- 2     1 _nautilus_ 0.0127 
- 3     1 sea        0.00896
- 4     1 nemo       0.00872
- 5     1 ned        0.00800
- 6     2 elizabeth  0.0154 
- 7     2 darcy      0.00968
- 8     2 bennet     0.00771
- 9     2 miss       0.00768
-10     2 jane       0.00719
-11     3 people     0.00690
-12     3 martians   0.00663
-13     3 time       0.00546
-14     3 black      0.00520
-15     3 night      0.00439
-16     4 joe        0.0126 
-17     4 miss       0.00674
-18     4 time       0.00647
-19     4 pip        0.00594
-20     4 looked     0.00584
+ 1     1 captain    0.0156 
+ 2     1 _nautilus_ 0.0129 
+ 3     1 sea        0.00915
+ 4     1 nemo       0.00890
+ 5     1 ned        0.00816
+ 6     2 joe        0.0132 
+ 7     2 miss       0.00727
+ 8     2 time       0.00657
+ 9     2 pip        0.00621
+10     2 looked     0.00591
+11     3 people     0.00614
+12     3 martians   0.00581
+13     3 time       0.00542
+14     3 black      0.00516
+15     3 night      0.00438
+16     4 elizabeth  0.0156 
+17     4 darcy      0.00980
+18     4 bennet     0.00763
+19     4 miss       0.00750
+20     4 jane       0.00718
 </pre></div>
 </div>
 </div>
@@ -3510,16 +3390,15 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../../../_images/727698171a1e538b18f32bc13569b1d7822c1227a9a1863c60a25fceabe85d92.png"><img alt="../../../_images/727698171a1e538b18f32bc13569b1d7822c1227a9a1863c60a25fceabe85d92.png" src="../../../_images/727698171a1e538b18f32bc13569b1d7822c1227a9a1863c60a25fceabe85d92.png" style="width: 420px; height: 420px;" />
+<a class="reference internal image-reference" href="../../../_images/752bcba264f2404d3972e820e5708365f3d7c06b57e9f848ce8b4fb16f4520eb.png"><img alt="../../../_images/752bcba264f2404d3972e820e5708365f3d7c06b57e9f848ce8b4fb16f4520eb.png" src="../../../_images/752bcba264f2404d3972e820e5708365f3d7c06b57e9f848ce8b4fb16f4520eb.png" style="width: 420px; height: 420px;" />
 </a>
 </div>
 </div>
-<p>These topics are pretty clearly associated with the four books! There’s no question that the topic of “captain”, “nautilus”, “sea”, and “nemo” belongs to Twenty Thousand Leagues Under the Sea, and that “jane”, “darcy”, and “elizabeth” belongs to Pride and Prejudice. We see “pip” and “joe” from Great Expectations and “martians”, “black”, and “night” from The War of the Worlds. We also notice that, in line with LDA being a “fuzzy clustering” method, there can be words in common between multiple topics, such as “miss” in topics 1 and 4, and “time” in topics 3 and 4.</p>
+<p>These topics clearly align with the four books! It’s obvious that terms like “captain,” “nautilus,” “sea,” and “nemo” belong to <em>Twenty Thousand Leagues Under the Sea</em>, while “jane,” “darcy,” and “elizabeth” point to <em>Pride and Prejudice</em>. We see “pip” and “joe” from <em>Great Expectations</em>, and “martians,” “black,” and “night” from <em>The War of the Worlds</em>. We can also observe that, as expected with LDA being a form of “fuzzy clustering,” some words appear across multiple topics—like “miss” in both topics 2 and 4..</p>
+</section>
 <section id="per-document-classification">
-<h2>Per-document classification<a class="headerlink" href="#per-document-classification" title="Link to this heading">#</a></h2>
-<p>Each document in this analysis represented a single chapter. Thus, we may want to know which topics are associated with each document. Can we put the chapters back together in the correct books? We can find this by examining the per-document-per-topic probabilities,
-γ
-(“gamma”).</p>
+<h4>Per-document classification<a class="headerlink" href="#per-document-classification" title="Link to this heading">#</a></h4>
+<p>In this analysis, each document corresponds to a single chapter. So, we might want to determine which topics are linked to each chapter. Can we use that information to correctly reassemble the chapters into their original books? To do this, we can examine the per-document-per-topic probabilities, known as <span class="math notranslate nohighlight">\(\gamma\)</span> (“gamma”).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">chapters_gamma</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">chapters_lda</span><span class="p">,</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gamma&quot;</span><span class="p">)</span>
@@ -3528,27 +3407,27 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 784 x 3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 748 x 3
    document                 topic     gamma
    &lt;chr&gt;                    &lt;int&gt;     &lt;dbl&gt;
- 1 Great Expectations_60        1 0.0000122
- 2 Great Expectations_7         1 0.0000129
- 3 Great Expectations_17        1 0.0000189
- 4 Great Expectations_28        1 0.0000173
- 5 Great Expectations_39        1 0.0000117
- 6 Great Expectations_2         1 0.0000152
- 7 Great Expectations_24        1 0.0000168
- 8 Great Expectations_15        1 0.0000128
- 9 Great Expectations_18        1 0.0000114
-10 The War of the Worlds_16     1 0.0000100
-# i 774 more rows
+ 1 Great Expectations_58        1 0.0000175
+ 2 Great Expectations_7         1 0.0000185
+ 3 Great Expectations_17        1 0.0000271
+ 4 Great Expectations_28        1 0.0000247
+ 5 Great Expectations_39        1 0.0241   
+ 6 Great Expectations_2         1 0.0000218
+ 7 Great Expectations_24        1 0.0000240
+ 8 Great Expectations_15        1 0.00115  
+ 9 Great Expectations_18        1 0.0000163
+10 The War of the Worlds_13     1 0.0000143
+# i 738 more rows
 </pre></div>
 </div>
 </div>
 </div>
-<p>Each of these values is an estimated proportion of words from that document that are generated from that topic. For example, the model estimates that each word in the Great Expectations_57 document has only a 0% probability of coming from topic 1 (Pride and Prejudice).</p>
-<p>Now that we have these topic probabilities, we can see how well our unsupervised learning did at distinguishing the four books. We’d expect that chapters within a book would be found to be mostly (or entirely), generated from the corresponding topic.</p>
-<p>First we re-separate the document name into title and chapter, after which we can visualize the per-document-per-topic probability for each.</p>
+<p>Each of these values estimates the proportion of words in a document that were generated by a particular topic.</p>
+<p>With these topic probabilities, we can evaluate how effectively our unsupervised model distinguished between the four books. Ideally, we’d expect most chapters within a given book to be primarily (or entirely) generated from the matching topic.</p>
+<p>To explore this, we’ll first split the document name back into the book title and chapter number, then visualize the per-document-per-topic probabilities for each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">chapters_gamma</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chapters_gamma</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -3559,28 +3438,24 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 664 x 4
-   title              chapter topic     gamma
-   &lt;chr&gt;                &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
- 1 Great Expectations      57     1 0.0000129
- 2 Great Expectations       7     1 0.0580   
- 3 Great Expectations      17     1 0.0000201
- 4 Great Expectations      27     1 0.0000183
- 5 Great Expectations      38     1 0.0000124
- 6 Great Expectations       2     1 0.0000161
- 7 Great Expectations      23     1 0.0000178
- 8 Great Expectations      15     1 0.0000136
- 9 Great Expectations      18     1 0.0000121
-10 Great Expectations       9     1 0.0000214
-# i 654 more rows
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 748 x 4
+   title                 chapter topic     gamma
+   &lt;chr&gt;                   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1 Great Expectations         58     1 0.0000175
+ 2 Great Expectations          7     1 0.0000185
+ 3 Great Expectations         17     1 0.0000271
+ 4 Great Expectations         28     1 0.0000247
+ 5 Great Expectations         39     1 0.0241   
+ 6 Great Expectations          2     1 0.0000218
+ 7 Great Expectations         24     1 0.0000240
+ 8 Great Expectations         15     1 0.00115  
+ 9 Great Expectations         18     1 0.0000163
+10 The War of the Worlds      13     1 0.0000143
+# i 738 more rows
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="look-into-fixing-below">
-<h1>Look into fixing below<a class="headerlink" href="#look-into-fixing-below" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># reorder titles in order of topic 1, topic 2, etc before plotting</span>
@@ -3594,12 +3469,12 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../../../_images/4b41503c1e5b286c9ef4a82ffd1209ecebd03216857c2ee62f2d2386dae5d1d3.png"><img alt="../../../_images/4b41503c1e5b286c9ef4a82ffd1209ecebd03216857c2ee62f2d2386dae5d1d3.png" src="../../../_images/4b41503c1e5b286c9ef4a82ffd1209ecebd03216857c2ee62f2d2386dae5d1d3.png" style="width: 420px; height: 420px;" />
+<a class="reference internal image-reference" href="../../../_images/3906bc03c6d716e46cfb06b07c026659d1e84bf87d2a636950751f7b09fbae72.png"><img alt="../../../_images/3906bc03c6d716e46cfb06b07c026659d1e84bf87d2a636950751f7b09fbae72.png" src="../../../_images/3906bc03c6d716e46cfb06b07c026659d1e84bf87d2a636950751f7b09fbae72.png" style="width: 420px; height: 420px;" />
 </a>
 </div>
 </div>
-<p>We notice that almost all of the chapters from Pride and Prejudice, War of the Worlds, and Twenty Thousand Leagues Under the Sea were uniquely identified as a single topic each.</p>
-<p>It does look like some chapters from Great Expectations (which should be topic 4) were somewhat associated with other topics. Are there any cases where the topic most associated with a chapter belonged to another book? First we’d find the topic that was most associated with each chapter using slice_max(), which is effectively the “classification” of that chapter.</p>
+<p>We can see that nearly all chapters from <em>Pride and Prejudice</em>, <em>The War of the Worlds</em>, and <em>Twenty Thousand Leagues Under the Sea</em> were clearly matched to a single, distinct topic.</p>
+<p>However, a few chapters from <em>Great Expectations</em> show some association with other topics. Are there any cases where a chapter’s strongest topic actually aligns with a different book? To find out, we can use <a class="reference external" href="https://dplyr.tidyverse.org/reference/slice.html"><code class="docutils literal notranslate"><span class="pre">slice_max()</span></code></a> to select the most dominant topic for each chapter—this serves as the model’s effective “classification” for that chapter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">chapter_classifications</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chapters_gamma</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -3612,25 +3487,25 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 166 x 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 187 x 4
    title              chapter topic gamma
    &lt;chr&gt;                &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1 Great Expectations       1     3 1.00 
- 2 Great Expectations       2     3 1.00 
- 3 Great Expectations       3     3 1.00 
- 4 Great Expectations       4     3 1.00 
- 5 Great Expectations       5     3 1.00 
- 6 Great Expectations       6     3 1.00 
- 7 Great Expectations       7     3 0.942
- 8 Great Expectations       8     1 1.00 
- 9 Great Expectations       9     3 1.00 
-10 Great Expectations      10     3 1.00 
-# i 156 more rows
+ 1 Great Expectations       1     2 0.804
+ 2 Great Expectations       2     2 1.00 
+ 3 Great Expectations       3     2 0.823
+ 4 Great Expectations       4     2 1.00 
+ 5 Great Expectations       5     2 0.943
+ 6 Great Expectations       6     2 1.00 
+ 7 Great Expectations       7     2 1.00 
+ 8 Great Expectations       8     2 0.934
+ 9 Great Expectations       9     2 1.00 
+10 Great Expectations      10     2 1.00 
+# i 177 more rows
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can then compare each to the “consensus” topic for each book (the most common topic among its chapters), and see which were most often misidentified.</p>
+<p>Next, we can compare each chapter’s assigned topic to the “consensus” topic for its book—the topic that appears most frequently across its chapters—and check which chapters were most commonly misclassified.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">book_topics</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chapter_classifications</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -3648,21 +3523,23 @@ Weighting          : term frequency (tf)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table class="dataframe">
-<caption>A tibble: 0 x 5</caption>
+<caption>A tibble: 1 x 5</caption>
 <thead>
 	<tr><th scope=col>title</th><th scope=col>chapter</th><th scope=col>topic</th><th scope=col>gamma</th><th scope=col>consensus</th></tr>
 	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
+	<tr><td>Great Expectations</td><td>55</td><td>3</td><td>0.7430811</td><td>The War of the Worlds</td></tr>
 </tbody>
 </table>
 </div></div>
 </div>
-<p>We see that only two chapters from Great Expectations were misclassified, as LDA described one as coming from the “Pride and Prejudice” topic (topic 1) and one from The War of the Worlds (topic 3). That’s not bad for unsupervised clustering!</p>
+<p>We see that some chapters from Great Expectations were misclassified. That’s not bad for unsupervised clustering!</p>
+</section>
 <section id="by-word-assignments-augment">
-<h2>By Word Assignments: <code class="docutils literal notranslate"><span class="pre">augment</span></code><a class="headerlink" href="#by-word-assignments-augment" title="Link to this heading">#</a></h2>
-<p>One step of the LDA algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight (<code class="docutils literal notranslate"><span class="pre">gamma</span></code>) will go on that document-topic classification.</p>
-<p>We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the <a class="reference external" href="https://generics.r-lib.org/reference/augment.html"><code class="docutils literal notranslate"><span class="pre">augment()</span></code></a> function, which also originated in the broom package as a way of tidying model output. While <a class="reference external" href="https://generics.r-lib.org/reference/tidy.html"><code class="docutils literal notranslate"><span class="pre">tidy()</span></code></a> retrieves the statistical components of the model, <a class="reference external" href="https://generics.r-lib.org/reference/augment.html"><code class="docutils literal notranslate"><span class="pre">augment()</span></code></a> uses a model to add information to each observation in the original data.</p>
+<h4>By Word Assignments: <code class="docutils literal notranslate"><span class="pre">augment</span></code><a class="headerlink" href="#by-word-assignments-augment" title="Link to this heading">#</a></h4>
+<p>A key step in the LDA algorithm is assigning each word in every document to a specific topic. Generally, the more words in a document assigned to a given topic, the higher the weight (<code class="docutils literal notranslate"><span class="pre">gamma</span></code>) for that document-topic pairing.</p>
+<p>To explore this, we might want to link each original document-word pair to the topic it was assigned. This is where the <a class="reference external" href="https://generics.r-lib.org/reference/augment.html"><code class="docutils literal notranslate"><span class="pre">augment()</span></code></a> function comes in—originally from the <strong>broom</strong> package, it’s designed to tidy model outputs by adding information back onto the original observations. While <a class="reference external" href="https://generics.r-lib.org/reference/tidy.html"><code class="docutils literal notranslate"><span class="pre">tidy()</span></code></a> extracts summary statistics from the model, <a class="reference external" href="https://generics.r-lib.org/reference/augment.html"><code class="docutils literal notranslate"><span class="pre">augment()</span></code></a> enriches the original data with model-based details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">assignments</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">augment</span><span class="p">(</span><span class="n">chapters_lda</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chapters_dtm</span><span class="p">)</span>
@@ -3671,25 +3548,25 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 90,959 x 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 105,201 x 4
    document              term  count .topic
    &lt;chr&gt;                 &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;
- 1 Great Expectations_57 joe      88      3
- 2 Great Expectations_7  joe      70      3
- 3 Great Expectations_17 joe       5      3
- 4 Great Expectations_27 joe      58      3
- 5 Great Expectations_2  joe      56      3
- 6 Great Expectations_23 joe       1      3
- 7 Great Expectations_15 joe      50      3
- 8 Great Expectations_18 joe      50      3
- 9 Great Expectations_9  joe      44      3
-10 Great Expectations_13 joe      40      3
-# i 90,949 more rows
+ 1 Great Expectations_58 joe      88      2
+ 2 Great Expectations_7  joe      70      2
+ 3 Great Expectations_17 joe       5      2
+ 4 Great Expectations_28 joe      58      2
+ 5 Great Expectations_2  joe      56      2
+ 6 Great Expectations_24 joe       1      2
+ 7 Great Expectations_15 joe      50      2
+ 8 Great Expectations_18 joe      50      2
+ 9 Great Expectations_9  joe      44      2
+10 Great Expectations_13 joe      40      2
+# i 105,191 more rows
 </pre></div>
 </div>
 </div>
 </div>
-<p>This returns a tidy data frame of book-term counts, but adds an extra column: <code class="docutils literal notranslate"><span class="pre">.topic</span></code>, with the topic each term was assigned to within each document. (Extra columns added by <code class="docutils literal notranslate"><span class="pre">augment</span></code> always start with <code class="docutils literal notranslate"><span class="pre">.</span></code>, to prevent overwriting existing columns). We can combine this <code class="docutils literal notranslate"><span class="pre">assignments</span></code> table with the consensus book titles to find which words were incorrectly classified.</p>
+<p>This produces a tidy data frame of book-term counts with an additional column, <code class="docutils literal notranslate"><span class="pre">.topic</span></code>, indicating the topic assigned to each term within each document. (Note that columns added by <code class="docutils literal notranslate"><span class="pre">augment</span></code> always begin with a <code class="docutils literal notranslate"><span class="pre">.</span></code> to avoid overwriting existing columns.) By combining this <code class="docutils literal notranslate"><span class="pre">assignments</span></code> table with the consensus book titles, we can identify which words were misclassified.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">assignments</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">assignments</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -3702,25 +3579,25 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 72,144 x 6
-   title              chapter term    count .topic consensus         
-   &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;             
- 1 Great Expectations      30 joe         2      1 Great Expectations
- 2 Great Expectations       8 joe         2      1 Great Expectations
- 3 Great Expectations      43 joe         2      1 Great Expectations
- 4 Great Expectations      39 joe         2      1 Great Expectations
- 5 Great Expectations      51 estella     1      1 Great Expectations
- 6 Great Expectations      29 estella    24      1 Great Expectations
- 7 Great Expectations      46 estella     1      1 Great Expectations
- 8 Great Expectations      30 estella     3      1 Great Expectations
- 9 Great Expectations      44 estella    26      1 Great Expectations
-10 Great Expectations      32 estella     2      1 Great Expectations
-# i 72,134 more rows
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 105,201 x 6
+   title              chapter term  count .topic consensus         
+   &lt;chr&gt;                &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;             
+ 1 Great Expectations      58 joe      88      2 Great Expectations
+ 2 Great Expectations       7 joe      70      2 Great Expectations
+ 3 Great Expectations      17 joe       5      2 Great Expectations
+ 4 Great Expectations      28 joe      58      2 Great Expectations
+ 5 Great Expectations       2 joe      56      2 Great Expectations
+ 6 Great Expectations      24 joe       1      2 Great Expectations
+ 7 Great Expectations      15 joe      50      2 Great Expectations
+ 8 Great Expectations      18 joe      50      2 Great Expectations
+ 9 Great Expectations       9 joe      44      2 Great Expectations
+10 Great Expectations      13 joe      40      2 Great Expectations
+# i 105,191 more rows
 </pre></div>
 </div>
 </div>
 </div>
-<p>This combination of the true book (<code class="docutils literal notranslate"><span class="pre">title</span></code>) and the book assigned to it (<code class="docutils literal notranslate"><span class="pre">consensus</span></code>) is useful for further exploration. We can, for example, visualize a <strong>confusion matrix</strong>, showing how often words from one book were assigned to another, using dplyr’s <a class="reference external" href="https://dplyr.tidyverse.org/reference/count.html"><code class="docutils literal notranslate"><span class="pre">count()</span></code></a> and ggplot2’s <code class="docutils literal notranslate"><span class="pre">geom_tile</span></code>.</p>
+<p>Combining the true book titles with their assigned consensus topics provides a valuable basis for deeper analysis. For instance, we can create a <strong>confusion matrix</strong> that reveals how frequently words from one book were assigned to another, using <a class="reference external" href="https://dplyr.tidyverse.org/reference/count.html"><code class="docutils literal notranslate"><span class="pre">count()</span></code></a> from <strong>dplyr</strong> and <code class="docutils literal notranslate"><span class="pre">geom_tile()</span></code> from <strong>ggplot2</strong> for visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span>
@@ -3743,10 +3620,184 @@ Weighting          : term frequency (tf)
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../../../_images/40f11be245f71ab8bfcfe5de7d37b1859eed33a8f2e9f90c3cd1c2d6f296e778.png"><img alt="../../../_images/40f11be245f71ab8bfcfe5de7d37b1859eed33a8f2e9f90c3cd1c2d6f296e778.png" src="../../../_images/40f11be245f71ab8bfcfe5de7d37b1859eed33a8f2e9f90c3cd1c2d6f296e778.png" style="width: 420px; height: 420px;" />
+<a class="reference internal image-reference" href="../../../_images/5e2606dab3753d8e58cbfb088054aa331d71e3fd5c63a0670853e97faeec8a1f.png"><img alt="../../../_images/5e2606dab3753d8e58cbfb088054aa331d71e3fd5c63a0670853e97faeec8a1f.png" src="../../../_images/5e2606dab3753d8e58cbfb088054aa331d71e3fd5c63a0670853e97faeec8a1f.png" style="width: 420px; height: 420px;" />
 </a>
 </div>
 </div>
+<p>We observe that nearly all words from <em>Pride and Prejudice</em>, <em>Twenty Thousand Leagues Under the Sea</em>, and <em>The War of the Worlds</em> were accurately assigned, whereas <em>Great Expectations</em> had a notable number of misclassified words—contributing to the misclassification of two chapters, as mentioned earlier.</p>
+<p>Which words were most frequently misassigned?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">wrong_words</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">assignments</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">consensus</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">wrong_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 3,532 x 6
+   title                                 chapter term     count .topic consensus
+   &lt;chr&gt;                                   &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+ 1 Great Expectations                         53 brother      2      3 The War ~
+ 2 Twenty Thousand Leagues under the Sea       8 miss         1      4 Pride an~
+ 3 Great Expectations                         43 compeys~    36      3 The War ~
+ 4 Great Expectations                         47 compeys~     1      3 The War ~
+ 5 Great Expectations                         55 compeys~     1      3 The War ~
+ 6 Great Expectations                         54 compeys~     1      3 The War ~
+ 7 Great Expectations                         47 captain      1      3 The War ~
+ 8 Great Expectations                         33 captain      1      1 Twenty T~
+ 9 Great Expectations                         15 sea          1      1 Twenty T~
+10 Great Expectations                         31 sea          1      1 Twenty T~
+# i 3,522 more rows
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">wrong_words</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">count</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">consensus</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">wt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ungroup</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 2,941 x 4
+   title              consensus             term          n
+   &lt;chr&gt;              &lt;chr&gt;                 &lt;chr&gt;     &lt;dbl&gt;
+ 1 Great Expectations The War of the Worlds compeyson    39
+ 2 Great Expectations The War of the Worlds boat         30
+ 3 Great Expectations The War of the Worlds tide         27
+ 4 Great Expectations The War of the Worlds magwitch     23
+ 5 Great Expectations The War of the Worlds black        22
+ 6 Great Expectations The War of the Worlds water        20
+ 7 Great Expectations The War of the Worlds lay          19
+ 8 Great Expectations The War of the Worlds river        19
+ 9 Great Expectations The War of the Worlds death        18
+10 Great Expectations The War of the Worlds jack         18
+# i 2,931 more rows
+</pre></div>
+</div>
+</div>
+</div>
+<p>We notice that several words from <em>Great Expectations</em> were frequently assigned to the <em>Pride and Prejudice</em> or <em>War of the Worlds</em> clusters. For some words, like “love” and “lady,” this makes sense since they are more common in <em>Pride and Prejudice</em> (which we could verify by checking their counts).</p>
+<p>However, a few misassigned words never actually appear in the books they were attributed to. For instance, “flopson” occurs only in <em>Great Expectations</em>, yet it was assigned to the <em>Pride and Prejudice</em> cluster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">word_counts</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">word</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;flopson&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 3 x 3
+  document              word        n
+  &lt;chr&gt;                 &lt;chr&gt;   &lt;int&gt;
+1 Great Expectations_23 flopson    10
+2 Great Expectations_24 flopson     7
+3 Great Expectations_34 flopson     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the LDA algorithm is stochastic, it can sometimes produce topics that cover content from multiple books by chance.</p>
+</section>
+</section>
+<section id="alternative-lda-implementations">
+<h3>Alternative LDA Implementations<a class="headerlink" href="#alternative-lda-implementations" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://rdrr.io/cran/topicmodels/man/lda.html"><code class="docutils literal notranslate"><span class="pre">LDA()</span></code></a> function in the <strong>topicmodels</strong> package is just one way to implement latent Dirichlet allocation. For example, the <a class="reference external" href="https://cran.r-project.org/web/packages/mallet/index.html">mallet</a> package <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-mallet">(Mimno 2013)</a> provides a wrapper around the <a class="reference external" href="https://mimno.github.io/Mallet/index">MALLET</a> Java toolkit for text classification, and tidytext includes tidiers for its output.</p>
+<p>The mallet package differs in how it handles input: it expects non-tokenized documents and performs tokenization internally. It also requires a separate stopword file. This means we need to combine the text into a single string per document before running LDA with mallet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">mallet</span><span class="p">)</span>
+
+<span class="c1"># create a vector with one string per chapter</span>
+<span class="n">collapsed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">by_chapter_word</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">anti_join</span><span class="p">(</span><span class="n">stop_words</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;word&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">str_replace</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">document</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">summarize</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">))</span>
+
+<span class="c1"># create an empty file of &quot;stopwords&quot;</span>
+<span class="nf">file.create</span><span class="p">(</span><span class="n">empty_file</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tempfile</span><span class="p">())</span>
+<span class="n">docs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mallet.import</span><span class="p">(</span><span class="n">collapsed</span><span class="o">$</span><span class="n">document</span><span class="p">,</span><span class="w"> </span><span class="n">collapsed</span><span class="o">$</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">empty_file</span><span class="p">)</span>
+
+<span class="n">mallet_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">MalletLDA</span><span class="p">(</span><span class="n">num.topics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="n">mallet_model</span><span class="o">$</span><span class="nf">loadDocuments</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+<span class="n">mallet_model</span><span class="o">$</span><span class="nf">train</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">TRUE</div></div>
+</div>
+<p>After fitting the model, we can apply the <a class="reference external" href="https://generics.r-lib.org/reference/tidy.html"><code class="docutils literal notranslate"><span class="pre">tidy()</span></code></a> and <a class="reference external" href="https://generics.r-lib.org/reference/augment.html"><code class="docutils literal notranslate"><span class="pre">augment()</span></code></a> functions just as described earlier. This allows us to extract word-topic probabilities and document-topic associations in much the same way as with other LDA implementations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># word-topic pairs</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">tidy</span><span class="p">(</span><span class="n">mallet_model</span><span class="p">))</span>
+
+<span class="c1"># document-topic pairs</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">tidy</span><span class="p">(</span><span class="n">mallet_model</span><span class="p">,</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gamma&quot;</span><span class="p">))</span>
+
+<span class="c1"># column needs to be named &quot;term&quot; for &quot;augment&quot;</span>
+<span class="n">term_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="n">word_counts</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">augment</span><span class="p">(</span><span class="n">mallet_model</span><span class="p">,</span><span class="w"> </span><span class="n">term_counts</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 70,628 x 3
+   topic term           beta
+   &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
+ 1     1 chapter 0.00185    
+ 2     2 chapter 0.000943   
+ 3     3 chapter 0.000000286
+ 4     4 chapter 0.00119    
+ 5     1 father  0.00432    
+ 6     2 father  0.000000242
+ 7     3 father  0.000000286
+ 8     4 father  0.000000270
+ 9     1 s       0.0184     
+10     2 s       0.0343     
+# i 70,618 more rows
+# A tibble: 748 x 3
+   document              topic gamma
+   &lt;chr&gt;                 &lt;int&gt; &lt;dbl&gt;
+ 1 Great Expectations_1      1 0.115
+ 2 Great Expectations_10     1 0.168
+ 3 Great Expectations_11     1 0.180
+ 4 Great Expectations_12     1 0.190
+ 5 Great Expectations_13     1 0.228
+ 6 Great Expectations_14     1 0.241
+ 7 Great Expectations_15     1 0.159
+ 8 Great Expectations_16     1 0.269
+ 9 Great Expectations_17     1 0.252
+10 Great Expectations_18     1 0.211
+# i 738 more rows
+# A tibble: 105,201 x 4
+   document                 term        n .topic
+   &lt;chr&gt;                    &lt;chr&gt;   &lt;int&gt;  &lt;int&gt;
+ 1 Great Expectations_58    joe        88      2
+ 2 Great Expectations_7     joe        70      2
+ 3 Great Expectations_17    biddy      63      2
+ 4 Great Expectations_28    joe        58      2
+ 5 Great Expectations_39    estella    58      2
+ 6 Great Expectations_2     joe        56      2
+ 7 Great Expectations_24    pocket     53      2
+ 8 Great Expectations_15    joe        50      2
+ 9 Great Expectations_18    joe        50      2
+10 The War of the Worlds_13 brother    50      3
+# i 105,191 more rows
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -3796,10 +3847,8 @@ Weighting          : term frequency (tf)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Performing Analysis on Tidy Text</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-to-install">Packages to Install</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-to-import">Libraries to Import</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sentiments-dataset">The <code class="docutils literal notranslate"><span class="pre">sentiments</span></code> Dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis-with-inner-join">Sentiment Analysis with Inner Join</a></li>
@@ -3850,22 +3899,14 @@ Weighting          : term frequency (tf)
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-great-library-heist">Example: The Great Library Heist</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lda-on-chapters">LDA on Chapters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#per-document-classification">Per-document classification</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#by-word-assignments-augment">By Word Assignments: <code class="docutils literal notranslate"><span class="pre">augment</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-lda-implementations">Alternative LDA Implementations</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#this-all-needs-reworded">THIS ALL NEEDS REWORDED !!!!!!!!!!!!!</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-document-classification">Per-document classification</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#look-into-fixing-below">Look into fixing below</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#by-word-assignments-augment">By Word Assignments: <code class="docutils literal notranslate"><span class="pre">augment</span></code></a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
