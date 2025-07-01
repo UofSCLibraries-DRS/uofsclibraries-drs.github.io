@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/With_R/Tidy_Text';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Bar, Line, Scatter Plot" href="../../overview/Charts.html" />
+    <link rel="prev" title="Named Entity Recognition (NER)" href="../MultiLingualNer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -199,10 +199,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tidy Text</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -478,7 +479,15 @@ The downloaded binary packages are in
 </section>
 <section id="tidy-text-format">
 <h2>Tidy Text Format<a class="headerlink" href="#tidy-text-format" title="Link to this heading">#</a></h2>
-<p>Using tidy data principles simplifies and improves data handling, including text analysis. Tidy text data is organized so that each token—usually a word—is stored in its own row, making it easy to manipulate with standard tidyverse tools like dplyr, tidyr, and ggplot2. The tidytext package supports converting text into this one-token-per-row format and allows seamless integration with other text mining packages. While tidy data is ideal for many steps, tidytext also supports converting between tidy formats and traditional text structures like document-term matrices to accommodate various workflows. This flexibility helps users efficiently analyze, model, and visualize text data using familiar tidy tools.</p>
+<p>Applying tidy data principles is an effective way to simplify and enhance data handling, and this holds true when working with text as well. As described by Hadley Wickham <a class="reference external" href="https://www.tidytextmining.com/references#ref-tidydata">(Wickham 2014)</a>, tidy data follows a clear structure:</p>
+<ul class="simple">
+<li><p>Each variable is stored in a column</p></li>
+<li><p>Each observation occupies a row</p></li>
+<li><p>Each type of observational unit forms its own table</p></li>
+</ul>
+<p>We define tidy text format as a table where each row contains one token—a meaningful unit of text, often a word, used for analysis. Tokenization is the process of breaking text into these tokens. This one-token-per-row structure contrasts with how text is often stored for analysis, such as in character strings or document-term matrices. In the <strong>tidytext</strong> package, we provide functions to tokenize text into commonly used units like words, n-grams, sentences, or paragraphs and convert them into the one-term-per-row structure.</p>
+<p>Tidy text datasets can be seamlessly manipulated with standard “tidy” tools, including popular packages like <strong>dplyr</strong> <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-dplyr">(Wickham and Francois 2016)</a>, <strong>tidyr</strong> <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-tidyr">(Wickham 2016)</a>, <strong>ggplot2</strong> <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-ggplot2">(Wickham 2009)</a>, and <strong>broom</strong> <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-broom">(Robinson 2017)</a>. By keeping both inputs and outputs in tidy tables, users can move smoothly between these tools. We’ve found that these tidy approaches apply naturally to many types of text exploration and analysis.</p>
+<p>That said, the <strong>tidytext</strong> package doesn’t require users to maintain tidy text format throughout the entire analysis. It offers <code class="docutils literal notranslate"><span class="pre">tidy()</span></code> functions (see the <strong>broom</strong> package, Robinson et al.) to convert objects from popular text mining packages like <strong>tm</strong> <a class="reference external" href="https://www.tidytextmining.com/references#ref-tm">(Feinerer, Hornik, and Meyer 2008)</a> and <strong>quanteda</strong> <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-quanteda">(Benoit and Nulty 2016)</a> into tidy form. This supports workflows where tasks like importing, filtering, and processing are performed with <strong>dplyr</strong> and other tidy tools, after which the data can be transformed into a document-term matrix for machine learning. The model results can then be tidied again for interpretation and visualization using <strong>ggplot2</strong>.</p>
 </section>
 <section id="comparing-tidy-text-vs-other-data-structures">
 <h2>Comparing Tidy Text vs. Other Data Structures<a class="headerlink" href="#comparing-tidy-text-vs-other-data-structures" title="Link to this heading">#</a></h2>
@@ -529,7 +538,7 @@ The downloaded binary packages are in
 </div>
 </div>
 </div>
-<p>Within our tidy text framework, we need to break the text into individual tokens—a process called tokenization—and transform it into a tidy data structure. To do this, we use the <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code> function from the tidytext package. This function takes two main arguments: the name of the output column for the tokens (here, <code class="docutils literal notranslate"><span class="pre">word</span></code>) and the input column containing the text (here, <code class="docutils literal notranslate"><span class="pre">text</span></code>). After tokenization, each row contains one lowercase word with punctuation removed, while other columns like the line number are retained. If you do not want it to make the words lowercase you can use the, <code class="docutils literal notranslate"><span class="pre">to_lower</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> argument. This tidy format makes it easy to manipulate, analyze, and visualize the text using tidyverse tools such as dplyr, tidyr, and ggplot2.</p>
+<p>Within our tidy text framework, we need to break the text into individual tokens—a process called tokenization—and transform it into a tidy data structure. To do this, we use the <a class="reference external" href="https://juliasilge.github.io/tidytext/reference/unnest_tokens.html"><code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code></a> function from the tidytext package. This function takes two main arguments: the name of the output column for the tokens (here, <code class="docutils literal notranslate"><span class="pre">word</span></code>) and the input column containing the text (here, <code class="docutils literal notranslate"><span class="pre">text</span></code>). After tokenization, each row contains one lowercase word with punctuation removed, while other columns like the line number are retained. If you do not want it to make the words lowercase you can use the, <code class="docutils literal notranslate"><span class="pre">to_lower</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> argument. This tidy format makes it easy to manipulate, analyze, and visualize the text using tidyverse tools such as dplyr, tidyr, and ggplot2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
@@ -571,7 +580,7 @@ The downloaded binary packages are in
 </section>
 <section id="tidying-the-works-of-jane-austen">
 <h2>Tidying the Works of Jane Austen<a class="headerlink" href="#tidying-the-works-of-jane-austen" title="Link to this heading">#</a></h2>
-<p>We’ll use the full text of Jane Austen’s six completed novels from the <strong>janeaustenr</strong> package, which provides the books in a one-row-per-line format—each line representing a literal printed line from the book. Starting with this format, we’ll convert the text into a tidy structure by adding two new columns using <code class="docutils literal notranslate"><span class="pre">mutate()</span></code>: one to number each line (<code class="docutils literal notranslate"><span class="pre">linenumber</span></code>) and another to identify chapters using a regular expression. This approach helps preserve the original text structure while preparing the data for tidy text analysis.</p>
+<p>We’ll use the full text of Jane Austen’s six completed novels from the <a class="reference external" href="https://cran.r-project.org/web/packages/janeaustenr/index.html">janeaustenr</a> package <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-janeaustenr">(Silge 2016)</a>, which provides the books in a one-row-per-line format—each line representing a literal printed line from the book. Starting with this format, we’ll convert the text into a tidy structure by adding two new columns using <a class="reference external" href="https://dplyr.tidyverse.org/reference/mutate.html"><code class="docutils literal notranslate"><span class="pre">mutate()</span></code></a>: one to number each line (<code class="docutils literal notranslate"><span class="pre">linenumber</span></code>) and another to identify chapters using a regular expression. This approach helps preserve the original text structure while preparing the data for tidy text analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">janeaustenr</span><span class="p">)</span>
@@ -609,7 +618,7 @@ The downloaded binary packages are in
 </div>
 </div>
 </div>
-<p>To create a tidy dataset for analysis, we need to restructure the text so that each token—typically a single word—occupies its own row. This transformation is accomplished using the <code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code> function, which relies on the <strong>tokenizers</strong> package. It breaks the text into individual tokens and arranges them in the one-token-per-row format essential for tidy text analysis. By default, it tokenizes by words, but it also supports other units such as characters, n-grams, sentences, lines, paragraphs, or tokens defined by a custom regex pattern. This flexibility allows us to tailor tokenization to the specific needs of the analysis.</p>
+<p>To create a tidy dataset for analysis, we need to restructure the text so that each token—typically a single word—occupies its own row. This transformation is accomplished using the <a class="reference external" href="https://juliasilge.github.io/tidytext/reference/unnest_tokens.html"><code class="docutils literal notranslate"><span class="pre">unnest_tokens()</span></code></a> function, which relies on the <strong>tokenizers</strong> package. It breaks the text into individual tokens and arranges them in the one-token-per-row format essential for tidy text analysis. By default, it tokenizes by words, but it also supports other units such as characters, n-grams, sentences, lines, paragraphs, or tokens defined by a custom regex pattern. This flexibility allows us to tailor tokenization to the specific needs of the analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
@@ -639,7 +648,7 @@ The downloaded binary packages are in
 </div>
 </div>
 </div>
-<p>Now that the text is organized with one word per row, we can use tidy tools like <strong>dplyr</strong> to manipulate it effectively. A common step in text analysis is removing stop words—very common words like “the,” “of,” and “to” that usually don’t add meaningful information. The <strong>tidytext</strong> package provides a built-in <code class="docutils literal notranslate"><span class="pre">stop_words</span></code> dataset containing stop words from three different lexicons, which we can remove from our data using <code class="docutils literal notranslate"><span class="pre">anti_join()</span></code>. Depending on the analysis, we can choose to use all these stop words together or filter to use just one lexicon’s set if that fits better. This cleaning step helps focus analysis on the most relevant words.</p>
+<p>Now that the text is organized with one word per row, we can use tidy tools like <strong>dplyr</strong> to manipulate it effectively. A common step in text analysis is removing stop words—very common words like “the,” “of,” and “to” that usually don’t add meaningful information. The <strong>tidytext</strong> package provides a built-in <code class="docutils literal notranslate"><span class="pre">stop_words</span></code> dataset containing stop words from three different lexicons, which we can remove from our data using <a class="reference external" href="https://dplyr.tidyverse.org/reference/filter-joins.html"><code class="docutils literal notranslate"><span class="pre">anti_join()</span></code></a>. Depending on the analysis, we can choose to use all these stop words together or filter to use just one lexicon’s set if that fits better. This cleaning step helps focus analysis on the most relevant words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
@@ -655,7 +664,7 @@ The downloaded binary packages are in
 </div>
 </div>
 </div>
-<p>Using dplyr’s <code class="docutils literal notranslate"><span class="pre">count()</span></code> function, we can quickly tally how often each word appears across all the books combined. This lets us identify the most common words in the entire collection, which is a helpful step to understand word frequency patterns before or after removing stop words.</p>
+<p>Using dplyr’s <a class="reference external" href="https://dplyr.tidyverse.org/reference/count.html"><code class="docutils literal notranslate"><span class="pre">count()</span></code></a> function, we can quickly tally how often each word appears across all the books combined. This lets us identify the most common words in the entire collection, which is a helpful step to understand word frequency patterns before or after removing stop words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tidy_books</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -703,15 +712,16 @@ The downloaded binary packages are in
 </a>
 </div>
 </div>
+<p>The <a class="reference external" href="https://rdrr.io/cran/janeaustenr/man/austen_books.html"><code class="docutils literal notranslate"><span class="pre">austen_books()</span></code></a> function conveniently provided exactly the text we needed for analysis, but in other situations, we may have to clean the text ourselves—for example, by removing copyright headers or unwanted formatting. You’ll see examples of this type of pre-processing in the case study chapters.</p>
 </section>
 <section id="the-gutenbergr-package">
 <h2>The Gutenbergr Package<a class="headerlink" href="#the-gutenbergr-package" title="Link to this heading">#</a></h2>
-<p>Now that we’ve explored tidying text with the <strong>janeaustenr</strong> package, we turn to the <a class="reference external" href="https://github.com/ropensci/gutenbergr">gutenbergr</a> package, which provides access to public domain books from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a>. This package offers tools for downloading books while automatically removing unnecessary header and footer text. It also includes a comprehensive dataset of metadata, allowing users to search for works by title, author, language, and more. In this book, we’ll primarily use the <code class="docutils literal notranslate"><span class="pre">gutenberg_download()</span></code> function to fetch texts by their Gutenberg ID, but the package also supports exploring metadata and gathering author information.</p>
+<p>Now that we’ve explored tidying text with the <strong>janeaustenr</strong> package, we turn to the <a class="reference external" href="https://github.com/ropensci/gutenbergr">gutenbergr</a> package <a class="reference external" href="https://www.tidytextmining.com/references#ref-R-gutenbergr">(Robinson 2016)</a>, which provides access to public domain books from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a>. This package offers tools for downloading books while automatically removing unnecessary header and footer text. It also includes a comprehensive dataset of metadata, allowing users to search for works by title, author, language, and more. In this book, we’ll primarily use the <a class="reference external" href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html"><code class="docutils literal notranslate"><span class="pre">gutenberg_download()</span></code></a> function to fetch texts by their Gutenberg ID, but the package also supports exploring metadata and gathering author information.</p>
 <p>To learn more about gutenbergr, check out the <a class="reference external" href="https://docs.ropensci.org/gutenbergr/">package’s documentation at rOpenSci</a>, where it is one of rOpenSci’s packages for data access.</p>
 </section>
 <section id="word-frequencies">
 <h2>Word Frequencies<a class="headerlink" href="#word-frequencies" title="Link to this heading">#</a></h2>
-<p>A common task in text mining is examining word frequencies and comparing them across different texts, which can be done easily using tidy data principles. We’ve already done this with Jane Austen’s novels, and now we’ll expand the analysis by adding more texts for comparison. Specifically, we’ll look at science fiction and fantasy novels by H.G. Wells, a prominent author from the late 19th and early 20th centuries. Using the <code class="docutils literal notranslate"><span class="pre">gutenberg_download()</span></code> function along with the Project Gutenberg ID numbers, we can access works like <a class="reference external" href="https://www.gutenberg.org/ebooks/35">The Time Machine</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/36">The War of the Worlds</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/5230">The Invisible Man</a>, and <a class="reference external" href="https://www.gutenberg.org/ebooks/159">The Island of Doctor Moreau</a>. This allows us to efficiently gather and prepare these texts for direct comparison with other literary works.</p>
+<p>A common task in text mining is examining word frequencies and comparing them across different texts, which can be done easily using tidy data principles. We’ve already done this with Jane Austen’s novels, and now we’ll expand the analysis by adding more texts for comparison. Specifically, we’ll look at science fiction and fantasy novels by H.G. Wells, a prominent author from the late 19th and early 20th centuries. Using the <a class="reference external" href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html"><code class="docutils literal notranslate"><span class="pre">gutenberg_download()</span></code></a> function along with the Project Gutenberg ID numbers, we can access works like <a class="reference external" href="https://www.gutenberg.org/ebooks/35">The Time Machine</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/36">The War of the Worlds</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/5230">The Invisible Man</a>, and <a class="reference external" href="https://www.gutenberg.org/ebooks/159">The Island of Doctor Moreau</a>. This allows us to efficiently gather and prepare these texts for direct comparison with other literary works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">gutenbergr</span><span class="p">)</span>
@@ -770,7 +780,7 @@ Using mirror http://aleph.gutenberg.org.
 </div>
 </div>
 </div>
-<p>Next, we’ll gather several well-known works by the Brontë sisters, whose lifespans overlapped somewhat with Jane Austen’s, though their writing style was notably different. We’ll include <a class="reference external" href="https://www.gutenberg.org/ebooks/1260">Jane Eyre</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/768">Wuthering Heights</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/969">The Tenant of Wildfell Hall</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/9182">Villette</a>, and <a class="reference external" href="https://www.gutenberg.org/ebooks/767">Agnes Grey</a>. Just like with the H.G. Wells novels, we’ll use the Project Gutenberg ID numbers for each of these books and download the texts with <code class="docutils literal notranslate"><span class="pre">gutenberg_download()</span></code>. This will allow us to compare word usage and literary style across different authors and genres within a tidy data framework.</p>
+<p>Next, we’ll gather several well-known works by the Brontë sisters, whose lifespans overlapped somewhat with Jane Austen’s, though their writing style was notably different. We’ll include <a class="reference external" href="https://www.gutenberg.org/ebooks/1260">Jane Eyre</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/768">Wuthering Heights</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/969">The Tenant of Wildfell Hall</a>, <a class="reference external" href="https://www.gutenberg.org/ebooks/9182">Villette</a>, and <a class="reference external" href="https://www.gutenberg.org/ebooks/767">Agnes Grey</a>. Just like with the H.G. Wells novels, we’ll use the Project Gutenberg ID numbers for each of these books and download the texts with <a class="reference external" href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html"><code class="docutils literal notranslate"><span class="pre">gutenberg_download()</span></code></a>. This will allow us to compare word usage and literary style across different authors and genres within a tidy data framework.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">bronte</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">gutenberg_download</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1260</span><span class="p">,</span><span class="w"> </span><span class="m">768</span><span class="p">,</span><span class="w"> </span><span class="m">969</span><span class="p">,</span><span class="w"> </span><span class="m">9182</span><span class="p">,</span><span class="w"> </span><span class="m">767</span><span class="p">))</span>
@@ -821,7 +831,7 @@ Using mirror http://aleph.gutenberg.org.
 </div>
 </div>
 <p>Notice that “time”, “eyes”, and “hand” are in the top 10 for both H.G. Wells and the Brontë sisters.</p>
-<p>To compare word frequencies across the works of Jane Austen, the Brontë sisters, and H.G. Wells, we can bind their data frames together and calculate word counts for each group. Using <code class="docutils literal notranslate"><span class="pre">pivot_wider()</span></code> and <code class="docutils literal notranslate"><span class="pre">pivot_longer()</span></code> from <strong>tidyr</strong>, we can reshape the combined dataset to make it suitable for visualizing and comparing word usage across the three sets of novels. Additionally, we apply <code class="docutils literal notranslate"><span class="pre">str_extract()</span></code> to clean up the text, since some Project Gutenberg texts use underscores to mark emphasis (similar to italics). Without this step, words like “<em>any</em>” and “any” would be counted separately, but <code class="docutils literal notranslate"><span class="pre">str_extract()</span></code> ensures we treat them as the same word, keeping our frequency analysis accurate and consistent.</p>
+<p>To compare word frequencies across the works of Jane Austen, the Brontë sisters, and H.G. Wells, we can bind their data frames together and calculate word counts for each group. Using <a class="reference external" href="https://tidyr.tidyverse.org/reference/pivot_wider.html"><code class="docutils literal notranslate"><span class="pre">pivot_wider()</span></code></a> and <a class="reference external" href="https://tidyr.tidyverse.org/reference/pivot_longer.html"><code class="docutils literal notranslate"><span class="pre">pivot_longer()</span></code></a> from <strong>tidyr</strong>, we can reshape the combined dataset to make it suitable for visualizing and comparing word usage across the three sets of novels. Additionally, we apply <a class="reference external" href="https://stringr.tidyverse.org/reference/str_extract.html"><code class="docutils literal notranslate"><span class="pre">str_extract()</span></code></a> to clean up the text, since some Project Gutenberg texts use underscores to mark emphasis (similar to italics). Without this step, words like “<em>any</em>” and “any” would be counted separately, but <a class="reference external" href="https://stringr.tidyverse.org/reference/str_extract.html"><code class="docutils literal notranslate"><span class="pre">str_extract()</span></code></a> ensures we treat them as the same word, keeping our frequency analysis accurate and consistent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
@@ -980,6 +990,24 @@ sample estimates:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../MultiLingualNer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Named Entity Recognition (NER)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../overview/Charts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bar, Line, Scatter Plot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
