@@ -39,3 +39,8 @@ parts:
     chapters:
     - file: src/overview/MachineLearning
 
+  - caption: App Development
+    chapters:
+    - file: src/overview/AppDevelopment
+      title: App Development
+
