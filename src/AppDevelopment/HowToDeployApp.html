@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How to Deploy an App &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/AppDevelopment/HowToDeployApp';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Python/BasicPython.html">Basic Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/DataWranglingR.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API/API.html">Using APIs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/Tidy_Text.html">Tidy Text</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Wolfe-notebooks/Maps.html">Creating Maps with Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/MachineLearning.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/AppDevelopment.html">App Development</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/AppDevelopment/HowToDeployApp.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/src/AppDevelopment/HowToDeployApp.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to Deploy an App</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-using-ngrok">Step 1: Using ngrok</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-using-ngrok">Benefits of Using ngrok</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ngrok">Install ngrok</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-a-free-ngrok-account">Step 2: Create a Free ngrok Account</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-start-your-fastapi-server-locally">Step 3: Start Your FastAPI Server Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-ngrok-to-tunnel-your-backend">Step 4: Start ngrok to Tunnel Your Backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-update-your-react-native-app-to-use-the-ngrok-url">Step 5: Update Your React Native App to Use the ngrok URL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-using-expo-go-to-run-the-frontend">Step 6: Using Expo Go to Run the Frontend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-final-deployment-of-the-app">Step 7: Final Deployment of the App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-render-account">Set Up a Render Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-render-yaml">Add <code class="docutils literal notranslate"><span class="pre">render.yaml</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-render">Deploy to Render</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-deployed-api">Test Deployed API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-how-to-make-a-build-file">Step 8: How to Make a Build File</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-app-for-eas-build">Configure App for EAS Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-apk-file-for-installation">Build <code class="docutils literal notranslate"><span class="pre">.apk</span></code> File for Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-eas-json-for-apk-build">Update <code class="docutils literal notranslate"><span class="pre">eas.json</span></code> for APK Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-build">Run the Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#after-the-build">After the Build</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-deploy-an-app">
+<h1>How to Deploy an App<a class="headerlink" href="#how-to-deploy-an-app" title="Link to this heading">#</a></h1>
+<p>Before building your app for real devices, you’ll need your backend server accessible over the internet. For quick testing and development, <strong>ngrok</strong> provides an easy way to tunnel your local FastAPI server with a public URL.</p>
+<section id="step-1-using-ngrok">
+<h2>Step 1: Using ngrok<a class="headerlink" href="#step-1-using-ngrok" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="benefits-of-using-ngrok">
+<h3>Benefits of Using ngrok<a class="headerlink" href="#benefits-of-using-ngrok" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Test your full app workflow (frontend + backend) on real devices</p></li>
+<li><p>No need to deploy to cloud hosting during development</p></li>
+<li><p>Simple, secure, and free for basic use</p></li>
+</ul>
+<p><strong>Note:</strong> ngrok URLs reset each time you restart the tunnel. Be sure to update your API URL if needed.</p>
+</section>
+<hr class="docutils" />
+<section id="install-ngrok">
+<h3>Install ngrok<a class="headerlink" href="#install-ngrok" title="Link to this heading">#</a></h3>
+<p><strong>On macOS (with Homebrew):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>ngrok
+</pre></div>
+</div>
+<p><strong>On Windows (with Chocolatey):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco<span class="w"> </span>install<span class="w"> </span>ngrok
+</pre></div>
+</div>
+<p>Alternatively, download directly from <a class="reference external" href="https://ngrok.com/download">ngrok.com</a>.</p>
+</section>
+</section>
+<section id="step-2-create-a-free-ngrok-account">
+<h2>Step 2: Create a Free ngrok Account<a class="headerlink" href="#step-2-create-a-free-ngrok-account" title="Link to this heading">#</a></h2>
+<p>While ngrok works without an account, creating a free account unlocks extra features like:</p>
+<ul class="simple">
+<li><p>Longer session times</p></li>
+<li><p>Custom subdomains</p></li>
+<li><p>Better tunnel stability</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Sign Up for Free</strong></p>
+<p>Visit <a class="reference external" href="https://dashboard.ngrok.com/signup">ngrok.com/signup</a> to create your account.</p>
+<p>After signing up, you’ll receive a personal <strong>authtoken</strong>, which links ngrok to your account.</p>
+<hr class="docutils" />
+<p><strong>Save Your ngrok Authtoken</strong></p>
+<p>In your terminal, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ngrok<span class="w"> </span>config<span class="w"> </span>add-authtoken<span class="w"> </span>YOUR_AUTHTOKEN_HERE
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">YOUR_AUTHTOKEN_HERE</span></code> with the token from your ngrok dashboard.</p>
+<p>This saves your credentials, so you don’t have to enter the token every time you start a tunnel.</p>
+<hr class="docutils" />
+<p>Once saved, you can use ngrok normally with full access to account features.</p>
+</section>
+<section id="step-3-start-your-fastapi-server-locally">
+<h2>Step 3: Start Your FastAPI Server Locally<a class="headerlink" href="#step-3-start-your-fastapi-server-locally" title="Link to this heading">#</a></h2>
+<p>Before tunneling with ngrok, your FastAPI backend needs to be running.</p>
+<hr class="docutils" />
+<p><strong>Run Your Backend</strong></p>
+<p>Make sure you’re inside your backend project folder, then activate your virtual environment and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvicorn<span class="w"> </span>app.main:app<span class="w"> </span>--reload
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Confirm It’s Running</strong></p>
+<p>You should see something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Uvicorn</span> <span class="n">running</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span>
+</pre></div>
+</div>
+<p>If that’s showing, your backend is ready and listening on <code class="docutils literal notranslate"><span class="pre">localhost</span></code> port <code class="docutils literal notranslate"><span class="pre">8000</span></code>.</p>
+<p>Next, we’ll expose this server to the internet using ngrok.</p>
+</section>
+<section id="step-4-start-ngrok-to-tunnel-your-backend">
+<h2>Step 4: Start ngrok to Tunnel Your Backend<a class="headerlink" href="#step-4-start-ngrok-to-tunnel-your-backend" title="Link to this heading">#</a></h2>
+<p>In a <strong>separate terminal window</strong>, navigate to your backend project folder (if you’re not already there), then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>What You Should See</strong></p>
+<p>ngrok will output something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Forwarding</span>                    <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">a1b2c3d4</span><span class="o">.</span><span class="n">ngrok</span><span class="o">.</span><span class="n">io</span> <span class="o">-&gt;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span>
+</pre></div>
+</div>
+<p>Copy that <strong>https URL</strong> — this is now your public-facing backend endpoint. You’ll use this in your app to send API requests.</p>
+</section>
+<section id="step-5-update-your-react-native-app-to-use-the-ngrok-url">
+<h2>Step 5: Update Your React Native App to Use the ngrok URL<a class="headerlink" href="#step-5-update-your-react-native-app-to-use-the-ngrok-url" title="Link to this heading">#</a></h2>
+<p>In your React Native project, open your <code class="docutils literal notranslate"><span class="pre">ConversionScreen.js</span></code> file.</p>
+<p>Find this line:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">API_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;YOU_WILL_CHANGE_THIS&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&quot;YOU_WILL_CHANGE_THIS&quot;</span></code> with your ngrok <strong>https URL</strong> from earlier. For example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">API_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://a1b2c3d4.ngrok.io&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>That’s It!</strong></p>
+<p>Your mobile app can now send requests to your FastAPI backend — even though it’s running locally — thanks to ngrok’s public tunnel.</p>
+</section>
+<section id="step-6-using-expo-go-to-run-the-frontend">
+<h2>Step 6: Using Expo Go to Run the Frontend<a class="headerlink" href="#step-6-using-expo-go-to-run-the-frontend" title="Link to this heading">#</a></h2>
+<p>Make sure your Android emulator is running.</p>
+<p>In a new terminal window, navigate to your frontend project folder and start Expo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx<span class="w"> </span>expo<span class="w"> </span>start
+</pre></div>
+</div>
+<p>You’ll see the Expo Developer Tools open in your browser.</p>
+<p>To launch the app on your Android emulator, press:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>a
+</pre></div>
+</div>
+<p>Expo will build your project and open the app on the emulator.</p>
+<hr class="docutils" />
+<p><strong>Your Setup is Ready!</strong></p>
+<p>You should now be able to test your entire app — with the frontend connecting to your FastAPI backend via the ngrok tunnel.</p>
+</section>
+<section id="step-7-final-deployment-of-the-app">
+<h2>Step 7: Final Deployment of the App<a class="headerlink" href="#step-7-final-deployment-of-the-app" title="Link to this heading">#</a></h2>
+<p>Once your app is stable and bug-free, you can deploy your <strong>FastAPI backend</strong> permanently using <a class="reference external" href="https://render.com">Render</a>.</p>
+<p>Render provides free and paid hosting options, making it easy to deploy FastAPI apps with minimal setup.</p>
+<section id="set-up-a-render-account">
+<h3>Set Up a Render Account<a class="headerlink" href="#set-up-a-render-account" title="Link to this heading">#</a></h3>
+<p>To deploy your backend, the first step is to create a free Render account:</p>
+<p>👉 <a class="reference external" href="https://dashboard.render.com/login">https://dashboard.render.com/login</a></p>
+<p>Render offers free hosting tiers, perfect for testing and lightweight apps. You can upgrade later if needed.</p>
+<p>Once signed up, you’ll be ready to connect your project and deploy.</p>
+</section>
+<section id="add-render-yaml">
+<h3>Add <code class="docutils literal notranslate"><span class="pre">render.yaml</span></code><a class="headerlink" href="#add-render-yaml" title="Link to this heading">#</a></h3>
+<p>In your <strong>backend</strong> folder, create a file called <code class="docutils literal notranslate"><span class="pre">render.yaml</span></code> with the following contents:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit-converter-backend</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="w">    </span><span class="nt">buildCommand</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">startCommand</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvicorn app.main:app --host 0.0.0.0 --port 8000</span>
+<span class="w">    </span><span class="nt">plan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">free</span>
+</pre></div>
+</div>
+<p>This tells Render how to build and run your FastAPI backend.<br />
+The <code class="docutils literal notranslate"><span class="pre">plan:</span> <span class="pre">free</span></code> option keeps it on Render’s free tier.</p>
+<p>Once this is in place, you’re ready to connect your GitHub repo to Render.</p>
+</section>
+<section id="deploy-to-render">
+<h3>Deploy to Render<a class="headerlink" href="#deploy-to-render" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Go to the <a class="reference external" href="https://dashboard.render.com">Render Dashboard</a> and log in if you haven’t already.</p></li>
+<li><p>Click <strong>New</strong> in the top left corner, then select <strong>Web Service</strong>.</p></li>
+<li><p>Choose the <strong>Public Git Repository</strong> tab and paste your repository URL.</p></li>
+<li><p>Set the <strong>Root Directory</strong> to <code class="docutils literal notranslate"><span class="pre">backend</span></code>.</p></li>
+<li><p>For the <strong>Start Command</strong>, enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uvicorn</span> <span class="n">app</span><span class="o">.</span><span class="n">main</span><span class="p">:</span><span class="n">app</span> <span class="o">--</span><span class="n">host</span> <span class="mf">0.0.0.0</span> <span class="o">--</span><span class="n">port</span> <span class="mi">8000</span>
+</pre></div>
+</div>
+</li>
+<li><p>Select the <strong>Free</strong> plan.</p></li>
+<li><p>Click <strong>Create Web Service</strong> to start the deployment.</p></li>
+</ol>
+</section>
+<section id="test-deployed-api">
+<h3>Test Deployed API<a class="headerlink" href="#test-deployed-api" title="Link to this heading">#</a></h3>
+<p>After Render completes the build, you will get a public URL similar to:
+<code class="docutils literal notranslate"><span class="pre">https://unit-converter.onrender.com</span></code></p>
+<p>Copy this URL and update the <code class="docutils literal notranslate"><span class="pre">API_URL</span></code> constant in your <code class="docutils literal notranslate"><span class="pre">ConversionScreen</span></code> file in the frontend.</p>
+<p>Then, in your frontend folder, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npx</span> <span class="n">expo</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>Your app should now connect to the deployed backend and work as expected.</p>
+</section>
+</section>
+<section id="step-8-how-to-make-a-build-file">
+<h2>Step 8: How to Make a Build File<a class="headerlink" href="#step-8-how-to-make-a-build-file" title="Link to this heading">#</a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Create a free <a class="reference external" href="https://expo.dev">Expo account</a> if you don’t have one.</p></li>
+<li><p>Install Expo CLI and EAS CLI globally on your machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>expo-cli
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>eas-cli
+</pre></div>
+</div>
+</li>
+<li><p>Log in to Expo from your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eas<span class="w"> </span>login
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="configure-app-for-eas-build">
+<h3>Configure App for EAS Build<a class="headerlink" href="#configure-app-for-eas-build" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>In your frontend project root folder, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eas<span class="w"> </span>build:configure
+</pre></div>
+</div>
+</li>
+<li><p>When prompted:</p>
+<ul class="simple">
+<li><p>For <strong>Automatically create missing build profile?</strong>, select <strong>Yes</strong></p></li>
+<li><p>Choose <strong>Android</strong> as the platform to configure</p></li>
+</ul>
+</li>
+</ol>
+<p>This sets up your project with necessary configuration files for EAS build.</p>
+</section>
+<section id="build-apk-file-for-installation">
+<h3>Build <code class="docutils literal notranslate"><span class="pre">.apk</span></code> File for Installation<a class="headerlink" href="#build-apk-file-for-installation" title="Link to this heading">#</a></h3>
+<p><strong>Understanding <code class="docutils literal notranslate"><span class="pre">.apk</span></code> vs <code class="docutils literal notranslate"><span class="pre">.aab</span></code>:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.apk</span></code> (Android Package) files are ready-to-install Android app files you can sideload directly onto devices or emulators.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.aab</span></code> (Android App Bundle) files are optimized app bundles submitted to the Google Play Store, which then generate device-specific APKs on the fly. <code class="docutils literal notranslate"><span class="pre">.aab</span></code> is recommended for Play Store but not directly installable.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="update-eas-json-for-apk-build">
+<h3>Update <code class="docutils literal notranslate"><span class="pre">eas.json</span></code> for APK Build<a class="headerlink" href="#update-eas-json-for-apk-build" title="Link to this heading">#</a></h3>
+<p>In your frontend project, update the <code class="docutils literal notranslate"><span class="pre">production</span></code> section in <code class="docutils literal notranslate"><span class="pre">eas.json</span></code> to specify building an <code class="docutils literal notranslate"><span class="pre">.apk</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;development&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;developmentClient&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;internal&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;internal&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;production&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;android&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;buildType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apk&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="run-the-build">
+<h3>Run the Build<a class="headerlink" href="#run-the-build" title="Link to this heading">#</a></h3>
+<p>Run this command to start building your APK with the production profile:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eas<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>android<span class="w"> </span>--profile<span class="w"> </span>production
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You may be prompted to confirm or change the application ID (package name). Usually, you can accept the default.</p></li>
+<li><p>You will be asked whether to generate a new Android Keystore. Say <strong>Yes</strong> to let Expo handle signing keys automatically.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="after-the-build">
+<h3>After the Build<a class="headerlink" href="#after-the-build" title="Link to this heading">#</a></h3>
+<p>Once the build completes (can take several minutes), you will receive a link to download the <code class="docutils literal notranslate"><span class="pre">.apk</span></code> file. You can install this APK on:</p>
+<ul class="simple">
+<li><p>An Android emulator running on your machine</p></li>
+<li><p>A physical Android phone (via USB or file transfer)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/AppDevelopment"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-using-ngrok">Step 1: Using ngrok</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-using-ngrok">Benefits of Using ngrok</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ngrok">Install ngrok</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-a-free-ngrok-account">Step 2: Create a Free ngrok Account</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-start-your-fastapi-server-locally">Step 3: Start Your FastAPI Server Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-ngrok-to-tunnel-your-backend">Step 4: Start ngrok to Tunnel Your Backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-update-your-react-native-app-to-use-the-ngrok-url">Step 5: Update Your React Native App to Use the ngrok URL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-using-expo-go-to-run-the-frontend">Step 6: Using Expo Go to Run the Frontend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-final-deployment-of-the-app">Step 7: Final Deployment of the App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-render-account">Set Up a Render Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-render-yaml">Add <code class="docutils literal notranslate"><span class="pre">render.yaml</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-render">Deploy to Render</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-deployed-api">Test Deployed API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-how-to-make-a-build-file">Step 8: How to Make a Build File</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-app-for-eas-build">Configure App for EAS Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-apk-file-for-installation">Build <code class="docutils literal notranslate"><span class="pre">.apk</span></code> File for Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-eas-json-for-apk-build">Update <code class="docutils literal notranslate"><span class="pre">eas.json</span></code> for APK Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-build">Run the Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#after-the-build">After the Build</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
