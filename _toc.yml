@@ -14,7 +14,7 @@ parts:
 
   - caption: Data Wrangling with R
     chapters:
-    - file: src/overview/DataWranglingR
+    - file: src/R_Code/Data_Wrangling
 
   - caption: Data Extraction
     chapters:
