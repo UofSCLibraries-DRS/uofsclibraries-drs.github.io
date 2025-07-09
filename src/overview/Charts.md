@@ -4,10 +4,10 @@ Data visualization is the practice of representing data graphically to better un
 As part of these offerings, the notebooks provide a hands-on introduction to Python for data visualization and analysis. Through interactive notebooks on bar charts, line charts, scatter plots, basic mapping with geopandas, and text analysis, users can learn essential skills for exploring data and uncovering insights.
 
 ## Lessons
-[Bar Chart](../Wolfe-notebooks/BarChart.ipynb)
+[Bar Chart](../Data_Visualization/BarChart.ipynb)
 <br>
-[Line Chart](../Wolfe-notebooks/LineChart.ipynb)
+[Line Chart](../Data_Visualization/LineChart.ipynb)
 <br>
-[Scatter Plot](../Wolfe-notebooks/ScatterPlot.ipynb)
+[Scatter Plot](../Data_Visualization/ScatterPlot.ipynb)
 
 

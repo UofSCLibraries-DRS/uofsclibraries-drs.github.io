@@ -32,8 +32,10 @@ parts:
   - caption: Data Visualization
     chapters:
     - file: src/overview/Charts
-    - file: src/Wolfe-notebooks/Maps
+    - file: src/Data_Visualization/Maps
       title: Creating Maps with Python
+    - file: src/Data_Visualization/Seaborn_Basictutorial.ipynb
+      title: Seaborn Basics
 
   - caption: Machine Learning
     chapters:

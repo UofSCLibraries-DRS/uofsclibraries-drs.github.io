@@ -1,0 +1,1439 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Basic Mapping Skills with Python &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/Data_Visualization/Maps';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visualizing Statistical Relationships" href="Seaborn_Basictutorial.html" />
+    <link rel="prev" title="Bar, Line, Scatter Plot" href="../overview/Charts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Python/BasicPython.html">Basic Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../R_Code/Data_Wrangling.html">Data Wrangling with R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API/API.html">Using APIs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextMining/MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/Tidy_Text.html">Tidy Text</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating Maps with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seaborn_Basictutorial.html">Seaborn Basics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/MachineLearning.html">Brief Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/AppDevelopment.html">App Development</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/Data_Visualization/Maps.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/src/Data_Visualization/Maps.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Basic Mapping Skills with Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-maps-from-csvs-with-plotly">Creating Maps from CSVs with Plotly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-csv-files-not-used-as-often-for-spatial-data">Why are CSV files not used as often for spatial data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geopandas">Geopandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-reference-systems-crs">Coordinate Reference Systems (CRS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-north-carolina-public-schools-with-two-geojson-files">Plotting North Carolina Public Schools with Two GeoJson Files</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-mapping-skills-with-python">
+<h1>Basic Mapping Skills with Python<a class="headerlink" href="#basic-mapping-skills-with-python" title="Link to this heading">#</a></h1>
+<section id="maps">
+<h2>Maps<a class="headerlink" href="#maps" title="Link to this heading">#</a></h2>
+<p>Maps are visual representations of geographic or spatial information. They are used to display the physical features of an area, such as terrain, bodies of water, and landmarks, as well as human-made features like roads, buildings, and cities. Maps can be created at a range of scales, from small-scale world maps that show the entire planet, to large-scale maps that show detailed information about a single city block.</p>
+<p>In addition to traditional maps that display physical features, there are also thematic maps that display specific types of data, such as population density, climate, or political boundaries. These maps use different colors, symbols, and shading to display the data, and are useful for understanding patterns and trends in the data.</p>
+<p>Map data, also known as spatial data, is typically stored in a geographic information system (GIS) or a database with spatial capabilities. This allows the data to be analyzed and visualized in a spatial context, which can provide insights and information that might not be apparent in a non-spatial format. There are a number of types of files in which spatial data can be stored such as geojson, shape, and kml. Spatial data can also simply be stored in CSV files but will lack much of the functionality of other file formats.</p>
+<p>This guide will go over how to make maps with Python using different file types. We will focus on two of the more common types of maps, choropleth, and proportional dot maps.</p>
+</section>
+<section id="creating-maps-from-csvs-with-plotly">
+<h2>Creating Maps from CSVs with Plotly<a class="headerlink" href="#creating-maps-from-csvs-with-plotly" title="Link to this heading">#</a></h2>
+<p>For the first two maps, we will be using data from a csv cotaining data on Covid 19 deaths in the United States. To get started, go ahead and import the modules below. As a disclaimer, this guide assumes you are using Anaconda. If you are not, you may need to install these modules with the ‘pip install’ command. If you need extra help with this step, consult Python’s <a href = "https://packaging.python.org/en/latest/tutorials/installing-packages/">guide</a> on this topic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Start by reading the CSV into a variable using the pandas read_csv function. This will put everything into a dataframe object. The first row will be automatically read in as headers unless specified not to. Make sure to look through the data to get a feel for how everything is laid out and see columns that could be used to create a map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\celes\Documents\Data\united_states_covid19_cases_deaths_and_testing_by_state.csv&#39;</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Code</th>
+      <th>State/Territory</th>
+      <th>Total Cases</th>
+      <th>New Cases in Past Week</th>
+      <th>Case Rate per 100000</th>
+      <th>Total Deaths</th>
+      <th>New Deaths in Past Week</th>
+      <th>Death Rate per 100000</th>
+      <th>Weekly Cases Rate per 100000</th>
+      <th>Weekly Death Rate per 100000</th>
+      <th>Total % Positive</th>
+      <th>% Positive Last 30 Days</th>
+      <th>% Positive Last 7 Days</th>
+      <th># Tests per 100K</th>
+      <th>Total # Tests</th>
+      <th># Tests per 100K Last 7 Days</th>
+      <th>Total # Tests Last 7 Days</th>
+      <th># Tests per 100K Last 30 Days</th>
+      <th>Total # Tests Last 30 Days</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL</td>
+      <td>Alabama</td>
+      <td>1627670</td>
+      <td>9820</td>
+      <td>33196</td>
+      <td>20892</td>
+      <td>10</td>
+      <td>426</td>
+      <td>200.3</td>
+      <td>0.2</td>
+      <td>10-14.9%</td>
+      <td>10-14.9%</td>
+      <td>10-14.9%</td>
+      <td>182992.5722</td>
+      <td>9006038.0</td>
+      <td>798.19</td>
+      <td>39283.0</td>
+      <td>3324.41</td>
+      <td>163612.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK</td>
+      <td>Alaska</td>
+      <td>291752</td>
+      <td>692</td>
+      <td>39882</td>
+      <td>1436</td>
+      <td>0</td>
+      <td>196</td>
+      <td>94.6</td>
+      <td>0.0</td>
+      <td>8-9.9%</td>
+      <td>15-19.9%</td>
+      <td>15-19.9%</td>
+      <td>648596.4730</td>
+      <td>4742265.0</td>
+      <td>686.86</td>
+      <td>5022.0</td>
+      <td>3147.47</td>
+      <td>23013.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AZ</td>
+      <td>Arizona</td>
+      <td>2404386</td>
+      <td>3099</td>
+      <td>33033</td>
+      <td>32936</td>
+      <td>54</td>
+      <td>452</td>
+      <td>42.6</td>
+      <td>0.7</td>
+      <td>10-14.9%</td>
+      <td>8-9.9%</td>
+      <td>8-9.9%</td>
+      <td>216526.7582</td>
+      <td>16069319.0</td>
+      <td>238.70</td>
+      <td>17715.0</td>
+      <td>1189.90</td>
+      <td>88307.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AR</td>
+      <td>Arkansas</td>
+      <td>998837</td>
+      <td>1947</td>
+      <td>33098</td>
+      <td>12905</td>
+      <td>40</td>
+      <td>427</td>
+      <td>64.5</td>
+      <td>1.3</td>
+      <td>10-14.9%</td>
+      <td>10-14.9%</td>
+      <td>8-9.9%</td>
+      <td>176011.8884</td>
+      <td>5334079.0</td>
+      <td>237.15</td>
+      <td>7187.0</td>
+      <td>1251.01</td>
+      <td>37912.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CA</td>
+      <td>California</td>
+      <td>12023397</td>
+      <td>27118</td>
+      <td>30430</td>
+      <td>99695</td>
+      <td>294</td>
+      <td>252</td>
+      <td>68.6</td>
+      <td>0.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>430497.1708</td>
+      <td>169478462.0</td>
+      <td>981.87</td>
+      <td>386543.0</td>
+      <td>4650.75</td>
+      <td>1830909.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The first map we will make is a choropleth map. A choropleth map is a type of thematic map that displays data using different shades or colors to represent values for different regions. These regions can be countries, states, counties, or any other type of geographic region. They are commonly used to display data such as population density, per-capita income, or voting patterns. The values for each region are typically represented by a color scale, with higher values shown in darker colors and lower values shown in lighter colors.</p>
+<p>To make a choropleth you will need to use the choropleth() function in Plotly express. Set the locations parameter to the column with the region names or codes, and the color parameter to the column with the values you want to visualize. For this example, we will use “Code” for locations and “Total Deaths” for color. The parameter locationmode controls the set of locations used to match entries in locations to regions on the map. You can choose one of three options: ‘ISO-3’, ‘USA-states’, or ‘country names.’ For this example, we will use ‘USA-states.’ We will also need to set the scope to ‘usa’. See what happens when you delete either of these last two parameters from the code. For color_continuous_scale, we will use ‘viridis.’ However, use whatever color scale you like.</p>
+<p>You also will want to update the margin with update_layout() and update the margin dictionary with values that will make the map easier to view. The keys in the dictionary are “r” for right, “l” for left, “t” for top, and “b” for bottom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">choropleth</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">locations</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Total Deaths&quot;</span><span class="p">,</span>
+                    <span class="n">hover_name</span><span class="o">=</span><span class="s2">&quot;State/Territory&quot;</span><span class="p">,</span>
+                    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                    <span class="n">locationmode</span><span class="o">=</span> <span class="s1">&#39;USA-states&#39;</span><span class="p">,</span>
+                    <span class="n">scope</span> <span class="o">=</span><span class="s1">&#39;usa&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;r&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="a51e21e7-c93f-4c3a-8a3b-5f85410d8ef0" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("a51e21e7-c93f-4c3a-8a3b-5f85410d8ef0")) {                    Plotly.newPlot(                        "a51e21e7-c93f-4c3a-8a3b-5f85410d8ef0",                        [{"coloraxis":"coloraxis","geo":"geo","hovertemplate":"<b>%{hovertext}</b><br><br>Code=%{location}<br>Total Deaths=%{z}<extra></extra>","hovertext":["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"],"locationmode":"USA-states","locations":["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],"name":"","z":[20892,1436,32936,12905,99695,14062,12037,3288,85710,42161,1772,5378,41262,25959,10625,9995,17939,18624,2875,16338,23901,41810,14278,13257,22666,3646,4790,11894,2968,35847,8991,31626,28235,2458,41464,15563,9250,49921,3833,19330,3153,29044,92651,5262,902,23464,15510,7885,16175,1994],"type":"choropleth"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"geo":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"center":{},"scope":"usa"},"coloraxis":{"colorbar":{"title":{"text":"Total Deaths"}},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"legend":{"tracegroupgap":0},"margin":{"t":0,"r":0,"l":0,"b":0}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('a51e21e7-c93f-4c3a-8a3b-5f85410d8ef0');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+<p>The next map will be the proportional dot map. The proportional dot map is a type of thematic map that displays data using dots of varying sizes to represent values for different regions. Similar to a choropleth map, proportional dot maps can be used to display data such as population density, per-capita income, or voting patterns. However, instead of shading regions to represent values, proportional dot maps use individual dots to represent a set number of cases or occurrences for each region.</p>
+<p>In a proportional dot map, each dot represents a fixed number of cases or occurrences, such as 10 or 100. The size of the dots is proportional to the total number of cases or occurrences for the region. For example, a region with 1,000 cases might be represented by 100 dots, while a region with 10,000 cases might be represented by 1,000 dots.</p>
+<p>Proportional dot maps can be a useful tool for visualizing spatial patterns and trends, particularly when the data being displayed is highly clustered or concentrated in certain regions. They can also be used to display data for regions that are irregular in shape, such as cities or towns.</p>
+<p>The proportional dot map can be made largely the same as the choropleth map. This time though, use the scatter_geo() function instead of choropleth(). The parameters are largely the same. However, scatter_geo color represents the dots on the map rather than the color of the region.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_geo</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">locations</span><span class="o">=</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Total Deaths&quot;</span><span class="p">,</span>
+                    <span class="n">hover_name</span><span class="o">=</span><span class="s2">&quot;State/Territory&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="s2">&quot;Total Deaths&quot;</span><span class="p">,</span>
+                    <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                    <span class="n">locationmode</span><span class="o">=</span> <span class="s1">&#39;USA-states&#39;</span><span class="p">,</span>
+                    <span class="n">scope</span> <span class="o">=</span><span class="s1">&#39;usa&#39;</span><span class="p">)</span> 
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;r&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="3065b14e-01ac-4130-a975-936bbd6d8086" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("3065b14e-01ac-4130-a975-936bbd6d8086")) {                    Plotly.newPlot(                        "3065b14e-01ac-4130-a975-936bbd6d8086",                        [{"geo":"geo","hovertemplate":"<b>%{hovertext}</b><br><br>Total Deaths=%{marker.color}<br>Code=%{location}<extra></extra>","hovertext":["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"],"legendgroup":"","locationmode":"USA-states","locations":["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],"marker":{"color":[20892,1436,32936,12905,99695,14062,12037,3288,85710,42161,1772,5378,41262,25959,10625,9995,17939,18624,2875,16338,23901,41810,14278,13257,22666,3646,4790,11894,2968,35847,8991,31626,28235,2458,41464,15563,9250,49921,3833,19330,3153,29044,92651,5262,902,23464,15510,7885,16175,1994],"coloraxis":"coloraxis","size":[20892,1436,32936,12905,99695,14062,12037,3288,85710,42161,1772,5378,41262,25959,10625,9995,17939,18624,2875,16338,23901,41810,14278,13257,22666,3646,4790,11894,2968,35847,8991,31626,28235,2458,41464,15563,9250,49921,3833,19330,3153,29044,92651,5262,902,23464,15510,7885,16175,1994],"sizemode":"area","sizeref":249.2375,"symbol":"circle"},"mode":"markers","name":"","showlegend":false,"type":"scattergeo"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"geo":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"center":{},"scope":"usa"},"coloraxis":{"colorbar":{"title":{"text":"Total Deaths"}},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"legend":{"tracegroupgap":0,"itemsizing":"constant"},"margin":{"t":0,"r":0,"l":0,"b":0}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('3065b14e-01ac-4130-a975-936bbd6d8086');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+</section>
+<section id="why-are-csv-files-not-used-as-often-for-spatial-data">
+<h2>Why are CSV files not used as often for spatial data?<a class="headerlink" href="#why-are-csv-files-not-used-as-often-for-spatial-data" title="Link to this heading">#</a></h2>
+<p>CSV (Comma Separated Values) files are not as good for spatial data because they lack the additional information that is needed to accurately represent geographic features and their relationships to one another. CSV files are simply text files with rows and columns of data, and they do not have any built-in spatial reference information or the ability to store geometric data.</p>
+<p>Spatial data, on the other hand, is complex and requires additional information to be properly represented. Spatial data often includes geographic coordinates (such as latitude and longitude) and topological relationships between geographic features (such as adjacency or containment). To store this information and accurately represent spatial data, specialized file formats are needed.</p>
+<p>One common file format for spatial data is the shapefile format, which is commonly used in GIS (geographic information system) software. Shapefiles store not only the geographic coordinates of features, but also information about the shape, size, and attributes of those features. This makes them better suited for spatial analysis and visualization than CSV files.</p>
+<p>In addition, there are other file formats designed specifically for spatial data, such as GeoJSON and KML, which also include spatial reference information and the ability to store geometric data. These file formats are more versatile and provide more functionality for spatial data analysis and visualization than CSV files.</p>
+</section>
+<section id="geopandas">
+<h2>Geopandas<a class="headerlink" href="#geopandas" title="Link to this heading">#</a></h2>
+<p>Geopandas is a Python library that provides tools for working with geospatial data in a tabular format. It is built on top of pandas and extends its functionality to include spatial data analysis. It provides a set of tools for working with vector data (e.g., points, lines, polygons) and includes functions for spatial operations such as spatial joins, buffering, and distance calculations. Geopandas uses the shapely library for handling geometric objects, and also includes support for reading and writing spatial data in various file formats. With geopandas, you can read, write, and manipulate vector data in a variety of formats, including shapefiles, GeoJSON, and others.</p>
+<p>Geopandas provides a simple and efficient way to perform common spatial data operations, such as spatial joins, spatial buffering, and spatial overlays. It also supports advanced data analysis techniques, such as clustering and machine learning on spatial data.</p>
+<p>Some of the key features of geopandas include:</p>
+<ul>
+    <li>Reading and writing of spatial data formats</li>
+    <li>Simple and efficient spatial data manipulation</li>
+    <li>Support for a wide range of coordinate reference systems (CRS)</li>
+    <li>Integration with popular data analysis libraries, such as numpy, scipy, and matplotlib</li>
+    <li>Support for advanced spatial analysis techniques, such as kriging, clustering, and machine learning</li>
+</ul>
+<p>As you go through this exercise, if you have experience with pandas, you will find geopandas and spatial files largely operate in the same way as pandas does with tabular data but with extra functionality.</p>
+<p>If you do not have geopandas already installed you will need to install it. It does not automatically come built in with Anaconda. You will also need to install the descartes package to be able to plot polygons with geopandas. In the Anaconda command prompt, use the commented commands below to install the packages. If you are not using Anaconda, just use ‘pip install _______’ in your command prompt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conda install geopandas</span>
+<span class="c1"># conda install -c conda-forge descartes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once installed go ahead and import matplotlib.pyplot and geopandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="coordinate-reference-systems-crs">
+<h2>Coordinate Reference Systems (CRS)<a class="headerlink" href="#coordinate-reference-systems-crs" title="Link to this heading">#</a></h2>
+<p>A Coordinate Reference System (CRS) is a system that is used to define the positions of geographic features on the Earth’s surface. A CRS is based on a set of coordinates that specify a location in space, and a set of rules for interpreting those coordinates in terms of latitude, longitude, and elevation.</p>
+<p>Many different CRSs are used in spatial data analysis and visualization, each with its own set of rules and conventions. The most commonly used CRSs are based on the WGS84 datum, which is a global standard for defining geographic coordinates.</p>
+<p>The choice of CRS can have a significant impact on the accuracy and reliability of spatial data analysis and visualization. Different CRSs are used for different purposes, depending on factors such as the scale of the data, the geographic extent of the data, and the specific analysis or visualization task.</p>
+<p>Some common types of CRSs include:</p>
+<ul>
+    <li>Geographic CRSs: These are based on a spherical or ellipsoidal model of the Earth's surface, and are used to define positions on the Earth's surface in terms of latitude and longitude.</li>
+    <li>Projected CRSs: These are based on a two-dimensional map projection of the Earth's surface, and are used to represent geographic features on a flat surface. Projected CRSs are commonly used for creating maps and visualizations.</li>
+    <li>Local CRSs: These are used for defining positions relative to a specific location or area of interest, such as a building or a city block. Local CRSs are often used in urban planning and engineering applications.</li>
+</ul>
+<p>Go ahead and create a variable equal to geopandas.readfile() equal to your file. Use the CRS function to learn more about our dataset. There is a lot of important information we can find on the CRS, axis, area of use, and datum. For this excercise, we will be using a simple shape file to explore the cartographic boundaries of the United States from the <a href= 'https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html'>US Census Bureau</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\celes\Jupyter Notebooks\Data\cb_2018_us_state_500k.shp&#39;</span><span class="p">)</span>
+<span class="n">states</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Geographic 2D CRS: EPSG:4269&gt;
+Name: NAD83
+Axis Info [ellipsoidal]:
+- Lat[north]: Geodetic latitude (degree)
+- Lon[east]: Geodetic longitude (degree)
+Area of Use:
+- name: North America - NAD83
+- bounds: (167.65, 14.92, -47.74, 86.46)
+Datum: North American Datum 1983
+- Ellipsoid: GRS 1980
+- Prime Meridian: Greenwich
+</pre></div>
+</div>
+</div>
+</div>
+<p>Currently, the dataset is using the CRS EPSG:4269. For this exercise, we are going to change the CRS of this data to EPSG: 3395 using the to_crs() function. This will present our maps better on our screen. When we are creating our maps try switching back to EPSG: 4269 and see how it changes the view of the map. Use the crs function to see how the data has changed by changing the CRS.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:3395&quot;</span><span class="p">)</span>
+<span class="n">states</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Projected CRS: EPSG:3395&gt;
+Name: WGS 84 / World Mercator
+Axis Info [cartesian]:
+- E[east]: Easting (metre)
+- N[north]: Northing (metre)
+Area of Use:
+- name: World - between 80°S and 84°N
+- bounds: (-180.0, -80.0, 180.0, 84.0)
+Coordinate Operation:
+- name: World Mercator
+- method: Mercator (variant A)
+Datum: World Geodetic System 1984
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
+</pre></div>
+</div>
+</div>
+</div>
+<p>Print out the head of the file and observe the data. Specifically, take a closer look at the geometry column. Notice how it does not just describe the location but also the shape. Spatial files such as shp and geojson have these specifications so when creating maps we will not only be able to plot the correct location but the correct shape as well. There are only three types of shapes geometry can fall under in spatial files: polygons, points, and multipolygons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATEFP</th>
+      <th>STATENS</th>
+      <th>AFFGEOID</th>
+      <th>GEOID</th>
+      <th>STUSPS</th>
+      <th>NAME</th>
+      <th>LSAD</th>
+      <th>ALAND</th>
+      <th>AWATER</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>28</td>
+      <td>01779790</td>
+      <td>0400000US28</td>
+      <td>28</td>
+      <td>MS</td>
+      <td>Mississippi</td>
+      <td>00</td>
+      <td>121533519481</td>
+      <td>3926919758</td>
+      <td>MULTIPOLYGON (((-88.50297 30.21523, -88.49176 ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>37</td>
+      <td>01027616</td>
+      <td>0400000US37</td>
+      <td>37</td>
+      <td>NC</td>
+      <td>North Carolina</td>
+      <td>00</td>
+      <td>125923656064</td>
+      <td>13466071395</td>
+      <td>MULTIPOLYGON (((-75.72681 35.93584, -75.71827 ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>40</td>
+      <td>01102857</td>
+      <td>0400000US40</td>
+      <td>40</td>
+      <td>OK</td>
+      <td>Oklahoma</td>
+      <td>00</td>
+      <td>177662925723</td>
+      <td>3374587997</td>
+      <td>POLYGON ((-103.00257 36.52659, -103.00219 36.6...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51</td>
+      <td>01779803</td>
+      <td>0400000US51</td>
+      <td>51</td>
+      <td>VA</td>
+      <td>Virginia</td>
+      <td>00</td>
+      <td>102257717110</td>
+      <td>8528531774</td>
+      <td>MULTIPOLYGON (((-75.74241 37.80835, -75.74151 ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>54</td>
+      <td>01779805</td>
+      <td>0400000US54</td>
+      <td>54</td>
+      <td>WV</td>
+      <td>West Virginia</td>
+      <td>00</td>
+      <td>62266474513</td>
+      <td>489028543</td>
+      <td>POLYGON ((-82.64320 38.16909, -82.64300 38.169...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s go ahead and plot our map using the plot() function. Adjust the figure size to whatever you prefer. We will adjust the x and y limits by setting variables equal to the minimum and maximum bounds of the x and y axes of our data. You can then set new limits using set_xlim and set_ylim.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_map</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">total_bounds</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">states</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">)</span>
+<span class="n">state_map</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">)</span>
+<span class="n">state_map</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-19942765.32605051  -1626516.30297928  20012847.74851734
+  11487759.99204796]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-1626516.30297928, 11487759.992047962)
+</pre></div>
+</div>
+<img alt="../../_images/b7c611f7a1bc4829925d55e4d8f7d0966b5d7283e5518d77712bff28ae2fcaa9.png" src="../../_images/b7c611f7a1bc4829925d55e4d8f7d0966b5d7283e5518d77712bff28ae2fcaa9.png" />
+</div>
+</div>
+<p>Notice how large are map above is? That’s because this dataset also includes US territories. Let’s focus our map on the 48 mainland states by dropping all non-mainland states and territories from the dataset. You can always print out the dataset to get through to make sure you got them all.</p>
+<p>Now go ahead and replot the dataset and see how it changes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dropped</span> <span class="o">=</span> <span class="n">states</span><span class="p">[(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Hawaii&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Alaska&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Guam&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Commonwealth of the Northern Mariana Islands&quot;</span><span class="p">)</span>
+                 <span class="o">|</span> <span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;United States Virgin Islands&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Puerto Rico&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;American Samoa&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="n">states</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">dropped</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">state_map</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2fc56bb6ce2959e5759e0c3654e3e34dbe53061f49a4e76f6f97ed848de054bf.png" src="../../_images/2fc56bb6ce2959e5759e0c3654e3e34dbe53061f49a4e76f6f97ed848de054bf.png" />
+</div>
+</div>
+<p>If you just want to plot the boundary of your data, you can use ___.boundary.plot().</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_map</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3f75bf8199ebf3a4266935f013fa3a915ddaf04b4383c65598ab82d18b84c7b7.png" src="../../_images/3f75bf8199ebf3a4266935f013fa3a915ddaf04b4383c65598ab82d18b84c7b7.png" />
+</div>
+</div>
+<p>If you just want to plot just one state, you can use a conditional to just plot one state from your dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;South Carolina&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/4539879a657f7ac59bcd53a1c95cac8711bd95a56b6edf9d203ce542851d203e.png" src="../../_images/4539879a657f7ac59bcd53a1c95cac8711bd95a56b6edf9d203ce542851d203e.png" />
+</div>
+</div>
+<p>If you want to focus on a specific quadrant of the US, you can create a new dataset using the isin() function to select only states within a specific quadrant. After creating the new dataframe, use plot() to plot a new map of just the quadrant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">southeast</span> <span class="o">=</span> <span class="n">states</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="s1">&#39;STUSPS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;FL&#39;</span><span class="p">,</span><span class="s1">&#39;GA&#39;</span><span class="p">,</span><span class="s1">&#39;AL&#39;</span><span class="p">,</span><span class="s1">&#39;SC&#39;</span><span class="p">,</span><span class="s1">&#39;NC&#39;</span><span class="p">,</span> <span class="s1">&#39;TN&#39;</span><span class="p">,</span> <span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;LA&#39;</span><span class="p">,</span> <span class="s1">&#39;MS&#39;</span><span class="p">])]</span>
+<span class="n">southeast</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;viridis_r&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/b90268aa513dca2e05eaaa5b7ed79dab0cc8903c31852b1caa785ba40c3b9e24.png" src="../../_images/b90268aa513dca2e05eaaa5b7ed79dab0cc8903c31852b1caa785ba40c3b9e24.png" />
+</div>
+</div>
+</section>
+<section id="plotting-north-carolina-public-schools-with-two-geojson-files">
+<h2>Plotting North Carolina Public Schools with Two GeoJson Files<a class="headerlink" href="#plotting-north-carolina-public-schools-with-two-geojson-files" title="Link to this heading">#</a></h2>
+<p>It is important to note that you can use multiple files to create a map. Let’s use a practical example to illustrate this. In this example, we will use two geojson files to make one map of North Carolina Public Schools found on <a href= 'https://www.nconemap.gov/explore?collection=Dataset&layout=list'>NC OneMap</a>.</p>
+<p>Go ahead and read in the file “Public_Schools.geojson.” Go ahead and take a look at the data. Notice anything interesting about it?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nc_public_schools</span><span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\celes\Jupyter Notebooks\Data\Public_Schools.geojson&#39;</span><span class="p">)</span>
+<span class="n">nc_public_schools</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>objectid</th>
+      <th>lea_school</th>
+      <th>ptmoved</th>
+      <th>comments</th>
+      <th>reviewed</th>
+      <th>school_nam</th>
+      <th>principal</th>
+      <th>street_lon</th>
+      <th>phys_addr</th>
+      <th>phys_city</th>
+      <th>...</th>
+      <th>ext_hours</th>
+      <th>num_teach</th>
+      <th>bgn_grade</th>
+      <th>end_grade</th>
+      <th>pre_k</th>
+      <th>elem</th>
+      <th>middle</th>
+      <th>high</th>
+      <th>early_coll</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>70310</td>
+      <td>yes, 2012</td>
+      <td>across town</td>
+      <td>1</td>
+      <td>B C Ed Tech Center</td>
+      <td>Willard Bryant</td>
+      <td>820 North Bridge St</td>
+      <td>820 North Bridge St</td>
+      <td>Washington</td>
+      <td>...</td>
+      <td>-</td>
+      <td>9</td>
+      <td>06</td>
+      <td>12</td>
+      <td></td>
+      <td></td>
+      <td>yes</td>
+      <td>yes</td>
+      <td></td>
+      <td>POINT (-77.05613 35.55269)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>70340</td>
+      <td>yes, 2012</td>
+      <td>down the street</td>
+      <td>1</td>
+      <td>S W Snowden Elementary</td>
+      <td>Melissa Dana</td>
+      <td>6921 NC 306 North</td>
+      <td>693 North 7th Street</td>
+      <td>Aurora</td>
+      <td>...</td>
+      <td>-</td>
+      <td>15</td>
+      <td>PK</td>
+      <td>08</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td></td>
+      <td></td>
+      <td>POINT (-76.79188 35.30652)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>70326</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Chocowinity Primary</td>
+      <td>Alicia Vosburgh</td>
+      <td>606 Gray Road</td>
+      <td>606 Gray Road</td>
+      <td>Chocowinity</td>
+      <td>...</td>
+      <td>-</td>
+      <td>33</td>
+      <td>PK</td>
+      <td>04</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>POINT (-77.09387 35.49888)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>70308</td>
+      <td></td>
+      <td>point verified</td>
+      <td>1</td>
+      <td>Bath Elementary</td>
+      <td>Pamela Hodges</td>
+      <td>110 S King Street</td>
+      <td>110 S King Street</td>
+      <td>Bath</td>
+      <td>...</td>
+      <td>-</td>
+      <td>39</td>
+      <td>KG</td>
+      <td>08</td>
+      <td></td>
+      <td></td>
+      <td>yes</td>
+      <td></td>
+      <td></td>
+      <td>POINT (-76.81073 35.47580)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>740309</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>AydenGrifton High</td>
+      <td>Marty Baker</td>
+      <td>7653 NC 11 South</td>
+      <td>7653 NC 11 South</td>
+      <td>Ayden</td>
+      <td>...</td>
+      <td>-</td>
+      <td>48</td>
+      <td>09</td>
+      <td>12</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>yes</td>
+      <td></td>
+      <td>POINT (-77.43122 35.43017)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 33 columns</p>
+</div></div></div>
+</div>
+<p>Go ahead and plot the data. Notice how all the data is plotted as points? That is because all values in the geometry column are points, not polygons. You can vaguely tell it is NC but it is difficult to see where exactly the schools are located.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nc_public_schools</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/789741b75665e9645c88d3e64cda4dcfdb8f267b0b1ffd3dac8628c058016b38.png" src="../../_images/789741b75665e9645c88d3e64cda4dcfdb8f267b0b1ffd3dac8628c058016b38.png" />
+</div>
+</div>
+<p>Now let’s read in “nc_boundaries.geojson” and look at the data. This time the data is all polygons. However, this dataset contains no information related to schools.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nc_counties</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\celes\Jupyter Notebooks\Data\nc_boundaries.geojson&#39;</span><span class="p">)</span>
+<span class="n">nc_counties</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OBJECTID</th>
+      <th>County</th>
+      <th>FIPS</th>
+      <th>Rec_Survey</th>
+      <th>NCGS_url</th>
+      <th>ck_date</th>
+      <th>Shape__Area</th>
+      <th>Shape__Length</th>
+      <th>GlobalID</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Camden</td>
+      <td>029</td>
+      <td>Recorded survey data is available. Visit North...</td>
+      <td>https://ncem-gis.maps.arcgis.com/apps/OnePane/...</td>
+      <td>2011-11-29 00:00:00+00:00</td>
+      <td>8.650426e+09</td>
+      <td>680450.731781</td>
+      <td>90044997-3e45-4fb9-868b-d63e35ca5417</td>
+      <td>POLYGON ((-75.90629 36.08588, -75.90623 36.086...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Gates</td>
+      <td>073</td>
+      <td>No recent survey data available</td>
+      <td></td>
+      <td>2011-11-29 00:00:00+00:00</td>
+      <td>9.640705e+09</td>
+      <td>444604.369559</td>
+      <td>9481c531-a035-4ef5-b744-7ea6c273dc2f</td>
+      <td>POLYGON ((-76.69658 36.29619, -76.69626 36.296...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Iredell</td>
+      <td>097</td>
+      <td>Recorded survey data is available. Visit North...</td>
+      <td>https://ncem-gis.maps.arcgis.com/apps/OnePane/...</td>
+      <td>2011-11-29 00:00:00+00:00</td>
+      <td>1.667062e+10</td>
+      <td>639632.141435</td>
+      <td>af176728-342a-4e27-98c7-a3618a76f75d</td>
+      <td>POLYGON ((-80.94812 35.49117, -80.94785 35.490...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Wilkes</td>
+      <td>193</td>
+      <td>Recorded survey data is available. Visit North...</td>
+      <td>https://ncem-gis.maps.arcgis.com/apps/OnePane/...</td>
+      <td>2011-11-29 00:00:00+00:00</td>
+      <td>2.111175e+10</td>
+      <td>718209.059123</td>
+      <td>ff004293-a701-4db2-9992-0746fca95bd3</td>
+      <td>POLYGON ((-81.30257 36.00491, -81.30244 36.004...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Union</td>
+      <td>179</td>
+      <td>Recorded survey data is available. Visit North...</td>
+      <td>https://ncem-gis.maps.arcgis.com/apps/OnePane/...</td>
+      <td>2011-11-29 00:00:00+00:00</td>
+      <td>1.782795e+10</td>
+      <td>584449.934640</td>
+      <td>64144070-8f48-4c5f-ac8e-356806056303</td>
+      <td>POLYGON ((-80.55036 35.20841, -80.55060 35.208...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Create a variable equal to the plot of nc_counties. This will serve as the base of our map. Format it to your taste.</p>
+<p>Next, create a plot of the NC_Public_Schools data. You will need to you new variable into the ax parameter to serve as an Axes object. This allows what we just plotted to serve as the base of our map. If you want to adjust the markersize based on a variable, simply pass a column in from the dataset and each point will adjust in size according to the data in that column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">nc_counties</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">))</span>
+
+<span class="n">nc_public_schools</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">base</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">nc_public_schools</span><span class="p">[</span><span class="s1">&#39;num_teach&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/4c25e25818d88cec64376ce375b2452a65acce9cab79c256f766242a00b3e87c.png" src="../../_images/4c25e25818d88cec64376ce375b2452a65acce9cab79c256f766242a00b3e87c.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/Data_Visualization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../overview/Charts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bar, Line, Scatter Plot</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Seaborn_Basictutorial.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing Statistical Relationships</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-maps-from-csvs-with-plotly">Creating Maps from CSVs with Plotly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-csv-files-not-used-as-often-for-spatial-data">Why are CSV files not used as often for spatial data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geopandas">Geopandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-reference-systems-crs">Coordinate Reference Systems (CRS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-north-carolina-public-schools-with-two-geojson-files">Plotting North Carolina Public Schools with Two GeoJson Files</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
