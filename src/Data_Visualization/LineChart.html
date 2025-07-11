@@ -448,7 +448,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-darkgrid&#39;</span><span class="p">)</span>
+<span class="c1">#plt.style.use(&#39;seaborn-darkgrid&#39;)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
@@ -474,7 +474,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff8caba5a15f88eed8a5959140a0b0cd4baae9824b555196f015e6b8854f5364.png" src="../../_images/ff8caba5a15f88eed8a5959140a0b0cd4baae9824b555196f015e6b8854f5364.png" />
+<img alt="../../_images/e628495c204df2135e5734e18f191a75cc6382b8f0084bbf877e03f27bdb869a.png" src="../../_images/e628495c204df2135e5734e18f191a75cc6382b8f0084bbf877e03f27bdb869a.png" />
 </div>
 </div>
 </section>
@@ -486,7 +486,7 @@ document.write(`
 <p>Start by reading the CSV into a variable using the pandas read_csv function. This will put everything into a dataframe object. The first row will be automatically read in as headers unless specified not to. Make sure to look through the data to get a feel for how everything is laid out. It is worth noting that all sales data is in the millions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">celes</span><span class="se">\\</span><span class="s1">Documents</span><span class="se">\\</span><span class="s1">Data</span><span class="se">\\</span><span class="s1">VideoGameStats.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data_Visualization/VideoGameStats.csv&#39;</span><span class="p">)</span>
 
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -674,7 +674,7 @@ Name: Global_Sales, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f39714d26b7a4ccee4c0a1d7e6ef7f4436b2eab1d95d6da867a1fb5929f55bf5.png" src="../../_images/f39714d26b7a4ccee4c0a1d7e6ef7f4436b2eab1d95d6da867a1fb5929f55bf5.png" />
+<img alt="../../_images/0384676666a7c9baf73dd291a3ed9b8603404b438dbdccda0570132ed2c57ee6.png" src="../../_images/0384676666a7c9baf73dd291a3ed9b8603404b438dbdccda0570132ed2c57ee6.png" />
 </div>
 </div>
 <p>Now let’s do another line chart. This time we will show the sales across North America, Europe, Japan, and Other. We will also limit the data to games that were released from 2000 and up.</p>
@@ -767,10 +767,10 @@ Name: Global_Sales, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Year_of_Release&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Year_of_Release&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/e8f841683b72b061f68426f58d2355a396ac9db8a5e9d420e04d52f219441dd3.png" src="../../_images/e8f841683b72b061f68426f58d2355a396ac9db8a5e9d420e04d52f219441dd3.png" />
+<img alt="../../_images/3e7f13f4295c4b619ac3ef258fdf028c2536b258318a8a58a800178a979d7f12.png" src="../../_images/3e7f13f4295c4b619ac3ef258fdf028c2536b258318a8a58a800178a979d7f12.png" />
 </div>
 </div>
 <p>You could also plot this chart as a stacked area graph for a similar function. You can choose whether or not you want the different sales areas to be stacked on top of each other by setting the ‘stacked’ parameter equal to true or false. It naturally defaults to true if it is not set.</p>
@@ -785,8 +785,8 @@ Name: Global_Sales, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/06adcb39d26ff4bd0682807b25a7b4db0aa84ca32111c4afd72ba59e1c53850f.png" src="../../_images/06adcb39d26ff4bd0682807b25a7b4db0aa84ca32111c4afd72ba59e1c53850f.png" />
-<img alt="../../_images/06adcb39d26ff4bd0682807b25a7b4db0aa84ca32111c4afd72ba59e1c53850f.png" src="../../_images/06adcb39d26ff4bd0682807b25a7b4db0aa84ca32111c4afd72ba59e1c53850f.png" />
+<img alt="../../_images/92c9bdc4a3b39b3a2f6afa97e7e802fd16cf11c03d72d7a389ea276e8ae3c656.png" src="../../_images/92c9bdc4a3b39b3a2f6afa97e7e802fd16cf11c03d72d7a389ea276e8ae3c656.png" />
+<img alt="../../_images/c1b3aef44fe1e495a5ed29880c6ae3c70bb73d760adfc16b2b2c59cb2225684a.png" src="../../_images/c1b3aef44fe1e495a5ed29880c6ae3c70bb73d760adfc16b2b2c59cb2225684a.png" />
 </div>
 </div>
 </section>
