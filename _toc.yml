@@ -21,13 +21,18 @@ parts:
     - file: src/API/API
       title: Using APIs    
 
-  - caption: Text Mining
+  - caption: Text Mining with Python
     chapters:
     - file: src/TextMining/IntroductionTextAnalysis
     - file: src/TextMining/AdvancedTextAnalysis
     - file: src/TextMining/MultiLingualNer
+    - file: src/TextMining/TextPreprocessing/TextPreprocessingMethods
+      title: Example 
+
+  - caption: Text Mining with R
+    chapters:
     - file: src/overview/Tidy_Text
-      title: Tidy Text
+      title: Text Mining
 
   - caption: Data Visualization
     chapters:
