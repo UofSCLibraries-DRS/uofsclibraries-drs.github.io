@@ -20,6 +20,8 @@ parts:
     chapters:
     - file: src/API/API
       title: Using APIs    
+    - file: src/web_scraping_beautifulsoup
+      title: Web Scraping
 
   - caption: Text Mining with Python
     chapters:
