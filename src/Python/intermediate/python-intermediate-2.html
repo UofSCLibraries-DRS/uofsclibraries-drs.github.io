@@ -195,6 +195,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web_scraping_beautifulsoup.html">Web Scraping</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with Python</span></p>
 <ul class="nav bd-sidenav">
@@ -493,9 +494,9 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <p><strong>Data Format:</strong> Text (.txt), CSV (.csv), JSON (.json)</p>
 <p><strong>Libraries Used:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#pandas">pandas</a> to read and write CSV files</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a> to read and write CSV files</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">json</span></code> to read and write JSON files</p></li>
-<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#constellate-client">constellate</a> client to retrieve and read data</p></li>
+<li><p>constellate client to retrieve and read data</p></li>
 </ul>
 <p><strong>Research Pipeline:</strong> None</p>
 <hr class="docutils" />
@@ -519,6 +520,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
     <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span> <span class="o">+</span> <span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample files ready.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample files ready.
 </pre></div>
 </div>
 </div>
@@ -614,6 +620,20 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A text file can have many words in it
+These words are written on the second line
+Third line
+Fourth line
+Fifth line
+Sixth line
+Seventh line
+Eighth line
+Ninth line
+Tenth line. This is the end of the text file!
+</pre></div>
+</div>
+</div>
 </div>
 <p>We have created a file object called <code class="docutils literal notranslate"><span class="pre">f</span></code>. The first argument (<code class="docutils literal notranslate"><span class="pre">'data/sample.txt'</span></code>) passed into the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function is a string containing the file name. You can see the sample.txt is in the data directory in the file browser to the left. If your file was called reports.txt, you would replace that argument with <code class="docutils literal notranslate"><span class="pre">'data/reports.txt'</span></code>. The second argument (<code class="docutils literal notranslate"><span class="pre">'r'</span></code>) determines that we are opening the file in “read” mode, where the file can be read but not modified. There are four main modes that can be specified when creating a file object:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -655,6 +675,20 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A text file can have many words in it
+These words are written on the second line
+Third line
+Fourth line
+Fifth line
+Sixth line
+Seventh line
+Eighth line
+Ninth line
+Tenth line. This is the end of the text file!
+</pre></div>
+</div>
+</div>
 </div>
 <h4 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h4>
 <p>In the data folder is a poem called Adaptation by the 2022 American Poet Laureate, Ada Limón. The file is called <code class="docutils literal notranslate"><span class="pre">adaptation.txt</span></code>. Open the file and print it out line by line.</p>
@@ -691,6 +725,71 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A te
+xt f
+ile 
+can 
+have
+ man
+y wo
+rds 
+in i
+t
+Th
+ese 
+word
+s ar
+e wr
+itte
+n on
+ the
+ sec
+ond 
+line
+
+Thi
+rd l
+ine
+
+Four
+th l
+ine
+
+Fift
+h li
+ne
+S
+ixth
+ lin
+e
+Se
+vent
+h li
+ne
+E
+ight
+h li
+ne
+N
+inth
+ lin
+e
+Te
+nth 
+line
+. Th
+is i
+s th
+e en
+d of
+ the
+ tex
+t fi
+le!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="writing-to-and-creating-files-with-write">
@@ -703,6 +802,19 @@ For questions/comments/improvements, email <a class="reference external" href="m
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/sample.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Add this text to the file&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnsupportedOperation</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Trying to use `.write()` on a file in read mode</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># will create an error</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/sample.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Add this text to the file&#39;</span><span class="p">)</span>
+
+<span class="ne">UnsupportedOperation</span>: not writable
 </pre></div>
 </div>
 </div>
@@ -817,6 +929,16 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Username         Login email  Identifier First name Last name
+0   booker12  rachel@example.com        9012     Rachel    Booker
+1     grey07                 NaN        2070      Laura      Grey
+2  johnson81                 NaN        4081      Craig   Johnson
+3  jenkins46    mary@example.com        9346       Mary   Jenkins
+4    smith79   jamie@example.com        5079      Jamie     Smith
+</pre></div>
+</div>
+</div>
 </div>
 <p>After you’ve made any necessary changes in Pandas, write the dataframe back to the CSV file. (Remember to always back up your data before writing over the file.)</p>
 <div class="cell docutils container">
@@ -882,6 +1004,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;firstName&#39;: &#39;Julia&#39;, &#39;lastName&#39;: &#39;Smith&#39;, &#39;gender&#39;: &#39;woman&#39;, &#39;age&#39;: 57, &#39;address&#39;: {&#39;streetAddress&#39;: &#39;11434&#39;, &#39;city&#39;: &#39;Detroit&#39;, &#39;state&#39;: &#39;Mi&#39;, &#39;postalCode&#39;: &#39;48202&#39;}, &#39;phoneNumber&#39;: &#39;3133627627&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -909,6 +1036,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/sample.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">json_contents</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">json_contents</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pet&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dog
 </pre></div>
 </div>
 </div>

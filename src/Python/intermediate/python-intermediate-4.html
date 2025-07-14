@@ -197,6 +197,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web_scraping_beautifulsoup.html">Web Scraping</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with Python</span></p>
 <ul class="nav bd-sidenav">
@@ -630,11 +631,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the value of the attribute bathroom of house1</span>
 <span class="n">house1</span><span class="o">.</span><span class="n">bathroom</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5
 </pre></div>
 </div>
 </div>
@@ -646,11 +657,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>600000
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the value of the attribute sqft of house1</span>
 <span class="n">house1</span><span class="o">.</span><span class="n">sqft</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1500
 </pre></div>
 </div>
 </div>
@@ -660,6 +681,11 @@ This notebook defines:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the method price_per_sqft of house1</span>
 <span class="n">house1</span><span class="o">.</span><span class="n">price_per_sqft</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>400.0
 </pre></div>
 </div>
 </div>
@@ -679,6 +705,11 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
 </div>
 <section id="modifying-an-instance-attribute">
 <h3>Modifying an instance attribute<a class="headerlink" href="#modifying-an-instance-attribute" title="Link to this heading">#</a></h3>
@@ -687,6 +718,11 @@ This notebook defines:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify an existing instance attribute by assigning a new value</span>
 <span class="n">house1</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">700_000</span>
 <span class="n">house1</span><span class="o">.</span><span class="n">price</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>700000
 </pre></div>
 </div>
 </div>
@@ -700,6 +736,11 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3000
+</pre></div>
+</div>
+</div>
 </div>
 <p>But it will only be available for that instance and not any other instances of the class.</p>
 <div class="cell docutils container">
@@ -707,6 +748,18 @@ This notebook defines:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The instance attribute is specific to the object house1</span>
 <span class="c1"># house2 was not initialized with a `lot_size` attribute</span>
 <span class="n">house2</span><span class="o">.</span><span class="n">lot_size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># The instance attribute is specific to the object house1</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># house2 was not initialized with a `lot_size` attribute</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">house2</span><span class="o">.</span><span class="n">lot_size</span>
+
+<span class="ne">AttributeError</span>: &#39;House&#39; object has no attribute &#39;lot_size&#39;
 </pre></div>
 </div>
 </div>
@@ -762,6 +815,11 @@ This notebook defines:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the value of the instance attribute lot_size of house2</span>
 <span class="n">house2</span><span class="o">.</span><span class="n">lot_size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3000
 </pre></div>
 </div>
 </div>
@@ -823,6 +881,11 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>570000.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>Differences between <strong>instance attributes</strong> and <strong>class attributes</strong>:</p>
 <ul class="simple">
@@ -837,12 +900,22 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.05
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the class attribute using the instance house2</span>
 <span class="n">house2</span> <span class="o">=</span> <span class="n">House</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">800_000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">house2</span><span class="o">.</span><span class="n">pct_change</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.05
 </pre></div>
 </div>
 </div>
@@ -862,11 +935,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.06
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the class attribute pct_change again using house2</span>
 <span class="n">house2</span><span class="o">.</span><span class="n">pct_change</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.06
 </pre></div>
 </div>
 </div>
@@ -929,6 +1012,11 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The house price has decreased 5%.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Again, changing the value of a class attribute affects all the instances.</p>
 <div class="cell docutils container">
@@ -947,11 +1035,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.05
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the class attribute after the update using instance house2</span>
 <span class="n">house2</span><span class="o">.</span><span class="n">pct_change</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.05
 </pre></div>
 </div>
 </div>
@@ -981,6 +1079,11 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1002,6 +1105,11 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
 </div>
 <p>From the perspective of functional programming, we are putting the functions at the center stage. Here we put the functions <code class="docutils literal notranslate"><span class="pre">startswith</span></code> and <code class="docutils literal notranslate"><span class="pre">endswith</span></code> at the center stage in particular. The strings, e.g. <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code>, are the input to the functions.</p>
 <center><img src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/intermediate_python_4_FP.png" width="400" height="400" /></center><p>Since these two operations are so common with strings, it would be great if we have them always ready to use when we have a string. So, let’s shift our perspective and put the strings at the center stage. Here, <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> are not passively waiting to be taken by functions as input. Instead, they are active <code class="docutils literal notranslate"><span class="pre">objects</span></code>. The functions that we wrote before, <code class="docutils literal notranslate"><span class="pre">startswith</span></code> and <code class="docutils literal notranslate"><span class="pre">endswith</span></code>, are now the tools that <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> can use. This is the perspective of OOP.</p>
@@ -1013,11 +1121,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Treating &#39;John&#39; as an object and using the .endswith() method</span>
 <span class="s1">&#39;John&#39;</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -1027,6 +1145,11 @@ This notebook defines:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print out the type of the string &#39;John&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1047,12 +1170,22 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the remove method of the list class</span>
 <span class="n">ls</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ls</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2]
 </pre></div>
 </div>
 </div>
@@ -1103,11 +1236,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the methods of the parent class</span>
 <span class="n">house3</span><span class="o">.</span><span class="n">price_per_sqft</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>360.0
 </pre></div>
 </div>
 </div>
@@ -1119,11 +1262,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the new instance method</span>
 <span class="n">house3</span><span class="o">.</span><span class="n">gas_expenses</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>440.0
 </pre></div>
 </div>
 </div>
@@ -1162,11 +1315,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1200
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the methods of the parent class</span>
 <span class="n">house4</span><span class="o">.</span><span class="n">price_per_sqft</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>833.3333333333334
 </pre></div>
 </div>
 </div>
@@ -1178,11 +1341,21 @@ This notebook defines:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the new instance method</span>
 <span class="n">house4</span><span class="o">.</span><span class="n">train_expenses</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>660.0
 </pre></div>
 </div>
 </div>
@@ -1241,6 +1414,11 @@ This notebook defines:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate John&#39;s new salary</span>
 <span class="n">john</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Doe&#39;</span><span class="p">,</span> <span class="mi">80000</span><span class="p">)</span>
 <span class="n">john</span><span class="o">.</span><span class="n">new_salary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84000.0
 </pre></div>
 </div>
 </div>

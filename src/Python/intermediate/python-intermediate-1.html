@@ -197,6 +197,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../API/API.html">Using APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web_scraping_beautifulsoup.html">Web Scraping</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with Python</span></p>
 <ul class="nav bd-sidenav">
@@ -525,6 +526,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[720, 1140, 1200, 1080, 1260, 1140, 1080]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Take a look again at the for loop.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">milk</span><span class="p">:</span>
@@ -541,6 +547,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">number</span> <span class="o">*</span> <span class="mi">30</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">milk</span><span class="p">]</span> <span class="c1">## The brackets [] indicate we are creating a list</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[720, 1140, 1200, 1080, 1260, 1140, 1080]
 </pre></div>
 </div>
 </div>
@@ -568,12 +579,22 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[24]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use len () to get how many days the newborn had less than the recommended minimum quantity</span>
 
 <span class="nb">len</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -588,6 +609,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
         <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
         
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_list</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -610,12 +636,22 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0, 0, 1, 0]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use sum() to get how many times you have scored</span>
 
 <span class="nb">sum</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -629,6 +665,19 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <span class="n">num</span> <span class="o">=</span> <span class="mi">12345</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="n">digit</span> <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">num</span> <span class="k">if</span> <span class="n">digit</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span> <span class="c1">## integer is not an iterable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Creating a new list based on an object that is not an iterable</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># results in an error </span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="n">digit</span> <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">num</span> <span class="k">if</span> <span class="n">digit</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span> <span class="c1">## integer is not an iterable</span>
+
+<span class="ne">TypeError</span>: &#39;int&#39; object is not iterable
 </pre></div>
 </div>
 </div>
@@ -664,6 +713,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
 </div>
 <p>See if you can write a list comprehension that creates a new list <code class="docutils literal notranslate"><span class="pre">odd_num</span></code> which only contains the odd numbers from <code class="docutils literal notranslate"><span class="pre">numbers</span></code>. The next code cell demonstrates how it could be done with a for loop.</p>
 <div class="cell docutils container">
@@ -675,6 +729,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
         <span class="n">odd_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> 
 
 <span class="nb">print</span><span class="p">(</span><span class="n">odd_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9]
 </pre></div>
 </div>
 </div>
@@ -734,6 +793,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Aaron&#39;, &#39;Brianna&#39;, &#39;Carla&#39;, &#39;Delia&#39;, &#39;Evelyn&#39;, &#39;Frederick&#39;, &#39;Gaston&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>In this example, we split each name string on whitespace using the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method. This creates a list of strings from a string.</p>
 <div class="cell docutils container">
@@ -744,6 +808,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;John&#39;, &#39;Doe&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -751,6 +820,11 @@ print(new_list) -->
 <span class="c1"># Then return only the first item in the list</span>
 
 <span class="s2">&quot;John Doe&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;John&#39;
 </pre></div>
 </div>
 </div>
@@ -795,6 +869,28 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;white rice with beef&#39;,
+ &#39;white rice with pork&#39;,
+ &#39;white rice with chicken&#39;,
+ &#39;white rice with shrimp&#39;,
+ &#39;white rice with lamb&#39;,
+ &#39;white rice with tofu&#39;,
+ &#39;brown rice with beef&#39;,
+ &#39;brown rice with pork&#39;,
+ &#39;brown rice with chicken&#39;,
+ &#39;brown rice with shrimp&#39;,
+ &#39;brown rice with lamb&#39;,
+ &#39;brown rice with tofu&#39;,
+ &#39;yellow rice with beef&#39;,
+ &#39;yellow rice with pork&#39;,
+ &#39;yellow rice with chicken&#39;,
+ &#39;yellow rice with shrimp&#39;,
+ &#39;yellow rice with lamb&#39;,
+ &#39;yellow rice with tofu&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -804,6 +900,28 @@ print(new_list) -->
 <span class="n">all_lunch_special_choices</span> <span class="o">=</span> <span class="p">[</span><span class="n">rice</span> <span class="o">+</span> <span class="s2">&quot; with &quot;</span> <span class="o">+</span> <span class="n">protein</span> <span class="k">for</span> <span class="n">rice</span> <span class="ow">in</span> <span class="n">rices</span> <span class="k">for</span> <span class="n">protein</span> <span class="ow">in</span> <span class="n">proteins</span><span class="p">]</span>
 
 <span class="n">pprint</span><span class="p">(</span><span class="n">all_lunch_special_choices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;white rice with beef&#39;,
+ &#39;white rice with pork&#39;,
+ &#39;white rice with chicken&#39;,
+ &#39;white rice with shrimp&#39;,
+ &#39;white rice with lamb&#39;,
+ &#39;white rice with tofu&#39;,
+ &#39;brown rice with beef&#39;,
+ &#39;brown rice with pork&#39;,
+ &#39;brown rice with chicken&#39;,
+ &#39;brown rice with shrimp&#39;,
+ &#39;brown rice with lamb&#39;,
+ &#39;brown rice with tofu&#39;,
+ &#39;yellow rice with beef&#39;,
+ &#39;yellow rice with pork&#39;,
+ &#39;yellow rice with chicken&#39;,
+ &#39;yellow rice with shrimp&#39;,
+ &#39;yellow rice with lamb&#39;,
+ &#39;yellow rice with tofu&#39;]
 </pre></div>
 </div>
 </div>
@@ -817,6 +935,28 @@ print(new_list) -->
 <span class="n">all_lunch_special_choices</span> <span class="o">=</span> <span class="p">[</span><span class="n">rice</span> <span class="o">+</span> <span class="s2">&quot; with &quot;</span> <span class="o">+</span> <span class="n">protein</span> <span class="k">for</span> <span class="n">protein</span> <span class="ow">in</span> <span class="n">proteins</span> <span class="k">for</span> <span class="n">rice</span> <span class="ow">in</span> <span class="n">rices</span><span class="p">]</span>
 
 <span class="n">pprint</span><span class="p">(</span><span class="n">all_lunch_special_choices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;white rice with beef&#39;,
+ &#39;brown rice with beef&#39;,
+ &#39;yellow rice with beef&#39;,
+ &#39;white rice with pork&#39;,
+ &#39;brown rice with pork&#39;,
+ &#39;yellow rice with pork&#39;,
+ &#39;white rice with chicken&#39;,
+ &#39;brown rice with chicken&#39;,
+ &#39;yellow rice with chicken&#39;,
+ &#39;white rice with shrimp&#39;,
+ &#39;brown rice with shrimp&#39;,
+ &#39;yellow rice with shrimp&#39;,
+ &#39;white rice with lamb&#39;,
+ &#39;brown rice with lamb&#39;,
+ &#39;yellow rice with lamb&#39;,
+ &#39;white rice with tofu&#39;,
+ &#39;brown rice with tofu&#39;,
+ &#39;yellow rice with tofu&#39;]
 </pre></div>
 </div>
 </div>
@@ -836,6 +976,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Abby&#39;, &#39;Bella&#39;, &#39;Cecilia&#39;, &#39;Alex&#39;, &#39;Beatrice&#39;, &#39;Cynthia&#39;, &#39;David&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,6 +993,22 @@ print(new_list) -->
 
 <span class="n">all_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">sublist</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">all_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Switch the two for loops and see what happens </span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="p">[</span><span class="s1">&#39;Abby&#39;</span><span class="p">,</span> <span class="s1">&#39;Bella&#39;</span><span class="p">,</span><span class="s1">&#39;Cecilia&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="p">[</span><span class="s1">&#39;Alex&#39;</span><span class="p">,</span><span class="s1">&#39;Beatrice&#39;</span><span class="p">,</span><span class="s1">&#39;Cynthia&#39;</span><span class="p">,</span><span class="s1">&#39;David&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">all_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">sublist</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="n">all_names</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sublist&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -865,6 +1026,23 @@ print(new_list) -->
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
         <span class="n">all_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="p">[</span><span class="s1">&#39;Abby&#39;</span><span class="p">,</span> <span class="s1">&#39;Bella&#39;</span><span class="p">,</span><span class="s1">&#39;Cecilia&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="p">[</span><span class="s1">&#39;Alex&#39;</span><span class="p">,</span><span class="s1">&#39;Beatrice&#39;</span><span class="p">,</span><span class="s1">&#39;Cynthia&#39;</span><span class="p">,</span><span class="s1">&#39;David&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">all_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">all_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sublist&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -930,12 +1108,50 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amanda Bennett
+Bryan Miller
+Christopher Garrison
+Debra Allen
+Donna Decker
+Heather Bullock
+Jason Brown
+Jason Soto
+Marissa Munoz
+Matthew Mccall
+Michael Norman
+Nicole Leblanc
+Noah Delgado
+Rachel Charles
+Stephanie Petty
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looping over a dictionary by specifying .keys()</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amanda Bennett
+Bryan Miller
+Christopher Garrison
+Debra Allen
+Donna Decker
+Heather Bullock
+Jason Brown
+Jason Soto
+Marissa Munoz
+Matthew Mccall
+Michael Norman
+Nicole Leblanc
+Noah Delgado
+Rachel Charles
+Stephanie Petty
 </pre></div>
 </div>
 </div>
@@ -946,6 +1162,25 @@ print(new_list) -->
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looping over a dictionary by specifying .items()</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Amanda Bennett&#39;, &#39;Engineer, electrical&#39;)
+(&#39;Bryan Miller&#39;, &#39;Radiation protection practitioner&#39;)
+(&#39;Christopher Garrison&#39;, &#39;Planning and development surveyor&#39;)
+(&#39;Debra Allen&#39;, &#39;Intelligence analyst&#39;)
+(&#39;Donna Decker&#39;, &#39;Architect&#39;)
+(&#39;Heather Bullock&#39;, &#39;Media planner&#39;)
+(&#39;Jason Brown&#39;, &#39;Energy manager&#39;)
+(&#39;Jason Soto&#39;, &#39;Lighting technician, broadcasting/film/video&#39;)
+(&#39;Marissa Munoz&#39;, &#39;Further education lecturer&#39;)
+(&#39;Matthew Mccall&#39;, &#39;Chief Technology Officer&#39;)
+(&#39;Michael Norman&#39;, &#39;Translator&#39;)
+(&#39;Nicole Leblanc&#39;, &#39;Financial controller&#39;)
+(&#39;Noah Delgado&#39;, &#39;Engineer, civil&#39;)
+(&#39;Rachel Charles&#39;, &#39;Physicist, medical&#39;)
+(&#39;Stephanie Petty&#39;, &#39;Architect&#39;)
 </pre></div>
 </div>
 </div>
@@ -976,6 +1211,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Amanda Bennett&#39;: &#39;Engineer, electrical&#39;, &#39;Noah Delgado&#39;: &#39;Engineer, civil&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,6 +1223,11 @@ print(new_list) -->
 
 <span class="n">person</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Engineer, mechanical&quot;</span><span class="p">)</span>
 <span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Engineer, mechanical&#39;
 </pre></div>
 </div>
 </div>
@@ -997,6 +1242,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;John&#39;: 90, &#39;Mary&#39;: 95, &#39;Sue&#39;: 98}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1005,6 +1255,11 @@ print(new_list) -->
 
 <span class="n">engineer_contacts</span> <span class="o">=</span> <span class="p">{</span><span class="n">contact</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">contact</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;Engineer&#39;</span> <span class="ow">in</span> <span class="n">contact</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">engineer_contacts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Amanda Bennett&#39;: &#39;Engineer, electrical&#39;, &#39;Noah Delgado&#39;: &#39;Engineer, civil&#39;}
 </pre></div>
 </div>
 </div>
@@ -1025,6 +1280,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Amanda Bennett&#39;: &#39;Engineer, electrical&#39;, &#39;Noah Delgado&#39;: &#39;Engineer, civil&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that when we assign the keys and values to the two variables <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">occupation</span></code>, we use parentheses to indicate that each pair is a tuple. However, the parentheses are not obligatory. You can remove them and the code will still work.</p>
 <div class="cell docutils container">
@@ -1034,6 +1294,11 @@ print(new_list) -->
 
 <span class="n">engineer_contacts</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span> <span class="p">:</span> <span class="n">occupation</span> <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">occupation</span><span class="p">)</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;Engineer&#39;</span> <span class="ow">in</span> <span class="n">occupation</span><span class="p">}</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">engineer_contacts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Amanda Bennett&#39;: &#39;Engineer, electrical&#39;, &#39;Noah Delgado&#39;: &#39;Engineer, civil&#39;}
 </pre></div>
 </div>
 </div>
@@ -1056,6 +1321,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;more&#39;: 4, &#39;is&#39;: 2, &#39;said&#39;: 4, &#39;than&#39;: 4, &#39;done&#39;: 4}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,6 +1337,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;more&#39;: 4, &#39;is&#39;: 2, &#39;said&#39;: 4, &#39;than&#39;: 4, &#39;done&#39;: 4}
+</pre></div>
+</div>
+</div>
 </div>
 <h3 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h3>
 <p>Suppose you are a grocery store owner. Due to the inflation, you have to raise prices by 15%. In <code class="docutils literal notranslate"><span class="pre">store_prices</span></code> are the items and their original price. Use a dictionary comprehension to create a new dictionary with the new price.</p>
@@ -1074,6 +1349,11 @@ print(new_list) -->
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="mf">3.1415926</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14
 </pre></div>
 </div>
 </div>
@@ -1107,6 +1387,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>set
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1115,6 +1400,11 @@ print(new_list) -->
 
 <span class="n">test_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span> <span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="p">:</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="mi">3</span> <span class="p">:</span> <span class="s1">&#39;cherry&#39;</span><span class="p">}</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">test_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
 </pre></div>
 </div>
 </div>
@@ -1132,6 +1422,12 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_set is a &lt;class &#39;set&#39;&gt;
+test_dict is a &lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1146,6 +1442,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{8, 9, 6, 7}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1153,6 +1454,11 @@ print(new_list) -->
 
 <span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">set1</span> <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{8, 9, 6, 7}
 </pre></div>
 </div>
 </div>
@@ -1167,6 +1473,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1174,6 +1485,11 @@ print(new_list) -->
 <span class="c1"># Repeated elements in a set</span>
 
 <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -1187,6 +1503,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2}
+</pre></div>
+</div>
+</div>
 </div>
 <p>Again, we can use set comprehensions to create a new set based on any kind of iterables that have been defined.</p>
 <div class="cell docutils container">
@@ -1196,6 +1517,25 @@ print(new_list) -->
 <span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">}</span>
 
 <span class="n">pprint</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Amanda Bennett&#39;,
+ &#39;Bryan Miller&#39;,
+ &#39;Christopher Garrison&#39;,
+ &#39;Debra Allen&#39;,
+ &#39;Donna Decker&#39;,
+ &#39;Heather Bullock&#39;,
+ &#39;Jason Brown&#39;,
+ &#39;Jason Soto&#39;,
+ &#39;Marissa Munoz&#39;,
+ &#39;Matthew Mccall&#39;,
+ &#39;Michael Norman&#39;,
+ &#39;Nicole Leblanc&#39;,
+ &#39;Noah Delgado&#39;,
+ &#39;Rachel Charles&#39;,
+ &#39;Stephanie Petty&#39;}
 </pre></div>
 </div>
 </div>
@@ -1249,6 +1589,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1266,6 +1611,11 @@ print(new_list) -->
 <span class="n">friends</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">people</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">friends</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Aaron&#39;, &#39;Brianna&#39;, &#39;Carla&#39;, &#39;Delia&#39;, &#39;Evelyn&#39;, &#39;Frederick&#39;, &#39;Gaston&#39;]
 </pre></div>
 </div>
 </div>
@@ -1288,6 +1638,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Abby&#39;, &#39;Alex&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1296,6 +1651,11 @@ print(new_list) -->
 
 <span class="n">a_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">names</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">sublist</span> <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Abby&#39;, &#39;Alex&#39;]
 </pre></div>
 </div>
 </div>
@@ -1314,6 +1674,16 @@ print(new_list) -->
 
 <span class="n">new_prices</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span> <span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="ow">in</span> <span class="n">store_prices</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">new_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banana&#39;: 1.14,
+ &#39;bread&#39;: 3.44,
+ &#39;egg&#39;: 6.08,
+ &#39;lettuce&#39;: 2.7,
+ &#39;milk&#39;: 4.01,
+ &#39;spinach&#39;: 2.29}
 </pre></div>
 </div>
 </div>
@@ -1340,6 +1710,11 @@ print(new_list) -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;exist&#39;, &#39;grist&#39;, &#39;frisk&#39;, &#39;prism&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1347,6 +1722,11 @@ print(new_list) -->
 
 <span class="n">answers</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">answers</span> <span class="k">if</span> <span class="s1">&#39;p&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span> <span class="s1">&#39;r&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span> <span class="s1">&#39;m&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;exist&#39;}
 </pre></div>
 </div>
 </div>
