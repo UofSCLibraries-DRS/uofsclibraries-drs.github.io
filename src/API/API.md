@@ -1,6 +1,4 @@
 # Extracting Data From Websites Using API - A Beginners Guide
-By Vandana Srivastava  
-   AI/Data Science Specialist, University Libraries, USC
 
 ## Definition and Purpose of APIs
 **What is an API?**
@@ -195,4 +193,8 @@ Regularly updating API keys is crucial for security and ensuring uninterrupted a
 
 **Troubleshooting Issues**  
 Prompt troubleshooting of issues as they arise ensures that API integrations continue to function smoothly.
+
+## Acknowledgements
+By Vandana Srivastava  
+   AI/Data Science Specialist, University Libraries, USC
 

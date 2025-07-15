@@ -441,6 +441,10 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps-deploying-the-app">Next Steps: Deploying the App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -454,7 +458,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-build-an-app-frontend">
 <h1>How to Build an App – Frontend<a class="headerlink" href="#how-to-build-an-app-frontend" title="Link to this heading">#</a></h1>
-<p>By Meara Cox, Summer Internship, June 2025</p>
 <section id="laying-out-the-framework">
 <h2>Laying Out the Framework<a class="headerlink" href="#laying-out-the-framework" title="Link to this heading">#</a></h2>
 <p>For the <strong>frontend</strong>, we chose <strong>React Native with Expo</strong>. This powerful combination enables us to create native mobile apps for both Android and iOS using JavaScript and React. Expo accelerates development with built-in tools for building, testing, and deploying apps quickly and efficiently.</p>
@@ -1568,6 +1571,27 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </section>
 </section>
 </section>
+<section id="next-steps-deploying-the-app">
+<h2>Next Steps: Deploying the App<a class="headerlink" href="#next-steps-deploying-the-app" title="Link to this heading">#</a></h2>
+<p>The next step is to <a class="reference internal" href="HowToDeployApp.html"><span class="std std-doc">deploy</span></a> the app so it can be accessed beyond your local development environment.</p>
+<p>Start by using ngrok to expose your local backend to the internet temporarily:</p>
+<ul class="simple">
+<li><p>Start your FastAPI backend locally.</p></li>
+<li><p>Use ngrok to generate a public URL that tunnels to your backend.</p></li>
+<li><p>Update your frontend to use this temporary ngrok URL to send conversion requests.</p></li>
+</ul>
+<p>Once you’re ready for a more permanent solution, deploy your backend to Render:</p>
+<ul class="simple">
+<li><p>Push your FastAPI backend code to a public GitHub repository.</p></li>
+<li><p>Create a new Web Service on Render, linking it to your GitHub repo.</p></li>
+<li><p>After deployment, copy the Render service URL and update the frontend to use this URL instead of ngrok.</p></li>
+</ul>
+<p>This will make your app fully functional and accessible from anywhere, completing the backend deployment process.</p>
+<section id="acknowledgements">
+<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h3>
+<p>By Meara Cox, Summer Internship, June 2025</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1639,6 +1663,10 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">What This Screen Does</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps-deploying-the-app">Next Steps: Deploying the App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
 </li>
 </ul>
