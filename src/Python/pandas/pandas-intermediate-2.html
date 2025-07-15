@@ -504,11 +504,173 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Closing Date</th>
+      <th>Fund</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>1-May-23</td>
+      <td>10543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>12-Mar-23</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10-Mar-23</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>23-Oct-20</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>16-Oct-20</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>Superior Bank, FSB</td>
+      <td>Hinsdale</td>
+      <td>IL</td>
+      <td>32646</td>
+      <td>Superior Federal, FSB</td>
+      <td>27-Jul-01</td>
+      <td>6004</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>Malta National Bank</td>
+      <td>Malta</td>
+      <td>OH</td>
+      <td>6629</td>
+      <td>North Valley Bank</td>
+      <td>3-May-01</td>
+      <td>4648</td>
+    </tr>
+    <tr>
+      <th>563</th>
+      <td>First Alliance Bank &amp; Trust Co.</td>
+      <td>Manchester</td>
+      <td>NH</td>
+      <td>34264</td>
+      <td>Southern New Hampshire Bank &amp; Trust</td>
+      <td>2-Feb-01</td>
+      <td>4647</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>National State Bank of Metropolis</td>
+      <td>Metropolis</td>
+      <td>IL</td>
+      <td>3815</td>
+      <td>Banterra Bank of Marion</td>
+      <td>14-Dec-00</td>
+      <td>4646</td>
+    </tr>
+    <tr>
+      <th>565</th>
+      <td>Bank of Honolulu</td>
+      <td>Honolulu</td>
+      <td>HI</td>
+      <td>21029</td>
+      <td>Bank of the Orient</td>
+      <td>13-Oct-00</td>
+      <td>4645</td>
+    </tr>
+  </tbody>
+</table>
+<p>566 rows × 7 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check the data type of the Closing Date column</span>
 <span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       1-May-23
+1      12-Mar-23
+2      10-Mar-23
+3      23-Oct-20
+4      16-Oct-20
+         ...    
+561    27-Jul-01
+562     3-May-01
+563     2-Feb-01
+564    14-Dec-00
+565    13-Oct-00
+Name: Closing Date, Length: 566, dtype: object
 </pre></div>
 </div>
 </div>
@@ -532,6 +694,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     2023-05-01
+1     2023-03-12
+2     2023-03-10
+3     2020-10-23
+4     2020-10-16
+         ...    
+561   2001-07-27
+562   2001-05-03
+563   2001-02-02
+564   2000-12-14
+565   2000-10-13
+Name: Closing Date, Length: 566, dtype: datetime64[ns]
+</pre></div>
+</div>
+</div>
 </div>
 <p>When we parse the strings in the <code class="docutils literal notranslate"><span class="pre">Closing</span> <span class="pre">Date</span></code> column into <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects, we specify a format to inform Pandas of how to do the parsing. For the cheatsheet of the format codes, you can check the documentation <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">here</a>.</p>
 <p>One good thing about converting the dates and times into <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects is that we can then use them to index a dataframe. You will soon see that indexing using <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects is very flexible.</p>
@@ -550,6 +728,109 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Fund</th>
+    </tr>
+    <tr>
+      <th>Closing Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-02-14</th>
+      <td>Ericson State Bank</td>
+      <td>Ericson</td>
+      <td>NE</td>
+      <td>18265</td>
+      <td>Farmers and Merchants Bank</td>
+      <td>10535</td>
+    </tr>
+    <tr>
+      <th>2020-04-03</th>
+      <td>The First State Bank</td>
+      <td>Barboursville</td>
+      <td>WV</td>
+      <td>14361</td>
+      <td>MVB Bank, Inc.</td>
+      <td>10536</td>
+    </tr>
+    <tr>
+      <th>2020-10-16</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>2020-10-23</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2023-05-01</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>10543</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Providing the full form YYYY-MM-DD when selecting data from the dataframe is expected, as our indexes are in the format of YYYY-MM-DD. However, what makes <code class="docutils literal notranslate"><span class="pre">datetime</span></code> indexes really convenient is that we can do partial indexing with them!</p>
 <div class="cell docutils container">
@@ -559,6 +840,109 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Fund</th>
+    </tr>
+    <tr>
+      <th>Closing Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-02-14</th>
+      <td>Ericson State Bank</td>
+      <td>Ericson</td>
+      <td>NE</td>
+      <td>18265</td>
+      <td>Farmers and Merchants Bank</td>
+      <td>10535</td>
+    </tr>
+    <tr>
+      <th>2020-04-03</th>
+      <td>The First State Bank</td>
+      <td>Barboursville</td>
+      <td>WV</td>
+      <td>14361</td>
+      <td>MVB Bank, Inc.</td>
+      <td>10536</td>
+    </tr>
+    <tr>
+      <th>2020-10-16</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>2020-10-23</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2023-05-01</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>10543</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>As you can see, even if we do not provide the full forms, we do not get an error.</p>
 <div class="cell docutils container">
@@ -568,6 +952,109 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Fund</th>
+    </tr>
+    <tr>
+      <th>Closing Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-02-14</th>
+      <td>Ericson State Bank</td>
+      <td>Ericson</td>
+      <td>NE</td>
+      <td>18265</td>
+      <td>Farmers and Merchants Bank</td>
+      <td>10535</td>
+    </tr>
+    <tr>
+      <th>2020-04-03</th>
+      <td>The First State Bank</td>
+      <td>Barboursville</td>
+      <td>WV</td>
+      <td>14361</td>
+      <td>MVB Bank, Inc.</td>
+      <td>10536</td>
+    </tr>
+    <tr>
+      <th>2020-10-16</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>2020-10-23</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2023-05-01</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>10543</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,6 +1079,71 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/indexes/base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3811</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3813</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File pandas/_libs/index.pyx:167,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/index.pyx:196,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7088,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7096,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;2020&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">date_str</span> <span class="o">=</span> <span class="n">date_str</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># select data using partial indexing</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">date_str</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020&#39;</span><span class="p">]</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/indexing.py:1191,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1189</span> <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1190</span> <span class="n">maybe_callable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_deprecated_callable_usage</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">maybe_callable</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1191</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/indexing.py:1431,</span> in <span class="ni">_LocIndexer._getitem_axis</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1429</span> <span class="c1"># fall thru to straight lookup</span>
+<span class="g g-Whitespace">   </span><span class="mi">1430</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1431</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_label</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/indexing.py:1381,</span> in <span class="ni">_LocIndexer._get_label</span><span class="nt">(self, label, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1379</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">AxisInt</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1380</span>     <span class="c1"># GH#5567 this will fail if the label is not present in the axis.</span>
+<span class="ne">-&gt; </span><span class="mi">1381</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/generic.py:4320,</span> in <span class="ni">NDFrame.xs</span><span class="nt">(self, key, axis, level, drop_level)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4318</span>             <span class="n">new_index</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">4319</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">4320</span>     <span class="n">loc</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4322</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">4323</span>         <span class="k">if</span> <span class="n">loc</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">:</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/indexes/base.py:3819,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3814</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3815</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3816</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3817</span>     <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3818</span>         <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3819</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3820</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3821</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3822</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3823</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3824</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;2020&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>We got a key error! This is because ‘2020’ is not one of the indexes and partial indexing with strings is impossible. If we supply ‘2020’ as the index, Pandas will try to find the rows whose index is ‘2020’, but there are no rows with this index in our small dataframe!</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> class has a variety of attributes that we can access. For example, we can access the ‘year’, ‘month’, and ‘date’ from the full form of a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object.</p>
@@ -602,12 +1154,44 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      2000
+1      2000
+2      2001
+3      2001
+4      2001
+       ... 
+561    2020
+562    2020
+563    2023
+564    2023
+565    2023
+Name: Closing Date, Length: 566, dtype: int32
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> class also has a variety of methods that we can use. For example, if we would like to get the day of week for each date in the <code class="docutils literal notranslate"><span class="pre">Closing</span> <span class="pre">Date</span></code> column, we can use the <code class="docutils literal notranslate"><span class="pre">day_name()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access the day of week from datetime objects</span>
 <span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        Friday
+1      Thursday
+2        Friday
+3      Thursday
+4        Friday
+         ...   
+561      Friday
+562      Friday
+563      Friday
+564      Sunday
+565      Monday
+Name: Closing Date, Length: 566, dtype: object
 </pre></div>
 </div>
 </div>
@@ -629,6 +1213,40 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T/ipykernel_21161/312667976.py:2: FutureWarning: &#39;Y&#39; is deprecated and will be removed in a future version, please use &#39;YE&#39; instead.
+  banks_df.resample(&#39;Y&#39;, on=&#39;Closing Date&#39;).size()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing Date
+2000-12-31      2
+2001-12-31      4
+2002-12-31     11
+2003-12-31      3
+2004-12-31      4
+2005-12-31      0
+2006-12-31      0
+2007-12-31      3
+2008-12-31     25
+2009-12-31    140
+2010-12-31    157
+2011-12-31     92
+2012-12-31     51
+2013-12-31     24
+2014-12-31     18
+2015-12-31      8
+2016-12-31      5
+2017-12-31      8
+2018-12-31      0
+2019-12-31      4
+2020-12-31      4
+2021-12-31      0
+2022-12-31      0
+2023-12-31      3
+Freq: YE-DEC, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">resample()</span></code>, we can choose to upsample or downsample.</p>
 <div class="cell docutils container">
@@ -638,11 +1256,53 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T/ipykernel_21161/3076179390.py:2: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
+  banks_df.resample(&#39;M&#39;, on=&#39;Closing Date&#39;).size()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing Date
+2000-10-31    1
+2000-11-30    0
+2000-12-31    1
+2001-01-31    0
+2001-02-28    1
+             ..
+2023-01-31    0
+2023-02-28    0
+2023-03-31    2
+2023-04-30    0
+2023-05-31    1
+Freq: ME, Length: 272, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># upsample to 12 hours with greater granularity</span>
 <span class="n">banks_df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;12H&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/2h/84wxzls579b1yv00g4jj02fh0000gn/T/ipykernel_21161/2767640105.py:2: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version, please use &#39;h&#39; instead.
+  banks_df.resample(&#39;12H&#39;, on=&#39;Closing Date&#39;).size()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing Date
+2000-10-13 00:00:00    1
+2000-10-13 12:00:00    0
+2000-10-14 00:00:00    0
+2000-10-14 12:00:00    0
+2000-10-15 00:00:00    0
+                      ..
+2023-04-29 00:00:00    0
+2023-04-29 12:00:00    0
+2023-04-30 00:00:00    0
+2023-04-30 12:00:00    0
+2023-05-01 00:00:00    1
+Freq: 12h, Length: 16471, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -666,6 +1326,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;0 days 04:00:00&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>In the following, let’s grab the 2022 Boston Marathon dataset and use the completion time of the runners as an example.</p>
 <div class="cell docutils container">
@@ -686,6 +1351,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
+RangeIndex: 24834 entries, 0 to 24833
+Series name: OfficialTime
+Non-Null Count  Dtype 
+--------------  ----- 
+24834 non-null  object
+dtypes: object(1)
+memory usage: 194.1+ KB
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -703,6 +1381,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;0 days 05:17:48&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Just like the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects, the <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> objects also have a variety of attributes and methods that we can make use of.</p>
 <div class="cell docutils container">
@@ -712,11 +1395,170 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>days</th>
+      <th>hours</th>
+      <th>minutes</th>
+      <th>seconds</th>
+      <th>milliseconds</th>
+      <th>microseconds</th>
+      <th>nanoseconds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>2</td>
+      <td>6</td>
+      <td>51</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>2</td>
+      <td>7</td>
+      <td>21</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>2</td>
+      <td>7</td>
+      <td>27</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>2</td>
+      <td>7</td>
+      <td>53</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>2</td>
+      <td>8</td>
+      <td>47</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>24829</th>
+      <td>0</td>
+      <td>6</td>
+      <td>56</td>
+      <td>35</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24830</th>
+      <td>0</td>
+      <td>6</td>
+      <td>58</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24831</th>
+      <td>0</td>
+      <td>6</td>
+      <td>58</td>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24832</th>
+      <td>0</td>
+      <td>7</td>
+      <td>1</td>
+      <td>32</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24833</th>
+      <td>0</td>
+      <td>7</td>
+      <td>24</td>
+      <td>39</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>24834 rows × 7 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the completion time in seconds</span>
 <span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;OfficialTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         7611.0
+1         7641.0
+2         7647.0
+3         7673.0
+4         7727.0
+          ...   
+24829    24995.0
+24830    25092.0
+24831    25130.0
+24832    25292.0
+24833    26679.0
+Name: OfficialTime, Length: 24834, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -747,6 +1589,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;AgeOnRaceDay&#39;, ylabel=&#39;OfficialTime&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/2165adc0043f1d8a28dbc9e9fa823e23ed9cecca699b24a620297e7d75834692.png" src="../../../_images/2165adc0043f1d8a28dbc9e9fa823e23ed9cecca699b24a620297e7d75834692.png" />
+</div>
 </div>
 <p>If the data are categorically grouped, you can slice the data into smaller data series and color them differently.</p>
 <p>For example, suppose we are interested in the relationship between the age and the completion time of the runners from France.</p>
@@ -761,6 +1609,40 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AgeOnRaceDay</th>
+      <th>OfficialTime</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>42</th>
+      <td>58</td>
+      <td>0 days 04:23:33</td>
+      <td>F</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -777,6 +1659,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/af033be4187f4ac8842472470222ced942623be386411cb5293ad19e64760dd9.png" src="../../../_images/af033be4187f4ac8842472470222ced942623be386411cb5293ad19e64760dd9.png" />
+</div>
 </div>
 </section>
 <section id="bar-charts">
@@ -790,6 +1675,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CountryOfResName
+Ireland            172
+France             183
+Netherlands        185
+Italy              202
+Spain              258
+Germany            264
+Brazil             288
+Mexico             393
+United Kingdom    1002
+Canada            1478
+dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -797,6 +1698,12 @@ document.write(`
 <span class="n">bm_22_hbar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;CountryOfResName&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/930dfc95828d3e00efd70ef0fe776ee089227ab3bb94ae8b29134c366fe9ad6d.png" src="../../../_images/930dfc95828d3e00efd70ef0fe776ee089227ab3bb94ae8b29134c366fe9ad6d.png" />
 </div>
 </div>
 <p>Now, suppose we would like to break the total number of runners in each country by gender and make a stacked bar chart instead.</p>
@@ -824,6 +1731,12 @@ document.write(`
 <span class="n">bm_22_sthbar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;CountryOfResName&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/65c3b6f65df6ff99e3b1226d45d963336110afc2f835862588849e78e69e15b2.png" src="../../../_images/65c3b6f65df6ff99e3b1226d45d963336110afc2f835862588849e78e69e15b2.png" />
 </div>
 </div>
 <h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
@@ -861,6 +1774,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../../_images/70307f68acbad41d80564676854e835f588bfafbcb890eb1f48aa3e754f8b278.png" src="../../../_images/70307f68acbad41d80564676854e835f588bfafbcb890eb1f48aa3e754f8b278.png" />
+</div>
 </div>
 <section id="histogram">
 <h3>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h3>
@@ -871,6 +1790,12 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the youngest and oldest age</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;AgeOnRaceDay&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;AgeOnRaceDay&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81
+18
 </pre></div>
 </div>
 </div>
@@ -886,6 +1811,12 @@ document.write(`
 <span class="n">bm_22_hist</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Num_runners&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Age&#39;, ylabel=&#39;Num_runners&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/dd8552dc6d002f4f38b103c84da2b416ea234c054cf1315e4c51fcfe088d78b5.png" src="../../../_images/dd8552dc6d002f4f38b103c84da2b416ea234c054cf1315e4c51fcfe088d78b5.png" />
 </div>
 </div>
 <p>In the next code cell, can you make a histogram that displays the distribution of the completion time of the runners in ranges of 1 hour?</p>
@@ -919,6 +1850,12 @@ document.write(`
 <span class="n">banks_line</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Year&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/4284c49e5845ec89bc6c7ef713722de58fc78205c88fb4a597278d5af4766e7f.png" src="../../../_images/4284c49e5845ec89bc6c7ef713722de58fc78205c88fb4a597278d5af4766e7f.png" />
 </div>
 </div>
 </section>

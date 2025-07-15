@@ -475,6 +475,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.3.1&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,11 +501,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyarrow in /Users/mearacox/opt/anaconda3/lib/python3.9/site-packages (20.0.0)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pa</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pyarrow
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pa</span>
 <span class="n">pa</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyarrow in /opt/homebrew/lib/python3.11/site-packages (20.0.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;20.0.0&#39;
 </pre></div>
 </div>
 </div>
@@ -529,6 +549,308 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BibNumber</th>
+      <th>FullName</th>
+      <th>SortName</th>
+      <th>AgeOnRaceDay</th>
+      <th>Gender</th>
+      <th>City</th>
+      <th>StateAbbrev</th>
+      <th>StateName</th>
+      <th>Zip</th>
+      <th>CountryOfResAbbrev</th>
+      <th>CountryOfResName</th>
+      <th>CountryOfCtzAbbrev</th>
+      <th>CountryOfCtzName</th>
+      <th>OfficialTime</th>
+      <th>RankOverall</th>
+      <th>RankOverGender</th>
+      <th>RankOverDivision</th>
+      <th>EventGroup</th>
+      <th>SubGroupLabel</th>
+      <th>SubGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Evans Chebet</td>
+      <td>Chebet, Evans</td>
+      <td>33</td>
+      <td>M</td>
+      <td>Kapsabet</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:06:51</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>Lawrence Cherono</td>
+      <td>Cherono, Lawrence</td>
+      <td>33</td>
+      <td>M</td>
+      <td>Eldoret</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:07:21</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Benson Kipruto</td>
+      <td>Kipruto, Benson</td>
+      <td>31</td>
+      <td>M</td>
+      <td>Kapsabet</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:07:27</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9</td>
+      <td>Gabriel Geay</td>
+      <td>Geay, Gabriel</td>
+      <td>25</td>
+      <td>M</td>
+      <td>Tampa</td>
+      <td>FL</td>
+      <td>Florida</td>
+      <td>33647</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>TAN</td>
+      <td>Tanzania</td>
+      <td>2:07:53</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11</td>
+      <td>Eric Kiptanui</td>
+      <td>Kiptanui, Eric</td>
+      <td>31</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:08:47</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>24829</th>
+      <td>7681</td>
+      <td>Paul Kent</td>
+      <td>Kent, Paul</td>
+      <td>58</td>
+      <td>M</td>
+      <td>Hingham</td>
+      <td>MA</td>
+      <td>Massachusetts</td>
+      <td>2043</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>6:56:35</td>
+      <td>24830</td>
+      <td>14258</td>
+      <td>1451</td>
+      <td>Runners</td>
+      <td>Para T61-T62</td>
+      <td>Para T61-T62</td>
+    </tr>
+    <tr>
+      <th>24830</th>
+      <td>7638</td>
+      <td>Aaron Burros</td>
+      <td>Burros, Aaron</td>
+      <td>51</td>
+      <td>M</td>
+      <td>Houston</td>
+      <td>TX</td>
+      <td>Texas</td>
+      <td>77024</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>6:58:12</td>
+      <td>24831</td>
+      <td>14259</td>
+      <td>1899</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24831</th>
+      <td>28701</td>
+      <td>Julian Martin Arjona</td>
+      <td>Martin Arjona, Julian</td>
+      <td>61</td>
+      <td>M</td>
+      <td>Loja</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18300</td>
+      <td>ESP</td>
+      <td>Spain</td>
+      <td>ESP</td>
+      <td>Spain</td>
+      <td>6:58:50</td>
+      <td>24832</td>
+      <td>14260</td>
+      <td>1056</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24832</th>
+      <td>5398</td>
+      <td>Jorge Valenciano</td>
+      <td>Valenciano, Jorge</td>
+      <td>38</td>
+      <td>M</td>
+      <td>Guadalupe</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>67192</td>
+      <td>MEX</td>
+      <td>Mexico</td>
+      <td>MEX</td>
+      <td>Mexico</td>
+      <td>7:01:32</td>
+      <td>24833</td>
+      <td>14261</td>
+      <td>4818</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24833</th>
+      <td>2519</td>
+      <td>Jason Liddle</td>
+      <td>Liddle, Jason</td>
+      <td>45</td>
+      <td>M</td>
+      <td>Victor</td>
+      <td>NY</td>
+      <td>New York</td>
+      <td>14564</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>7:24:39</td>
+      <td>24834</td>
+      <td>14262</td>
+      <td>2298</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>24834 rows × 20 columns</p>
+</div></div></div>
 </div>
 <p>Suppose we would like to find out all the runners whose name has the four letters ‘t’, ‘a’, ‘p’, ‘i’ in the given order.</p>
 <div class="cell docutils container">
@@ -536,6 +858,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># get all names with &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
 <span class="n">bm_22</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.9 ms ± 2.2 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -558,6 +885,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.79 ms ± 276 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s check the data type of the <code class="docutils literal notranslate"><span class="pre">FullName</span></code> column.</p>
 <div class="cell docutils container">
@@ -567,11 +899,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;O&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check the data type of the FullName column, pyarrow as backend</span>
 <span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>string[pyarrow]
 </pre></div>
 </div>
 </div>
@@ -620,6 +962,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117 ms ± 3.13 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now, let’s change the data type to PyArrow string and repeat the same search.</p>
 <div class="cell docutils container">
@@ -635,6 +982,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># get all names containing &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
 <span class="n">huge_name_col_pa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">huge_name_col_pa</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.05 ms ± 112 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -672,11 +1024,31 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -39630.514568
+1   -21329.169699
+2   -33696.028632
+3   -40062.849870
+4   -53397.972073
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine the data</span>
 <span class="n">nums_pa</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -39630.514568
+1   -21329.169699
+2   -33696.028632
+3    -40062.84987
+4   -53397.972073
+dtype: double[pyarrow]
 </pre></div>
 </div>
 </div>
@@ -689,12 +1061,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.86 ms ± 130 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># calculate the mean, with PyArrow as backend</span>
 <span class="n">nums_pa</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.37 ms ± 205 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -872,6 +1254,152 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Closing Date</th>
+      <th>Fund</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>1-May-23</td>
+      <td>10543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>12-Mar-23</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10-Mar-23</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>23-Oct-20</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>16-Oct-20</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>Superior Bank, FSB</td>
+      <td>Hinsdale</td>
+      <td>IL</td>
+      <td>32646</td>
+      <td>Superior Federal, FSB</td>
+      <td>27-Jul-01</td>
+      <td>6004</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>Malta National Bank</td>
+      <td>Malta</td>
+      <td>OH</td>
+      <td>6629</td>
+      <td>North Valley Bank</td>
+      <td>3-May-01</td>
+      <td>4648</td>
+    </tr>
+    <tr>
+      <th>563</th>
+      <td>First Alliance Bank &amp; Trust Co.</td>
+      <td>Manchester</td>
+      <td>NH</td>
+      <td>34264</td>
+      <td>Southern New Hampshire Bank &amp; Trust</td>
+      <td>2-Feb-01</td>
+      <td>4647</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>National State Bank of Metropolis</td>
+      <td>Metropolis</td>
+      <td>IL</td>
+      <td>3815</td>
+      <td>Banterra Bank of Marion</td>
+      <td>14-Dec-00</td>
+      <td>4646</td>
+    </tr>
+    <tr>
+      <th>565</th>
+      <td>Bank of Honolulu</td>
+      <td>Honolulu</td>
+      <td>HI</td>
+      <td>21029</td>
+      <td>Bank of the Orient</td>
+      <td>13-Oct-00</td>
+      <td>4645</td>
+    </tr>
+  </tbody>
+</table>
+<p>566 rows × 7 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,6 +1488,12 @@ document.write(`
 <span class="n">banks_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;num_banks&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Closing Year&#39;, ylabel=&#39;num_banks&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/2f39113b254ec6046add4613ca6e715ab70bf16639e088000d26f23f8f9750a4.png" src="../../../_images/2f39113b254ec6046add4613ca6e715ab70bf16639e088000d26f23f8f9750a4.png" />
 </div>
 </div>
 </section>
