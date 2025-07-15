@@ -579,6 +579,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Argentina
+1       France
+2      Germany
+3        Spain
+4        Italy
+5       Brazil
+6       France
+7       Brazil
+8      Germany
+9    Argentina
+dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <p>As you can see, except the data column, we also have an index column. By default, the indexes are numbers starting from 0. We could define the indexes ourselves. To do that, we will pass a <strong>dictionary</strong> to the <code class="docutils literal notranslate"><span class="pre">.Series()</span></code> method. The keys of the dictionary will be used as indexes.</p>
 <div class="cell docutils container">
@@ -595,6 +610,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
            <span class="mi">1990</span><span class="p">:</span> <span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
            <span class="mi">1986</span><span class="p">:</span> <span class="s2">&quot;Argentina&quot;</span><span class="p">}</span>
          <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022    Argentina
+2018       France
+2014      Germany
+2010        Spain
+2006        Italy
+2002       Brazil
+1998       France
+1994       Brazil
+1990      Germany
+1986    Argentina
+dtype: object
 </pre></div>
 </div>
 </div>
@@ -615,6 +645,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
            <span class="mi">1986</span><span class="p">:</span> <span class="s2">&quot;Argentina&quot;</span><span class="p">},</span> 
           <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;World Cup Champions&#39;</span>
          <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022    Argentina
+2018       France
+2014      Germany
+2010        Spain
+2006        Italy
+2002       Brazil
+1998       France
+1994       Brazil
+1990      Germany
+1986    Argentina
+Name: World Cup Champions, dtype: object
 </pre></div>
 </div>
 </div>
@@ -714,6 +759,94 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022</td>
+      <td>Argentina</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018</td>
+      <td>France</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Italy</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2002</td>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1998</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1994</td>
+      <td>Brazil</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1990</td>
+      <td>Germany</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1986</td>
+      <td>Argentina</td>
+      <td>Mexico</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>In a Pandas dataframe, each row/column is technically a Pandas Series. We can see this by selecting the first row with the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> method and check its type.</p>
 <div class="cell docutils container">
@@ -723,12 +856,22 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s select a column and check its type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the type of a column in a dataframe</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Champion&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
 </pre></div>
 </div>
 </div>
@@ -773,11 +916,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 3)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use `.columns` attribute to find the column names</span>
 <span class="n">wcup</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Champion&#39;, &#39;Host&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -809,6 +962,20 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 10 entries, 0 to 9
+Data columns (total 3 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   Year      10 non-null     int64 
+ 1   Champion  10 non-null     object
+ 2   Host      10 non-null     object
+dtypes: int64(1), object(2)
+memory usage: 372.0+ bytes
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can get a preview of the dataframe. The <code class="docutils literal notranslate"><span class="pre">.head()</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> methods help us do that.</p>
 <div class="cell docutils container">
@@ -818,6 +985,64 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022</td>
+      <td>Argentina</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018</td>
+      <td>France</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Italy</td>
+      <td>Germany</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -826,6 +1051,64 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>2002</td>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1998</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1994</td>
+      <td>Brazil</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1990</td>
+      <td>Germany</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1986</td>
+      <td>Argentina</td>
+      <td>Mexico</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,6 +1117,82 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022</td>
+      <td>Argentina</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018</td>
+      <td>France</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Italy</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2002</td>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1998</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1994</td>
+      <td>Brazil</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="read-and-write-tabular-data-in-pandas">
@@ -859,6 +1218,11 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -868,6 +1232,149 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Closing Date</th>
+      <th>Fund</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>1-May-23</td>
+      <td>10543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>12-Mar-23</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10-Mar-23</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>23-Oct-20</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>16-Oct-20</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>Superior Bank, FSB</td>
+      <td>Hinsdale</td>
+      <td>IL</td>
+      <td>32646</td>
+      <td>Superior Federal, FSB</td>
+      <td>27-Jul-01</td>
+      <td>6004</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>Malta National Bank</td>
+      <td>Malta</td>
+      <td>OH</td>
+      <td>6629</td>
+      <td>North Valley Bank</td>
+      <td>3-May-01</td>
+      <td>4648</td>
+    </tr>
+    <tr>
+      <th>563</th>
+      <td>First Alliance Bank &amp; Trust Co.</td>
+      <td>Manchester</td>
+      <td>NH</td>
+      <td>34264</td>
+      <td>Southern New Hampshire Bank &amp; Trust</td>
+      <td>2-Feb-01</td>
+      <td>4647</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>National State Bank of Metropolis</td>
+      <td>Metropolis</td>
+      <td>IL</td>
+      <td>3815</td>
+      <td>Banterra Bank of Marion</td>
+      <td>14-Dec-00</td>
+      <td>4646</td>
+    </tr>
+    <tr>
+      <th>565</th>
+      <td>Bank of Honolulu</td>
+      <td>Honolulu</td>
+      <td>HI</td>
+      <td>21029</td>
+      <td>Bank of the Orient</td>
+      <td>13-Oct-00</td>
+      <td>4645</td>
+    </tr>
+  </tbody>
+</table>
+<p>566 rows × 7 columns</p>
+</div></div></div>
 </div>
 <p>You can also write the tabular data from a dataframe into a file.</p>
 <div class="cell docutils container">
@@ -882,6 +1389,13 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <center><img src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas1_DiffFormats.png" width="700"></center><p>Suppose you would like to read the data of COVID-19 cases in Massachusetts into a dataframe. Can you use a Pandas method to do that?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install openpyxl
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the excel file</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas1_covid_MA_06292023.xlsx&#39;</span>
 <span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;../data/covid_MA.xlsx&#39;</span>
@@ -894,6 +1408,140 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Positive Total</th>
+      <th>Positive New</th>
+      <th>Probable Total</th>
+      <th>Probable New</th>
+      <th>Estimated active cases</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2020-06-01</td>
+      <td>97291</td>
+      <td>326</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020-06-02</td>
+      <td>97539</td>
+      <td>248</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2020-06-03</td>
+      <td>97964</td>
+      <td>425</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2020-06-04</td>
+      <td>98376</td>
+      <td>412</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020-06-05</td>
+      <td>98796</td>
+      <td>420</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>691</th>
+      <td>2023-06-01</td>
+      <td>2041048</td>
+      <td>803</td>
+      <td>204213.0</td>
+      <td>325.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>2023-06-08</td>
+      <td>2041835</td>
+      <td>787</td>
+      <td>204574.0</td>
+      <td>361.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>693</th>
+      <td>2023-06-15</td>
+      <td>2042644</td>
+      <td>809</td>
+      <td>204841.0</td>
+      <td>267.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>694</th>
+      <td>2023-06-22</td>
+      <td>2043337</td>
+      <td>693</td>
+      <td>205138.0</td>
+      <td>297.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>695</th>
+      <td>2023-06-29</td>
+      <td>2043979</td>
+      <td>642</td>
+      <td>205513.0</td>
+      <td>375.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>696 rows × 6 columns</p>
+</div></div></div>
 </div>
 <p>Now, can you write the dataframe you created into a json file?</p>
 <div class="cell docutils container">
@@ -915,6 +1563,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Argentina
+1       France
+2      Germany
+3        Spain
+4        Italy
+5       Brazil
+6       France
+7       Brazil
+8      Germany
+9    Argentina
+Name: Champion, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also access multiple columns from a dataframe by putting the column names in a list. Note that in this case, you have two layers of hard brackets.</p>
 <div class="cell docutils container">
@@ -924,6 +1587,83 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022</td>
+      <td>Argentina</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2002</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1998</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1994</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1990</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1986</td>
+      <td>Argentina</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <section id="the-indexers-iloc-and-loc">
 <h3>The indexers <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> and <code class="docutils literal notranslate"><span class="pre">.loc</span></code><a class="headerlink" href="#the-indexers-iloc-and-loc" title="Link to this heading">#</a></h3>
@@ -940,6 +1680,14 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year               2002
+Champion         Brazil
+Host        Korea/Japan
+Name: 5, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <p>When we select multiple consecutive rows from a dataframe, we give a starting index and an ending index. Notice that the selected rows will <strong>not</strong> include the final index row.</p>
 <div class="cell docutils container">
@@ -949,6 +1697,52 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Italy</td>
+      <td>Germany</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -957,6 +1751,52 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022</td>
+      <td>Argentina</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2002</td>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -970,6 +1810,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access a single column</span>
 <span class="n">wcup</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Access the column with the index number 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Argentina
+1       France
+2      Germany
+3        Spain
+4        Italy
+5       Brazil
+6       France
+7       Brazil
+8      Germany
+9    Argentina
+Name: Champion, dtype: object
 </pre></div>
 </div>
 </div>
@@ -991,6 +1846,83 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>France</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Italy</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Brazil</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Germany</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Argentina</td>
+      <td>Mexico</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -999,6 +1931,83 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2022</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2002</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1998</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1994</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1990</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1986</td>
+      <td>Mexico</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Now that you know how to select rows and columns from a dataframe using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. You should be able to figure out how to get a slice of a dataframe using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. For example, if you would like to know the champion of the world cup games between 1994 and 2010. How do you slice the dataframe <code class="docutils literal notranslate"><span class="pre">wcup</span></code> to get the part you are interested in?</p>
 <div class="cell docutils container">
@@ -1021,6 +2030,14 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year             2022
+Champion    Argentina
+Host            Qatar
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <p>But we could make our index column customized. For example, we could use the column <code class="docutils literal notranslate"><span class="pre">Year</span></code> as the index column.</p>
 <div class="cell docutils container">
@@ -1031,12 +2048,101 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022</th>
+      <td>Argentina</td>
+      <td>Qatar</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>France</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>Italy</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>Brazil</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>Germany</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>1986</th>
+      <td>Argentina</td>
+      <td>Mexico</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>After we make the change, we will use the new labels to access the rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access a row using .loc</span>
 <span class="n">wcup</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2006</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Champion      Italy
+Host        Germany
+Name: 2006, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1048,6 +2154,53 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>France</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Note that with the label search, the ending index row is included.</p>
 <div class="cell docutils container">
@@ -1057,11 +2210,74 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1994</th>
+      <td>Brazil</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access a column</span>
 <span class="n">wcup</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Host&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year
+2022           Qatar
+2018          Russia
+2014          Brazil
+2010    South Africa
+2006         Germany
+2002     Korea/Japan
+1998          France
+1994             USA
+1990           Italy
+1986          Mexico
+Name: Host, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1088,11 +2304,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Brazil&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the champion country of the 2002 world cup using .iat[]</span>
 <span class="n">wcup</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Brazil&#39;
 </pre></div>
 </div>
 </div>
@@ -1118,6 +2344,11 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1132,6 +2363,64 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>English</th>
+      <th>Math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>78</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alex Hazel</td>
+      <td>80</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beatrice Dean</td>
+      <td>72</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jane White</td>
+      <td>75</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eve Lynn</td>
+      <td>73</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <section id="use-the-indexers-to-set-values">
 <h3>Use the indexers to set values<a class="headerlink" href="#use-the-indexers-to-set-values" title="Link to this heading">#</a></h3>
@@ -1192,6 +2481,100 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+      <th>Score</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022</th>
+      <td>Argentina</td>
+      <td>Qatar</td>
+      <td>7-5</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>France</td>
+      <td>Russia</td>
+      <td>4-2</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+      <td>1-0</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+      <td>1-0</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>Italy</td>
+      <td>Germany</td>
+      <td>6-4</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+      <td>2-0</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>France</td>
+      <td>France</td>
+      <td>3-0</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>Brazil</td>
+      <td>USA</td>
+      <td>3-2</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>Germany</td>
+      <td>Italy</td>
+      <td>1-0</td>
+    </tr>
+    <tr>
+      <th>1986</th>
+      <td>Argentina</td>
+      <td>Mexico</td>
+      <td>3-2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>In soccer games, it is common to calculate the goals scored and goals conceded by the champion in the final.</p>
 <div class="cell docutils container">
@@ -1202,6 +2585,112 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+      <th>Score</th>
+      <th>Goals Scored</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022</th>
+      <td>Argentina</td>
+      <td>Qatar</td>
+      <td>7-5</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>France</td>
+      <td>Russia</td>
+      <td>4-2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+      <td>1-0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+      <td>1-0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>Italy</td>
+      <td>Germany</td>
+      <td>6-4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+      <td>2-0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>France</td>
+      <td>France</td>
+      <td>3-0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>Brazil</td>
+      <td>USA</td>
+      <td>3-2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>Germany</td>
+      <td>Italy</td>
+      <td>1-0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1986</th>
+      <td>Argentina</td>
+      <td>Mexico</td>
+      <td>3-2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1211,12 +2700,207 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+      <th>Score</th>
+      <th>Goals Scored</th>
+      <th>Goals Conceded</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022</th>
+      <td>Argentina</td>
+      <td>Qatar</td>
+      <td>7-5</td>
+      <td>7</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>France</td>
+      <td>Russia</td>
+      <td>4-2</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+      <td>1-0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+      <td>1-0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>Italy</td>
+      <td>Germany</td>
+      <td>6-4</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+      <td>2-0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>France</td>
+      <td>France</td>
+      <td>3-0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>Brazil</td>
+      <td>USA</td>
+      <td>3-2</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>Germany</td>
+      <td>Italy</td>
+      <td>1-0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1986</th>
+      <td>Argentina</td>
+      <td>Mexico</td>
+      <td>3-2</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>With the info on goals scored and conceded by the champion, we can create a column containing the difference between the two.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column &#39;Difference&#39;</span>
 <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Difference&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Scored&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Conceded&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/ops/array_ops.py:218,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">218</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/computation/expressions.py:242,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="k">if</span> <span class="n">use_numexpr</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>         <span class="c1"># error: &quot;None&quot; not callable</span>
+<span class="ne">--&gt; </span><span class="mi">242</span>         <span class="k">return</span> <span class="n">_evaluate</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span> <span class="k">return</span> <span class="n">_evaluate_standard</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/computation/expressions.py:73,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="n">_store_test_result</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">73</span> <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">48</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Create a new column &#39;Difference&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Difference&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Scored&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">wcup</span><span class="p">[</span><span class="s1">&#39;Goals Conceded&#39;</span><span class="p">]</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/ops/common.py:76,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>             <span class="k">return</span> <span class="bp">NotImplemented</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">76</span> <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/arraylike.py:194,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span> <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__sub__&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">194</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/series.py:6146,</span> in <span class="ni">Series._arith_method</span><span class="nt">(self, other, op)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6144</span> <span class="k">def</span><span class="w"> </span><span class="nf">_arith_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6145</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_align_for_op</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6146</span>     <span class="k">return</span> <span class="n">base</span><span class="o">.</span><span class="n">IndexOpsMixin</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/base.py:1391,</span> in <span class="ni">IndexOpsMixin._arith_method</span><span class="nt">(self, other, op)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1388</span>     <span class="n">rvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">rvalues</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">rvalues</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">rvalues</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1390</span> <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1391</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">arithmetic_op</span><span class="p">(</span><span class="n">lvalues</span><span class="p">,</span> <span class="n">rvalues</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1393</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">res_name</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/ops/array_ops.py:283,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>     <span class="n">_bool_arith_check</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>     <span class="c1"># error: Argument 1 to &quot;_na_arithmetic_op&quot; has incompatible type</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="c1"># &quot;Union[ExtensionArray, ndarray[Any, Any]]&quot;; expected &quot;ndarray[Any, Any]&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">283</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">_na_arithmetic_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span> <span class="k">return</span> <span class="n">res_values</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/ops/array_ops.py:227,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_cmp</span> <span class="ow">and</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="n">left</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">object</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="p">):</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">225</span>         <span class="c1"># Don&#39;t do this for comparisons, as that will handle complex numbers</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>         <span class="c1">#  incorrectly, see GH#32047</span>
+<span class="ne">--&gt; </span><span class="mi">227</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">_masked_arith_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="k">raise</span>
+
+<span class="nn">File /opt/homebrew/lib/python3.11/site-packages/pandas/core/ops/array_ops.py:163,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span>     <span class="c1"># See GH#5284, GH#5035, GH#19448 for historical reference</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">163</span>         <span class="n">result</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">xrav</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">yrav</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;
 </pre></div>
 </div>
 </div>
@@ -1231,6 +2915,136 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Champion</th>
+      <th>Host</th>
+      <th>Score</th>
+      <th>Goals Scored</th>
+      <th>Goals Conceded</th>
+      <th>Difference</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022</th>
+      <td>Argentina</td>
+      <td>Qatar</td>
+      <td>7-5</td>
+      <td>7</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>France</td>
+      <td>Russia</td>
+      <td>4-2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>Germany</td>
+      <td>Brazil</td>
+      <td>1-0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>Spain</td>
+      <td>South Africa</td>
+      <td>1-0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>Italy</td>
+      <td>Germany</td>
+      <td>6-4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>Brazil</td>
+      <td>Korea/Japan</td>
+      <td>2-0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>France</td>
+      <td>France</td>
+      <td>3-0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>Brazil</td>
+      <td>USA</td>
+      <td>3-2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>Germany</td>
+      <td>Italy</td>
+      <td>1-0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1986</th>
+      <td>Argentina</td>
+      <td>Mexico</td>
+      <td>3-2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <h3 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h3>
 <p>Can you create two new columns in the grades dataframe, one with the students’ first names, one with their last names?</p>
@@ -1241,6 +3055,64 @@ After you get the slice of the dataframe with the Math grades of the first three
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>English</th>
+      <th>Math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>80</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alex Hazel</td>
+      <td>80</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beatrice Dean</td>
+      <td>72</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jane White</td>
+      <td>75</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eve Lynn</td>
+      <td>73</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>

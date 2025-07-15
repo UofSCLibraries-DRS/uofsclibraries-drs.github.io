@@ -515,11 +515,22 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to ../data/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify that we have created an NLTK Text object</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nltk.text.Text
 </pre></div>
 </div>
 </div>
@@ -529,6 +540,36 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for the given word</span>
 <span class="n">text</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="s1">&#39;honest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 42 matches:
+e &#39;s old , cashiered . whip me such honest knaves ! others there are who , tri
+ee not to haunt about my doors . in honest plainness thou hast heard me say my
+rs , cassio , and officers exit . ] honest iago , my desdemona must i leave to
+ree and open nature that thinks men honest that but seem to be so , and will a
+ the pegs that make this music , as honest as i am . othello come . let us to 
+i look to &#39;t . othello iago is most honest . michael , goodnight . tomorrow wi
+an engraffed infirmity . it were an honest action to say so to the moor . iago
+ty . what is the matter , masters ? honest iago , that looks dead with grievin
+o , my reputation ! iago as i am an honest man , i thought you had received so
+test , in the sincerity of love and honest kindness . cassio i think it freely
+ to the watch . cassio good night , honest iago . [ cassio exits . ] iago and 
+when this advice is free i give and honest , probal to thinking , and indeed t
+nclining desdemona to subdue in any honest suit . she &#39;s framed as fruitful as
+ows , as i do now . for whiles this honest fool plies desdemona to repair his 
+it . ] cassio dost thou hear , mine honest friend ? clown no , i hear not your
+friend ? clown no , i hear not your honest friend . i hear you . cassio prithe
+ver knew a florentine more kind and honest . [ enter emilia . ] emilia good mo
+were his . desdemona o , that &#39;s an honest fellow ! do not doubt , cassio , bu
+ cunning , i have no judgment in an honest face . i prithee call him back . ot
+n&#39;st thou aught in that ? is he not honest ? iago honest , my lord ? othello h
+t in that ? is he not honest ? iago honest , my lord ? othello honest -- ay , 
+t ? iago honest , my lord ? othello honest -- ay , honest . iago my lord , for
+ , my lord ? othello honest -- ay , honest . iago my lord , for aught i know .
+ i dare be sworn i think that he is honest . othello i think so too . iago men
+ago why then , i think cassio &#39;s an honest man . othello nay , yet there &#39;s mo
 </pre></div>
 </div>
 </div>
@@ -542,12 +583,69 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 42 of 42 matches:
+ and when he &#39;s old , cashiered . whip me such honest knaves ! others there are who , trimmed in for
+ charged thee not to haunt about my doors . in honest plainness thou hast heard me say my daughter i
+ the senators , cassio , and officers exit . ] honest iago , my desdemona must i leave to thee . i p
+r is of a free and open nature that thinks men honest that but seem to be so , and will as tenderly 
+ll set down the pegs that make this music , as honest as i am . othello come . let us to the castle.
+l eye will i look to &#39;t . othello iago is most honest . michael , goodnight . tomorrow with your ear
+ith one of an engraffed infirmity . it were an honest action to say so to the moor . iago not i , fo
+her propriety . what is the matter , masters ? honest iago , that looks dead with grieving , speak .
+ation , iago , my reputation ! iago as i am an honest man , i thought you had received some bodily w
+ iago i protest , in the sincerity of love and honest kindness . cassio i think it freely ; and beti
+nt . i must to the watch . cassio good night , honest iago . [ cassio exits . ] iago and what &#39;s he 
+ villain , when this advice is free i give and honest , probal to thinking , and indeed the course t
+easy th &#39; inclining desdemona to subdue in any honest suit . she &#39;s framed as fruitful as the free e
+heavenly shows , as i do now . for whiles this honest fool plies desdemona to repair his fortune , a
+usicians exit . ] cassio dost thou hear , mine honest friend ? clown no , i hear not your honest fri
+ine honest friend ? clown no , i hear not your honest friend . i hear you . cassio prithee , keep up
+ts . ] i never knew a florentine more kind and honest . [ enter emilia . ] emilia good morrow , good
+ the cause were his . desdemona o , that &#39;s an honest fellow ! do not doubt , cassio , but i will ha
+ and not in cunning , i have no judgment in an honest face . i prithee call him back . othello went 
+ed ! discern&#39;st thou aught in that ? is he not honest ? iago honest , my lord ? othello honest -- ay
+t thou aught in that ? is he not honest ? iago honest , my lord ? othello honest -- ay , honest . ia
+e not honest ? iago honest , my lord ? othello honest -- ay , honest . iago my lord , for aught i kn
+iago honest , my lord ? othello honest -- ay , honest . iago my lord , for aught i know . othello wh
+el cassio , i dare be sworn i think that he is honest . othello i think so too . iago men should be 
+ey seem . iago why then , i think cassio &#39;s an honest man . othello nay , yet there &#39;s more in this 
+t much moved . i do not think but desdemona &#39;s honest . iago long live she so ! and long live you to
+take my leave . othello why did i marry ? this honest creature doubtless sees and knows more , much 
+ note , take note , o world : to be direct and honest is not safe. -- i thank you for this profit , 
+ffense . othello nay , stay . thou shouldst be honest . iago i should be wise ; for honesty &#39;s a foo
+or . othello by the world , i think my wife be honest and think she is not . i think that thou art j
+be wise . yet we see nothing done . she may be honest yet . tell me but this : have you not sometime
+e . emilia i durst , my lord , to wager she is honest , lay down my soul at stake . if you think oth
+ with the serpent &#39;s curse , for if she be not honest , chaste , and true , there &#39;s no man happy . 
+ . therefore be double damned . swear thou art honest . desdemona heaven doth truly know it . othell
+ll . desdemona i hope my noble lord esteems me honest . othello o , ay , as summer flies are in the 
+companions thou &#39;dst unfold , and put in every honest hand a whip to lash the rascals naked through 
+ othello , [ aside ] &#39;t is he ! o brave iago , honest and just , that hast such noble sense of thy f
+pet ! bianca i am no strumpet , but of life as honest as you that thus abuse me . emilia as i ? faug
+t say so . othello no . his mouth is stopped . honest iago hath ta&#39;en order for &#39;t . desdemona o , m
+ ay , &#39;t was he that told me on her first . an honest man he is , and hates the slime that sticks on
+nderstand the word ? my friend , thy husband ; honest , honest iago . emilia if he say so , may his 
+ the word ? my friend , thy husband ; honest , honest iago . emilia if he say so , may his perniciou
+</pre></div>
+</div>
+</div>
 </div>
 <p>If we want to supply a bigram, trigram, or longer construction, they are supplied as individual strings within a Python list. (If you try to supply a string with a space in the middle, there will be no results.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for a sequence of words</span>
 <span class="n">text</span><span class="o">.</span><span class="n">concordance</span><span class="p">([</span><span class="s1">&#39;honest&#39;</span><span class="p">,</span> <span class="s1">&#39;iago&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 5 of 5 matches:
+ , cassio , and officers exit . ] honest iago , my desdemona must i leave to th
+ . what is the matter , masters ? honest iago , that looks dead with grieving ,
+o the watch . cassio good night , honest iago . [ cassio exits . ] iago and wha
+hello no . his mouth is stopped . honest iago hath ta&#39;en order for &#39;t . desdemo
+y friend , thy husband ; honest , honest iago . emilia if he say so , may his p
 </pre></div>
 </div>
 </div>
@@ -567,11 +665,21 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nltk.text.ConcordanceLine
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can view individual lines by using a Python list index followed by <code class="docutils literal notranslate"><span class="pre">.line</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;] othello my life upon her faith ! [ the duke , the senators , cassio , and officers exit . ] honest iago , my desdemona must i leave to thee . i prithee let thy wife attend on her , and bring them a&#39;
 </pre></div>
 </div>
 </div>
@@ -595,6 +703,13 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span><span class="o">.</span><span class="n">dispersion_plot</span><span class="p">([</span><span class="s1">&#39;honest&#39;</span><span class="p">,</span> <span class="s1">&#39;fool&#39;</span><span class="p">,</span> <span class="s1">&#39;noble&#39;</span><span class="p">,</span> <span class="s1">&#39;virtue&#39;</span><span class="p">,</span> <span class="s1">&#39;doubt&#39;</span><span class="p">,</span> <span class="s1">&#39;love&#39;</span><span class="p">,</span> <span class="s1">&#39;hate&#39;</span><span class="p">,</span> <span class="s1">&#39;villain&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/lib/python3.11/site-packages/nltk/draw/__init__.py:15: UserWarning: nltk.draw package not loaded (please install Tkinter library).
+  warnings.warn(&quot;nltk.draw package not loaded (please install Tkinter library).&quot;)
+</pre></div>
+</div>
+<img alt="../../_images/281b16c78d557ff2db371ea086de0dd6c54b581cab0f02da492c52462f8126db.png" src="../../_images/281b16c78d557ff2db371ea086de0dd6c54b581cab0f02da492c52462f8126db.png" />
 </div>
 </div>
 </section>
@@ -796,6 +911,20 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;11&#39;, &#39;2016&#39;),
+ (&#39;aerial&#39;, &#39;blue&#39;),
+ (&#39;affrighted&#39;, &#39;globe&#39;),
+ (&#39;albeit&#39;, &#39;unused&#39;),
+ (&#39;allowed&#39;, &#39;sufficiency&#39;),
+ (&#39;altogether&#39;, &#39;lacks&#39;),
+ (&#39;anguish&#39;, &#39;hunger&#39;),
+ (&#39;answerable&#39;, &#39;sequestration&#39;),
+ (&#39;antres&#39;, &#39;vast&#39;),
+ (&#39;applause&#39;, &#39;transform&#39;)]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Pointwise Mutual Information is very sensitive to words that are “highly-connected” but also occur very infrequently. To get good results, we need to filter out bigrams that rarely occur.</p>
 <div class="cell docutils container">
@@ -812,6 +941,35 @@ For questions/comments/improvements, email <a class="reference external" href="m
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;turkish&#39;, &#39;fleet&#39;),
+ (&#39;scene&#39;, &#39;1&#39;),
+ (&#39;scene&#39;, &#39;2&#39;),
+ (&#39;third&#39;, &#39;gentleman&#39;),
+ (&#39;scene&#39;, &#39;3&#39;),
+ (&#39;humbly&#39;, &#39;thank&#39;),
+ (&#39;villainy&#39;, &#39;villainy&#39;),
+ (&#39;take&#39;, &#39;heed&#39;),
+ (&#39;great&#39;, &#39;ones&#39;),
+ (&#39;willow&#39;, &#39;willow&#39;),
+ (&#39;first&#39;, &#39;senator&#39;),
+ (&#39;reputation&#39;, &#39;reputation&#39;),
+ (&#39;second&#39;, &#39;gentleman&#39;),
+ (&#39;sing&#39;, &#39;willow&#39;),
+ (&#39;ha&#39;, &#39;ha&#39;),
+ (&#39;murder&#39;, &#39;murder&#39;),
+ (&#39;exit&#39;, &#39;scene&#39;),
+ (&#39;one&#39;, &#39;cup&#39;),
+ (&#39;1&#39;, &#39;enter&#39;),
+ (&#39;2&#39;, &#39;enter&#39;),
+ (&#39;fie&#39;, &#39;upon&#39;),
+ (&#39;3&#39;, &#39;enter&#39;),
+ (&#39;their&#39;, &#39;husbands&#39;),
+ (&#39;mine&#39;, &#39;own&#39;),
+ (&#39;am&#39;, &#39;glad&#39;)]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also discover common trigram collocations.</p>
 <div class="cell docutils container">
@@ -820,6 +978,35 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <span class="n">finder</span><span class="o">.</span><span class="n">apply_freq_filter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="c1">#finder.apply_word_filter(lambda w: w in (&#39;I&#39;, &#39;me&#39;)) Remove particular words with a lambda function</span>
 <span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">trigram_measures</span><span class="o">.</span><span class="n">pmi</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;sing&#39;, &#39;willow&#39;, &#39;willow&#39;),
+ (&#39;exit&#39;, &#39;scene&#39;, &#39;3&#39;),
+ (&#39;exit&#39;, &#39;scene&#39;, &#39;2&#39;),
+ (&#39;scene&#39;, &#39;1&#39;, &#39;enter&#39;),
+ (&#39;scene&#39;, &#39;2&#39;, &#39;enter&#39;),
+ (&#39;willow&#39;, &#39;willow&#39;, &#39;willow&#39;),
+ (&#39;scene&#39;, &#39;3&#39;, &#39;enter&#39;),
+ (&#39;ha&#39;, &#39;ha&#39;, &#39;ha&#39;),
+ (&#39;draws&#39;, &#39;his&#39;, &#39;sword&#39;),
+ (&#39;reading&#39;, &#39;a&#39;, &#39;paper&#39;),
+ (&#39;they&#39;, &#39;exit&#39;, &#39;scene&#39;),
+ (&#39;fie&#39;, &#39;upon&#39;, &#39;thee&#39;),
+ (&#39;the&#39;, &#39;turkish&#39;, &#39;fleet&#39;),
+ (&#39;but&#39;, &#39;one&#39;, &#39;cup&#39;),
+ (&#39;sail&#39;, &#39;a&#39;, &#39;sail&#39;),
+ (&#39;i&#39;, &#39;humbly&#39;, &#39;thank&#39;),
+ (&#39;2&#39;, &#39;enter&#39;, &#39;othello&#39;),
+ (&#39;ha&#39;, &#39;ha&#39;, &#39;othello&#39;),
+ (&#39;dost&#39;, &#39;thou&#39;, &#39;hear&#39;),
+ (&#39;an&#39;, &#39;honest&#39;, &#39;man&#39;),
+ (&#39;put&#39;, &#39;money&#39;, &#39;in&#39;),
+ (&#39;she&#39;, &#39;was&#39;, &#39;false&#39;),
+ (&#39;he&#39;, &#39;draws&#39;, &#39;his&#39;),
+ (&#39;in&#39;, &#39;thy&#39;, &#39;purse&#39;),
+ (&#39;glad&#39;, &#39;to&#39;, &#39;see&#39;)]
 </pre></div>
 </div>
 </div>
