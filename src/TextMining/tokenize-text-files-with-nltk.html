@@ -493,8 +493,8 @@ This notebook takes as input:</p>
 <h3>Metadata (.csv) (Optional)<a class="headerlink" href="#metadata-csv-optional" title="Link to this heading">#</a></h3>
 <p>A CSV file containing metadata may be included for analysis. For specifications, see</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://constellate.org/docs/what-format-are-jstor-portico-datasets">Dataset Types</a></p></li>
-<li><p><a class="reference external" href="https://constellate.org/docs/what-format-are-jstor-portico-datasets">About the Dataset format</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-science/what-is-dataset/#features-of-a-dataset">Dataset Types</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-science/what-is-dataset/#features-of-a-dataset">About the Dataset format</a></p></li>
 </ul>
 <p>The fields may include the following:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -568,7 +568,7 @@ This notebook takes as input:</p>
 <td><p>the abstract description for the document</p></td>
 </tr>
 <tr class="row-odd"><td><p>outputFormat</p></td>
-<td><p>what data is available (<a class="reference external" href="https://constellate.org/docs/key-terms/#unigram">unigrams</a>, <a class="reference external" href="https://constellate.org/docs/key-terms/#bigram">bigrams</a>, <a class="reference external" href="https://constellate.org/docs/key-terms/#trigram">trigrams</a>, and/or full-text)</p></td>
+<td><p>what data is available (<a class="reference external" href="https://machinelearningknowledge.ai/generating-unigram-bigram-trigram-and-ngrams-in-nltk/#Unigrams_or_1-grams">unigrams</a>, <a class="reference external" href="https://machinelearningknowledge.ai/generating-unigram-bigram-trigram-and-ngrams-in-nltk/#Bigrams_or_2-grams">bigrams</a>, <a class="reference external" href="https://machinelearningknowledge.ai/generating-unigram-bigram-trigram-and-ngrams-in-nltk/#Trigrams_or_3-grams">trigrams</a>, and/or full-text)</p></td>
 </tr>
 </tbody>
 </table>
@@ -587,6 +587,11 @@ This notebook takes as input:</p>
 
 <span class="n">zipfile_address</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/data/texts.zip&#39;</span>
 <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">zipfile_address</span><span class="p">,</span> <span class="s1">&#39;../data/texts.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;../data/texts.zip&#39;, &lt;http.client.HTTPMessage at 0x104323590&gt;)
 </pre></div>
 </div>
 </div>
@@ -706,6 +711,11 @@ This notebook takes as input:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zip file extracted successfully.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="check-for-metadata-csv-optional">
@@ -722,6 +732,11 @@ This notebook takes as input:</p>
 <span class="k">else</span><span class="p">:</span> 
     <span class="n">csv_exists</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No metadata CSV found.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No metadata CSV found.
 </pre></div>
 </div>
 </div>
@@ -755,6 +770,55 @@ This notebook takes as input:</p>
 <span class="n">text_list</span> <span class="o">=</span> <span class="n">corpus</span><span class="o">.</span><span class="n">fileids</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Corpus created from:&#39;</span><span class="p">)</span>
 <span class="nb">list</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Corpus created from:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a-midsummer-nights-dream_TXT_FolgerShakespeare.txt&#39;,
+ &#39;alls-well-that-ends-well_TXT_FolgerShakespeare.txt&#39;,
+ &#39;antony-and-cleopatra_TXT_FolgerShakespeare.txt&#39;,
+ &#39;as-you-like-it_TXT_FolgerShakespeare.txt&#39;,
+ &#39;coriolanus_TXT_FolgerShakespeare.txt&#39;,
+ &#39;cymbeline_TXT_FolgerShakespeare.txt&#39;,
+ &#39;hamlet_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-iv-part-1_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-iv-part-2_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-v_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-vi-part-1_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-vi-part-2_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-vi-part-3_TXT_FolgerShakespeare.txt&#39;,
+ &#39;henry-viii_TXT_FolgerShakespeare.txt&#39;,
+ &#39;julius-caesar_TXT_FolgerShakespeare.txt&#39;,
+ &#39;king-john_TXT_FolgerShakespeare.txt&#39;,
+ &#39;king-lear_TXT_FolgerShakespeare.txt&#39;,
+ &#39;loves-labors-lost_TXT_FolgerShakespeare.txt&#39;,
+ &#39;lucrece_TXT_FolgerShakespeare.txt&#39;,
+ &#39;macbeth_TXT_FolgerShakespeare.txt&#39;,
+ &#39;measure-for-measure_TXT_FolgerShakespeare.txt&#39;,
+ &#39;much-ado-about-nothing_TXT_FolgerShakespeare.txt&#39;,
+ &#39;othello_TXT_FolgerShakespeare.txt&#39;,
+ &#39;pericles_TXT_FolgerShakespeare.txt&#39;,
+ &#39;richard-ii_TXT_FolgerShakespeare.txt&#39;,
+ &#39;richard-iii_TXT_FolgerShakespeare.txt&#39;,
+ &#39;romeo-and-juliet_TXT_FolgerShakespeare.txt&#39;,
+ &#39;shakespeares-sonnets_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-comedy-of-errors_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-merchant-of-venice_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-merry-wives-of-windsor_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-phoenix-and-turtle_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-taming-of-the-shrew_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-tempest_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-two-gentlemen-of-verona_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-two-noble-kinsmen_TXT_FolgerShakespeare.txt&#39;,
+ &#39;the-winters-tale_TXT_FolgerShakespeare.txt&#39;,
+ &#39;timon-of-athens_TXT_FolgerShakespeare.txt&#39;,
+ &#39;titus-andronicus_TXT_FolgerShakespeare.txt&#39;,
+ &#39;troilus-and-cressida_TXT_FolgerShakespeare.txt&#39;,
+ &#39;twelfth-night_TXT_FolgerShakespeare.txt&#39;,
+ &#39;venus-and-adonis_TXT_FolgerShakespeare.txt&#39;]
 </pre></div>
 </div>
 </div>
@@ -856,6 +920,54 @@ This notebook takes as input:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text a-midsummer-nights-dream_TXT_FolgerShakespeare.txt written to json-l file.
+Text alls-well-that-ends-well_TXT_FolgerShakespeare.txt written to json-l file.
+Text antony-and-cleopatra_TXT_FolgerShakespeare.txt written to json-l file.
+Text as-you-like-it_TXT_FolgerShakespeare.txt written to json-l file.
+Text coriolanus_TXT_FolgerShakespeare.txt written to json-l file.
+Text cymbeline_TXT_FolgerShakespeare.txt written to json-l file.
+Text hamlet_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-iv-part-1_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-iv-part-2_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-v_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-vi-part-1_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-vi-part-2_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-vi-part-3_TXT_FolgerShakespeare.txt written to json-l file.
+Text henry-viii_TXT_FolgerShakespeare.txt written to json-l file.
+Text julius-caesar_TXT_FolgerShakespeare.txt written to json-l file.
+Text king-john_TXT_FolgerShakespeare.txt written to json-l file.
+Text king-lear_TXT_FolgerShakespeare.txt written to json-l file.
+Text loves-labors-lost_TXT_FolgerShakespeare.txt written to json-l file.
+Text lucrece_TXT_FolgerShakespeare.txt written to json-l file.
+Text macbeth_TXT_FolgerShakespeare.txt written to json-l file.
+Text measure-for-measure_TXT_FolgerShakespeare.txt written to json-l file.
+Text much-ado-about-nothing_TXT_FolgerShakespeare.txt written to json-l file.
+Text othello_TXT_FolgerShakespeare.txt written to json-l file.
+Text pericles_TXT_FolgerShakespeare.txt written to json-l file.
+Text richard-ii_TXT_FolgerShakespeare.txt written to json-l file.
+Text richard-iii_TXT_FolgerShakespeare.txt written to json-l file.
+Text romeo-and-juliet_TXT_FolgerShakespeare.txt written to json-l file.
+Text shakespeares-sonnets_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-comedy-of-errors_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-merchant-of-venice_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-merry-wives-of-windsor_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-phoenix-and-turtle_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-taming-of-the-shrew_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-tempest_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-two-gentlemen-of-verona_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-two-noble-kinsmen_TXT_FolgerShakespeare.txt written to json-l file.
+Text the-winters-tale_TXT_FolgerShakespeare.txt written to json-l file.
+Text timon-of-athens_TXT_FolgerShakespeare.txt written to json-l file.
+Text titus-andronicus_TXT_FolgerShakespeare.txt written to json-l file.
+Text troilus-and-cressida_TXT_FolgerShakespeare.txt written to json-l file.
+Text twelfth-night_TXT_FolgerShakespeare.txt written to json-l file.
+Text venus-and-adonis_TXT_FolgerShakespeare.txt written to json-l file.
+
+42 texts written to my_data.jsonl.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="gzip-the-json-l-file">
@@ -870,6 +982,12 @@ This notebook takes as input:</p>
 <span class="n">f_out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">f_in</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Compression complete. </span><span class="se">\n</span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s1">.gz has been created.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compression complete. 
+my_data.jsonl.gz has been created.
 </pre></div>
 </div>
 </div>

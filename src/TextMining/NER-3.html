@@ -490,10 +490,76 @@ document.write(`
 <h1>Install libraries<a class="headerlink" href="#install-libraries" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3<span class="w"> </span>install<span class="w"> </span>spacy<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>NLP
-<span class="o">!</span>pip3<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>making<span class="w"> </span>tabular<span class="w"> </span>data
-<span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>English<span class="w"> </span>NER
-<span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_md<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>showing<span class="w"> </span>the<span class="w"> </span>word<span class="w"> </span>vectors
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install spacy # for NLP
+<span class="o">%</span><span class="k">pip</span> install pandas # for making tabular data
+<span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>English<span class="w"> </span>NER
+<span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_md<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>showing<span class="w"> </span>the<span class="w"> </span>word<span class="w"> </span>vectors
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (3.8.7)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (3.0.12)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (1.0.5)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (1.0.13)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (2.0.11)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (3.0.10)
+Requirement already satisfied: thinc&lt;8.4.0,&gt;=8.3.4 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (8.3.6)
+Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (1.1.3)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (2.5.1)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (2.0.10)
+Requirement already satisfied: weasel&lt;0.5.0,&gt;=0.1.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (0.4.1)
+Requirement already satisfied: typer&lt;1.0.0,&gt;=0.3.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (0.16.0)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (4.67.1)
+Requirement already satisfied: numpy&gt;=1.19.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (2.3.1)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (2.32.4)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (2.11.7)
+Requirement already satisfied: jinja2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (3.1.6)
+Requirement already satisfied: setuptools in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (78.1.1)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (25.0)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from spacy) (3.5.0)
+Requirement already satisfied: language-data&gt;=1.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy) (1.3.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (0.7.0)
+Requirement already satisfied: pydantic-core==2.33.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (2.33.2)
+Requirement already satisfied: typing-extensions&gt;=4.12.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (4.14.1)
+Requirement already satisfied: typing-inspection&gt;=0.4.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (0.4.1)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.4.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2025.7.14)
+Requirement already satisfied: blis&lt;1.4.0,&gt;=1.3.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy) (1.3.0)
+Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy) (0.1.5)
+Requirement already satisfied: click&gt;=8.0.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (8.2.1)
+Requirement already satisfied: shellingham&gt;=1.3.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (1.5.4)
+Requirement already satisfied: rich&gt;=10.11.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (14.0.0)
+Requirement already satisfied: cloudpathlib&lt;1.0.0,&gt;=0.7.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy) (0.21.1)
+Requirement already satisfied: smart-open&lt;8.0.0,&gt;=5.2.1 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy) (7.3.0.post1)
+Requirement already satisfied: wrapt in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from smart-open&lt;8.0.0,&gt;=5.2.1-&gt;weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy) (1.17.2)
+Requirement already satisfied: marisa-trie&gt;=1.1.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from language-data&gt;=1.2-&gt;langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy) (1.2.1)
+Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (3.0.0)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (2.19.2)
+Requirement already satisfied: mdurl~=0.1 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (0.1.2)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from jinja2-&gt;spacy) (3.0.2)
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: pandas in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (2.3.1)
+Requirement already satisfied: numpy&gt;=1.23.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pandas) (2.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from pandas) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in /Users/mearacox/opt/anaconda3/envs/spacy-env/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+Collecting en-core-web-sm==3.8.0
+  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.8/12.8 MB</span> <span class=" -Color -Color-Red">36.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span> <span class=" -Color -Color-Cyan">0:00:01</span>
+?25h<span class=" -Color -Color-C2">✔ Download and installation successful</span>
+You can now load the package via spacy.load(&#39;en_core_web_sm&#39;)
+Collecting en-core-web-md==3.8.0
+  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl (33.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">33.5/33.5 MB</span> <span class=" -Color -Color-Red">46.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>a <span class=" -Color -Color-Cyan">0:00:01</span>
+?25hInstalling collected packages: en-core-web-md
+Successfully installed en-core-web-md-3.8.0
+<span class=" -Color -Color-C2">✔ Download and installation successful</span>
+You can now load the package via spacy.load(&#39;en_core_web_md&#39;)
 </pre></div>
 </div>
 </div>
@@ -532,11 +598,81 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-6.0644e-01, -5.1205e-01,  6.4921e-03, -2.9194e-01, -5.6515e-01,
+       -1.1523e-01,  7.7274e-02,  3.3561e-01,  1.1593e-01,  2.3516e+00,
+        5.1773e-02, -5.4229e-01, -5.7972e-01,  1.3220e-01,  2.8430e-01,
+       -7.9592e-02, -2.6762e-01,  1.8301e-01, -4.1264e-01,  2.0459e-01,
+        1.4436e-01, -1.8714e-01, -3.1393e-01,  1.7821e-01, -1.0997e-01,
+       -2.5584e-01, -1.1149e-01,  9.6212e-02, -1.6168e-01,  4.0055e-01,
+       -2.6115e-01,  5.3777e-01, -5.2382e-01,  2.7637e-01,  7.2191e-01,
+        6.0405e-02, -1.7922e-01,  1.8020e-01, -1.4381e-01, -1.4795e-01,
+       -8.1394e-02,  5.8282e-02,  2.2964e-02, -2.6374e-01,  1.0704e-01,
+       -4.5425e-01, -1.9964e-01,  3.7720e-01, -9.7784e-02, -3.1999e-01,
+       -7.8509e-02,  6.1502e-01,  7.1643e-02, -3.0930e-02,  2.1508e-01,
+        2.5280e-01, -3.1643e-01,  6.6698e-01,  1.9813e-02, -3.2311e-01,
+        2.9266e-02, -4.1403e-02,  2.8346e-01, -7.9143e-01,  1.3327e-01,
+        7.7231e-02, -1.8724e-01, -3.3146e-01, -2.0797e-01, -6.9326e-01,
+       -2.3412e-01, -6.8752e-02,  3.8252e-02, -3.2459e-01, -8.3609e-03,
+        1.2945e-01, -2.8316e-01, -5.7546e-01,  2.4336e-01,  5.6433e-01,
+       -7.1285e-01, -5.4738e-03, -2.3305e-01, -7.1578e-02,  4.8301e-01,
+       -3.4312e-01,  2.7365e-01, -1.1771e+00, -6.5800e-01, -1.9009e-01,
+        7.4287e-03,  3.2977e-01, -1.6647e-01,  2.6851e-01,  1.1811e-01,
+       -6.2440e-02, -4.9987e-02,  7.1011e-04, -5.6201e-02, -2.6696e-01,
+        3.1351e-01,  4.3955e-01, -8.8727e-02, -1.2315e-01,  1.8855e-01,
+       -1.0834e+00, -3.3041e-01,  5.7325e-01, -3.9947e-01,  1.4852e-02,
+       -3.6787e-01,  3.7842e-01, -2.8962e-01, -7.0543e-02, -5.8699e-02,
+        5.3076e-01, -1.2736e-01, -3.5724e-01, -1.5007e-01,  1.3823e-02,
+       -1.9497e-01, -3.7189e-01,  2.6255e-01, -7.6826e-02,  8.4217e-02,
+       -5.3640e-01,  1.7393e-01, -1.4698e-01, -1.1068e-01,  1.7709e-01,
+       -3.9556e-01,  1.0433e-01,  9.2675e-03, -1.2282e-01, -3.9842e-01,
+       -2.7758e-01, -6.9369e-01,  7.0128e-02,  8.2794e-02,  4.8342e-02,
+       -2.7038e+00, -1.6812e-01,  3.1413e-01,  2.4313e-02, -3.6423e-02,
+        1.9292e-01,  4.4872e-01, -4.5427e-01, -3.7271e-01, -9.9532e-01,
+       -1.3411e-01, -6.0312e-01,  1.6642e-01, -2.4611e-02,  6.6891e-01,
+        6.3476e-02, -1.1327e+00, -3.3786e-01, -1.2576e-02,  3.5344e-01,
+        2.6643e-01, -1.9404e-01, -1.9516e-01,  6.3670e-01,  2.1373e-01,
+       -2.8936e-01, -6.8847e-02, -1.9738e-01, -3.5305e-01,  1.0219e-01,
+        1.1744e-01,  3.7159e-02,  4.1041e-01, -1.3766e-02, -1.0325e-02,
+        1.0461e-02,  3.0697e-02, -3.3016e-01,  2.4668e-01, -2.6058e-01,
+        2.8665e-01, -7.8507e-02,  6.8945e-03,  1.0980e-01, -6.4179e-01,
+        2.4617e-03, -2.4693e-01, -1.1188e-02,  3.0838e-01,  4.5557e-01,
+       -6.2189e-01,  1.4873e-01,  3.5440e-01,  2.8642e-01, -2.4211e-01,
+       -1.2404e-01,  2.3326e-01,  1.9555e-01, -1.2425e-02,  1.9920e-01,
+       -1.7935e-01,  5.2031e-01, -4.3666e-01,  8.6211e-02,  1.7282e-01,
+        6.5266e-02,  2.8701e-01,  6.0238e-01,  3.1843e-01, -4.7646e-01,
+       -2.1181e-02, -2.7726e-01,  4.0253e-01,  3.9968e-01,  1.8580e-02,
+       -6.2663e-01,  3.4149e-01,  4.4687e-01, -4.6135e-01,  4.4174e-01,
+       -5.7541e-02, -1.9038e-02, -2.2626e-01,  5.8452e-02, -4.6681e-02,
+       -5.3295e-03, -1.8257e-03,  4.8565e-01, -4.6144e-01, -4.5877e-01,
+       -1.5891e-01,  1.3037e-01, -2.9183e-01,  6.9206e-02, -4.9825e-02,
+        5.5077e-01,  1.4730e-01, -1.9255e-01, -2.3916e-01, -1.9319e-01,
+        1.5643e-01,  3.3491e-01, -3.1913e-01,  2.0674e-01,  6.4556e-02,
+       -2.3195e-01,  1.2657e-01, -2.5131e-03,  1.1079e-01,  3.0436e-01,
+        6.9529e-02,  1.1027e-01,  2.6285e-01, -2.3103e-01, -2.8933e-01,
+       -5.0675e-02, -8.9796e-02,  2.5816e-01, -8.0917e-02,  3.3160e-01,
+       -3.5930e-01,  2.8336e-01,  1.4145e-01,  2.9012e-01,  1.5677e-01,
+        1.3225e-01, -5.0090e-01,  2.2110e-01,  6.9609e-01, -9.6917e-02,
+       -2.4966e-02, -2.9391e-01, -3.1240e-01, -3.8031e-01, -2.0604e-01,
+        1.5959e-01, -5.6155e-01,  2.9170e-01, -5.0459e-01,  6.5684e-02,
+        5.8594e-01,  1.3003e-02,  6.5874e-01, -4.7811e-01,  2.8794e-01,
+        3.5918e-01,  4.3347e-01, -4.2480e-01,  3.5892e-01, -6.0925e-01,
+       -7.1236e-01,  2.9490e-01, -2.1479e-01,  2.5658e-01, -1.9358e-01,
+        1.1057e+00,  2.2862e-01,  2.1859e-01, -1.9044e-01, -1.0253e-01],
+      dtype=float32)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the size of the vector</span>
 <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;King&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300
 </pre></div>
 </div>
 </div>
@@ -548,11 +684,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.38253095746040344
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the similarity between the two words &quot;King&quot; and &quot;kangaroo&quot;</span>
 <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;King&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;kangaroo&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2849182188510895
 </pre></div>
 </div>
 </div>
@@ -615,6 +761,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample files ready.
+</pre></div>
+</div>
+</div>
 </div>
 <p>The first file stores the information about the spells in Harry Potter.</p>
 <div class="cell docutils container">
@@ -625,6 +776,125 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Incantation</th>
+      <th>Type</th>
+      <th>Effect</th>
+      <th>Light</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Summoning Charm</td>
+      <td>Accio</td>
+      <td>Charm</td>
+      <td>Summons an object</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Age Line</td>
+      <td>Unknown</td>
+      <td>Charm</td>
+      <td>Prevents people above or below a certain age f...</td>
+      <td>Blue</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Water-Making Spell</td>
+      <td>Aguamenti</td>
+      <td>Charm, Conjuration</td>
+      <td>Conjures water</td>
+      <td>Icy blue</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Launch an object up into the air</td>
+      <td>Alarte Ascendare</td>
+      <td>Charm</td>
+      <td>Rockets target upward</td>
+      <td>Red</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Albus Dumbledore's Forceful Spell</td>
+      <td>Unknown</td>
+      <td>Spell</td>
+      <td>Great Force</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>Waddiwasi</td>
+      <td>Waddiwasi</td>
+      <td>Jinx</td>
+      <td>Propels wad at the target</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>Washing up spell</td>
+      <td>Unknown</td>
+      <td>Charm</td>
+      <td>Cleans dishes</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>Levitation Charm</td>
+      <td>Wingardium Leviosa</td>
+      <td>Charm</td>
+      <td>Makes objects fly</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>White sparks</td>
+      <td>Unknown</td>
+      <td>Charm</td>
+      <td>Jet of white sparks</td>
+      <td>White</td>
+    </tr>
+    <tr>
+      <th>300</th>
+      <td>Episkey</td>
+      <td>Episkey</td>
+      <td>Healing spell, Charm</td>
+      <td>Heals minor injuries</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>301 rows × 5 columns</p>
+</div></div></div>
 </div>
 <p>In the second file, we find the characters speaking and their speech. Notice that there is a column storing the spells found in the sentence if there is one.</p>
 <div class="cell docutils container">
@@ -634,6 +904,113 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Character</th>
+      <th>Sentence</th>
+      <th>movie_number</th>
+      <th>identified_spells</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Dumbledore</td>
+      <td>I should've known that you would be here, Prof...</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>McGonagall</td>
+      <td>Good evening, Professor Dumbledore.</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>McGonagall</td>
+      <td>Are the rumors true, Albus?</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dumbledore</td>
+      <td>I'm afraid so, professor.</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dumbledore</td>
+      <td>The good and the bad.</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4923</th>
+      <td>HERMIONE</td>
+      <td>How fast is it, Harry?</td>
+      <td>film 3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4924</th>
+      <td>HARRY</td>
+      <td>Lumos.</td>
+      <td>film 3</td>
+      <td>Lumos</td>
+    </tr>
+    <tr>
+      <th>4925</th>
+      <td>HARRY</td>
+      <td>I solemnly swear that I am up to no good.</td>
+      <td>film 3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4926</th>
+      <td>HARRY</td>
+      <td>Mischief managed.</td>
+      <td>film 3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4927</th>
+      <td>HARRY</td>
+      <td>Nox.</td>
+      <td>film 3</td>
+      <td>Nox</td>
+    </tr>
+  </tbody>
+</table>
+<p>4928 rows × 4 columns</p>
+</div></div></div>
 </div>
 <p>Suppose we would like to create a model that can identify spells in a sentence and give it the label ‘SPELL’.</p>
 <section id="create-an-nlp-model-with-an-entityruler-to-identify-the-spells">
@@ -653,6 +1030,194 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 
 <span class="c1"># Take a look at the spells</span>
 <span class="n">spells</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Accio&#39;,
+ &#39;Unknown&#39;,
+ &#39;Aguamenti&#39;,
+ &#39;Alarte Ascendare&#39;,
+ &#39;Alohomora&#39;,
+ &#39;Anapneo&#39;,
+ &#39;Anteoculatia&#39;,
+ &#39;Aparecium&#39;,
+ &#39;Appare Vestigium&#39;,
+ &#39;Aqua Eructo&#39;,
+ &#39;Arania Exumai&#39;,
+ &#39;Arresto Momentum&#39;,
+ &#39;Ascendio&#39;,
+ &#39;Avada Kedavra&#39;,
+ &#39;Avifors\xa0&#39;,
+ &#39;Avenseguim&#39;,
+ &#39;Avis&#39;,
+ &#39;Baubillious&#39;,
+ &#39;Bombarda&#39;,
+ &#39;Bombarda Maxima&#39;,
+ &#39;Brackium Emendo&#39;,
+ &#39;Calvorio&#39;,
+ &#39;Cantis&#39;,
+ &#39;Capacious extremis&#39;,
+ &#39;Carpe Retractum&#39;,
+ &#39;Cave inimicum&#39;,
+ &#39;Circumrota&#39;,
+ &#39;Cistem Aperio&#39;,
+ &#39;Colloportus&#39;,
+ &#39;Colloshoo&#39;,
+ &#39;Colovaria&#39;,
+ &#39;Confringo&#39;,
+ &#39;Confundo&#39;,
+ &#39;Crinus Muto&#39;,
+ &#39;Crucio&#39;,
+ &#39;Defodio&#39;,
+ &#39;Deletrius&#39;,
+ &#39;Densaugeo&#39;,
+ &#39;Deprimo&#39;,
+ &#39;Depulso&#39;,
+ &#39;Descendo&#39;,
+ &#39;Diffindo&#39;,
+ &#39;Diminuendo&#39;,
+ &#39;Dissendium&#39;,
+ &#39;Draconifors&#39;,
+ &#39;Ducklifors&#39;,
+ &#39;Duro&#39;,
+ &#39;Ebublio&#39;,
+ &#39;Engorgio&#39;,
+ &#39;Engorgio Skullus&#39;,
+ &#39;Entomorphis&#39;,
+ &#39;Epoximise&#39;,
+ &#39;Erecto&#39;,
+ &#39;Evanesce&#39;,
+ &#39;Evanesco&#39;,
+ &#39;Everte Statum&#39;,
+ &#39;Expecto Patronum&#39;,
+ &#39;Expelliarmus&#39;,
+ &#39;Expulso&#39;,
+ &#39;Ferula&#39;,
+ &#39;Fianto Duri&#39;,
+ &#39;Finestra&#39;,
+ &#39;Finite&#39;,
+ &#39;Flagrante&#39;,
+ &#39;Flagrate&#39;,
+ &#39;Flintifors&#39;,
+ &#39;Flipendo&#39;,
+ &#39;Flipendo Tria&#39;,
+ &#39;Fumos&#39;,
+ &#39;Fumos Duo&#39;,
+ &#39;Furnunculus&#39;,
+ &#39;Geminio&#39;,
+ &#39;Glacius&#39;,
+ &#39;Glacius Duo&#39;,
+ &#39;Glacius Tria&#39;,
+ &#39;Glisseo&#39;,
+ &#39;Harmonia Nectere Passus&#39;,
+ &#39;Herbifors&#39;,
+ &#39;Herbivicus&#39;,
+ &#39;Homenum Revelio&#39;,
+ &#39;Illegibilus&#39;,
+ &#39;Immobulus&#39;,
+ &#39;Impedimenta&#39;,
+ &#39;Imperio&#39;,
+ &#39;Impervius &#39;,
+ &#39;Incarcerous&#39;,
+ &#39;Incendio&#39;,
+ &#39;Incendio Tria&#39;,
+ &#39;Inflatus&#39;,
+ &#39;Informous&#39;,
+ &#39;Locomotor Wibbly&#39;,
+ &#39;Lacarnum Inflamari&#39;,
+ &#39;Langlock&#39;,
+ &#39;Lapifors&#39;,
+ &#39;Legilimens&#39;,
+ &#39;Levicorpus&#39;,
+ &#39;Liberacorpus&#39;,
+ &#39;Locomotor&#39;,
+ &#39;Locomotor Mortis&#39;,
+ &#39;Lumos&#39;,
+ &#39;Lumos Duo&#39;,
+ &#39;Lumos Maxima&#39;,
+ &#39;Lumos Solem&#39;,
+ &#39;Magicus Extremos&#39;,
+ &#39;Melofors&#39;,
+ &#39;Meteolojinx Recanto&#39;,
+ &#39;Mimblewimble&#39;,
+ &#39;Mobiliarbus&#39;,
+ &#39;Mobilicorpus&#39;,
+ &#39;Molliare&#39;,
+ &#39;Morsmordre&#39;,
+ &#39;Mucus ad Nauseam&#39;,
+ &#39;Muffliato &#39;,
+ &#39;Multicorfors &#39;,
+ &#39;Mutatio Skullus&#39;,
+ &#39;Nox&#39;,
+ &#39;Nebulus&#39;,
+ &#39;Oculus Reparo&#39;,
+ &#39;Obliviate\xa0&#39;,
+ &#39;Obscuro&#39;,
+ &#39;Oppugno &#39;,
+ &#39;Orbis&#39;,
+ &#39;Orchideous&#39;,
+ &#39;Oscausi&#39;,
+ &#39;Pack&#39;,
+ &#39;Papyrus Reparo&#39;,
+ &#39;Partis Temporus&#39;,
+ &#39;Periculum&#39;,
+ &#39;Peskipiksi Pesternomi&#39;,
+ &#39;Petrificus Totalus&#39;,
+ &#39;Piertotum Locomotor&#39;,
+ &#39;Piscifors&#39;,
+ &#39;Point Me&#39;,
+ &#39;Portus&#39;,
+ &#39;Prior Incantato&#39;,
+ &#39;Protego&#39;,
+ &#39;Protego Diabolica&#39;,
+ &#39;Protego horribilis&#39;,
+ &#39;Protego Maxima&#39;,
+ &#39;Protego totalum&#39;,
+ &#39;Quietus&#39;,
+ &#39;Redactum Skullus&#39;,
+ &#39;Reducio&#39;,
+ &#39;Reducto&#39;,
+ &#39;Reparifors&#39;,
+ &#39;Reverte&#39;,
+ &#39;Relashio&#39;,
+ &#39;Rennervate&#39;,
+ &#39;Reparifarge&#39;,
+ &#39;Reparo&#39;,
+ &#39;Repello Muggletum&#39;,
+ &#39;Repello Inimicum&#39;,
+ &#39;Revelio&#39;,
+ &#39;Rictusempra&#39;,
+ &#39;Riddikulus&#39;,
+ &#39;Salvio hexia&#39;,
+ &#39;Scourgify&#39;,
+ &#39;Sectumsempra&#39;,
+ &#39;Serpensortia&#39;,
+ &#39;Silencio&#39;,
+ &#39;Skurge&#39;,
+ &#39;Slugulus Eructo&#39;,
+ &#39;Sonorus&#39;,
+ &#39;Specialis Revelio&#39;,
+ &#39;Spongify&#39;,
+ &#39;Steleus&#39;,
+ &#39;Stupefy&#39;,
+ &#39;Surgito&#39;,
+ &#39;Tarantallegra\xa0&#39;,
+ &#39;Tentaclifors&#39;,
+ &#39;Tergeo&#39;,
+ &#39;Titillando&#39;,
+ &#39;Ventus&#39;,
+ &#39;Ventus Duo&#39;,
+ &#39;Vera Verto&#39;,
+ &#39;Verdillious&#39;,
+ &#39;Verdimillious&#39;,
+ &#39;Vermiculus&#39;,
+ &#39;Vermillious&#39;,
+ &#39;Vipera Evanesca&#39;,
+ &#39;Vulnera Sanentur&#39;,
+ &#39;Waddiwasi&#39;,
+ &#39;Wingardium Leviosa&#39;,
+ &#39;Episkey&#39;]
 </pre></div>
 </div>
 </div>
@@ -692,6 +1257,11 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EntRulerModel Wingardium Leviosa SPELL
+</pre></div>
+</div>
+</div>
 </div>
 <p>In this model, we have basically hard written all spell strings in the EntityRuler.</p>
 </section>
@@ -708,6 +1278,113 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Character</th>
+      <th>Sentence</th>
+      <th>movie_number</th>
+      <th>identified_spells</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Dumbledore</td>
+      <td>I should've known that you would be here, Prof...</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>McGonagall</td>
+      <td>Good evening, Professor Dumbledore.</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>McGonagall</td>
+      <td>Are the rumors true, Albus?</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dumbledore</td>
+      <td>I'm afraid so, professor.</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dumbledore</td>
+      <td>The good and the bad.</td>
+      <td>film 1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4923</th>
+      <td>HERMIONE</td>
+      <td>How fast is it, Harry?</td>
+      <td>film 3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4924</th>
+      <td>HARRY</td>
+      <td>Lumos.</td>
+      <td>film 3</td>
+      <td>Lumos</td>
+    </tr>
+    <tr>
+      <th>4925</th>
+      <td>HARRY</td>
+      <td>I solemnly swear that I am up to no good.</td>
+      <td>film 3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4926</th>
+      <td>HARRY</td>
+      <td>Mischief managed.</td>
+      <td>film 3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4927</th>
+      <td>HARRY</td>
+      <td>Nox.</td>
+      <td>film 3</td>
+      <td>Nox</td>
+    </tr>
+  </tbody>
+</table>
+<p>4928 rows × 4 columns</p>
+</div></div></div>
 </div>
 <p>Since we have hard written all spell strings in the EntityRuler and give them the label ‘SPELL’, we could just use this model to generate labeled data as our training data and evaluation data.</p>
 <div class="cell docutils container">
@@ -729,6 +1406,73 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 
 <span class="c1"># Take a look at the labeled data</span>
 <span class="n">training_validation_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /Users/mearacox/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;For example: Oculus Reparo.&#39;, {&#39;entities&#39;: [[13, 26, &#39;SPELL&#39;]]}),
+ (&#39;Alohomora Get in Alohomora?&#39;,
+  {&#39;entities&#39;: [[0, 9, &#39;SPELL&#39;], [17, 26, &#39;SPELL&#39;]]}),
+ (&#39;Wingardium Leviosa.&#39;, {&#39;entities&#39;: [[0, 18, &#39;SPELL&#39;]]}),
+ (&#39;Wingardium Leviosa.&#39;, {&#39;entities&#39;: [[0, 18, &#39;SPELL&#39;]]}),
+ (&#39;Wingardium Leviosa!&#39;, {&#39;entities&#39;: [[0, 18, &#39;SPELL&#39;]]}),
+ (&quot;Neville, I&#39;m really, really sorry about this  Petrificus Totalus.&quot;,
+  {&#39;entities&#39;: [[46, 64, &#39;SPELL&#39;]]}),
+ (&#39;Alohomora.&#39;, {&#39;entities&#39;: [[0, 9, &#39;SPELL&#39;]]}),
+ (&#39;Alohomora!&#39;, {&#39;entities&#39;: [[0, 9, &#39;SPELL&#39;]]}),
+ (&#39;Oculus Reparo.&#39;, {&#39;entities&#39;: [[0, 13, &#39;SPELL&#39;]]}),
+ (&#39;Peskipiksi Pesternomi!&#39;, {&#39;entities&#39;: [[0, 21, &#39;SPELL&#39;]]}),
+ (&#39;Immobulus!&#39;, {&#39;entities&#39;: [[0, 9, &#39;SPELL&#39;]]}),
+ (&#39;Vera Verto.&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Vera Verto.&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Vera Verto!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Finite Incantatem!&#39;, {&#39;entities&#39;: [[0, 6, &#39;SPELL&#39;]]}),
+ (&#39;Brackium Emendo!&#39;, {&#39;entities&#39;: [[0, 15, &#39;SPELL&#39;]]}),
+ (&#39;Expelliarmus!&#39;, {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;]]}),
+ (&#39;Two... Everte Statum!&#39;, {&#39;entities&#39;: [[7, 20, &#39;SPELL&#39;]]}),
+ (&#39;Rictusempra!&#39;, {&#39;entities&#39;: [[0, 11, &#39;SPELL&#39;]]}),
+ (&#39;Serpensortia!&#39;, {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;]]}),
+ (&#39;Alarte Ascendare!&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Vipera Evanesca.&#39;, {&#39;entities&#39;: [[0, 15, &#39;SPELL&#39;]]}),
+ (&#39;Wingardium Leviosa.&#39;, {&#39;entities&#39;: [[0, 18, &#39;SPELL&#39;]]}),
+ (&#39;Cistem Aperio!&#39;, {&#39;entities&#39;: [[0, 13, &#39;SPELL&#39;]]}),
+ (&#39;Arania Exumai!&#39;, {&#39;entities&#39;: [[0, 13, &#39;SPELL&#39;]]}),
+ (&#39;Arania Exumai!&#39;, {&#39;entities&#39;: [[0, 13, &#39;SPELL&#39;]]}),
+ (&#39;Arania Exumai!&#39;, {&#39;entities&#39;: [[0, 13, &#39;SPELL&#39;]]}),
+ (&#39;Lumos Maxima... Lumos Maxima... Lumos Maxima... Lumos... MAXIMA!&#39;,
+  {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;],
+    [16, 28, &#39;SPELL&#39;],
+    [32, 44, &#39;SPELL&#39;],
+    [48, 53, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Listen: Riddikulus!&#39;, {&#39;entities&#39;: [[8, 18, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Riddikulus!&#39;, {&#39;entities&#39;: [[0, 10, &#39;SPELL&#39;]]}),
+ (&#39;Then speak the incantation, Expecto Patronum.&#39;,
+  {&#39;entities&#39;: [[28, 44, &#39;SPELL&#39;]]}),
+ (&#39;Expecto Patronum.&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Expecto Patronum!&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Expecto Patronum!&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Expecto Patronum!&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Nox.&#39;, {&#39;entities&#39;: [[0, 3, &#39;SPELL&#39;]]}),
+ (&#39;Expelliarmus!&#39;, {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;]]}),
+ (&#39;Expelliarmus!&#39;, {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;]]}),
+ (&#39;Expelliarmus!&#39;, {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;]]}),
+ (&#39;Expelliarmus!&#39;, {&#39;entities&#39;: [[0, 12, &#39;SPELL&#39;]]}),
+ (&#39;Expecto Patronum!&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Immobulus!&#39;, {&#39;entities&#39;: [[0, 9, &#39;SPELL&#39;]]}),
+ (&#39;Expecto Patronum!&#39;, {&#39;entities&#39;: [[0, 16, &#39;SPELL&#39;]]}),
+ (&#39;Bombarda!&#39;, {&#39;entities&#39;: [[0, 8, &#39;SPELL&#39;]]}),
+ (&#39;Lumos.&#39;, {&#39;entities&#39;: [[0, 5, &#39;SPELL&#39;]]}),
+ (&#39;Nox.&#39;, {&#39;entities&#39;: [[0, 3, &#39;SPELL&#39;]]})]
 </pre></div>
 </div>
 </div>
@@ -763,14 +1507,60 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 <p>Now we can finally start training our model!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>init<span class="w"> </span>config<span class="w"> </span>--lang<span class="w"> </span>en<span class="w"> </span>--pipeline<span class="w"> </span>ner<span class="w"> </span>config.cfg<span class="w"> </span>--force
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>init<span class="w"> </span>config<span class="w"> </span>--lang<span class="w"> </span>en<span class="w"> </span>--pipeline<span class="w"> </span>ner<span class="w"> </span>config.cfg<span class="w"> </span>--force
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C3">⚠ To generate a more effective transformer-based config (GPU-only),</span>
+<span class=" -Color -Color-C3">install the spacy-transformers package and re-run this command. The config</span>
+<span class=" -Color -Color-C3">generated now does not use transformers.</span>
+<span class=" -Color -Color-C4">ℹ Generated config template specific for your use case</span>
+- Language: en
+- Pipeline: ner
+- Optimize for: efficiency
+- Hardware: CPU
+- Transformer: None
+<span class=" -Color -Color-C2">✔ Auto-filled config with all values</span>
+<span class=" -Color -Color-C2">✔ Saved config</span>
+config.cfg
+You can now add your data and train your pipeline:
+python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>train<span class="w"> </span>config.cfg<span class="w"> </span>--output<span class="w"> </span>./output/spells-model/<span class="w"> </span>--paths.train<span class="w"> </span>./train_spells.spacy<span class="w"> </span>--paths.dev<span class="w"> </span>./valid_spells.spacy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>train<span class="w"> </span>config.cfg<span class="w"> </span>--output<span class="w"> </span>./output/spells-model/<span class="w"> </span>--paths.train<span class="w"> </span>./train_spells.spacy<span class="w"> </span>--paths.dev<span class="w"> </span>./valid_spells.spacy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Created output directory: output/spells-model</span>
+<span class=" -Color -Color-C4">ℹ Saving to output directory: output/spells-model</span>
+<span class=" -Color -Color-C4">ℹ Using CPU</span>
+
+<span class=" -Color -Color-Bold">=========================== Initializing pipeline ===========================</span>
+<span class=" -Color -Color-C2">✔ Initialized pipeline</span>
+
+<span class=" -Color -Color-Bold">============================= Training pipeline =============================</span>
+<span class=" -Color -Color-C4">ℹ Pipeline: [&#39;tok2vec&#39;, &#39;ner&#39;]</span>
+<span class=" -Color -Color-C4">ℹ Initial learn rate: 0.001</span>
+E    #       LOSS TOK2VEC  LOSS NER  ENTS_F  ENTS_P  ENTS_R  SCORE 
+---  ------  ------------  --------  ------  ------  ------  ------
+  0       0          0.00     70.00   33.99   26.80   46.43    0.34
+141     200          1.46    584.26   98.18  100.00   96.43    0.98
+341     400          0.00      0.00   98.18  100.00   96.43    0.98
+541     600          0.00      0.00   98.18  100.00   96.43    0.98
+741     800          0.00      0.00   98.18  100.00   96.43    0.98
+941    1000          0.00      0.00   98.18  100.00   96.43    0.98
+1141    1200          0.00      0.00   98.18  100.00   96.43    0.98
+1341    1400          0.00      0.00   98.18  100.00   96.43    0.98
+1541    1600          0.00      0.00   98.18  100.00   96.43    0.98
+1741    1800          0.00      0.00   98.18  100.00   96.43    0.98
+<span class=" -Color -Color-C2">✔ Saved pipeline to output directory</span>
+output/spells-model/model-last
 </pre></div>
 </div>
 </div>
@@ -862,6 +1652,46 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Animates SPELL
+Aparecium - SPELL
+Your SPELL
+Defodio - SPELL
+Sometimes you SPELL
+of SPELL
+Descendo SPELL
+Specialis Revelio SPELL
+Reveals SPELL
+Meteolojinx Recanto SPELL
+46 SPELL
+Protego Totalum SPELL
+Strengthens SPELL
+Freezes SPELL
+Stop SPELL
+Obscuro - SPELL
+Blindfolds SPELL
+Reducto SPELL
+Explodes SPELL
+Anapneo - SPELL
+Clears SPELL
+41 SPELL
+Locomotor Mortis SPELL
+Southwest Airlines SPELL
+40 SPELL
+Aguamenti - SPELL
+Shoot SPELL
+Avada Kedavra SPELL
+Killing Curse SPELL
+Repelo Muggletum SPELL
+Repels SPELL
+Sounds SPELL
+Muggle SPELL
+Stupefy SPELL
+Since SPELL
+Deathly Hallows SPELL
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s also try the model we created with an EntityRuler with all spell names hard written in it.</p>
 <div class="cell docutils container">
@@ -872,6 +1702,27 @@ Before we create a new EntityRuler, we will do some preprocessing of the data to
 <span class="c1"># Find out the entities</span>
 <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ent</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imperio SPELL
+Piertotum Locomotor SPELL
+Aparecium SPELL
+Defodio SPELL
+Descendo SPELL
+Specialis Revelio SPELL
+Meteolojinx Recanto SPELL
+Protego SPELL
+Impedimenta SPELL
+Obscuro SPELL
+Reducto SPELL
+Anapneo SPELL
+Locomotor Mortis SPELL
+Geminio SPELL
+Aguamenti SPELL
+Avada Kedavra SPELL
+Stupefy SPELL
 </pre></div>
 </div>
 </div>
