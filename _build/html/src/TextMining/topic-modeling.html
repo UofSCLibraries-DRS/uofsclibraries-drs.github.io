@@ -421,7 +421,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-stopwords-list">Load Stopwords List</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-function-to-process-tokens">Define a Function to Process Tokens</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perplexity">Perplexity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-coherence">Topic Coherence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-a-list-of-topics">Display a List of Topics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-topic-distances">Visualize the Topic Distances</a></li>
 </ul>
@@ -442,15 +441,15 @@ For questions/comments/improvements, email <a class="reference external" href="m
 <section class="tex2jax_ignore mathjax_ignore" id="latent-dirichlet-allocation-lda-topic-modeling">
 <h1>Latent Dirichlet Allocation (LDA) Topic Modeling<a class="headerlink" href="#latent-dirichlet-allocation-lda-topic-modeling" title="Link to this heading">#</a></h1>
 <p><strong>Description:</strong>
-This <a class="reference external" href="https://constellate.org/docs/key-terms/#jupyter-notebook">notebook</a> demonstrates how to do topic modeling. The following processes are described:</p>
+This <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">notebook</a> demonstrates how to do topic modeling. The following processes are described:</p>
 <ul class="simple">
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">constellate</span></code> client to retrieve a dataset</p></li>
 <li><p>Filtering based on a pre-processed ID list</p></li>
-<li><p>Filtering based on a <a class="reference external" href="https://constellate.org/docs/key-terms/#stop-words">stop words list</a></p></li>
+<li><p>Filtering based on a <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stop words list</a></p></li>
 <li><p>Cleaning the tokens in the dataset</p></li>
-<li><p>Creating a <a class="reference external" href="https://constellate.org/docs/key-terms/#gensim-dictionary">gensim dictionary</a></p></li>
-<li><p>Creating a <a class="reference external" href="https://constellate.org/docs/key-terms/#gensim">gensim</a> <a class="reference external" href="https://constellate.org/docs/key-terms/#bag-of-words">bag of words</a> <a class="reference external" href="https://constellate.org/docs/key-terms/#corpus">corpus</a></p></li>
-<li><p>Computing a topic list using <a class="reference external" href="https://constellate.org/docs/key-terms/#gensim">gensim</a></p></li>
+<li><p>Creating a <a class="reference external" href="https://www.tutorialspoint.com/gensim/gensim_creating_a_dictionary.htm">gensim dictionary</a></p></li>
+<li><p>Creating a <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> <a class="reference external" href="https://www.geeksforgeeks.org/nlp/bag-of-words-bow-model-in-nlp/">bag of words</a> <a class="reference external" href="https://www.tutorialspoint.com/gensim/gensim_creating_a_bag_of_words_corpus.htm">corpus</a></p></li>
+<li><p>Computing a topic list using <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a></p></li>
 <li><p>Visualizing the topic list with <code class="docutils literal notranslate"><span class="pre">pyldavis</span></code></p></li>
 </ul>
 <p><strong>Use Case:</strong> For Researchers (Mostly code without explanation, not ideal for learners)</p>
@@ -466,16 +465,16 @@ This <a class="reference external" href="https://constellate.org/docs/key-terms/
 <li><p><a class="reference internal" href="../Python/intermediate/python-intermediate-2.html"><span class="std std-doc">Python Intermediate 2</span></a></p></li>
 <li><p><a class="reference internal" href="../Python/pandas/pandas-1.html"><span class="std std-doc">Pandas I</span></a></p></li>
 <li><p><a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a></p></li>
-<li><p>A familiarity with <a class="reference external" href="https://constellate.org/docs/key-terms/#gensim">gensim</a> is helpful but not required.</p></li>
+<li><p>A familiarity with <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> is helpful but not required.</p></li>
 </ul>
-<p><strong>Data Format:</strong> <a class="reference external" href="https://constellate.org/docs/key-terms/#jsonl">JSON Lines (.jsonl)</a></p>
+<p><strong>Data Format:</strong> <a class="reference external" href="https://jsonlines.org">JSON Lines (.jsonl)</a></p>
 <p><strong>Libraries Used:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#tdm-client">constellate</a> client to collect, unzip, and read our dataset</p></li>
-<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#pandas">pandas</a> to load a preprocessing list</p></li>
+<li><p>constellate client to collect, unzip, and read our dataset</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a> to load a preprocessing list</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">csv</span></code> to load a custom stopwords list</p></li>
-<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#gensim">gensim</a> to accomplish the topic modeling</p></li>
-<li><p><a class="reference external" href="https://constellate.org/docs/key-terms/#nltk">NLTK</a> to create a stopwords list (if no list is supplied)</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> to accomplish the topic modeling</p></li>
+<li><p><a class="reference external" href="https://www.nltk.org/">NLTK</a> to create a stopwords list (if no list is supplied)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pyldavis</span></code> to visualize our topic model</p></li>
 </ul>
 <p><strong>Research Pipeline</strong></p>
@@ -521,25 +520,25 @@ This <a class="reference external" href="https://constellate.org/docs/key-terms/
 <li><p>Download a full dataset that has been requested</p></li>
 <li><p>Download a sampled dataset (1500 items) that builds automatically when a dataset is created</p></li>
 </ol>
-<p>If you are using a <a class="reference external" href="https://constellate.org/docs/key-terms/#dataset-ID">dataset ID</a>, replace the default dataset ID in the next code cell.</p>
+<p>If you are using a <a class="reference external" href="https://docs.mapbox.com/help/glossary/dataset-id/#:~:text=A%20dataset%20ID%20is%20a,using%20the%20Mapbox%20Datasets%20API.">dataset ID</a>, replace the default dataset ID in the next code cell.</p>
 <p>If you don’t have a dataset ID, you can:</p>
 <ul class="simple">
 <li><p>Use the sample dataset ID already in the code cell</p></li>
-<li><p><a class="reference external" href="https://constellate.org/builder">Create a new dataset</a></p></li>
-<li><p><a class="reference external" href="https://constellate.org/dataset/dashboard">Use a dataset ID from other pre-built sample datasets</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-science/what-is-dataset/#how-to-create-a-dataset">Create a new dataset</a></p></li>
+<li><p>Use a dataset ID from other pre-built sample datasets</p></li>
 </ul>
 <p>The Constellate client will download datasets automatically using either the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> or <code class="docutils literal notranslate"><span class="pre">.get_dataset()</span></code> method.</p>
 <ul class="simple">
-<li><p>Full datasets are downloaded using the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> method. They must be requested first in the builder environment. See the <a class="reference external" href="https://constellate.org/docs/constellate-client">Constellate client documentation</a>.</p></li>
+<li><p>Full datasets are downloaded using the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> method. They must be requested first in the builder environment.</p></li>
 <li><p>Sampled datasets (1500 items) are downloaded using the <code class="docutils literal notranslate"><span class="pre">.get_dataset()</span></code> method. They are built automatically when a dataset is created.</p></li>
 </ul>
 <p>We’ll use the <code class="docutils literal notranslate"><span class="pre">constellate</span></code> client library to automatically retrieve the dataset in the JSON file format.</p>
-<p>Enter a <a class="reference external" href="https://constellate.org/docs/key-terms/#dataset-ID">dataset ID</a> in the next code cell.</p>
+<p>Enter a <a class="reference external" href="https://docs.mapbox.com/help/glossary/dataset-id/#:~:text=A%20dataset%20ID%20is%20a,using%20the%20Mapbox%20Datasets%20API.">dataset ID</a> in the next code cell.</p>
 <p>If you don’t have a dataset ID, you can:</p>
 <ul class="simple">
 <li><p>Use the sample dataset ID already in the code cell</p></li>
-<li><p><a class="reference external" href="https://constellate.org/builder">Create a new dataset</a></p></li>
-<li><p><a class="reference external" href="https://constellate.org/dataset/dashboard">Use a dataset ID from other pre-built sample datasets</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-science/what-is-dataset/#how-to-create-a-dataset">Create a new dataset</a></p></li>
+<li><p>Use a dataset ID from other pre-built sample datasets</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -568,7 +567,7 @@ This <a class="reference external" href="https://constellate.org/docs/key-terms/
 </section>
 <section id="load-stopwords-list">
 <h2>Load Stopwords List<a class="headerlink" href="#load-stopwords-list" title="Link to this heading">#</a></h2>
-<p>If you have created a stopword list in the stopwords notebook, we will import it here. (You can always modify the CSV file to add or subtract words then reload the list.) Otherwise, we’ll load the NLTK <a class="reference external" href="https://constellate.org/docs/key-terms/#stop-words">stopwords</a> list automatically.</p>
+<p>If you have created a stopword list in the stopwords notebook, we will import it here. (You can always modify the CSV file to add or subtract words then reload the list.) Otherwise, we’ll load the NLTK <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stopwords</a> list automatically.</p>
 <p>We recommend storing your stopwords in a CSV file as shown in the <a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating Stopwords List</span></a> notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -704,9 +703,7 @@ This <a class="reference external" href="https://constellate.org/docs/key-terms/
 <h2>Perplexity<a class="headerlink" href="#perplexity" title="Link to this heading">#</a></h2>
 <p>After each pass, the LDA model will output a “perplexity” score that measures the “held out log-likelihood”. Perplexity is a measure of how “surpised” the machine is to see certain data. In other words, perplexity measures how successfully a trained topic model predicts new data. The model may be trained many times with different parameters, optimizing for the lowest possible perplexity.</p>
 <p>In general, the perplexity score should trend downward as the machine “learns” what to expect from the data. While a low perplexity score may signal the machine has learned the documents’ patterns, that does not mean that the topics formed from a model with low perplexity will form the most coherent topics. (See <a class="reference external" href="https://papers.nips.cc/paper/2009/hash/f92586a25bb3145facd64ab20fd554ff-Abstract.html">“Reading Tea Leaves: How Humans Interpret Topic Models” Chang, et al. 2009</a>.)</p>
-</section>
-<section id="topic-coherence">
-<h2>Topic Coherence<a class="headerlink" href="#topic-coherence" title="Link to this heading">#</a></h2>
+<p>## Topic Coherence</p>
 <p>The failure of perplexity scores to consistently create “good” topics has led to new methods in “topic coherence”. Here we demonstrate two of these methods with Gensim but there are additional methods available. Ideally, a researcher would run many topic models, discovering the optimum settings for topic coherence.</p>
 <p>Ultimately, however, the best judgment of topic coherence is a disciplinary expert, particularly someone with familiarity with the materials in question.</p>
 <p><font color='red'>Read more</font></p>
@@ -818,7 +815,6 @@ This <a class="reference external" href="https://constellate.org/docs/key-terms/
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-stopwords-list">Load Stopwords List</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-function-to-process-tokens">Define a Function to Process Tokens</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perplexity">Perplexity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-coherence">Topic Coherence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-a-list-of-topics">Display a List of Topics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-topic-distances">Visualize the Topic Distances</a></li>
 </ul>
