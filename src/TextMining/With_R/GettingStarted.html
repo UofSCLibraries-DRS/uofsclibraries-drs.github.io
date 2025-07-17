@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bar, Line, Scatter Plot &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+    <title>Getting Started with Text Mining with R &#8212; USC Libraries - DRS Resources for Data Literacy</title>
   
   
   
@@ -18,50 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'src/overview/Charts';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Basic Mapping Skills with Python" href="../Data_Visualization/Maps.html" />
-    <link rel="prev" title="Text Mining with R" href="Tidy_Text.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/TextMining/With_R/GettingStarted';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Python" href="../../MachineLearning/PythonCode/Python.html" />
+    <link rel="prev" title="Data Wrangling with R" href="../../R_Code/Data_Wrangling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -93,7 +93,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../../search.html"
+      action="../../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -142,7 +142,7 @@
     
   
 
-<a class="navbar-brand logo" href="../../intro.html">
+<a class="navbar-brand logo" href="../../../intro.html">
   
   
   
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
-    <script>document.write(`<img src="../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
   
   
 </a></div>
@@ -174,53 +174,43 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
+                <a class="reference internal" href="../../../intro.html">
                     Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Python/BasicPython.html">Basic Python Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Python/PandasPython.html">Pandas Python Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Python/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../../Data_Visualization/DataVisualization.html">Data Visualization</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../R_Code/Data_Wrangling.html">Data Wrangling with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../API/API.html">Using APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../web_scraping_beautifulsoup.html">Web Scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R_Code/Data_Wrangling.html">Data Wrangling with R</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with Python</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../TextMining/IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../TextMining/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../TextMining/MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../TextMining/TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with R</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tidy_Text.html">Text Mining</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bar, Line, Scatter Plot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Data_Visualization/Maps.html">Creating Maps with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Data_Visualization/Seaborn_Basictutorial.html">Seaborn Basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning (classification and regression)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">Brief Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AppDevelopment.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
 </ul>
 
     </div>
@@ -292,7 +282,7 @@
       
       
       
-      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/overview/Charts.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/TextMining/With_R/GettingStarted.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +312,7 @@
       
       
       
-      <li><a href="../../_sources/src/overview/Charts.md" target="_blank"
+      <li><a href="../../../_sources/src/TextMining/With_R/GettingStarted.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,7 +396,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Bar, Line, Scatter Plot</h1>
+    <h1>Getting Started with Text Mining with R</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -416,7 +406,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons">Lessons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-source-files">Summary of Source Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgment">Acknowledgment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
 </ul>
             </nav>
         </div>
@@ -428,17 +422,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="bar-line-scatter-plot">
-<h1>Bar, Line, Scatter Plot<a class="headerlink" href="#bar-line-scatter-plot" title="Link to this heading">#</a></h1>
-<p>Data visualization is the practice of representing data graphically to better understand trends, patterns, and insights. The University of South Carolina Libraries offer a variety of data visualization resources, including guides on visualization tools and techniques, and help with selecting the most effective methods for specific needs. Students, faculty, and staff can access consultations, attend workshops, and use the DataLab space on the 5th floor of Thomas Cooper Library. These resources support learning and application of tools such as Excel, Tableau, and R for effective data analysis and presentation.</p>
-<p>As part of these offerings, the notebooks provide a hands-on introduction to Python for data visualization and analysis. Through interactive notebooks on bar charts, line charts, scatter plots, basic mapping with geopandas, and text analysis, users can learn essential skills for exploring data and uncovering insights.</p>
-<section id="lessons">
-<h2>Lessons<a class="headerlink" href="#lessons" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="../Data_Visualization/BarChart.html"><span class="std std-doc">Bar Chart</span></a>
-<br>
-<a class="reference internal" href="../Data_Visualization/LineChart.html"><span class="std std-doc">Line Chart</span></a>
-<br>
-<a class="reference internal" href="../Data_Visualization/ScatterPlot.html"><span class="std std-doc">Scatter Plot</span></a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-text-mining-with-r">
+<h1>Getting Started with Text Mining with R<a class="headerlink" href="#getting-started-with-text-mining-with-r" title="Link to this heading">#</a></h1>
+<section id="summary-of-source-files">
+<h2>Summary of Source Files<a class="headerlink" href="#summary-of-source-files" title="Link to this heading">#</a></h2>
+<p>These materials incorporate content, methods, and examples from <a class="reference external" href="https://www.tidytextmining.com"><em>Text Mining with R: A Tidy Approach</em> by Julia Silge and David Robinson</a>. The book introduces practical text mining techniques using the <code class="docutils literal notranslate"><span class="pre">tidytext</span></code> package alongside other tidyverse tools in R. Its emphasis is on applying tidy data principles to natural language, enabling structured, consistent workflows for unstructured text. The examples cover sentiment analysis, tf-idf, n-grams, topic modeling, and case studies using literary, social media, and real-world datasets. The book focuses on applied code examples, intended for users familiar with basic R packages such as <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>, and the pipe operator <code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code>.</p>
+<section id="acknowledgment">
+<h3>Acknowledgment<a class="headerlink" href="#acknowledgment" title="Link to this heading">#</a></h3>
+<p>These files draw heavily on the work of Julia Silge and David Robinson, particularly their <em>Text Mining with R</em> book and the accompanying <code class="docutils literal notranslate"><span class="pre">tidytext</span></code> package. We are grateful for their contributions to open data science and for providing resources that make text mining more accessible through tidy principles. Their work forms the foundation for much of the analysis and code structure used here.</p>
+</section>
+</section>
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="Tidy_Text.html"><span class="std std-doc">Text Mining</span></a><br />
+<a class="reference internal" href="Tidy_Text_Analysis.html"><span class="std std-doc">Text Analysis</span></a><br />
+<a class="reference internal" href="Tidy_Text_Case_Studies.html"><span class="std std-doc">Case Studies</span></a></p>
 </section>
 </section>
 
@@ -455,7 +453,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./src/overview"
+            path: "./src/TextMining/With_R"
         },
         predefinedOutput: true
     }
@@ -473,20 +471,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Tidy_Text.html"
+       href="../../R_Code/Data_Wrangling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Text Mining with R</p>
+        <p class="prev-next-title">Data Wrangling with R</p>
       </div>
     </a>
     <a class="right-next"
-       href="../Data_Visualization/Maps.html"
+       href="../../MachineLearning/PythonCode/Python.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Basic Mapping Skills with Python</p>
+        <p class="prev-next-title">Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -506,7 +504,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons">Lessons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-source-files">Summary of Source Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgment">Acknowledgment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
 </ul>
   </nav></div>
 
@@ -555,8 +557,8 @@ By University of South Carolina Libraries
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

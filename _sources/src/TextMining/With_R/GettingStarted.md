@@ -1,4 +1,4 @@
-# Text Mining with R
+# Getting Started with Text Mining with R
 
 ## Summary of Source Files
 
@@ -9,7 +9,6 @@ These materials incorporate content, methods, and examples from [*Text Mining wi
 These files draw heavily on the work of Julia Silge and David Robinson, particularly their *Text Mining with R* book and the accompanying `tidytext` package. We are grateful for their contributions to open data science and for providing resources that make text mining more accessible through tidy principles. Their work forms the foundation for much of the analysis and code structure used here.
 
 ## Files
-[Text Mining](../TextMining/With_R/Tidy_Text.ipynb)  
-[Text Analysis](../TextMining/With_R/Tidy_Text_Analysis.ipynb)  
-[Case Studies](../TextMining/With_R/Tidy_Text_Case_Studies.ipynb)
-
+[Text Mining](./Tidy_Text.ipynb)  
+[Text Analysis](./Tidy_Text_Analysis.ipynb)  
+[Case Studies](./Tidy_Text_Case_Studies.ipynb)
