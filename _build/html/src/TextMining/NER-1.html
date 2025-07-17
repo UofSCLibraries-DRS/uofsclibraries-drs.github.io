@@ -181,48 +181,38 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with Python</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Python/BasicPython.html">Basic Python Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Python/IntermediatePython.html">Intermediate Python Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Python/PandasPython.html">Pandas Python Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../Data_Visualization/DataVisualization.html">Data Visualization</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Wrangling with R</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../R_Code/Data_Wrangling.html">Data Wrangling with R</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Extraction</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../API/API.html">Using APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../web_scraping_beautifulsoup.html">Web Scraping</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with Python</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining with R</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/Tidy_Text.html">Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R_Code/Data_Wrangling.html">Data Wrangling with R</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualization</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/Charts.html">Bar, Line, Scatter Plot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Data_Visualization/Maps.html">Creating Maps with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Data_Visualization/Seaborn_Basictutorial.html">Seaborn Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="With_R/GettingStarted.html">Getting Started</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning (classification and regression)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/MachineLearning.html">Brief Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MachineLearning/RCode/R.html">R</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/AppDevelopment.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
 </ul>
 
     </div>
@@ -518,10 +508,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install required library spacy</span>
-<span class="o">!</span>pip3<span class="w"> </span>install<span class="w"> </span>spacy<span class="w"> </span>#<span class="w"> </span>Install<span class="w"> </span>spacy
+<span class="o">%</span><span class="k">pip</span> install spacy # Install spacy
 
 <span class="c1"># download the small English NLP model from spacy</span>
-<span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>English<span class="w"> </span>NER
+<span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>English<span class="w"> </span>NER
 </pre></div>
 </div>
 </div>
@@ -550,6 +540,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Martha PERSON
+Spain GPE
+05 June 2022 DATE
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -567,6 +564,39 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the tokens in the doc object we created</span>
 <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Martha
+,
+a
+senior
+,
+moved
+to
+Spain
+where
+she
+will
+be
+playing
+basketball
+until
+05
+June
+2022
+
+
+or
+until
+she
+ca
+n&#39;t
+play
+any
+longer
+.
 </pre></div>
 </div>
 </div>
@@ -595,11 +625,52 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;,
+ &#39;ADJ&#39;,
+ &#39;ADP&#39;,
+ &#39;ADV&#39;,
+ &#39;AUX&#39;,
+ &#39;CCONJ&#39;,
+ &#39;CONJ&#39;,
+ &#39;DET&#39;,
+ &#39;EOL&#39;,
+ &#39;IDS&#39;,
+ &#39;INTJ&#39;,
+ &#39;NAMES&#39;,
+ &#39;NOUN&#39;,
+ &#39;NUM&#39;,
+ &#39;PART&#39;,
+ &#39;PRON&#39;,
+ &#39;PROPN&#39;,
+ &#39;PUNCT&#39;,
+ &#39;SCONJ&#39;,
+ &#39;SPACE&#39;,
+ &#39;SYM&#39;,
+ &#39;VERB&#39;,
+ &#39;X&#39;,
+ &#39;__builtins__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__file__&#39;,
+ &#39;__loader__&#39;,
+ &#39;__name__&#39;,
+ &#39;__package__&#39;,
+ &#39;__spec__&#39;,
+ &#39;__test__&#39;,
+ &#39;univ_pos_t&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the meaning of a certain tag</span>
 <span class="n">spacy</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s1">&#39;PROPN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;proper noun&#39;
 </pre></div>
 </div>
 </div>
@@ -640,6 +711,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>248
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">chr()</span></code> function does the opposite. It takes an integer and returns the corresponding Unicode character.</p>
 <div class="cell docutils container">
@@ -647,6 +723,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use chr() to convert a number to a character</span>
 
 <span class="nb">chr</span><span class="p">(</span><span class="mi">248</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;ø&#39;
 </pre></div>
 </div>
 </div>
@@ -669,10 +750,22 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package unicode_samples to
+[nltk_data]     ../data/nltk_data...
+[nltk_data]   Unzipping corpora/unicode_samples.zip.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Locate the file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../data/nltk_data&#39;</span><span class="p">)</span>
+
+<span class="c1"># Locate the file</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;corpora/unicode_samples/polish-lat2.txt&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -687,6 +780,16 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Państwowa. Jej dawne zbiory znane pod nazwą
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemców pod koniec II wojny światowej na Dolny Śląsk, zostały
+odnalezione po 1945 r. na terytorium Polski. Trafiły do Biblioteki
+Jagiellońskiej w Krakowie, obejmują ponad 500 tys. zabytkowych
+archiwaliów, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Everything looks fine. This is because we have specified the encoding method of the original file correctly. What will happen if we read the file using the wrong encoding method? For example, if we open the file and specify the encoding as utf8 instead of latin2, what will happen?</p>
 <div class="cell docutils container">
@@ -695,6 +798,21 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnicodeDecodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Use the wrong encoding utf8 to read the file</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen codecs&gt;:322,</span> in <span class="ni">decode</span><span class="nt">(self, input, final)</span>
+
+<span class="ne">UnicodeDecodeError</span>: &#39;utf-8&#39; codec can&#39;t decode byte 0xf1 in position 20: invalid continuation byte
 </pre></div>
 </div>
 </div>
@@ -710,6 +828,16 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Pa�stwowa. Jej dawne zbiory znane pod nazw�
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemc�w pod koniec II wojny �wiatowej na Dolny �l�sk, zosta�y
+odnalezione po 1945 r. na terytorium Polski. Trafi�y do Biblioteki
+Jagiello�skiej w Krakowie, obejmuj� ponad 500 tys. zabytkowych
+archiwali�w, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s encode the Polish data into bytes in latin2. The letter b prefixed to the string indicates that this is a byte string. You may wonder why some characters stay the same but others are turned into hex bytes. This is because only non-ASCII characters are converted to hex decimal representations.</p>
 <div class="cell docutils container">
@@ -717,6 +845,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encode the Polish data into latin2 bytes</span>
 <span class="n">pol_bytes</span> <span class="o">=</span> <span class="n">pol_data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin2&#39;</span><span class="p">)</span>
 <span class="n">pol_bytes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;Pruska Biblioteka Pa\xf1stwowa. Jej dawne zbiory znane pod nazw\xb1\n&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez\nNiemc\xf3w pod koniec II wojny \xb6wiatowej na Dolny \xa6l\xb1sk, zosta\xb3y\nodnalezione po 1945 r. na terytorium Polski. Trafi\xb3y do Biblioteki\nJagiello\xf1skiej w Krakowie, obejmuj\xb1 ponad 500 tys. zabytkowych\narchiwali\xf3w, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.\n&#39;
 </pre></div>
 </div>
 </div>
@@ -732,6 +865,16 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Państwowa. Jej dawne zbiory znane pod nazwą
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemców pod koniec II wojny światowej na Dolny Śląsk, zostały
+odnalezione po 1945 r. na terytorium Polski. Trafiły do Biblioteki
+Jagiellońskiej w Krakowie, obejmują ponad 500 tys. zabytkowych
+archiwaliów, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
 </pre></div>
 </div>
 </div>
@@ -754,6 +897,16 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Państwowa. Jej dawne zbiory znane pod nazwą
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemców pod koniec II wojny światowej na Dolny Śląsk, zostały
+odnalezione po 1945 r. na terytorium Polski. Trafiły do Biblioteki
+Jagiellońskiej w Krakowie, obejmują ponad 500 tys. zabytkowych
+archiwaliów, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Recall the non-ASCII character ń that gives us an issue? We can see how it looks like at the byte level in utf8.</p>
 <div class="cell docutils container">
@@ -761,6 +914,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encode the Polish data into utf8 bytes</span>
 <span class="n">pol_utf8_bytes</span> <span class="o">=</span> <span class="n">pol_utf8</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
 <span class="n">pol_utf8_bytes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;Pruska Biblioteka Pa\xc5\x84stwowa. Jej dawne zbiory znane pod nazw\xc4\x85\n&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez\nNiemc\xc3\xb3w pod koniec II wojny \xc5\x9bwiatowej na Dolny \xc5\x9al\xc4\x85sk, zosta\xc5\x82y\nodnalezione po 1945 r. na terytorium Polski. Trafi\xc5\x82y do Biblioteki\nJagiello\xc5\x84skiej w Krakowie, obejmuj\xc4\x85 ponad 500 tys. zabytkowych\narchiwali\xc3\xb3w, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.\n&#39;
 </pre></div>
 </div>
 </div>
@@ -785,6 +943,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="problems-within-utf-8">
@@ -798,6 +961,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here, we also have two characters that look exactly the same but this time they are deemed as two different characters by the computer.</p>
 <div class="cell docutils container">
@@ -807,12 +975,22 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>The two characters are regarded as different by the computer because at the byte level, they are different.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print out the unicode strings for the two characters</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç Ç
 </pre></div>
 </div>
 </div>
@@ -826,6 +1004,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç
+</pre></div>
+</div>
+</div>
 </div>
 <p>The other is seen as a compound character, consisting of two characters, one being the Latin letter C and the other being the ‘combining cedilla’ character.</p>
 <div class="cell docutils container">
@@ -833,6 +1016,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;Latin capital letter C&#39; and &#39;combining cedilla&#39; characters together</span>
 <span class="n">compound_c</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">compound_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç
 </pre></div>
 </div>
 </div>
@@ -845,11 +1033,21 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;J̧&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a look at the two parts of the compound C</span>
 <span class="s2">&quot;</span><span class="se">\u0043</span><span class="s2"> </span><span class="se">\u0327</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;C ̧&#39;
 </pre></div>
 </div>
 </div>
@@ -859,6 +1057,11 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two different byte strings for the two characters</span>
 <span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -905,10 +1108,20 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç Ç
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç Ç
 </pre></div>
 </div>
 </div>
@@ -921,12 +1134,22 @@ Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation For
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Decompose and then compose using Normal Form C</span>
 <span class="n">nfc_compound</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">&#39;NFC&#39;</span><span class="p">,</span> <span class="n">compound_c</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accent_c</span> <span class="o">==</span> <span class="n">nfc_compound</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>

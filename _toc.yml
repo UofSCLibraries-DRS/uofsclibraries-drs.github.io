@@ -5,25 +5,14 @@ format: jb-book
 root: intro
 parts:
 
-  - caption: Data Wrangling with Python
+  - caption: Python for Data Analysis
     chapters:
-    - file: src/Python/BasicPython
-    - file: src/Python/IntermediatePython
-    - file: src/Python/PandasPython
+    - file: src/Python/GettingStarted
+    - file: src/Python/GettingData
     - file: src/DataProcessingBasics/DataCleaning_Basics
+    - file: src/Data_Visualization/DataVisualization
 
-  - caption: Data Wrangling with R
-    chapters:
-    - file: src/R_Code/Data_Wrangling
-
-  - caption: Data Extraction
-    chapters:
-    - file: src/API/API
-      title: Using APIs    
-    - file: src/web_scraping_beautifulsoup
-      title: Web Scraping
-
-  - caption: Text Mining with Python
+  - caption: Python for Text Analysis
     chapters:
     - file: src/TextMining/IntroductionTextAnalysis
     - file: src/TextMining/AdvancedTextAnalysis
@@ -31,25 +20,22 @@ parts:
     - file: src/TextMining/TextPreprocessing/TextPreprocessingMethods
       title: Example 
 
-  - caption: Text Mining with R
+  - caption: R for Data Analysis
     chapters:
-    - file: src/overview/Tidy_Text
-      title: Text Mining
+    - file: src/R_Code/Data_Wrangling
 
-  - caption: Data Visualization
+  - caption: R for Text Analysis
     chapters:
-    - file: src/overview/Charts
-    - file: src/Data_Visualization/Maps
-      title: Creating Maps with Python
-    - file: src/Data_Visualization/Seaborn_Basictutorial.ipynb
-      title: Seaborn Basics
+    - file: src/TextMining/With_R/GettingStarted
+      title: Getting Started
 
-  - caption: Machine Learning
+  - caption: Machine Learning (classification and regression)
     chapters:
-    - file: src/overview/MachineLearning
-
+    - file: src/MachineLearning/PythonCode/Python
+    - file: src/MachineLearning/RCode/R
+    
   - caption: App Development
     chapters:
-    - file: src/overview/AppDevelopment
-      title: App Development
+    - file: src/AppDevelopment/AppDevelopment
+      title: Getting Started
 
