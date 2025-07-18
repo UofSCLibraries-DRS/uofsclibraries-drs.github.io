@@ -2,17 +2,15 @@
 Data visualization is the practice of representing data graphically to better understand trends, patterns, and insights. The University of South Carolina Libraries offer a variety of data visualization resources, including guides on visualization tools and techniques, and help with selecting the most effective methods for specific needs. Students, faculty, and staff can access consultations, attend workshops, and use the DataLab space on the 5th floor of Thomas Cooper Library. These resources support learning and application of tools such as Excel, Tableau, and R for effective data analysis and presentation.
 
 ## Matplotlib
-Bar charts, line charts, and scatter plots are common tools for visualizing data. Bar charts compare values across categories using rectangular bars, making them ideal for categorical data. Line charts show trends over time by connecting data points, useful for tracking changes in continuous data. Scatter plots display the relationship between two numerical variables, helping to identify correlations, patterns, and outliers.
+This guide introduces several types of data visualizations—bar charts, line charts, scatter plots, and maps—and explains how to create them using Python libraries. Bar charts and line charts are ideal for comparing categories or showing trends over time, while scatter plots help reveal relationships between two variables. Maps, particularly choropleth and proportional dot maps, are used to visualize geographic or spatial data. The tutorial primarily uses **Matplotlib** for charting due to its simplicity. **Numpy** and **Pandas** are used to efficiently manage and manipulate data, while **Geopandas** is introduced for working with spatial data formats like Shapefiles and GeoJSON. Installation guidance is provided for users working outside of Anaconda.
+
 
 [Bar Chart](../Data_Visualization/BarChart.ipynb)
 <br>
 [Line Chart](../Data_Visualization/LineChart.ipynb)
 <br>
 [Scatter Plot](../Data_Visualization/ScatterPlot.ipynb)
-
-## Plotly
-This guide explains how to create maps using Python, focusing on **choropleth maps** and **proportional dot maps**, with data from a CSV file on COVID-19 deaths in the U.S. It introduces maps as visual tools for representing physical and human-made geographic features, as well as thematic data like population or climate. It also covers **spatial data formats** (e.g., GeoJSON, Shapefile, KML, CSV) and the role of **GIS systems** in analyzing and visualizing geographic data. The guide assumes you're using **Anaconda** but provides a link to Python’s package installation guide if you're not.
-
+<br>
 [Basic Mapping Skills](../Data_Visualization/Maps.ipynb)
 
 ## Seaborn
