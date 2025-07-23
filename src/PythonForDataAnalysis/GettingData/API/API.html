@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Extracting Data From Websites Using API - A Beginners Guide &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForDataAnalysis/GettingData/API/API';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../Data_Visualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../R_Code/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/With_R/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForDataAnalysis/GettingData/API/API.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/src/PythonForDataAnalysis/GettingData/API/API.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extracting Data From Websites Using API - A Beginners Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-purpose-of-apis">Definition and Purpose of APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-api-works">How API Works?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-apis-rest-soap-graphql">Types of APIs (REST, SOAP, GraphQL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-use-cases-for-apis">Common Use Cases for APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registering-and-obtaining-api-keys">Registering and Obtaining API Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-documentation-and-endpoints">API Documentation and Endpoints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-authorization-methods">Authentication and Authorization Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-extracting-ny-times-article-data-using-their-api">Use Case: Extracting NY Times Article Data Using Their API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-0-what-data-should-be-extracted">Step 0: What Data Should Be Extracted</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-getting-api-key">Step 1: Getting API Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-using-python">Extracting Data Using Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-api-data">Storing API Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-api-requests-get-post-put-delete">Making API Requests (GET, POST, PUT, DELETE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-responses-and-error-codes">Handling Responses and Error Codes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing-and-storage">Data Processing and Storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-data-in-databases">Storing Data in Databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-validation">Data Cleaning and Validation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-and-considerations">Best Practices and Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-performance-and-efficiency">Optimizing Performance and Efficiency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-maintaining-apis">Monitoring and Maintaining APIs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="extracting-data-from-websites-using-api-a-beginners-guide">
+<h1>Extracting Data From Websites Using API - A Beginners Guide<a class="headerlink" href="#extracting-data-from-websites-using-api-a-beginners-guide" title="Link to this heading">#</a></h1>
+<section id="definition-and-purpose-of-apis">
+<h2>Definition and Purpose of APIs<a class="headerlink" href="#definition-and-purpose-of-apis" title="Link to this heading">#</a></h2>
+<p><strong>What is an API?</strong></p>
+<ul class="simple">
+<li><p><strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface</p></li>
+<li><p>An API defines the methods and data formats that applications use to communicate effectively with each other.</p></li>
+</ul>
+<p><strong>Purpose of APIs</strong><br />
+The primary purpose of APIs is to enable <u>integration between different software applications,</u> enhancing functionality and interoperability.</p>
+<p><strong>Benefits for Developers</strong><br />
+APIs allow developers to leverage existing services without rebuilding them, saving time and resources in the development process.</p>
+</section>
+<section id="how-api-works">
+<h2>How API Works?<a class="headerlink" href="#how-api-works" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>API allows communication and sharing of information or data between two programs or softwares</p></li>
+<li><p>To get a desired information from the server, you as the client would <strong>send a request</strong></p>
+<ul>
+<li><p>which is a combination of URL and HTTP methods.</p></li>
+<li><p>In addition to the method, we can <u>also add request parameter or header</u> to modify the response we get from the server, sent by the API.</p></li>
+</ul>
+</li>
+<li><p>Using API to extract data is straight forward</p>
+<ul>
+<li><p>it <span style="color:red">provides access to dedicated section</span> of the required data through an endpoint</p></li>
+<li><p>Reduces time to extract data</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="types-of-apis-rest-soap-graphql">
+<h2>Types of APIs (REST, SOAP, GraphQL)<a class="headerlink" href="#types-of-apis-rest-soap-graphql" title="Link to this heading">#</a></h2>
+<p><strong>REST APIs</strong><br />
+REST APIs use a <strong>stateless communication</strong>* protocol and are widely
+used for web services, enabling scalability and flexibility.</p>
+<p><strong>SOAP APIs</strong>
+SOAP APIs are protocol-based and rely on XML for message
+formatting, providing a rigid structure and robust security features.</p>
+<p><strong>GraphQL APIs</strong>
+GraphQL allows clients to request exactly the data they need, making
+it efficient and flexible for modern applications.</p>
+<p><span style="color:red">* each request from a client to the server is treated
+independently, and the server does not maintain any
+session information or state between requests, requiring
+all necessary data to be included within each request
+itself.</span></p>
+</section>
+<section id="common-use-cases-for-apis">
+<h2>Common Use Cases for APIs<a class="headerlink" href="#common-use-cases-for-apis" title="Link to this heading">#</a></h2>
+<p><strong>Data Retrieval</strong><br />
+APIs enable the retrieval of data from online services, allowing
+applications to access real-time information easily.</p>
+<p><strong>Application Integration</strong><br />
+APIs facilitate the integration of third-party applications, enhancing functionality and interoperability between different systems.</p>
+<p><strong>Task Automation</strong><br />
+APIs are used to automate repetitive tasks, making processes more efficient and reducing manual effort.</p>
+<p><strong>Payment Processing</strong><br />
+APIs simplify payment processing, allowing businesses to securely handle transactions through various payment gateways.</p>
+</section>
+<section id="registering-and-obtaining-api-keys">
+<h2>Registering and Obtaining API Keys<a class="headerlink" href="#registering-and-obtaining-api-keys" title="Link to this heading">#</a></h2>
+<p><strong>Account Registration</strong><br />
+To start using an API, you must first register for an account with the API provider.</p>
+<p><strong>Obtaining API Keys</strong><br />
+After registration, you can request your unique API keys, which are essential for accessing the API.</p>
+<p><strong>Authentication Process</strong>
+API keys are used to authenticate your requests, ensuring secure access to the API’s resources.</p>
+</section>
+<section id="api-documentation-and-endpoints">
+<h2>API Documentation and Endpoints<a class="headerlink" href="#api-documentation-and-endpoints" title="Link to this heading">#</a></h2>
+<p><strong>Importance of API Documentation</strong><br />
+API documentation is essential for developers as it guides them in understanding how to properly use an API.</p>
+<p><strong>Endpoints and Methods</strong><br />
+Understanding endpoints and request methods is vital for making successful API calls and ensuring proper data retrieval.</p>
+<p><strong>Parameters and Response Formats</strong><br />
+Documentation includes details on parameters and response formats, crucial for handling requests and interpreting responses correctly.</p>
+</section>
+<section id="authentication-and-authorization-methods">
+<h2>Authentication and Authorization Methods<a class="headerlink" href="#authentication-and-authorization-methods" title="Link to this heading">#</a></h2>
+<p><strong>Importance of Authentication</strong><br />
+Authentication is essential for APIs to verify user identity and protect sensitive data from unauthorized access.</p>
+<p><strong>API Keys</strong><br />
+API keys are unique identifiers used to authenticate requests made to an API, providing a basic level of security.</p>
+<p><strong>OAuth Tokens</strong><br />
+OAuth tokens allow users to grant third-party applications access to their data without sharing passwords, enhancing security.\</p>
+<p><strong>Basic Authentication</strong><br />
+Basic Authentication encodes user credentials in a simple format, but is less secure compared to other methods.</p>
+</section>
+<section id="use-case-extracting-ny-times-article-data-using-their-api">
+<h2>Use Case: Extracting NY Times Article Data Using Their API<a class="headerlink" href="#use-case-extracting-ny-times-article-data-using-their-api" title="Link to this heading">#</a></h2>
+<section id="step-0-what-data-should-be-extracted">
+<h3>Step 0: What Data Should Be Extracted<a class="headerlink" href="#step-0-what-data-should-be-extracted" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Decide on the kind of data you are interested in.</strong></p></li>
+<li><p>For example, we are interested in:<br />
+<span style="color:blue">Extracting articles from first page of the NY Times newspaper since 2000</span></p></li>
+<li><p><strong>Read website requirements and specs for downloading data using API</strong></p>
+<ul>
+<li><p>New York Times has <span style="color:red">rate limits</span> to call their API.</p></li>
+<li><p>They <span style="color:red">allow 500 requests per day and 5 requests per minute.</span></p></li>
+<li><p>You should <span style="color:red">sleep 12 seconds between calls</span> to avoid hitting the per minute rate limit.</p></li>
+<li><p>If you need a higher rate limit, pleact contact <a class="reference external" href="mailto:code&#37;&#52;&#48;nytimes&#46;com">code<span>&#64;</span>nytimes<span>&#46;</span>com</a><br />
+<a class="reference external" href="https://developer.nytimes.com/faq">NY Times FAQ</a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step-1-getting-api-key">
+<h3>Step 1: Getting API Key<a class="headerlink" href="#step-1-getting-api-key" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Go to <i><a class="reference external" href="http://developer.nytimes.com/apis">developer.nytimes.com/apis</a></i></p></li>
+</ol>
+<p><img alt="Step 0:Image 1" src="../../../../_images/step0_11.png" /></p>
+<br>
+<p><img alt="Step 0:Image 2" src="../../../../_images/step0_21.png" /></p>
+<br>
+<p><img alt="Step 0:Image 2" src="../../../../_images/step0_31.png" /></p>
+</section>
+<section id="extracting-data-using-python">
+<h3>Extracting Data Using Python<a class="headerlink" href="#extracting-data-using-python" title="Link to this heading">#</a></h3>
+<p><img alt="Step 1:Image 1" src="../../../../_images/step1_11.png" /></p>
+<br>
+<p><img alt="Step 1:Image 2" src="../../../../_images/step1_21.png" /></p>
+</section>
+<section id="storing-api-data">
+<h3>Storing API Data<a class="headerlink" href="#storing-api-data" title="Link to this heading">#</a></h3>
+<p><img alt="Step 2:Image 1" src="../../../../_images/storing1.png" /></p>
+</section>
+<section id="making-api-requests-get-post-put-delete">
+<h3>Making API Requests (GET, POST, PUT, DELETE)<a class="headerlink" href="#making-api-requests-get-post-put-delete" title="Link to this heading">#</a></h3>
+<p><strong>GET Method</strong><br />
+The GET method is used to retrieve data from a server. It is the most commonly used HTTP request method.</p>
+<p><strong>POST Method</strong><br />
+The POST method is used to send data to a server. It is typically used for submitting forms or creating new resources.</p>
+<p><strong>PUT Method</strong><br />
+The PUT method is used to update existing data on a server. It replaces the current representation of the target resource.</p>
+<p><strong>DELETE Method</strong><br />
+The DELETE method is used to remove data from a server. It is a way to delete resources from a web application.</p>
+</section>
+<section id="handling-responses-and-error-codes">
+<h3>Handling Responses and Error Codes<a class="headerlink" href="#handling-responses-and-error-codes" title="Link to this heading">#</a></h3>
+<p><strong>Importance of Response Handling</strong><br />
+Proper response handling is crucial for understanding the data returned by API calls and ensuring correct application behavior.</p>
+<p><strong>Parsing Returned Data</strong><br />
+Parsing the returned data allows developers to extract necessary information and utilize it effectively within applications.</p>
+<p><strong>Managing Error Codes</strong><br />
+Managing error codes is essential for troubleshooting and ensuring that applications can gracefully handle unexpected issues.</p>
+</section>
+</section>
+<section id="data-processing-and-storage">
+<h2>Data Processing and Storage<a class="headerlink" href="#data-processing-and-storage" title="Link to this heading">#</a></h2>
+<section id="storing-data-in-databases">
+<h3>Storing Data in Databases<a class="headerlink" href="#storing-data-in-databases" title="Link to this heading">#</a></h3>
+<p><strong>Importance of Storage</strong><br />
+Storing processed data correctly in a database is essential for maintaining data integrity and availability.</p>
+<p><strong>Choosing the Right Database</strong><br />
+Selecting the appropriate database system is crucial for achieving optimal performance and scalability based on the data needs.</p>
+<p><strong>Schema Design</strong><br />
+Effective schema design is key to ensuring efficient data retrieval and management within the database.</p>
+</section>
+<section id="data-cleaning-and-validation">
+<h3>Data Cleaning and Validation<a class="headerlink" href="#data-cleaning-and-validation" title="Link to this heading">#</a></h3>
+<p><strong>Importance of Data Accuracy</strong><br />
+Ensuring data accuracy is crucial for making informed decisions based on reliable information.</p>
+<p><strong>Filtering Invalid Entries</strong><br />
+The cleaning process involves identifying and removing invalid or irrelevant data entries to improve data quality.</p>
+<p><strong>Correcting Inconsistencies</strong><br />
+Data validation includes correcting discrepancies in datasets to maintain uniformity and reliability.</p>
+</section>
+</section>
+<section id="best-practices-and-considerations">
+<h2>Best Practices and Considerations<a class="headerlink" href="#best-practices-and-considerations" title="Link to this heading">#</a></h2>
+<section id="optimizing-performance-and-efficiency">
+<h3>Optimizing Performance and Efficiency<a class="headerlink" href="#optimizing-performance-and-efficiency" title="Link to this heading">#</a></h3>
+<p><strong>API Performance Optimization</strong><br />
+Optimizing API calls can significantly enhance application performance by reducing latency and improving response times.</p>
+<p><strong>Caching Responses</strong><br />
+Implementing caching mechanisms for API responses helps in reducing repeated data fetches, leading to improved efficiency.</p>
+<p><strong>Minimizing Request Payloads</strong><br />
+Reducing the size of request payloads can decrease processing time and enhance overall application speed.</p>
+</section>
+<section id="monitoring-and-maintaining-apis">
+<h3>Monitoring and Maintaining APIs<a class="headerlink" href="#monitoring-and-maintaining-apis" title="Link to this heading">#</a></h3>
+<p><strong>Importance of Monitoring</strong><br />
+Regular monitoring is essential to maintain the performance of API integrations and prevent disruptions in service.</p>
+<p><strong>Tracking Usage Patterns</strong><br />
+Keeping track of usage patterns helps identify trends and optimize API performance based on user needs.</p>
+<p><strong>Updating API Keys</strong><br />
+Regularly updating API keys is crucial for security and ensuring uninterrupted access to API services.</p>
+<p><strong>Troubleshooting Issues</strong><br />
+Prompt troubleshooting of issues as they arise ensures that API integrations continue to function smoothly.</p>
+</section>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
+<p>By Vandana Srivastava<br />
+AI/Data Science Specialist, University Libraries, USC</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForDataAnalysis/GettingData/API"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-purpose-of-apis">Definition and Purpose of APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-api-works">How API Works?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-apis-rest-soap-graphql">Types of APIs (REST, SOAP, GraphQL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-use-cases-for-apis">Common Use Cases for APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registering-and-obtaining-api-keys">Registering and Obtaining API Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-documentation-and-endpoints">API Documentation and Endpoints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-authorization-methods">Authentication and Authorization Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-extracting-ny-times-article-data-using-their-api">Use Case: Extracting NY Times Article Data Using Their API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-0-what-data-should-be-extracted">Step 0: What Data Should Be Extracted</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-getting-api-key">Step 1: Getting API Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data-using-python">Extracting Data Using Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-api-data">Storing API Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-api-requests-get-post-put-delete">Making API Requests (GET, POST, PUT, DELETE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-responses-and-error-codes">Handling Responses and Error Codes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing-and-storage">Data Processing and Storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-data-in-databases">Storing Data in Databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-validation">Data Cleaning and Validation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-and-considerations">Best Practices and Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-performance-and-efficiency">Optimizing Performance and Efficiency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-maintaining-apis">Monitoring and Maintaining APIs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
