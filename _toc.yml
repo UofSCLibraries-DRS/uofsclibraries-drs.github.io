@@ -10,7 +10,7 @@ parts:
     - file: src/PythonForDataAnalysis/GettingStarted/GettingStarted
     - file: src/PythonForDataAnalysis/GettingData/GettingData
     - file: src/PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics
-    - file: src/Data_Visualization/DataVisualization
+    - file: src/PythonForDataAnalysis/DataVisualization/DataVisualization
 
   - caption: Python for Text Analysis
     chapters:
