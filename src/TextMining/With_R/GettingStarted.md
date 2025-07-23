@@ -1,8 +1,9 @@
-# Getting Started with Text Analysis with R
+# Getting Started with Text Analysis
 
 ## Summary of Source Files
 
-These materials incorporate content, methods, and examples from [*Text Mining with R: A Tidy Approach* by Julia Silge and David Robinson](https://www.tidytextmining.com). The book introduces practical text mining techniques using the `tidytext` package alongside other tidyverse tools in R. Its emphasis is on applying tidy data principles to natural language, enabling structured, consistent workflows for unstructured text. The examples cover sentiment analysis, tf-idf, n-grams, topic modeling, and case studies using literary, social media, and real-world datasets. The book focuses on applied code examples, intended for users familiar with basic R packages such as `dplyr`, `ggplot2`, and the pipe operator `%>%`.
+These materials incorporate content, methods, and examples from [*Text Mining with R: A Tidy Approach* by Julia Silge and David Robinson](https://www.tidytextmining.com). The book introduces practical text mining techniques—also called **text analysis**—using the `tidytext` package alongside other tidyverse tools in R. Its emphasis is on applying tidy data principles to natural language, enabling structured, consistent workflows for unstructured text. The examples cover sentiment analysis, tf-idf, n-grams, topic modeling, and case studies using literary, social media, and real-world datasets. The book focuses on applied code examples, intended for users familiar with basic R packages such as `dplyr`, `ggplot2`, and the pipe operator `%>%`.
+
 
 ### Acknowledgment
 

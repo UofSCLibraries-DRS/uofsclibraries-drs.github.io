@@ -23,13 +23,14 @@ parts:
   - caption: R for Data Analysis
     chapters:
     - file: src/R_Code/Data_Wrangling
+      title: Getting Started
 
   - caption: R for Text Analysis
     chapters:
     - file: src/TextMining/With_R/GettingStarted
       title: Getting Started
 
-  - caption: Machine Learning (classification and regression)
+  - caption: Machine Learning
     chapters:
     - file: src/MachineLearning/PythonCode/Python
     - file: src/MachineLearning/RCode/R
