@@ -1,0 +1,1754 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pandas Intermediate 1 &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForDataAnalysis/GettingStarted/pandas/pandas-intermediate-1';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Python/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../DataProcessingBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../Data_Visualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/IntroductionTextAnalysis.html">Introduction to Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/MultiLingualNer.html">Named Entity Recognition (NER)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/TextPreprocessing/TextPreprocessingMethods.html">Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../R_Code/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../TextMining/With_R/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForDataAnalysis/GettingStarted/pandas/pandas-intermediate-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/src/PythonForDataAnalysis/GettingStarted/pandas/pandas-intermediate-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas Intermediate 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-pyarrow-backend">Use the PyArrow backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-and-aggregate-data">Group and aggregate data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby">Groupby()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agg">Agg()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-pivot-tables-in-pandas">Make pivot tables in Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-teaser-for-pandas-intermediate-2">A teaser for Pandas intermediate 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-pandas-intermediate-2">Start Next Lesson: <span class="xref myst">Pandas intermediate 2 -&gt;</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-solutions">Exercise Solutions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-intermediate-1">
+<h1>Pandas Intermediate 1<a class="headerlink" href="#pandas-intermediate-1" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong> This notebook describes how to:</p>
+<ul class="simple">
+<li><p>Use the PyArrow backend to improve processing speed</p></li>
+<li><p>Group and aggregate data</p></li>
+<li><p>Make pivot tables</p></li>
+</ul>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Intermediate</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p>Python Basics (<a class="reference internal" href="../basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
+<li><p>Pandas Basics (<a class="reference internal" href="pandas-1.html"><span class="std std-doc">Start Pandas Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../intermediate/python-intermediate-2.html"><span class="std std-doc">Python Intermediate 2</span></a></p></li>
+<li><p><a class="reference internal" href="../intermediate/python-intermediate-4.html"><span class="std std-doc">Python Intermediate 4</span></a></p></li>
+</ul>
+<p><strong>Completion Time:</strong> 90 minutes</p>
+<p><strong>Data Format:</strong> csv</p>
+<p><strong>Libraries Used:</strong> Pandas</p>
+<p><strong>Research Pipeline:</strong> None</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import Pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># check the version of the installed pandas</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.3.1&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the max items to display to 20</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_seq_items</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In April 2023, Pandas 2.0 was released. The defining feature of this release is the new  PyArrow backend.</p>
+<p>In Pandas basics, we have learned how to read data from files of different formats into a dataframe using the <code class="docutils literal notranslate"><span class="pre">read_*()</span></code> method. What we were doing is essentially to load data into memory. When loading data into memory, we need to decide how the data is stored in memory. Pandas was initially developed using NumPy data structures for memory management. It has advantages but it also has pain points. For the pain points, you can read <a class="reference external" href="https://wesmckinney.com/blog/apache-arrow-pandas-internals/">this</a> blog post by the creator of Pandas, Wes McKinney.</p>
+<p>The new PyArrow backend in Pandas 2.0 changes the way Pandas works with data in memory. Basically, the new backend reduces the memory consumption in data processing and thus enhances the performance speed.</p>
+<section id="use-the-pyarrow-backend">
+<h2>Use the PyArrow backend<a class="headerlink" href="#use-the-pyarrow-backend" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># intall pyarrow</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyarrow
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pyarrow
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyarrow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pa</span>
+<span class="n">pa</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the following, we’ll use the dataset on the 2022 Boston Marathon to compare the processing speed of the old NumPy backend and the new PyArrow backend.</p>
+<p>Let’s first download the sample file and read in the data. As you can see, when we load the data using the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> method, we only pass the path to the sample file into the method. By default, the NumPy backend is used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Get the urls to the files and download the files</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/DataViz3_BostonMarathon2022.csv&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span><span class="o">+</span><span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">9</span><span class="p">:])</span>
+    
+<span class="c1"># Success message</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample file ready.&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a dataframe, the NumPy backend is used by default</span>
+<span class="n">bm_22</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/BostonMarathon2022.csv&#39;</span><span class="p">)</span>
+<span class="n">bm_22</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BibNumber</th>
+      <th>FullName</th>
+      <th>SortName</th>
+      <th>AgeOnRaceDay</th>
+      <th>Gender</th>
+      <th>City</th>
+      <th>StateAbbrev</th>
+      <th>StateName</th>
+      <th>Zip</th>
+      <th>CountryOfResAbbrev</th>
+      <th>CountryOfResName</th>
+      <th>CountryOfCtzAbbrev</th>
+      <th>CountryOfCtzName</th>
+      <th>OfficialTime</th>
+      <th>RankOverall</th>
+      <th>RankOverGender</th>
+      <th>RankOverDivision</th>
+      <th>EventGroup</th>
+      <th>SubGroupLabel</th>
+      <th>SubGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Evans Chebet</td>
+      <td>Chebet, Evans</td>
+      <td>33</td>
+      <td>M</td>
+      <td>Kapsabet</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:06:51</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>Lawrence Cherono</td>
+      <td>Cherono, Lawrence</td>
+      <td>33</td>
+      <td>M</td>
+      <td>Eldoret</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:07:21</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Benson Kipruto</td>
+      <td>Kipruto, Benson</td>
+      <td>31</td>
+      <td>M</td>
+      <td>Kapsabet</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:07:27</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9</td>
+      <td>Gabriel Geay</td>
+      <td>Geay, Gabriel</td>
+      <td>25</td>
+      <td>M</td>
+      <td>Tampa</td>
+      <td>FL</td>
+      <td>Florida</td>
+      <td>33647</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>TAN</td>
+      <td>Tanzania</td>
+      <td>2:07:53</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11</td>
+      <td>Eric Kiptanui</td>
+      <td>Kiptanui, Eric</td>
+      <td>31</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Kenya</td>
+      <td>2:08:47</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>24829</th>
+      <td>7681</td>
+      <td>Paul Kent</td>
+      <td>Kent, Paul</td>
+      <td>58</td>
+      <td>M</td>
+      <td>Hingham</td>
+      <td>MA</td>
+      <td>Massachusetts</td>
+      <td>2043</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>6:56:35</td>
+      <td>24830</td>
+      <td>14258</td>
+      <td>1451</td>
+      <td>Runners</td>
+      <td>Para T61-T62</td>
+      <td>Para T61-T62</td>
+    </tr>
+    <tr>
+      <th>24830</th>
+      <td>7638</td>
+      <td>Aaron Burros</td>
+      <td>Burros, Aaron</td>
+      <td>51</td>
+      <td>M</td>
+      <td>Houston</td>
+      <td>TX</td>
+      <td>Texas</td>
+      <td>77024</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>6:58:12</td>
+      <td>24831</td>
+      <td>14259</td>
+      <td>1899</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24831</th>
+      <td>28701</td>
+      <td>Julian Martin Arjona</td>
+      <td>Martin Arjona, Julian</td>
+      <td>61</td>
+      <td>M</td>
+      <td>Loja</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18300</td>
+      <td>ESP</td>
+      <td>Spain</td>
+      <td>ESP</td>
+      <td>Spain</td>
+      <td>6:58:50</td>
+      <td>24832</td>
+      <td>14260</td>
+      <td>1056</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24832</th>
+      <td>5398</td>
+      <td>Jorge Valenciano</td>
+      <td>Valenciano, Jorge</td>
+      <td>38</td>
+      <td>M</td>
+      <td>Guadalupe</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>67192</td>
+      <td>MEX</td>
+      <td>Mexico</td>
+      <td>MEX</td>
+      <td>Mexico</td>
+      <td>7:01:32</td>
+      <td>24833</td>
+      <td>14261</td>
+      <td>4818</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24833</th>
+      <td>2519</td>
+      <td>Jason Liddle</td>
+      <td>Liddle, Jason</td>
+      <td>45</td>
+      <td>M</td>
+      <td>Victor</td>
+      <td>NY</td>
+      <td>New York</td>
+      <td>14564</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>USA</td>
+      <td>United States of America</td>
+      <td>7:24:39</td>
+      <td>24834</td>
+      <td>14262</td>
+      <td>2298</td>
+      <td>Runners</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>24834 rows × 20 columns</p>
+</div></div></div>
+</div>
+<p>Suppose we would like to find out all the runners whose name has the four letters ‘t’, ‘a’, ‘p’, ‘i’ in the given order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># get all names with &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
+<span class="n">bm_22</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.9 ms ± 237 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s load the data into memory again, but with the PyArrow backend this time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in the data using the pyarrow backend</span>
+<span class="n">bm_22_pa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/BostonMarathon2022.csv&quot;</span><span class="p">,</span> <span class="n">dtype_backend</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s grab all names with ‘t’, ‘a’, ‘p’, ‘i’ again and get the execution time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># get all names with &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
+<span class="n">bm_22_pa</span><span class="p">[</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.68 ms ± 237 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check the data type of the <code class="docutils literal notranslate"><span class="pre">FullName</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check the data type of the FullName column, NumPy as backend</span>
+<span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;O&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check the data type of the FullName column, pyarrow as backend</span>
+<span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>string[pyarrow]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see that the data types are different. When we use NumPy as the backend, the data type is <code class="docutils literal notranslate"><span class="pre">object</span></code>. When we use PyArrow as the backend, the data type is <code class="docutils literal notranslate"><span class="pre">string[pyarrow]</span></code>. This indicates that the data are stored differently in the memory by these two backends.</p>
+<p>The difference in processing speed is expected to become even larger when we have a huge dataset.</p>
+<p>Let’s generate 100K of random names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_random_names</span><span class="p">(</span><span class="n">num_names</span><span class="p">,</span> <span class="n">name_len</span><span class="p">):</span>
+    <span class="n">rd</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Make sure that we get consistent results in each execution</span>
+    <span class="n">name_ls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_names</span><span class="p">):</span>
+        <span class="n">name_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rd</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">name_len</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">name_ls</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a list of random names</span>
+<span class="n">huge_name_ls</span> <span class="o">=</span> <span class="n">generate_random_names</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s create a pandas series to hold the names. By default, NumPy is used as the backend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a pandas series holding the names</span>
+<span class="n">huge_name_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">huge_name_ls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s first get all names containing ‘t’, ‘a’, ‘p’, ‘i’ using the <code class="docutils literal notranslate"><span class="pre">loc</span></code> indexer with NumPy as the backend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># get all names containing &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
+<span class="n">huge_name_col</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">huge_name_col</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117 ms ± 1.93 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s change the data type to PyArrow string and repeat the same search.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a pandas series to hold the names, data structure set to pyarrow string</span>
+<span class="n">huge_name_col_pa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">huge_name_ls</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">ArrowDtype</span><span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">string</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># get all names containing &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
+<span class="n">huge_name_col_pa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">huge_name_col_pa</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.07 ms ± 65.1 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, PyArrow provides a data structure that enables memory-efficient string operations.</p>
+<p>The performance enhancement applies to numerical data as well.</p>
+<p>Let’s use the following function to generate 10 millions of random numbers and compute the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write a function to generate 10 million random floating numbers</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_ten_mil_randnum</span><span class="p">():</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Make sure that we get consistent results in each execution</span>
+    <span class="n">min_value</span><span class="o">=-</span><span class="mi">100000</span>
+    <span class="n">max_value</span><span class="o">=</span><span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create two series holding the numbers, one with NumPy</span>
+<span class="c1"># one with pyarrow</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">generate_ten_mil_randnum</span><span class="p">())</span>
+<span class="n">nums_pa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">generate_ten_mil_randnum</span><span class="p">(),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64[pyarrow]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine the data</span>
+<span class="n">nums</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -39630.514568
+1   -21329.169699
+2   -33696.028632
+3   -40062.849870
+4   -53397.972073
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine the data</span>
+<span class="n">nums_pa</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -39630.514568
+1   -21329.169699
+2   -33696.028632
+3    -40062.84987
+4   -53397.972073
+dtype: double[pyarrow]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># calculate the mean, with NumPy as backend</span>
+<span class="n">nums</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.41 ms ± 1.85 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># calculate the mean, with PyArrow as backend</span>
+<span class="n">nums_pa</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.49 ms ± 64.9 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p>According to <a class="reference external" href="https://www.ssa.gov/oact/babynames/decades/century.html">Social Security of the United States of America</a>, the most popular given names for male and female babies born during the past century are James and Mary, respectively.</p>
+<p>Could you find how many runners of 2022 Boston Marathon are named James and how many named Mary? Try using the two different data representations, i.e., <code class="docutils literal notranslate"><span class="pre">bm_22</span></code> and <code class="docutils literal notranslate"><span class="pre">bm_22_pa</span></code>, and compare the execution time. Do you see any improvement when using the pyarrow backend?</p>
+</section>
+<section id="group-and-aggregate-data">
+<h2>Group and aggregate data<a class="headerlink" href="#group-and-aggregate-data" title="Link to this heading">#</a></h2>
+<p>In Pandas basics series, you have learned how to do data cleaning, filtering and preprocessing. The next step is to summarize the data to extract useful information. Pandas provides many methods to summarize data. In this section, we’ll use the Shakespeare dataframe we have worked with in <a class="reference internal" href="pandas-2.html"><span class="std std-doc">Pandas basics 2</span></a> to learn these methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a variable `dataset_id` to hold our dataset ID</span>
+<span class="c1"># The default dataset is Shakespeare Quarterly, 1950-present</span>
+<span class="c1"># retrieve the metadata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">constellate</span>
+<span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;7e41317e-740f-e86a-4729-20dab492e925&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">)</span>
+
+<span class="c1"># create a dataframe out of the metadata</span>
+<span class="n">shake_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas makes summarizing a dataframe very easy. For example, we can count how many non-null values there are in each column using the <code class="docutils literal notranslate"><span class="pre">.count()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the number of non-null values in each column</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also get the max value or the min value of a column using the <code class="docutils literal notranslate"><span class="pre">.max()</span></code> and <code class="docutils literal notranslate"><span class="pre">.min()</span></code> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the max value from the year column</span>
+<span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the min value from the year column</span>
+<span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can refer to the Pandas documentation for more methods that you can use to query the data.</p>
+<p>When you summarize a dataframe, a very useful method is <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>. It can quickly display the statistics for any group of data it is applied to.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the .describe() method to explore the year column</span>
+<span class="n">shake_df</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="groupby">
+<h3>Groupby()<a class="headerlink" href="#groupby" title="Link to this heading">#</a></h3>
+<p>Groupby is a powerful method built into Pandas that you can use to summarize your data. Groupby splits the data into different groups on a variable of your choice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group the data by publicationYear</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method returns a GroupBy object which describes how the rows of the original dataset have been split by the selected variable. You can actually see how the rows of the original dataframe have been grouped using the <code class="docutils literal notranslate"><span class="pre">groups</span></code> attribute after applying <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See how the rows have been grouped</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, a dictionary is returned whose keys are the unique values in publicationYear and whose values are lists of row indexes. Each key corresponds to a list of row indexes.</p>
+<p>You can group the data using multiple variables. For example, you may want to group the documents first by their publication year and then by the publisher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group by multiple variables </span>
+<span class="c1"># Take a look at the composite keys</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> <span class="s1">&#39;publisher&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you take a look at the groups in the groupby object, you will see that essentially we have a composite key for each group. The first key, for example, is (1950, ‘Folger Shakespeare Library’). The value associated with this key is a list of indexes, all of which are the rows storing the documents that were published in 1950 by Folger Shakespeare Library.</p>
+<p>We have seen how we can group the data in a dataframe. Of course, we don’t just stop at grouping data. Grouping data is just a step towards data query. After we apply the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method, we can actually use different Pandas methods to query the data. For example, how do we get the number of documents by publisher in each publicationYear?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a series storing the number of documents by publisher in each year</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> <span class="s1">&#39;publisher&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the 20 rows at the tail to see the groups more clearly</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> <span class="s1">&#39;publisher&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="agg">
+<h3>Agg()<a class="headerlink" href="#agg" title="Link to this heading">#</a></h3>
+<p>After we group the data in a dataframe, we can apply the <code class="docutils literal notranslate"><span class="pre">agg()</span></code> method to calculate multiple statistics per group in one calculation.</p>
+<p>For example, let’s say we would like to know the sum of the word count in all the documents from each year. To achieve this goal, we can group the data by <code class="docutils literal notranslate"><span class="pre">publicationYear</span></code>, and then aggregate the data by summing the numerical values in the column of <code class="docutils literal notranslate"><span class="pre">wordCount</span></code> for each subgroup.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the sum of word count in docs by publication year</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;wordCount&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, you can choose other ways to aggregate the data in each subgroup. For example, suppose you are interested in the biggest word count by year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the biggest word count by year</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;wordCount&#39;</span><span class="p">:</span><span class="s1">&#39;max&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can apply multiple aggregating functions to a single column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apply multiple functions to a single column</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;wordCount&#39;</span><span class="p">:[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can specify multiple columns to apply a function to.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apply a single function to selected columns in each subgroup</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;wordCount&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;pageCount&#39;</span><span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also apply multiple functions to each of the selected columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apply multiple functions to selected columns in each subgroup</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;wordCount&#39;</span><span class="p">:[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">],</span> <span class="s1">&#39;pageCount&#39;</span><span class="p">:[</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p>Take the following dataframe containing the information on the failed banks in US since 2000. Can you work with the dataframe to find out which year witnessed the most failed banks?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download the sample file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas1_failed_banks_since_2000.csv&#39;</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;../data/failed_banks.csv&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample file ready.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Read in the data</span>
+<span class="n">banks_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">banks_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bank Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Cert</th>
+      <th>Acquiring Institution</th>
+      <th>Closing Date</th>
+      <th>Fund</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>First Republic Bank</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+      <td>59017</td>
+      <td>JPMorgan Chase Bank, N.A.</td>
+      <td>1-May-23</td>
+      <td>10543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Signature Bank</td>
+      <td>New York</td>
+      <td>NY</td>
+      <td>57053</td>
+      <td>Flagstar Bank, N.A.</td>
+      <td>12-Mar-23</td>
+      <td>10540</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Silicon Valley Bank</td>
+      <td>Santa Clara</td>
+      <td>CA</td>
+      <td>24735</td>
+      <td>First Citizens Bank &amp; Trust Company</td>
+      <td>10-Mar-23</td>
+      <td>10539</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Almena State Bank</td>
+      <td>Almena</td>
+      <td>KS</td>
+      <td>15426</td>
+      <td>Equity Bank</td>
+      <td>23-Oct-20</td>
+      <td>10538</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>First City Bank of Florida</td>
+      <td>Fort Walton Beach</td>
+      <td>FL</td>
+      <td>16748</td>
+      <td>United Fidelity Bank, fsb</td>
+      <td>16-Oct-20</td>
+      <td>10537</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>Superior Bank, FSB</td>
+      <td>Hinsdale</td>
+      <td>IL</td>
+      <td>32646</td>
+      <td>Superior Federal, FSB</td>
+      <td>27-Jul-01</td>
+      <td>6004</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>Malta National Bank</td>
+      <td>Malta</td>
+      <td>OH</td>
+      <td>6629</td>
+      <td>North Valley Bank</td>
+      <td>3-May-01</td>
+      <td>4648</td>
+    </tr>
+    <tr>
+      <th>563</th>
+      <td>First Alliance Bank &amp; Trust Co.</td>
+      <td>Manchester</td>
+      <td>NH</td>
+      <td>34264</td>
+      <td>Southern New Hampshire Bank &amp; Trust</td>
+      <td>2-Feb-01</td>
+      <td>4647</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>National State Bank of Metropolis</td>
+      <td>Metropolis</td>
+      <td>IL</td>
+      <td>3815</td>
+      <td>Banterra Bank of Marion</td>
+      <td>14-Dec-00</td>
+      <td>4646</td>
+    </tr>
+    <tr>
+      <th>565</th>
+      <td>Bank of Honolulu</td>
+      <td>Honolulu</td>
+      <td>HI</td>
+      <td>21029</td>
+      <td>Bank of the Orient</td>
+      <td>13-Oct-00</td>
+      <td>4645</td>
+    </tr>
+  </tbody>
+</table>
+<p>566 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new column containing the closing year</span>
+
+<span class="c1"># group the data by closing year and aggregate the data to get the number of failed banks by year</span>
+
+<span class="c1"># get the year with the most failed banks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next code cell, can you find out which state witnessed the most failed banks in 2010?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### find out which state witnessed the most failed banks in 2010</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="make-pivot-tables-in-pandas">
+<h2>Make pivot tables in Pandas<a class="headerlink" href="#make-pivot-tables-in-pandas" title="Link to this heading">#</a></h2>
+<p>Pandas has a <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> method that we can use to summarize data. It takes a dataframe as argument and has parameters specifying the shape of the pivot table.</p>
+<p>In the previous section, we have used the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">agg()</span></code> methods to summarize data. For example, we grouped the documents in the shakespeare dataframe by their year of publication and calculated the sum of word count in those documents. We can do the same thing using the <code class="docutils literal notranslate"><span class="pre">.pivot_table</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pivot table giving the sum of </span>
+<span class="c1"># word count by year</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> 
+                       <span class="n">values</span><span class="o">=</span><span class="s1">&#39;wordCount&#39;</span><span class="p">,</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, when aggregating the data, you can apply a single function to multiple columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pivot table giving the max value of the wordCount </span>
+<span class="c1"># and pageCount column by publicationYear</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> 
+                       <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wordCount&#39;</span><span class="p">,</span> <span class="s1">&#39;pageCount&#39;</span><span class="p">],</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also apply multiple functions to a single column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pivot table giving the sum and the mean value of</span>
+<span class="c1"># word count by year</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> 
+                       <span class="n">values</span><span class="o">=</span><span class="s1">&#39;wordCount&#39;</span><span class="p">,</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or, you can apply different functions to different columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pivot table giving the sum of</span>
+<span class="c1"># the wordCount by publicationYear</span>
+<span class="c1"># and the max value of pageCount by publicationYear</span>
+<span class="n">shake_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;publicationYear&#39;</span><span class="p">,</span> 
+                       <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wordCount&#39;</span><span class="p">,</span> <span class="s1">&#39;pageCount&#39;</span><span class="p">],</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wordCount&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;pageCount&#39;</span><span class="p">:</span><span class="s1">&#39;max&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-teaser-for-pandas-intermediate-2">
+<h2>A teaser for Pandas intermediate 2<a class="headerlink" href="#a-teaser-for-pandas-intermediate-2" title="Link to this heading">#</a></h2>
+<p>We have learned how to create a dataframe from files of different formats, how to clean the data and how to summarize the data. With the information we get from summarizing the data, we can go ahead and plot it!</p>
+<p>For example, let’s plot the number of failed banks by year in the failed banks dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare the dataframe for plotting</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2000</span>
+
+<span class="c1"># plot a bar chart to show number of failed banks by year</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;num_banks&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Closing Year&#39;, ylabel=&#39;num_banks&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/2f39113b254ec6046add4613ca6e715ab70bf16639e088000d26f23f8f9750a4.png" src="../../../../_images/2f39113b254ec6046add4613ca6e715ab70bf16639e088000d26f23f8f9750a4.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lesson-complete">
+<h2>Lesson Complete<a class="headerlink" href="#lesson-complete" title="Link to this heading">#</a></h2>
+<p>Congratulations! You have completed <em>Pandas Intermediate 1</em>.</p>
+<section id="start-next-lesson-pandas-intermediate-2">
+<h3>Start Next Lesson: <a class="reference internal" href="pandas-intermediate-2.html"><span class="std std-doc">Pandas intermediate 2 -&gt;</span></a><a class="headerlink" href="#start-next-lesson-pandas-intermediate-2" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-solutions">
+<h3>Exercise Solutions<a class="headerlink" href="#exercise-solutions" title="Link to this heading">#</a></h3>
+<p>Here are a few solutions for exercises in this lesson.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># find out how many runners are named James, with NumPy as backend</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;James &#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.09 ms ± 144 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># find out how many runners are named James, with pyarrow as backend</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;James &#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>481 μs ± 55.3 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># find out how many runners are named Mary, with NumPy as backend</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Mary &#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.04 ms ± 52.7 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<span class="c1"># find out how many runners are named Mary, with pyarrow as backend</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Mary &#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>612 μs ± 177 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### find out which year witnessed the most failed banks</span>
+
+<span class="c1"># download the sample file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/Pandas1_failed_banks_since_2000.csv&#39;</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;../data/failed_banks.csv&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample file ready.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Read in the data</span>
+<span class="n">banks_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># create a new column storing the closing year</span>
+<span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">banks_df</span><span class="p">[</span><span class="s1">&#39;Closing Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">+</span><span class="mi">2000</span>
+
+<span class="c1"># group the data by closing year and get the number of failed banks in each year</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing Year
+2010    157
+2009    140
+2011     92
+2012     51
+2008     25
+2013     24
+2014     18
+2002     11
+2017      8
+2015      8
+2016      5
+2020      4
+2004      4
+2019      4
+2001      4
+2023      3
+2007      3
+2003      3
+2000      2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### find out which state witnessed the most failed banks in 2010</span>
+<span class="n">banks_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Closing Year&#39;</span><span class="p">,</span> <span class="s1">&#39;State&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)[</span><span class="mi">2010</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>State
+FL    29
+GA    21
+IL    16
+CA    12
+WA    11
+MN     8
+MO     6
+MI     5
+SC     4
+AZ     4
+MD     4
+NV     4
+PR     3
+NY     3
+OR     3
+UT     3
+KS     3
+NM     2
+PA     2
+OH     2
+WI     2
+TX     1
+VA     1
+AL     1
+OK     1
+NJ     1
+AR     1
+MS     1
+MA     1
+LA     1
+NE     1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForDataAnalysis/GettingStarted/pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-pyarrow-backend">Use the PyArrow backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-and-aggregate-data">Group and aggregate data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby">Groupby()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agg">Agg()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-pivot-tables-in-pandas">Make pivot tables in Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-teaser-for-pandas-intermediate-2">A teaser for Pandas intermediate 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-pandas-intermediate-2">Start Next Lesson: <span class="xref myst">Pandas intermediate 2 -&gt;</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-solutions">Exercise Solutions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
