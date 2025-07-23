@@ -8,7 +8,7 @@ parts:
   - caption: Python for Data Analysis
     chapters:
     - file: src/PythonForDataAnalysis/GettingStarted/GettingStarted
-    - file: src/Python/GettingData
+    - file: src/PythonForDataAnalysis/GettingData/GettingData
     - file: src/DataProcessingBasics/DataCleaning_Basics
     - file: src/Data_Visualization/DataVisualization
 
