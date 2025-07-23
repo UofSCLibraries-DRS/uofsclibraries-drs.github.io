@@ -22,12 +22,12 @@ parts:
 
   - caption: R for Data Analysis
     chapters:
-    - file: src/R_Code/Data_Wrangling
+    - file: src/RForDataAnalysis/Data_Wrangling
       title: Getting Started
 
   - caption: R for Text Analysis
     chapters:
-    - file: src/TextMining/With_R/GettingStarted
+    - file: src/RForTextAnalysis/GettingStarted/GettingStarted
       title: Getting Started
 
   - caption: Machine Learning
