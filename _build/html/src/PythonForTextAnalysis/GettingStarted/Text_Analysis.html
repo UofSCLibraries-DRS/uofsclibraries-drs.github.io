@@ -1,0 +1,845 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Text Analysis in Python &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForTextAnalysis/GettingStarted/Text_Analysis';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForTextAnalysis/GettingStarted/Text_Analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/PythonForTextAnalysis/GettingStarted/Text_Analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Text Analysis in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-text-analysis">What is Text Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-distribution">Frequency Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-vs-lemmatization">Stemming VS Lemmatization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-real-data">Working with Real Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-text-analysis-in-python">
+<h1>Introduction to Text Analysis in Python<a class="headerlink" href="#introduction-to-text-analysis-in-python" title="Link to this heading">#</a></h1>
+<section id="what-is-text-analysis">
+<h2>What is Text Analysis<a class="headerlink" href="#what-is-text-analysis" title="Link to this heading">#</a></h2>
+<p>Text analysis, also known as text mining, is the process of extracting useful information and insights from written or spoken language. Text analysis involves using various computational techniques and algorithms to automatically process, classify, and analyze large amounts of text data. These techniques can include natural language processing, machine learning, and statistical analysis, among others. The goal of text analysis is to extract meaningful patterns, relationships, and insights from text data that can be used to inform decision-making or to gain a better understanding of a particular topic or issue. Some common applications of text analysis include sentiment analysis, topic modeling, text categorization, and text clustering. This notebook will go over some of the basic</p>
+<p>In Python, the Natural Language Toolkit (NLTK) is a popular library for text processing and natural language processing tasks. NLTK provides several useful tools for tokenizing text, including word tokenization, sentence tokenization, and much more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1">#nltk.download()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h2>
+<p>String tokenization is the process of breaking down a string of text into smaller units called tokens. In natural language processing (NLP), these tokens are typically words or phrases that are separated by specific delimiters, such as spaces, punctuation marks, or special characters.</p>
+<p>The process of tokenization is an important first step in many NLP applications, as it allows the text to be processed and analyzed more easily. Tokenization helps standardize text data by breaking it up into smaller, more manageable units. This makes it easier to compare and analyze different texts, as well as to develop algorithms and models that can process and understand text data. This also improves the computational efficiency of text analysis by reducing the size and complexity of the data. By breaking up a text document into smaller units, it becomes easier to process and analyze the data using algorithms and models.</p>
+<p>Tokenization is also often a fundamental part of preprocessing data as it can help identify and remove unwanted characters, such as punctuation marks, and normalize words by converting them to a common case or stem. This allows for operations such as the frequency of certain tokens can be used as features in a text classification model, or the co-occurrence of certain tokens can be used to identify relationships between words or topics.</p>
+<p>In this example, we first import the word tokenize sentence_tokenize function from the nltk.tokenize module. We then define a string sentence that we want to tokenize and call the sentence_tokenize function on it. The function returns a list of tokens, which we then print to the console.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">sent_tokenize</span><span class="p">,</span> <span class="n">word_tokenize</span><span class="p">,</span> <span class="n">wordpunct_tokenize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Hi there, how are you? I am doing well, thanks for asking. It is really nice out today!</span>
+<span class="s2">Think it will rain tomorrow? The weather caster predicted a 40</span><span class="si">% c</span><span class="s2">hance of precipitation. Maybe, I will bring a jacket with me tomorrow just in case.&quot;&quot;&quot;</span>
+<span class="n">sentence_tokens</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sentence Tokens: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sentence_tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sentence Tokens: [&#39;Hi there, how are you?&#39;, &#39;I am doing well, thanks for asking.&#39;, &#39;It is really nice out today!&#39;, &#39;Think it will rain tomorrow?&#39;, &#39;The weather caster predicted a 40% chance of precipitation.&#39;, &#39;Maybe, I will bring a jacket with me tomorrow just in case.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Word Tokens: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">word_tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Word Tokens: [&#39;Hi&#39;, &#39;there&#39;, &#39;,&#39;, &#39;how&#39;, &#39;are&#39;, &#39;you&#39;, &#39;?&#39;, &#39;I&#39;, &#39;am&#39;, &#39;doing&#39;, &#39;well&#39;, &#39;,&#39;, &#39;thanks&#39;, &#39;for&#39;, &#39;asking&#39;, &#39;.&#39;, &#39;It&#39;, &#39;is&#39;, &#39;really&#39;, &#39;nice&#39;, &#39;out&#39;, &#39;today&#39;, &#39;!&#39;, &#39;Think&#39;, &#39;it&#39;, &#39;will&#39;, &#39;rain&#39;, &#39;tomorrow&#39;, &#39;?&#39;, &#39;The&#39;, &#39;weather&#39;, &#39;caster&#39;, &#39;predicted&#39;, &#39;a&#39;, &#39;40&#39;, &#39;%&#39;, &#39;chance&#39;, &#39;of&#39;, &#39;precipitation&#39;, &#39;.&#39;, &#39;Maybe&#39;, &#39;,&#39;, &#39;I&#39;, &#39;will&#39;, &#39;bring&#39;, &#39;a&#39;, &#39;jacket&#39;, &#39;with&#39;, &#39;me&#39;, &#39;tomorrow&#39;, &#39;just&#39;, &#39;in&#39;, &#39;case&#39;, &#39;.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frequency-distribution">
+<h2>Frequency Distribution<a class="headerlink" href="#frequency-distribution" title="Link to this heading">#</a></h2>
+<p>A frequency distribution is a statistical measure that shows how often each value or category occurs in a dataset. It is a way to summarize and analyze data by counting the number of times each observation or category appears in a dataset. Frequency distributions are commonly used in many different fields, including statistics, data analysis, and natural language processing.</p>
+<p>In natural language processing, frequency distributions are often used to analyze the distribution of words or phrases in a text corpus. By counting the frequency of each word or phrase, it is possible to identify the most common words, determine the overall distribution of word usage, and identify patterns in the data.</p>
+<p>Frequency distributions can be represented in various ways, such as histograms, bar charts, or tables. In Python, the FreqDist() method in the nltk library is commonly used to create and visualize frequency distributions of words or tokens in text data. In NLTK, a frequency distribution is a data structure that allows you to count the number of times that each element (e.g., words or tokens) appears in a text. You can create a frequency distribution using the FreqDist() method, which takes a list of tokens as input.</p>
+<p>To create a frequency distribution from the list of tokens we created you first need to import FreqDist from nltk.probability. You can create a FreqDist object from the previously made list ‘word_tokens’ by creating a variable and setting it to ‘FreqDist(word_tokens).’ If you print the variable, it will only show you the number of samples and outcomes. If you want a list of the most common tokens in the list you can freq_dist.most_common(X) to get a list of the X most common tokens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.probability</span><span class="w"> </span><span class="kn">import</span> <span class="n">FreqDist</span>
+<span class="n">freq_dist</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">word_tokens</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">freq_dist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most common tokens: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">freq_dist</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;FreqDist with 45 samples and 54 outcomes&gt;
+Most common tokens: [(&#39;,&#39;, 3), (&#39;.&#39;, 3), (&#39;?&#39;, 2), (&#39;I&#39;, 2), (&#39;will&#39;, 2)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot a simple frequency distribution, all you have to do is call the plot() function on the your frequency distribution variable. The first parameter will take in a number to show the X most common tokens in the list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_dist</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Frequency distribution for 30 most common tokens in our text collection&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/98e248f77819ff730decfe1be03933d3e0cea7a77022feeb29000cdd171092d7.png" src="../../../_images/98e248f77819ff730decfe1be03933d3e0cea7a77022feeb29000cdd171092d7.png" />
+</div>
+</div>
+</section>
+<section id="stopwords">
+<h2>Stopwords<a class="headerlink" href="#stopwords" title="Link to this heading">#</a></h2>
+<p>In natural language processing, stopwords are words that are commonly used in a language but do not carry significant meaning and are often removed from the text during preprocessing. Examples of stopwords in English include “the”, “and”, “a”, “an”, “in”, “of”, “to”, “is”, “for”, “that”, and so on.</p>
+<p>Stopwords are often removed from text data during text preprocessing because they can negatively affect text analysis tasks such as topic modeling, sentiment analysis, and classification. This is because they occur frequently in text data but do not provide much useful information about the content of the text. Removing stopwords can help to reduce noise in the data and improve the accuracy of the analysis.</p>
+<p>You can import a premade list of stopwords from nltk.corpus. You will have to specify the language you are wanting to find stopwords for. You can print the list to see the entirety of the stopwords.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stopwords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stopwords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;the&#39;, &#39;weren&#39;, &#39;theirs&#39;, &#39;don&#39;, &#39;doing&#39;, &#39;very&#39;, &#39;yours&#39;, &#39;whom&#39;, &quot;don&#39;t&quot;, &#39;both&#39;, &#39;and&#39;, &quot;he&#39;d&quot;, &quot;he&#39;ll&quot;, &#39;myself&#39;, &quot;hadn&#39;t&quot;, &#39;our&#39;, &#39;same&#39;, &#39;d&#39;, &#39;she&#39;, &#39;after&#39;, &quot;we&#39;ll&quot;, &#39;ours&#39;, &#39;himself&#39;, &#39;yourselves&#39;, &quot;should&#39;ve&quot;, &#39;below&#39;, &#39;nor&#39;, &quot;you&#39;d&quot;, &#39;there&#39;, &#39;should&#39;, &quot;won&#39;t&quot;, &#39;of&#39;, &#39;while&#39;, &quot;mightn&#39;t&quot;, &#39;doesn&#39;, &quot;didn&#39;t&quot;, &#39;been&#39;, &quot;they&#39;re&quot;, &quot;mustn&#39;t&quot;, &quot;i&#39;ll&quot;, &#39;now&#39;, &#39;this&#39;, &#39;won&#39;, &#39;does&#39;, &quot;i&#39;ve&quot;, &#39;some&#39;, &quot;she&#39;d&quot;, &#39;their&#39;, &#39;themselves&#39;, &quot;isn&#39;t&quot;, &#39;if&#39;, &#39;these&#39;, &#39;hadn&#39;, &#39;herself&#39;, &quot;wasn&#39;t&quot;, &#39;wouldn&#39;, &#39;over&#39;, &#39;be&#39;, &#39;only&#39;, &quot;it&#39;ll&quot;, &#39;where&#39;, &#39;itself&#39;, &#39;am&#39;, &quot;you&#39;ll&quot;, &quot;she&#39;s&quot;, &quot;i&#39;m&quot;, &quot;needn&#39;t&quot;, &#39;re&#39;, &#39;until&#39;, &#39;again&#39;, &#39;couldn&#39;, &#39;are&#39;, &quot;he&#39;s&quot;, &#39;didn&#39;, &#39;most&#39;, &#39;than&#39;, &#39;few&#39;, &#39;ma&#39;, &#39;y&#39;, &#39;each&#39;, &#39;further&#39;, &#39;ve&#39;, &#39;ourselves&#39;, &#39;that&#39;, &#39;your&#39;, &#39;has&#39;, &#39;other&#39;, &#39;hasn&#39;, &quot;hasn&#39;t&quot;, &quot;haven&#39;t&quot;, &#39;hers&#39;, &#39;at&#39;, &#39;under&#39;, &#39;own&#39;, &#39;all&#39;, &#39;no&#39;, &#39;i&#39;, &#39;mustn&#39;, &quot;shouldn&#39;t&quot;, &#39;about&#39;, &#39;off&#39;, &#39;needn&#39;, &#39;yourself&#39;, &#39;can&#39;, &#39;or&#39;, &#39;once&#39;, &quot;they&#39;d&quot;, &#39;an&#39;, &#39;against&#39;, &#39;we&#39;, &#39;he&#39;, &quot;i&#39;d&quot;, &#39;here&#39;, &quot;it&#39;d&quot;, &#39;mightn&#39;, &#39;too&#39;, &#39;did&#39;, &#39;aren&#39;, &quot;she&#39;ll&quot;, &#39;through&#39;, &#39;a&#39;, &#39;more&#39;, &#39;before&#39;, &#39;his&#39;, &#39;such&#39;, &#39;how&#39;, &#39;s&#39;, &#39;why&#39;, &#39;for&#39;, &#39;having&#39;, &#39;shan&#39;, &#39;t&#39;, &quot;weren&#39;t&quot;, &#39;were&#39;, &quot;aren&#39;t&quot;, &#39;will&#39;, &#39;in&#39;, &#39;have&#39;, &#39;up&#39;, &#39;but&#39;, &#39;above&#39;, &#39;my&#39;, &#39;out&#39;, &#39;o&#39;, &#39;them&#39;, &quot;couldn&#39;t&quot;, &quot;wouldn&#39;t&quot;, &#39;into&#39;, &#39;when&#39;, &#39;so&#39;, &quot;shan&#39;t&quot;, &#39;which&#39;, &quot;it&#39;s&quot;, &quot;we&#39;re&quot;, &#39;isn&#39;, &#39;just&#39;, &#39;wasn&#39;, &#39;ain&#39;, &#39;they&#39;, &#39;it&#39;, &quot;you&#39;ve&quot;, &#39;because&#39;, &#39;on&#39;, &#39;then&#39;, &#39;is&#39;, &quot;they&#39;ve&quot;, &#39;who&#39;, &#39;its&#39;, &#39;what&#39;, &#39;being&#39;, &#39;shouldn&#39;, &quot;we&#39;ve&quot;, &#39;ll&#39;, &quot;we&#39;d&quot;, &quot;that&#39;ll&quot;, &quot;doesn&#39;t&quot;, &#39;down&#39;, &#39;between&#39;, &quot;you&#39;re&quot;, &#39;you&#39;, &#39;to&#39;, &#39;had&#39;, &#39;haven&#39;, &#39;any&#39;, &#39;those&#39;, &#39;with&#39;, &#39;by&#39;, &#39;during&#39;, &#39;m&#39;, &#39;me&#39;, &quot;they&#39;ll&quot;, &#39;do&#39;, &#39;as&#39;, &#39;from&#39;, &#39;not&#39;, &#39;her&#39;, &#39;was&#39;, &#39;him&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>To remove all stopwords from the list of tokens, you can start by making a new empty list. Loop through the list of word tokens, checking to see if each token is in the list of stopwords. Make sure to set i to lowercase when checking against the stopwords list. If i is not in stopwords, append it to the empty list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stopwords_removed</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">word_tokens</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
+        <span class="n">stopwords_removed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List of Word Tokens without Stopwords: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stopwords_removed</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of Word Tokens without Stopwords: [&#39;Hi&#39;, &#39;,&#39;, &#39;?&#39;, &#39;well&#39;, &#39;,&#39;, &#39;thanks&#39;, &#39;asking&#39;, &#39;.&#39;, &#39;really&#39;, &#39;nice&#39;, &#39;today&#39;, &#39;!&#39;, &#39;Think&#39;, &#39;rain&#39;, &#39;tomorrow&#39;, &#39;?&#39;, &#39;weather&#39;, &#39;caster&#39;, &#39;predicted&#39;, &#39;40&#39;, &#39;%&#39;, &#39;chance&#39;, &#39;precipitation&#39;, &#39;.&#39;, &#39;Maybe&#39;, &#39;,&#39;, &#39;bring&#39;, &#39;jacket&#39;, &#39;tomorrow&#39;, &#39;case&#39;, &#39;.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you don’t want punctuation in your list of tokens, you can do something similar to the above. This time you will want to import string. Instead of checking against stopwords, you will check if i is in string.punctuation. If it isn’t, append it to the new list.</p>
+<p>For illustration purposes, this step and the last step were separated. Typically it is much better to combine these two steps. Can you figure out how to combine removing stop words and punctuation into one step?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
+<span class="n">punct_removed</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">stopwords_removed</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">:</span>
+        <span class="n">punct_removed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List of Punctuation: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List of Word Tokens without Stopwords: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">punct_removed</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of Punctuation: !&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+List of Word Tokens without Stopwords: [&#39;Hi&#39;, &#39;well&#39;, &#39;thanks&#39;, &#39;asking&#39;, &#39;really&#39;, &#39;nice&#39;, &#39;today&#39;, &#39;Think&#39;, &#39;rain&#39;, &#39;tomorrow&#39;, &#39;weather&#39;, &#39;caster&#39;, &#39;predicted&#39;, &#39;40&#39;, &#39;chance&#39;, &#39;precipitation&#39;, &#39;Maybe&#39;, &#39;bring&#39;, &#39;jacket&#39;, &#39;tomorrow&#39;, &#39;case&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stemming-vs-lemmatization">
+<h2>Stemming VS Lemmatization<a class="headerlink" href="#stemming-vs-lemmatization" title="Link to this heading">#</a></h2>
+<p>Stemming and lemmatization are two common techniques used in natural language processing to reduce words to their base or root form. The main difference between them is that stemming involves reducing a word to its base form by removing suffixes, while lemmatization involves reducing a word to its base form by considering the context and meaning of the word.</p>
+<p>Stemming is a more basic technique than lemmatization and involves the process of removing suffixes from a word to obtain its base or root form. Stemming is often used to normalize words in text data, which can help to reduce the size of the vocabulary and improve the efficiency of text analysis tasks. Examples of stemming algorithms include the Porter Stemmer and Snowball Stemmer.</p>
+<p>Lemmatization, on the other hand, involves reducing words to their base form based on their dictionary definition or part of speech. This technique takes into account the context and meaning of the word, and as a result, can produce better results than stemming. For example, the lemma of the word “running” is “run”, while the stem is “runn”. Lemmatization can be computationally expensive compared to stemming but can provide better accuracy in certain tasks such as information retrieval or question-answering systems.</p>
+<p>To see the difference, go ahead and import PorterStemmer and WordNetLemmatizerfrom nltk.stem and initialize objects for both of them. Create two empty lists, one for stems and one for lemmas. Loop through the list of tokens and append their respective methods to get stem or lemma of i, ps.stem(i), and lm.lemmatize(i). Print both lists and see if you can spot the differences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">PorterStemmer</span><span class="p">,</span> <span class="n">WordNetLemmatizer</span>
+
+<span class="n">ps</span> <span class="o">=</span> <span class="n">PorterStemmer</span><span class="p">()</span>
+<span class="n">stems</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">lm</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+<span class="n">lem</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">punct_removed</span><span class="p">:</span>
+    <span class="n">stems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">lem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stems: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stems</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lemmatization: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lem</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stems: [&#39;hi&#39;, &#39;well&#39;, &#39;thank&#39;, &#39;ask&#39;, &#39;realli&#39;, &#39;nice&#39;, &#39;today&#39;, &#39;think&#39;, &#39;rain&#39;, &#39;tomorrow&#39;, &#39;weather&#39;, &#39;caster&#39;, &#39;predict&#39;, &#39;40&#39;, &#39;chanc&#39;, &#39;precipit&#39;, &#39;mayb&#39;, &#39;bring&#39;, &#39;jacket&#39;, &#39;tomorrow&#39;, &#39;case&#39;]
+Lemmatization: [&#39;Hi&#39;, &#39;well&#39;, &#39;thanks&#39;, &#39;asking&#39;, &#39;really&#39;, &#39;nice&#39;, &#39;today&#39;, &#39;Think&#39;, &#39;rain&#39;, &#39;tomorrow&#39;, &#39;weather&#39;, &#39;caster&#39;, &#39;predicted&#39;, &#39;40&#39;, &#39;chance&#39;, &#39;precipitation&#39;, &#39;Maybe&#39;, &#39;bring&#39;, &#39;jacket&#39;, &#39;tomorrow&#39;, &#39;case&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-real-data">
+<h2>Working with Real Data<a class="headerlink" href="#working-with-real-data" title="Link to this heading">#</a></h2>
+<p>Now it’s time to work with a larger, real-world set of data. For this example, we will be using a text file containing “Alice in Wonderland” by Lewis Carroll. This was found on the website <a href='https://www.gutenberg.org/'>Project Gutenberg</a>. If you want to use something different feel free to browse there or elsewhere. Be sure to remove the information from the Gutenberg Press from both the beginning and the end of the text file before you start.</p>
+<p>Set a variable equal to the path where you stored the file and open it with the open function. Use the with keyword to automatically close the file when you are done parsing it. Be sure to set the encoding to ‘utf8’ otherwise you will run into errors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../../PythonForDataAnalysis/DataVisualization/alice_in_wonderland.txt&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">alice</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tokenize and clean the file you just read in a similar way to the steps we used above. This time we will go ahead and remove stopwords and punctuation in one loop. Create a FreqDist from the new list and go ahead and print the most common tokens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alice_words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span>
+
+<span class="n">alice_cleaned</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">alice_words</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">:</span>
+            <span class="n">alice_cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            
+<span class="n">alice_freq_dist</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">alice_cleaned</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most common tokens:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alice_freq_dist</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">30</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common tokens:[(&#39;“&#39;, 1118), (&#39;”&#39;, 1114), (&#39;’&#39;, 706), (&#39;said&#39;, 453), (&#39;Alice&#39;, 397), (&#39;little&#39;, 125), (&#39;one&#39;, 94), (&#39;went&#39;, 83), (&#39;like&#39;, 83), (&#39;thought&#39;, 76), (&#39;thing&#39;, 76), (&#39;Queen&#39;, 75), (&#39;could&#39;, 74), (&#39;know&#39;, 74), (&#39;would&#39;, 70), (&#39;time&#39;, 70), (&#39;see&#39;, 64), (&#39;King&#39;, 61), (&#39;Mock&#39;, 57), (&#39;Turtle&#39;, 57), (&#39;began&#39;, 57), (&#39;head&#39;, 57), (&#39;Hatter&#39;, 55), (&#39;Gryphon&#39;, 55), (&#39;go&#39;, 54), (&#39;quite&#39;, 53), (&#39;way&#39;, 52), (&#39;say&#39;, 52), (&#39;much&#39;, 51), (&#39;voice&#39;, 49)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might notice that the first three most common tokens are punctuation that wasn’t contained in the punctuation list. To fix this we will have to add them as extra conditions in our if statement as seen below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alice_cleaned</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">alice_words</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="s1">&#39;“&#39;</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="s1">&#39;”&#39;</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="s1">&#39;’&#39;</span><span class="p">:</span>
+            <span class="n">alice_cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            
+<span class="n">alice_freq_dist</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">alice_cleaned</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most common tokens:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alice_freq_dist</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">30</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common tokens:[(&#39;said&#39;, 453), (&#39;Alice&#39;, 397), (&#39;little&#39;, 125), (&#39;one&#39;, 94), (&#39;went&#39;, 83), (&#39;like&#39;, 83), (&#39;thought&#39;, 76), (&#39;thing&#39;, 76), (&#39;Queen&#39;, 75), (&#39;could&#39;, 74), (&#39;know&#39;, 74), (&#39;would&#39;, 70), (&#39;time&#39;, 70), (&#39;see&#39;, 64), (&#39;King&#39;, 61), (&#39;Mock&#39;, 57), (&#39;Turtle&#39;, 57), (&#39;began&#39;, 57), (&#39;head&#39;, 57), (&#39;Hatter&#39;, 55), (&#39;Gryphon&#39;, 55), (&#39;go&#39;, 54), (&#39;quite&#39;, 53), (&#39;way&#39;, 52), (&#39;say&#39;, 52), (&#39;much&#39;, 51), (&#39;voice&#39;, 49), (&#39;‘&#39;, 46), (&#39;Rabbit&#39;, 45), (&#39;think&#39;, 45)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Go ahead and plot a frequency distrobution of the tokens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alice_freq_dist</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Frequency distribution for 30 most common tokens in Alice in Wonderland&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/b48c20d1beac8a7ce66d6d5f44e43370d16657636b3d3e3ccaac41a095945449.png" src="../../../_images/b48c20d1beac8a7ce66d6d5f44e43370d16657636b3d3e3ccaac41a095945449.png" />
+</div>
+</div>
+<p>Now lets do something a little extra and make a word cloud out of our tokens. A word cloud, also known as a tag cloud or wordle, is a visual representation of text data in which the size of each word indicates its frequency or importance in the text. Word clouds are often used to provide a quick overview or summary of text data and to identify the most common or relevant words in a document, website, or other sources of textual information.</p>
+<p>In a word cloud, each word is represented by a font size that is proportional to its frequency in the text. The most frequent words appear larger and are usually positioned toward the center of the cloud, while less frequent words appear smaller and are positioned toward the edges. The words are usually presented in different colors and fonts to make the cloud more visually appealing and easy to read.</p>
+<p>To create a WordCloud go ahead and import WordCloud from wordcloud. Set variable equal to a WordCloud object using the generate function on your text. Adjust the size of the figure using the figure() function. You will need to use the imshow() function to render the WordCloud object as an image. You will want to set the axis to off, so you don’t see numbers alongside your image. Finally, show your WordCloud with the show() function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="n">alice_word_cloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">background_color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">max_words</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">alice_cleaned</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">alice_word_cloud</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/46aa090bd52f7c999ae5d727459c2721335e7185df6271ffc045e2f9188fca92.png" src="../../../_images/46aa090bd52f7c999ae5d727459c2721335e7185df6271ffc045e2f9188fca92.png" />
+</div>
+</div>
+<p>You can also add a mask to change the shape of your WordCloud. Create a numpy array from an image of your choice as below. Set the mask parameter equal to your array. Be sure to find an image that is mostly solid and simple in shape so it is fairly obvious what the word cloud is supposed to be.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;top_hat.png&#39;</span><span class="p">))</span>
+<span class="n">alice_word_cloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">,</span> <span class="n">background_color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">max_words</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">alice_cleaned</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">alice_word_cloud</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;wordcloud_top_hat.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c587fe50c2a50ea3382ce2267de5a487dcb70b7e0d477fd8405a912b0bacd24b.png" src="../../../_images/c587fe50c2a50ea3382ce2267de5a487dcb70b7e0d477fd8405a912b0bacd24b.png" />
+</div>
+</div>
+</section>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
+<p>This notebook includes contributions and insights from <strong>Patrick Wolfe, MLIS graduate, 2023</strong>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForTextAnalysis/GettingStarted"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-text-analysis">What is Text Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-distribution">Frequency Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-vs-lemmatization">Stemming VS Lemmatization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-real-data">Working with Real Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

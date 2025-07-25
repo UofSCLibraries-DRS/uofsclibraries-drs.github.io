@@ -1,0 +1,2026 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sentiment Analysis &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForTextAnalysis/Advanced/sentiment-analysis-with-vader';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForTextAnalysis/Advanced/sentiment-analysis-with-vader.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/PythonForTextAnalysis/Advanced/sentiment-analysis-with-vader.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sentiment Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-sentiment-analysis">Methods for Sentiment Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-based-algorithms">Rule-Based Algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-models">Machine Learning Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vader">VADER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-vader-algorithm">Applying the VADER Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-tokens-to-the-vader-lexicon">Adding Tokens to the VADER Lexicon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis-with-machine-learning">Sentiment analysis with machine learning</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
+<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="sentiment-analysis">
+<h1>Sentiment Analysis<a class="headerlink" href="#sentiment-analysis" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong> This notebook describes Sentiment Analysis and demonstrates basic applications using:</p>
+<ul class="simple">
+<li><p>VADER (Valence Aware Dictionary for sEntiment Reasoning), a rule-based algorithm</p></li>
+<li><p>Hugging Face’s transformers library</p></li>
+</ul>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Beginner</p>
+<p><strong>Completion Time:</strong> 60 minutes</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p>Python Basics Series (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong> None</p>
+<p><strong>Data Format:</strong> None</p>
+<p><strong>Libraries Used:</strong> vaderSentiment, transformers</p>
+<p><strong>Research Pipeline:</strong> None</p>
+<hr class="docutils" />
+<section id="methods-for-sentiment-analysis">
+<h2>Methods for Sentiment Analysis<a class="headerlink" href="#methods-for-sentiment-analysis" title="Link to this heading">#</a></h2>
+<p>Sentiment analysis can help an analyst discover whether feedback is positive, negative, or mixed. For example, a large company like Amazon or Walmart could use sentiment analysis on user reviews to determine whether a featured product should be promoted or discontinued. Sentiment analysis generally falls into two categories:</p>
+<ul class="simple">
+<li><p>Rule-based algorithms</p></li>
+<li><p>Machine Learning models</p></li>
+</ul>
+<section id="rule-based-algorithms">
+<h3>Rule-Based Algorithms<a class="headerlink" href="#rule-based-algorithms" title="Link to this heading">#</a></h3>
+<p>Rule-based algorithms assign sentiment scores to particular words or multi-word constructions. Simple algorithms may simply assess each word individually in a feedback document and add up an overall score. More complex algorithms may assess multi-word (or n-gram) constructions and have special rules for addressing issues such as negation, emojis, and emoticons. They can detect the difference between “bad”, “not bad”, and “bad ass”. Some algorithms also support emojis and emoticons, such as “=)” and “😁”.</p>
+</section>
+<section id="machine-learning-models">
+<h3>Machine Learning Models<a class="headerlink" href="#machine-learning-models" title="Link to this heading">#</a></h3>
+<p>Machine learning models rely on feedback data that has already been assessed by humans to have a particular sentiment. Each piece of feedback is <strong>labeled</strong> by a human reader who may place the feedback into a particular category. The categories could be as simple as positive, negative, or neutral. As long as there exists <strong>labeled</strong> data, a machine learning model can often identify complex concepts. For example, a car manufacturer may desire to classify the sentiment of feedback from past buyers as: “budget-conscious”, “eco-conscious”, “tech-enthusiastic”, “luxury-driven”, “performance-driven”, etc. Assuming there is an adequately labeled <strong>training data</strong> for each of these categories, a machine learning model could assign a score for each category. This could help analysts understand the brand better, answering questions about what consumers do or do not like about a particular vehicle.</p>
+<p>In the humanities, sentiment analysis could be used to track emerging trends on social media. For example, we might ask: “How are Twitter or Reddit users responding to a particular government policy or public event?” We could look at a hashtag like “#blm” and get a sense of national sentiment on the Black Lives Matter movement. The project <a class="reference external" href="https://onthebooks.lib.unc.edu/">On the Books: Jim Crow and Algorithms of Resistance</a> is using machine classification to detect racist laws based on the pioneering work of <a class="reference external" href="https://en.wikipedia.org/wiki/Pauli_Murray">Pauli Murray</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Safiya_Noble">Safiya Noble</a>’s concept of “algorithmic oppression”.</p>
+</section>
+</section>
+<section id="vader">
+<h2>VADER<a class="headerlink" href="#vader" title="Link to this heading">#</a></h2>
+<p>This notebook uses a rule-based algorithm named VADER (Valence Aware Dictionary and sEntiment Reasoner). VADER is a rule-based algorithm that is “specifically attuned to sentiments expressed in social media.” It relies on a specialized <strong>lexicon</strong> of words, phrases, and emojis. Each token in the lexicon is assigned a “mean-sentiment rating” between -4 (extremely negative) to 4 (extremely positive). Here are a few examples:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Token</p></th>
+<th class="head"><p>Mean-Sentiment Rating</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(:</p></td>
+<td><p>2.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>/:</p></td>
+<td><p>-1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>):&lt;</p></td>
+<td><p>-1.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotflmao</p></td>
+<td><p>2.8</p></td>
+</tr>
+<tr class="row-even"><td><p>aghast</p></td>
+<td><p>-1.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>awesome</p></td>
+<td><p>3.1</p></td>
+</tr>
+<tr class="row-even"><td><p>awful</p></td>
+<td><p>-2.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are over 7500 tokens listed in VADER lexicon. (You can also add your own if you like.) VADER also considers grammatical and syntactical rules to measure intensity based on word order and sensitive relationships between terms. For example, it increases or decreases a sentiment based on degree modifers such as: “The product is good” versus “the product is very good” versus “the product is marginally good.” To read more about VADER, including how it works and to see its code, <a class="reference external" href="https://github.com/cjhutto/vaderSentiment">visit the github page</a>.</p>
+</section>
+<section id="applying-the-vader-algorithm">
+<h2>Applying the VADER Algorithm<a class="headerlink" href="#applying-the-vader-algorithm" title="Link to this heading">#</a></h2>
+<p>First, we need to import the SentimentIntensityAnalyzer. Here we assign the VADER lexicon object to a variable <code class="docutils literal notranslate"><span class="pre">sa</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the SentimentIntensityAnalyzer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vaderSentiment.vaderSentiment</span><span class="w"> </span><span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+
+<span class="c1"># Creat the variable sa to hold the VADER lexicon object </span>
+<span class="n">sa</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can preview the contents of the lexicon by using <code class="docutils literal notranslate"><span class="pre">sa.lexicon</span></code>. This will return a dictionary, where each key is a token and each value is a sentiment rating.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preview the lexicon contents</span>
+<span class="c1"># There are over 7500 tokens in the lexicon</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">lexicon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;$:&#39;: -1.5,
+ &#39;%)&#39;: -0.4,
+ &#39;%-)&#39;: -1.5,
+ &#39;&amp;-:&#39;: -0.4,
+ &#39;&amp;:&#39;: -0.7,
+ &quot;( &#39;}{&#39; )&quot;: 1.6,
+ &#39;(%&#39;: -0.9,
+ &quot;(&#39;-:&quot;: 2.2,
+ &quot;(&#39;:&quot;: 2.3,
+ &#39;((-:&#39;: 2.1,
+ &#39;(*&#39;: 1.1,
+ &#39;(-%&#39;: -0.7,
+ &#39;(-*&#39;: 1.3,
+ &#39;(-:&#39;: 1.6,
+ &#39;(-:0&#39;: 2.8,
+ &#39;(-:&lt;&#39;: -0.4,
+ &#39;(-:o&#39;: 1.5,
+ &#39;(-:O&#39;: 1.5,
+ &#39;(-:{&#39;: -0.1,
+ &#39;(-:|&gt;*&#39;: 1.9,
+ &#39;(-;&#39;: 1.3,
+ &#39;(-;|&#39;: 2.1,
+ &#39;(8&#39;: 2.6,
+ &#39;(:&#39;: 2.2,
+ &#39;(:0&#39;: 2.4,
+ &#39;(:&lt;&#39;: -0.2,
+ &#39;(:o&#39;: 2.5,
+ &#39;(:O&#39;: 2.5,
+ &#39;(;&#39;: 1.1,
+ &#39;(;&lt;&#39;: 0.3,
+ &#39;(=&#39;: 2.2,
+ &#39;(?:&#39;: 2.1,
+ &#39;(^:&#39;: 1.5,
+ &#39;(^;&#39;: 1.5,
+ &#39;(^;0&#39;: 2.0,
+ &#39;(^;o&#39;: 1.9,
+ &#39;(o:&#39;: 1.6,
+ &quot;)&#39;:&quot;: -2.0,
+ &quot;)-&#39;:&quot;: -2.1,
+ &#39;)-:&#39;: -2.1,
+ &#39;)-:&lt;&#39;: -2.2,
+ &#39;)-:{&#39;: -2.1,
+ &#39;):&#39;: -1.8,
+ &#39;):&lt;&#39;: -1.9,
+ &#39;):{&#39;: -2.3,
+ &#39;);&lt;&#39;: -2.6,
+ &#39;*)&#39;: 0.6,
+ &#39;*-)&#39;: 0.3,
+ &#39;*-:&#39;: 2.1,
+ &#39;*-;&#39;: 2.4,
+ &#39;*:&#39;: 1.9,
+ &#39;*&lt;|:-)&#39;: 1.6,
+ &#39;*\\0/*&#39;: 2.3,
+ &#39;*^:&#39;: 1.6,
+ &#39;,-:&#39;: 1.2,
+ &quot;---&#39;-;-{@&quot;: 2.3,
+ &#39;--&lt;--&lt;@&#39;: 2.2,
+ &#39;.-:&#39;: -1.2,
+ &#39;..###-:&#39;: -1.7,
+ &#39;..###:&#39;: -1.9,
+ &#39;/-:&#39;: -1.3,
+ &#39;/:&#39;: -1.3,
+ &#39;/:&lt;&#39;: -1.4,
+ &#39;/=&#39;: -0.9,
+ &#39;/^:&#39;: -1.0,
+ &#39;/o:&#39;: -1.4,
+ &#39;0-8&#39;: 0.1,
+ &#39;0-|&#39;: -1.2,
+ &#39;0:)&#39;: 1.9,
+ &#39;0:-)&#39;: 1.4,
+ &#39;0:-3&#39;: 1.5,
+ &#39;0:03&#39;: 1.9,
+ &#39;0;^)&#39;: 1.6,
+ &#39;0_o&#39;: -0.3,
+ &#39;10q&#39;: 2.1,
+ &#39;1337&#39;: 2.1,
+ &#39;143&#39;: 3.2,
+ &#39;1432&#39;: 2.6,
+ &#39;14aa41&#39;: 2.4,
+ &#39;182&#39;: -2.9,
+ &#39;187&#39;: -3.1,
+ &#39;2g2b4g&#39;: 2.8,
+ &#39;2g2bt&#39;: -0.1,
+ &#39;2qt&#39;: 2.1,
+ &#39;3:(&#39;: -2.2,
+ &#39;3:)&#39;: 0.5,
+ &#39;3:-(&#39;: -2.3,
+ &#39;3:-)&#39;: -1.4,
+ &#39;4col&#39;: -2.2,
+ &#39;4q&#39;: -3.1,
+ &#39;5fs&#39;: 1.5,
+ &#39;8)&#39;: 1.9,
+ &#39;8-d&#39;: 1.7,
+ &#39;8-o&#39;: -0.3,
+ &#39;86&#39;: -1.6,
+ &#39;8d&#39;: 2.9,
+ &#39;:###..&#39;: -2.4,
+ &#39;:$&#39;: -0.2,
+ &#39;:&amp;&#39;: -0.6,
+ &quot;:&#39;(&quot;: -2.2,
+ &quot;:&#39;)&quot;: 2.3,
+ &quot;:&#39;-(&quot;: -2.4,
+ &quot;:&#39;-)&quot;: 2.7,
+ &#39;:(&#39;: -1.9,
+ &#39;:)&#39;: 2.0,
+ &#39;:*&#39;: 2.5,
+ &#39;:-###..&#39;: -2.5,
+ &#39;:-&amp;&#39;: -0.5,
+ &#39;:-(&#39;: -1.5,
+ &#39;:-)&#39;: 1.3,
+ &#39;:-))&#39;: 2.8,
+ &#39;:-*&#39;: 1.7,
+ &#39;:-,&#39;: 1.1,
+ &#39;:-.&#39;: -0.9,
+ &#39;:-/&#39;: -1.2,
+ &#39;:-&lt;&#39;: -1.5,
+ &#39;:-d&#39;: 2.3,
+ &#39;:-D&#39;: 2.3,
+ &#39;:-o&#39;: 0.1,
+ &#39;:-p&#39;: 1.5,
+ &#39;:-[&#39;: -1.6,
+ &#39;:-\\&#39;: -0.9,
+ &#39;:-c&#39;: -1.3,
+ &#39;:-|&#39;: -0.7,
+ &#39;:-||&#39;: -2.5,
+ &#39;:-Þ&#39;: 0.9,
+ &#39;:/&#39;: -1.4,
+ &#39;:3&#39;: 2.3,
+ &#39;:&lt;&#39;: -2.1,
+ &#39;:&gt;&#39;: 2.1,
+ &#39;:?)&#39;: 1.3,
+ &#39;:?c&#39;: -1.6,
+ &#39;:@&#39;: -2.5,
+ &#39;:d&#39;: 2.3,
+ &#39;:D&#39;: 2.3,
+ &#39;:l&#39;: -1.7,
+ &#39;:o&#39;: -0.4,
+ &#39;:p&#39;: 1.0,
+ &#39;:s&#39;: -1.2,
+ &#39;:[&#39;: -2.0,
+ &#39;:\\&#39;: -1.3,
+ &#39;:]&#39;: 2.2,
+ &#39;:^)&#39;: 2.1,
+ &#39;:^*&#39;: 2.6,
+ &#39;:^/&#39;: -1.2,
+ &#39;:^\\&#39;: -1.0,
+ &#39;:^|&#39;: -1.0,
+ &#39;:c&#39;: -2.1,
+ &#39;:c)&#39;: 2.0,
+ &#39;:o)&#39;: 2.1,
+ &#39;:o/&#39;: -1.4,
+ &#39;:o\\&#39;: -1.1,
+ &#39;:o|&#39;: -0.6,
+ &#39;:P&#39;: 1.4,
+ &#39;:{&#39;: -1.9,
+ &#39;:|&#39;: -0.4,
+ &#39;:}&#39;: 2.1,
+ &#39;:Þ&#39;: 1.1,
+ &#39;;)&#39;: 0.9,
+ &#39;;-)&#39;: 1.0,
+ &#39;;-*&#39;: 2.2,
+ &#39;;-]&#39;: 0.7,
+ &#39;;d&#39;: 0.8,
+ &#39;;D&#39;: 0.8,
+ &#39;;]&#39;: 0.6,
+ &#39;;^)&#39;: 1.4,
+ &#39;&lt;/3&#39;: -3.0,
+ &#39;&lt;3&#39;: 1.9,
+ &#39;&lt;:&#39;: 2.1,
+ &#39;&lt;:-|&#39;: -1.4,
+ &#39;=)&#39;: 2.2,
+ &#39;=-3&#39;: 2.0,
+ &#39;=-d&#39;: 2.4,
+ &#39;=-D&#39;: 2.4,
+ &#39;=/&#39;: -1.4,
+ &#39;=3&#39;: 2.1,
+ &#39;=d&#39;: 2.3,
+ &#39;=D&#39;: 2.3,
+ &#39;=l&#39;: -1.2,
+ &#39;=\\&#39;: -1.2,
+ &#39;=]&#39;: 1.6,
+ &#39;=p&#39;: 1.3,
+ &#39;=|&#39;: -0.8,
+ &#39;&gt;-:&#39;: -2.0,
+ &#39;&gt;.&lt;&#39;: -1.3,
+ &#39;&gt;:&#39;: -2.1,
+ &#39;&gt;:(&#39;: -2.7,
+ &#39;&gt;:)&#39;: 0.4,
+ &#39;&gt;:-(&#39;: -2.7,
+ &#39;&gt;:-)&#39;: -0.4,
+ &#39;&gt;:/&#39;: -1.6,
+ &#39;&gt;:o&#39;: -1.2,
+ &#39;&gt;:p&#39;: 1.0,
+ &#39;&gt;:[&#39;: -2.1,
+ &#39;&gt;:\\&#39;: -1.7,
+ &#39;&gt;;(&#39;: -2.9,
+ &#39;&gt;;)&#39;: 0.1,
+ &#39;&gt;_&gt;^&#39;: 2.1,
+ &#39;@:&#39;: -2.1,
+ &#39;@&gt;--&gt;--&#39;: 2.1,
+ &quot;@}-;-&#39;---&quot;: 2.2,
+ &#39;aas&#39;: 2.5,
+ &#39;aayf&#39;: 2.7,
+ &#39;afu&#39;: -2.9,
+ &#39;alol&#39;: 2.8,
+ &#39;ambw&#39;: 2.9,
+ &#39;aml&#39;: 3.4,
+ &#39;atab&#39;: -1.9,
+ &#39;awol&#39;: -1.3,
+ &#39;ayc&#39;: 0.2,
+ &#39;ayor&#39;: -1.2,
+ &#39;aug-00&#39;: 0.3,
+ &#39;bfd&#39;: -2.7,
+ &#39;bfe&#39;: -2.6,
+ &#39;bff&#39;: 2.9,
+ &#39;bffn&#39;: 1.0,
+ &#39;bl&#39;: 2.3,
+ &#39;bsod&#39;: -2.2,
+ &#39;btd&#39;: -2.1,
+ &#39;btdt&#39;: -0.1,
+ &#39;bz&#39;: 0.4,
+ &#39;b^d&#39;: 2.6,
+ &#39;cwot&#39;: -2.3,
+ &quot;d-&#39;:&quot;: -2.5,
+ &#39;d8&#39;: -3.2,
+ &#39;d:&#39;: 1.2,
+ &#39;d:&lt;&#39;: -3.2,
+ &#39;d;&#39;: -2.9,
+ &#39;d=&#39;: 1.5,
+ &#39;doa&#39;: -2.3,
+ &#39;dx&#39;: -3.0,
+ &#39;ez&#39;: 1.5,
+ &#39;fav&#39;: 2.0,
+ &#39;fcol&#39;: -1.8,
+ &#39;ff&#39;: 1.8,
+ &#39;ffs&#39;: -2.8,
+ &#39;fkm&#39;: -2.4,
+ &#39;foaf&#39;: 1.8,
+ &#39;ftw&#39;: 2.0,
+ &#39;fu&#39;: -3.7,
+ &#39;fubar&#39;: -3.0,
+ &#39;fwb&#39;: 2.5,
+ &#39;fyi&#39;: 0.8,
+ &#39;fysa&#39;: 0.4,
+ &#39;g1&#39;: 1.4,
+ &#39;gg&#39;: 1.2,
+ &#39;gga&#39;: 1.7,
+ &#39;gigo&#39;: -0.6,
+ &#39;gj&#39;: 2.0,
+ &#39;gl&#39;: 1.3,
+ &#39;gla&#39;: 2.5,
+ &#39;gn&#39;: 1.2,
+ &#39;gr8&#39;: 2.7,
+ &#39;grrr&#39;: -0.4,
+ &#39;gt&#39;: 1.1,
+ &#39;h&amp;k&#39;: 2.3,
+ &#39;hagd&#39;: 2.2,
+ &#39;hagn&#39;: 2.2,
+ &#39;hago&#39;: 1.2,
+ &#39;hak&#39;: 1.9,
+ &#39;hand&#39;: 2.2,
+ &#39;heart&#39;: 3.2,
+ &#39;hearts&#39;: 3.3,
+ &#39;hho1/2k&#39;: 1.4,
+ &#39;hhoj&#39;: 2.0,
+ &#39;hhok&#39;: 0.9,
+ &#39;hugz&#39;: 2.0,
+ &#39;hi5&#39;: 1.9,
+ &#39;idk&#39;: -0.4,
+ &#39;ijs&#39;: 0.7,
+ &#39;ilu&#39;: 3.4,
+ &#39;iluaaf&#39;: 2.7,
+ &#39;ily&#39;: 3.4,
+ &#39;ily2&#39;: 2.6,
+ &#39;iou&#39;: 0.7,
+ &#39;iyq&#39;: 2.3,
+ &#39;j/j&#39;: 2.0,
+ &#39;j/k&#39;: 1.6,
+ &#39;j/p&#39;: 1.4,
+ &#39;j/t&#39;: -0.2,
+ &#39;j/w&#39;: 1.0,
+ &#39;j4f&#39;: 1.4,
+ &#39;j4g&#39;: 1.7,
+ &#39;jho&#39;: 0.8,
+ &#39;jhomf&#39;: 1.0,
+ &#39;jj&#39;: 1.0,
+ &#39;jk&#39;: 0.9,
+ &#39;jp&#39;: 0.8,
+ &#39;jt&#39;: 0.9,
+ &#39;jw&#39;: 1.6,
+ &#39;jealz&#39;: -1.2,
+ &#39;k4y&#39;: 2.3,
+ &#39;kfy&#39;: 2.3,
+ &#39;kia&#39;: -3.2,
+ &#39;kk&#39;: 1.5,
+ &#39;kmuf&#39;: 2.2,
+ &#39;l&#39;: 2.0,
+ &#39;l&amp;r&#39;: 2.2,
+ &#39;laoj&#39;: 1.3,
+ &#39;lmao&#39;: 2.9,
+ &#39;lmbao&#39;: 1.8,
+ &#39;lmfao&#39;: 2.5,
+ &#39;lmso&#39;: 2.7,
+ &#39;lol&#39;: 1.8,
+ &#39;lolz&#39;: 2.7,
+ &#39;lts&#39;: 1.6,
+ &#39;ly&#39;: 2.6,
+ &#39;ly4e&#39;: 2.7,
+ &#39;lya&#39;: 3.3,
+ &#39;lyb&#39;: 3.0,
+ &#39;lyl&#39;: 3.1,
+ &#39;lylab&#39;: 2.7,
+ &#39;lylas&#39;: 2.6,
+ &#39;lylb&#39;: 1.6,
+ &#39;m8&#39;: 1.4,
+ &#39;mia&#39;: -1.2,
+ &#39;mml&#39;: 2.0,
+ &#39;mofo&#39;: -2.4,
+ &#39;muah&#39;: 2.3,
+ &#39;mubar&#39;: -1.0,
+ &#39;musm&#39;: 0.9,
+ &#39;mwah&#39;: 2.5,
+ &#39;n1&#39;: 1.9,
+ &#39;nbd&#39;: 1.3,
+ &#39;nbif&#39;: -0.5,
+ &#39;nfc&#39;: -2.7,
+ &#39;nfw&#39;: -2.4,
+ &#39;nh&#39;: 2.2,
+ &#39;nimby&#39;: -0.8,
+ &#39;nimjd&#39;: -0.7,
+ &#39;nimq&#39;: -0.2,
+ &#39;nimy&#39;: -1.4,
+ &#39;nitl&#39;: -1.5,
+ &#39;nme&#39;: -2.1,
+ &#39;noyb&#39;: -0.7,
+ &#39;np&#39;: 1.4,
+ &#39;ntmu&#39;: 1.4,
+ &#39;o-8&#39;: -0.5,
+ &#39;o-:&#39;: -0.3,
+ &#39;o-|&#39;: -1.1,
+ &#39;o.o&#39;: -0.8,
+ &#39;O.o&#39;: -0.6,
+ &#39;o.O&#39;: -0.6,
+ &#39;o:&#39;: -0.2,
+ &#39;o:)&#39;: 1.5,
+ &#39;o:-)&#39;: 2.0,
+ &#39;o:-3&#39;: 2.2,
+ &#39;o:3&#39;: 2.3,
+ &#39;o:&lt;&#39;: -0.3,
+ &#39;o;^)&#39;: 1.6,
+ &#39;ok&#39;: 1.2,
+ &#39;o_o&#39;: -0.5,
+ &#39;O_o&#39;: -0.5,
+ &#39;o_O&#39;: -0.5,
+ &#39;pita&#39;: -2.4,
+ &#39;pls&#39;: 0.3,
+ &#39;plz&#39;: 0.3,
+ &#39;pmbi&#39;: 0.8,
+ &#39;pmfji&#39;: 0.3,
+ &#39;pmji&#39;: 0.7,
+ &#39;po&#39;: -2.6,
+ &#39;ptl&#39;: 2.6,
+ &#39;pu&#39;: -1.1,
+ &#39;qq&#39;: -2.2,
+ &#39;qt&#39;: 1.8,
+ &#39;r&amp;r&#39;: 2.4,
+ &#39;rofl&#39;: 2.7,
+ &#39;roflmao&#39;: 2.5,
+ &#39;rotfl&#39;: 2.6,
+ &#39;rotflmao&#39;: 2.8,
+ &#39;rotflmfao&#39;: 2.5,
+ &#39;rotflol&#39;: 3.0,
+ &#39;rotgl&#39;: 2.9,
+ &#39;rotglmao&#39;: 1.8,
+ &#39;s:&#39;: -1.1,
+ &#39;sapfu&#39;: -1.1,
+ &#39;sete&#39;: 2.8,
+ &#39;sfete&#39;: 2.7,
+ &#39;sgtm&#39;: 2.4,
+ &#39;slap&#39;: 0.6,
+ &#39;slaw&#39;: 2.1,
+ &#39;smh&#39;: -1.3,
+ &#39;snafu&#39;: -2.5,
+ &#39;sob&#39;: -1.0,
+ &#39;swak&#39;: 2.3,
+ &#39;tgif&#39;: 2.3,
+ &#39;thks&#39;: 1.4,
+ &#39;thx&#39;: 1.5,
+ &#39;tia&#39;: 2.3,
+ &#39;tmi&#39;: -0.3,
+ &#39;tnx&#39;: 1.1,
+ &#39;true&#39;: 1.8,
+ &#39;tx&#39;: 1.5,
+ &#39;txs&#39;: 1.1,
+ &#39;ty&#39;: 1.6,
+ &#39;tyvm&#39;: 2.5,
+ &#39;urw&#39;: 1.9,
+ &#39;vbg&#39;: 2.1,
+ &#39;vbs&#39;: 3.1,
+ &#39;vip&#39;: 2.3,
+ &#39;vwd&#39;: 2.6,
+ &#39;vwp&#39;: 2.1,
+ &#39;wag&#39;: -0.2,
+ &#39;wd&#39;: 2.7,
+ &#39;wilco&#39;: 0.9,
+ &#39;wp&#39;: 1.0,
+ &#39;wtf&#39;: -2.8,
+ &#39;wtg&#39;: 2.1,
+ &#39;wth&#39;: -2.4,
+ &#39;x-d&#39;: 2.6,
+ &#39;x-p&#39;: 1.7,
+ &#39;xd&#39;: 2.8,
+ &#39;xlnt&#39;: 3.0,
+ &#39;xoxo&#39;: 3.0,
+ &#39;xoxozzz&#39;: 2.3,
+ &#39;xp&#39;: 1.6,
+ &#39;xqzt&#39;: 1.6,
+ &#39;xtc&#39;: 0.8,
+ &#39;yolo&#39;: 1.1,
+ &#39;yoyo&#39;: 0.4,
+ &#39;yvw&#39;: 1.6,
+ &#39;yw&#39;: 1.8,
+ &#39;ywia&#39;: 2.5,
+ &#39;zzz&#39;: -1.2,
+ &#39;[-;&#39;: 0.5,
+ &#39;[:&#39;: 1.3,
+ &#39;[;&#39;: 1.0,
+ &#39;[=&#39;: 1.7,
+ &#39;\\-:&#39;: -1.0,
+ &#39;\\:&#39;: -1.0,
+ &#39;\\:&lt;&#39;: -1.7,
+ &#39;\\=&#39;: -1.1,
+ &#39;\\^:&#39;: -1.3,
+ &#39;\\o/&#39;: 2.2,
+ &#39;\\o:&#39;: -1.2,
+ &#39;]-:&#39;: -2.1,
+ &#39;]:&#39;: -1.6,
+ &#39;]:&lt;&#39;: -2.5,
+ &#39;^&lt;_&lt;&#39;: 1.4,
+ &#39;^urs&#39;: -2.8,
+ &#39;abandon&#39;: -1.9,
+ &#39;abandoned&#39;: -2.0,
+ &#39;abandoner&#39;: -1.9,
+ &#39;abandoners&#39;: -1.9,
+ &#39;abandoning&#39;: -1.6,
+ &#39;abandonment&#39;: -2.4,
+ &#39;abandonments&#39;: -1.7,
+ &#39;abandons&#39;: -1.3,
+ &#39;abducted&#39;: -2.3,
+ &#39;abduction&#39;: -2.8,
+ &#39;abductions&#39;: -2.0,
+ &#39;abhor&#39;: -2.0,
+ &#39;abhorred&#39;: -2.4,
+ &#39;abhorrent&#39;: -3.1,
+ &#39;abhors&#39;: -2.9,
+ &#39;abilities&#39;: 1.0,
+ &#39;ability&#39;: 1.3,
+ &#39;aboard&#39;: 0.1,
+ &#39;absentee&#39;: -1.1,
+ &#39;absentees&#39;: -0.8,
+ &#39;absolve&#39;: 1.2,
+ &#39;absolved&#39;: 1.5,
+ &#39;absolves&#39;: 1.3,
+ &#39;absolving&#39;: 1.6,
+ &#39;abuse&#39;: -3.2,
+ &#39;abused&#39;: -2.3,
+ &#39;abuser&#39;: -2.6,
+ &#39;abusers&#39;: -2.6,
+ &#39;abuses&#39;: -2.6,
+ &#39;abusing&#39;: -2.0,
+ &#39;abusive&#39;: -3.2,
+ &#39;abusively&#39;: -2.8,
+ &#39;abusiveness&#39;: -2.5,
+ &#39;abusivenesses&#39;: -3.0,
+ &#39;accept&#39;: 1.6,
+ &#39;acceptabilities&#39;: 1.6,
+ &#39;acceptability&#39;: 1.1,
+ &#39;acceptable&#39;: 1.3,
+ &#39;acceptableness&#39;: 1.3,
+ &#39;acceptably&#39;: 1.5,
+ &#39;acceptance&#39;: 2.0,
+ &#39;acceptances&#39;: 1.7,
+ &#39;acceptant&#39;: 1.6,
+ &#39;acceptation&#39;: 1.3,
+ &#39;acceptations&#39;: 0.9,
+ &#39;accepted&#39;: 1.1,
+ &#39;accepting&#39;: 1.6,
+ &#39;accepts&#39;: 1.3,
+ &#39;accident&#39;: -2.1,
+ &#39;accidental&#39;: -0.3,
+ &#39;accidentally&#39;: -1.4,
+ &#39;accidents&#39;: -1.3,
+ &#39;accomplish&#39;: 1.8,
+ &#39;accomplished&#39;: 1.9,
+ &#39;accomplishes&#39;: 1.7,
+ &#39;accusation&#39;: -1.0,
+ &#39;accusations&#39;: -1.3,
+ &#39;accuse&#39;: -0.8,
+ &#39;accused&#39;: -1.2,
+ &#39;accuses&#39;: -1.4,
+ &#39;accusing&#39;: -0.7,
+ &#39;ache&#39;: -1.6,
+ &#39;ached&#39;: -1.6,
+ &#39;aches&#39;: -1.0,
+ &#39;achievable&#39;: 1.3,
+ &#39;aching&#39;: -2.2,
+ &#39;acquit&#39;: 0.8,
+ &#39;acquits&#39;: 0.1,
+ &#39;acquitted&#39;: 1.0,
+ &#39;acquitting&#39;: 1.3,
+ &#39;acrimonious&#39;: -1.7,
+ &#39;active&#39;: 1.7,
+ &#39;actively&#39;: 1.3,
+ &#39;activeness&#39;: 0.6,
+ &#39;activenesses&#39;: 0.8,
+ &#39;actives&#39;: 1.1,
+ &#39;adequate&#39;: 0.9,
+ &#39;admirability&#39;: 2.4,
+ &#39;admirable&#39;: 2.6,
+ &#39;admirableness&#39;: 2.2,
+ &#39;admirably&#39;: 2.5,
+ &#39;admiral&#39;: 1.3,
+ &#39;admirals&#39;: 1.5,
+ &#39;admiralties&#39;: 1.6,
+ &#39;admiralty&#39;: 1.2,
+ &#39;admiration&#39;: 2.5,
+ &#39;admirations&#39;: 1.6,
+ &#39;admire&#39;: 2.1,
+ &#39;admired&#39;: 2.3,
+ &#39;admirer&#39;: 1.8,
+ &#39;admirers&#39;: 1.7,
+ &#39;admires&#39;: 1.5,
+ &#39;admiring&#39;: 1.6,
+ &#39;admiringly&#39;: 2.3,
+ &#39;admit&#39;: 0.8,
+ &#39;admits&#39;: 1.2,
+ &#39;admitted&#39;: 0.4,
+ &#39;admonished&#39;: -1.9,
+ &#39;adopt&#39;: 0.7,
+ &#39;adopts&#39;: 0.7,
+ &#39;adorability&#39;: 2.2,
+ &#39;adorable&#39;: 2.2,
+ &#39;adorableness&#39;: 2.5,
+ &#39;adorably&#39;: 2.1,
+ &#39;adoration&#39;: 2.9,
+ &#39;adorations&#39;: 2.2,
+ &#39;adore&#39;: 2.6,
+ &#39;adored&#39;: 1.8,
+ &#39;adorer&#39;: 1.7,
+ &#39;adorers&#39;: 2.1,
+ &#39;adores&#39;: 1.6,
+ &#39;adoring&#39;: 2.6,
+ &#39;adoringly&#39;: 2.4,
+ &#39;adorn&#39;: 0.9,
+ &#39;adorned&#39;: 0.8,
+ &#39;adorner&#39;: 1.3,
+ &#39;adorners&#39;: 0.9,
+ &#39;adorning&#39;: 1.0,
+ &#39;adornment&#39;: 1.3,
+ &#39;adornments&#39;: 0.8,
+ &#39;adorns&#39;: 0.5,
+ &#39;advanced&#39;: 1.0,
+ &#39;advantage&#39;: 1.0,
+ &#39;advantaged&#39;: 1.4,
+ &#39;advantageous&#39;: 1.5,
+ &#39;advantageously&#39;: 1.9,
+ &#39;advantageousness&#39;: 1.6,
+ &#39;advantages&#39;: 1.5,
+ &#39;advantaging&#39;: 1.6,
+ &#39;adventure&#39;: 1.3,
+ &#39;adventured&#39;: 1.3,
+ &#39;adventurer&#39;: 1.2,
+ &#39;adventurers&#39;: 0.9,
+ &#39;adventures&#39;: 1.4,
+ &#39;adventuresome&#39;: 1.7,
+ &#39;adventuresomeness&#39;: 1.3,
+ &#39;adventuress&#39;: 0.8,
+ &#39;adventuresses&#39;: 1.4,
+ &#39;adventuring&#39;: 2.3,
+ &#39;adventurism&#39;: 1.5,
+ &#39;adventurist&#39;: 1.4,
+ &#39;adventuristic&#39;: 1.7,
+ &#39;adventurists&#39;: 1.2,
+ &#39;adventurous&#39;: 1.4,
+ &#39;adventurously&#39;: 1.3,
+ &#39;adventurousness&#39;: 1.8,
+ &#39;adversarial&#39;: -1.5,
+ &#39;adversaries&#39;: -1.0,
+ &#39;adversary&#39;: -0.8,
+ &#39;adversative&#39;: -1.2,
+ &#39;adversatively&#39;: -0.1,
+ &#39;adversatives&#39;: -1.0,
+ &#39;adverse&#39;: -1.5,
+ &#39;adversely&#39;: -0.8,
+ &#39;adverseness&#39;: -0.6,
+ &#39;adversities&#39;: -1.5,
+ &#39;adversity&#39;: -1.8,
+ &#39;affected&#39;: -0.6,
+ &#39;affection&#39;: 2.4,
+ &#39;affectional&#39;: 1.9,
+ &#39;affectionally&#39;: 1.5,
+ &#39;affectionate&#39;: 1.9,
+ &#39;affectionately&#39;: 2.2,
+ &#39;affectioned&#39;: 1.8,
+ &#39;affectionless&#39;: -2.0,
+ &#39;affections&#39;: 1.5,
+ &#39;afflicted&#39;: -1.5,
+ &#39;affronted&#39;: 0.2,
+ &#39;aggravate&#39;: -2.5,
+ &#39;aggravated&#39;: -1.9,
+ &#39;aggravates&#39;: -1.9,
+ &#39;aggravating&#39;: -1.2,
+ &#39;aggress&#39;: -1.3,
+ &#39;aggressed&#39;: -1.4,
+ &#39;aggresses&#39;: -0.5,
+ &#39;aggressing&#39;: -0.6,
+ &#39;aggression&#39;: -1.2,
+ &#39;aggressions&#39;: -1.3,
+ &#39;aggressive&#39;: -0.6,
+ &#39;aggressively&#39;: -1.3,
+ &#39;aggressiveness&#39;: -1.8,
+ &#39;aggressivities&#39;: -1.4,
+ &#39;aggressivity&#39;: -0.6,
+ &#39;aggressor&#39;: -0.8,
+ &#39;aggressors&#39;: -0.9,
+ &#39;aghast&#39;: -1.9,
+ &#39;agitate&#39;: -1.7,
+ &#39;agitated&#39;: -2.0,
+ &#39;agitatedly&#39;: -1.6,
+ &#39;agitates&#39;: -1.4,
+ &#39;agitating&#39;: -1.8,
+ &#39;agitation&#39;: -1.0,
+ &#39;agitational&#39;: -1.2,
+ &#39;agitations&#39;: -1.3,
+ &#39;agitative&#39;: -1.3,
+ &#39;agitato&#39;: -0.1,
+ &#39;agitator&#39;: -1.4,
+ &#39;agitators&#39;: -2.1,
+ &#39;agog&#39;: 1.9,
+ &#39;agonise&#39;: -2.1,
+ &#39;agonised&#39;: -2.3,
+ &#39;agonises&#39;: -2.4,
+ &#39;agonising&#39;: -1.5,
+ &#39;agonize&#39;: -2.3,
+ &#39;agonized&#39;: -2.2,
+ &#39;agonizes&#39;: -2.3,
+ &#39;agonizing&#39;: -2.7,
+ &#39;agonizingly&#39;: -2.3,
+ &#39;agony&#39;: -1.8,
+ &#39;agree&#39;: 1.5,
+ &#39;agreeability&#39;: 1.9,
+ &#39;agreeable&#39;: 1.8,
+ &#39;agreeableness&#39;: 1.8,
+ &#39;agreeablenesses&#39;: 1.3,
+ &#39;agreeably&#39;: 1.6,
+ &#39;agreed&#39;: 1.1,
+ &#39;agreeing&#39;: 1.4,
+ &#39;agreement&#39;: 2.2,
+ &#39;agreements&#39;: 1.1,
+ &#39;agrees&#39;: 0.8,
+ &#39;alarm&#39;: -1.4,
+ &#39;alarmed&#39;: -1.4,
+ &#39;alarming&#39;: -0.5,
+ &#39;alarmingly&#39;: -2.6,
+ &#39;alarmism&#39;: -0.3,
+ &#39;alarmists&#39;: -1.1,
+ &#39;alarms&#39;: -1.1,
+ &#39;alas&#39;: -1.1,
+ &#39;alert&#39;: 1.2,
+ &#39;alienation&#39;: -1.1,
+ &#39;alive&#39;: 1.6,
+ &#39;allergic&#39;: -1.2,
+ &#39;allow&#39;: 0.9,
+ &#39;alone&#39;: -1.0,
+ &#39;alright&#39;: 1.0,
+ &#39;amaze&#39;: 2.5,
+ &#39;amazed&#39;: 2.2,
+ &#39;amazedly&#39;: 2.1,
+ &#39;amazement&#39;: 2.5,
+ &#39;amazements&#39;: 2.2,
+ &#39;amazes&#39;: 2.2,
+ &#39;amazing&#39;: 2.8,
+ &#39;amazon&#39;: 0.7,
+ &#39;amazonite&#39;: 0.2,
+ &#39;amazons&#39;: -0.1,
+ &#39;amazonstone&#39;: 1.0,
+ &#39;amazonstones&#39;: 0.2,
+ &#39;ambitious&#39;: 2.1,
+ &#39;ambivalent&#39;: 0.5,
+ &#39;amor&#39;: 3.0,
+ &#39;amoral&#39;: -1.6,
+ &#39;amoralism&#39;: -0.7,
+ &#39;amoralisms&#39;: -0.7,
+ &#39;amoralities&#39;: -1.2,
+ &#39;amorality&#39;: -1.5,
+ &#39;amorally&#39;: -1.0,
+ &#39;amoretti&#39;: 0.2,
+ &#39;amoretto&#39;: 0.6,
+ &#39;amorettos&#39;: 0.3,
+ &#39;amorino&#39;: 1.2,
+ &#39;amorist&#39;: 1.6,
+ &#39;amoristic&#39;: 1.0,
+ &#39;amorists&#39;: 0.1,
+ &#39;amoroso&#39;: 2.3,
+ &#39;amorous&#39;: 1.8,
+ &#39;amorously&#39;: 2.3,
+ &#39;amorousness&#39;: 2.0,
+ &#39;amorphous&#39;: -0.2,
+ &#39;amorphously&#39;: 0.1,
+ &#39;amorphousness&#39;: 0.3,
+ &#39;amort&#39;: -2.1,
+ &#39;amortise&#39;: 0.5,
+ &#39;amortised&#39;: -0.2,
+ &#39;amortises&#39;: 0.1,
+ &#39;amortizable&#39;: 0.5,
+ &#39;amortization&#39;: 0.6,
+ &#39;amortizations&#39;: 0.2,
+ &#39;amortize&#39;: -0.1,
+ &#39;amortized&#39;: 0.8,
+ &#39;amortizes&#39;: 0.6,
+ &#39;amortizing&#39;: 0.8,
+ &#39;amusable&#39;: 0.7,
+ &#39;amuse&#39;: 1.7,
+ &#39;amused&#39;: 1.8,
+ &#39;amusedly&#39;: 2.2,
+ &#39;amusement&#39;: 1.5,
+ &#39;amusements&#39;: 1.5,
+ &#39;amuser&#39;: 1.1,
+ &#39;amusers&#39;: 1.3,
+ &#39;amuses&#39;: 1.7,
+ &#39;amusia&#39;: 0.3,
+ &#39;amusias&#39;: -0.4,
+ &#39;amusing&#39;: 1.6,
+ &#39;amusingly&#39;: 0.8,
+ &#39;amusingness&#39;: 1.8,
+ &#39;amusive&#39;: 1.7,
+ &#39;anger&#39;: -2.7,
+ &#39;angered&#39;: -2.3,
+ &#39;angering&#39;: -2.2,
+ &#39;angerly&#39;: -1.9,
+ &#39;angers&#39;: -2.3,
+ &#39;angrier&#39;: -2.3,
+ &#39;angriest&#39;: -3.1,
+ &#39;angrily&#39;: -1.8,
+ &#39;angriness&#39;: -1.7,
+ &#39;angry&#39;: -2.3,
+ &#39;anguish&#39;: -2.9,
+ &#39;anguished&#39;: -1.8,
+ &#39;anguishes&#39;: -2.1,
+ &#39;anguishing&#39;: -2.7,
+ &#39;animosity&#39;: -1.9,
+ &#39;annoy&#39;: -1.9,
+ &#39;annoyance&#39;: -1.3,
+ &#39;annoyances&#39;: -1.8,
+ &#39;annoyed&#39;: -1.6,
+ &#39;annoyer&#39;: -2.2,
+ &#39;annoyers&#39;: -1.5,
+ &#39;annoying&#39;: -1.7,
+ &#39;annoys&#39;: -1.8,
+ &#39;antagonism&#39;: -1.9,
+ &#39;antagonisms&#39;: -1.2,
+ &#39;antagonist&#39;: -1.9,
+ &#39;antagonistic&#39;: -1.7,
+ &#39;antagonistically&#39;: -2.2,
+ &#39;antagonists&#39;: -1.7,
+ &#39;antagonize&#39;: -2.0,
+ &#39;antagonized&#39;: -1.4,
+ &#39;antagonizes&#39;: -0.5,
+ &#39;antagonizing&#39;: -2.7,
+ &#39;anti&#39;: -1.3,
+ &#39;anticipation&#39;: 0.4,
+ &#39;anxieties&#39;: -0.6,
+ &#39;anxiety&#39;: -0.7,
+ &#39;anxious&#39;: -1.0,
+ &#39;anxiously&#39;: -0.9,
+ &#39;anxiousness&#39;: -1.0,
+ &#39;aok&#39;: 2.0,
+ &#39;apathetic&#39;: -1.2,
+ &#39;apathetically&#39;: -0.4,
+ &#39;apathies&#39;: -0.6,
+ &#39;apathy&#39;: -1.2,
+ &#39;apeshit&#39;: -0.9,
+ &#39;apocalyptic&#39;: -3.4,
+ &#39;apologise&#39;: 1.6,
+ &#39;apologised&#39;: 0.4,
+ &#39;apologises&#39;: 0.8,
+ &#39;apologising&#39;: 0.2,
+ &#39;apologize&#39;: 0.4,
+ &#39;apologized&#39;: 1.3,
+ &#39;apologizes&#39;: 1.5,
+ &#39;apologizing&#39;: -0.3,
+ &#39;apology&#39;: 0.2,
+ &#39;appall&#39;: -2.4,
+ &#39;appalled&#39;: -2.0,
+ &#39;appalling&#39;: -1.5,
+ &#39;appallingly&#39;: -2.0,
+ &#39;appalls&#39;: -1.9,
+ &#39;appease&#39;: 1.1,
+ &#39;appeased&#39;: 0.9,
+ &#39;appeases&#39;: 0.9,
+ &#39;appeasing&#39;: 1.0,
+ &#39;applaud&#39;: 2.0,
+ &#39;applauded&#39;: 1.5,
+ &#39;applauding&#39;: 2.1,
+ &#39;applauds&#39;: 1.4,
+ &#39;applause&#39;: 1.8,
+ &#39;appreciate&#39;: 1.7,
+ &#39;appreciated&#39;: 2.3,
+ &#39;appreciates&#39;: 2.3,
+ &#39;appreciating&#39;: 1.9,
+ &#39;appreciation&#39;: 2.3,
+ &#39;appreciations&#39;: 1.7,
+ &#39;appreciative&#39;: 2.6,
+ &#39;appreciatively&#39;: 1.8,
+ &#39;appreciativeness&#39;: 1.6,
+ &#39;appreciator&#39;: 2.6,
+ &#39;appreciators&#39;: 1.5,
+ &#39;appreciatory&#39;: 1.7,
+ &#39;apprehensible&#39;: 1.1,
+ &#39;apprehensibly&#39;: -0.2,
+ &#39;apprehension&#39;: -2.1,
+ &#39;apprehensions&#39;: -0.9,
+ &#39;apprehensively&#39;: -0.3,
+ &#39;apprehensiveness&#39;: -0.7,
+ &#39;approval&#39;: 2.1,
+ &#39;approved&#39;: 1.8,
+ &#39;approves&#39;: 1.7,
+ &#39;ardent&#39;: 2.1,
+ &#39;arguable&#39;: -1.0,
+ &#39;arguably&#39;: -1.0,
+ &#39;argue&#39;: -1.4,
+ &#39;argued&#39;: -1.5,
+ &#39;arguer&#39;: -1.6,
+ &#39;arguers&#39;: -1.4,
+ &#39;argues&#39;: -1.6,
+ &#39;arguing&#39;: -2.0,
+ &#39;argument&#39;: -1.5,
+ &#39;argumentative&#39;: -1.5,
+ &#39;argumentatively&#39;: -1.8,
+ &#39;argumentive&#39;: -1.5,
+ &#39;arguments&#39;: -1.7,
+ &#39;arrest&#39;: -1.4,
+ &#39;arrested&#39;: -2.1,
+ &#39;arrests&#39;: -1.9,
+ &#39;arrogance&#39;: -2.4,
+ &#39;arrogances&#39;: -1.9,
+ &#39;arrogant&#39;: -2.2,
+ &#39;arrogantly&#39;: -1.8,
+ &#39;ashamed&#39;: -2.1,
+ &#39;ashamedly&#39;: -1.7,
+ &#39;ass&#39;: -2.5,
+ &#39;assassination&#39;: -2.9,
+ &#39;assassinations&#39;: -2.7,
+ &#39;assault&#39;: -2.8,
+ &#39;assaulted&#39;: -2.4,
+ &#39;assaulting&#39;: -2.3,
+ &#39;assaultive&#39;: -2.8,
+ &#39;assaults&#39;: -2.5,
+ &#39;asset&#39;: 1.5,
+ &#39;assets&#39;: 0.7,
+ &#39;assfucking&#39;: -2.5,
+ &#39;assholes&#39;: -2.8,
+ &#39;assurance&#39;: 1.4,
+ &#39;assurances&#39;: 1.4,
+ &#39;assure&#39;: 1.4,
+ &#39;assured&#39;: 1.5,
+ &#39;assuredly&#39;: 1.6,
+ &#39;assuredness&#39;: 1.4,
+ &#39;assurer&#39;: 0.9,
+ &#39;assurers&#39;: 1.1,
+ &#39;assures&#39;: 1.3,
+ &#39;assurgent&#39;: 1.3,
+ &#39;assuring&#39;: 1.6,
+ &#39;assuror&#39;: 0.5,
+ &#39;assurors&#39;: 0.7,
+ &#39;astonished&#39;: 1.6,
+ &#39;astound&#39;: 1.7,
+ &#39;astounded&#39;: 1.8,
+ &#39;astounding&#39;: 1.8,
+ &#39;astoundingly&#39;: 2.1,
+ &#39;astounds&#39;: 2.1,
+ &#39;attachment&#39;: 1.2,
+ &#39;attachments&#39;: 1.1,
+ &#39;attack&#39;: -2.1,
+ &#39;attacked&#39;: -2.0,
+ &#39;attacker&#39;: -2.7,
+ &#39;attackers&#39;: -2.7,
+ &#39;attacking&#39;: -2.0,
+ &#39;attacks&#39;: -1.9,
+ &#39;attract&#39;: 1.5,
+ &#39;attractancy&#39;: 0.9,
+ &#39;attractant&#39;: 1.3,
+ &#39;attractants&#39;: 1.4,
+ &#39;attracted&#39;: 1.8,
+ &#39;attracting&#39;: 2.1,
+ &#39;attraction&#39;: 2.0,
+ &#39;attractions&#39;: 1.8,
+ &#39;attractive&#39;: 1.9,
+ &#39;attractively&#39;: 2.2,
+ &#39;attractiveness&#39;: 1.8,
+ &#39;attractivenesses&#39;: 2.1,
+ &#39;attractor&#39;: 1.2,
+ &#39;attractors&#39;: 1.2,
+ &#39;attracts&#39;: 1.7,
+ &#39;audacious&#39;: 0.9,
+ &#39;authority&#39;: 0.3,
+ &#39;aversion&#39;: -1.9,
+ &#39;aversions&#39;: -1.1,
+ &#39;aversive&#39;: -1.6,
+ &#39;aversively&#39;: -0.8,
+ &#39;avert&#39;: -0.7,
+ &#39;averted&#39;: -0.3,
+ &#39;averts&#39;: -0.4,
+ &#39;avid&#39;: 1.2,
+ &#39;avoid&#39;: -1.2,
+ &#39;avoidance&#39;: -1.7,
+ &#39;avoidances&#39;: -1.1,
+ &#39;avoided&#39;: -1.4,
+ &#39;avoider&#39;: -1.8,
+ &#39;avoiders&#39;: -1.4,
+ &#39;avoiding&#39;: -1.4,
+ &#39;avoids&#39;: -0.7,
+ &#39;await&#39;: 0.4,
+ &#39;awaited&#39;: -0.1,
+ &#39;awaits&#39;: 0.3,
+ &#39;award&#39;: 2.5,
+ &#39;awardable&#39;: 2.4,
+ &#39;awarded&#39;: 1.7,
+ &#39;awardee&#39;: 1.8,
+ &#39;awardees&#39;: 1.2,
+ &#39;awarder&#39;: 0.9,
+ &#39;awarders&#39;: 1.3,
+ &#39;awarding&#39;: 1.9,
+ &#39;awards&#39;: 2.0,
+ &#39;awesome&#39;: 3.1,
+ &#39;awful&#39;: -2.0,
+ &#39;awkward&#39;: -0.6,
+ &#39;awkwardly&#39;: -1.3,
+ &#39;awkwardness&#39;: -0.7,
+ &#39;axe&#39;: -0.4,
+ &#39;axed&#39;: -1.3,
+ &#39;backed&#39;: 0.1,
+ &#39;backing&#39;: 0.1,
+ &#39;backs&#39;: -0.2,
+ &#39;bad&#39;: -2.5,
+ &#39;badass&#39;: 1.4,
+ &#39;badly&#39;: -2.1,
+ &#39;bailout&#39;: -0.4,
+ &#39;bamboozle&#39;: -1.5,
+ &#39;bamboozled&#39;: -1.5,
+ &#39;bamboozles&#39;: -1.5,
+ &#39;ban&#39;: -2.6,
+ &#39;banish&#39;: -1.9,
+ &#39;bankrupt&#39;: -2.6,
+ &#39;bankster&#39;: -2.1,
+ &#39;banned&#39;: -2.0,
+ &#39;bargain&#39;: 0.8,
+ &#39;barrier&#39;: -0.5,
+ &#39;bashful&#39;: -0.1,
+ &#39;bashfully&#39;: 0.2,
+ &#39;bashfulness&#39;: -0.8,
+ &#39;bastard&#39;: -2.5,
+ &#39;bastardies&#39;: -1.8,
+ &#39;bastardise&#39;: -2.1,
+ &#39;bastardised&#39;: -2.3,
+ &#39;bastardises&#39;: -2.3,
+ &#39;bastardising&#39;: -2.6,
+ &#39;bastardization&#39;: -2.4,
+ &#39;bastardizations&#39;: -2.1,
+ &#39;bastardize&#39;: -2.4,
+ &#39;bastardized&#39;: -2.0,
+ &#39;bastardizes&#39;: -1.8,
+ &#39;bastardizing&#39;: -2.3,
+ &#39;bastardly&#39;: -2.7,
+ &#39;bastards&#39;: -3.0,
+ &#39;bastardy&#39;: -2.7,
+ &#39;battle&#39;: -1.6,
+ &#39;battled&#39;: -1.2,
+ &#39;battlefield&#39;: -1.6,
+ &#39;battlefields&#39;: -0.9,
+ &#39;battlefront&#39;: -1.2,
+ &#39;battlefronts&#39;: -0.8,
+ &#39;battleground&#39;: -1.7,
+ &#39;battlegrounds&#39;: -0.6,
+ &#39;battlement&#39;: -0.4,
+ &#39;battlements&#39;: -0.4,
+ &#39;battler&#39;: -0.8,
+ &#39;battlers&#39;: -0.2,
+ &#39;battles&#39;: -1.6,
+ &#39;battleship&#39;: -0.1,
+ &#39;battleships&#39;: -0.5,
+ &#39;battlewagon&#39;: -0.3,
+ &#39;battlewagons&#39;: -0.5,
+ &#39;battling&#39;: -1.1,
+ &#39;beaten&#39;: -1.8,
+ &#39;beatific&#39;: 1.8,
+ &#39;beating&#39;: -2.0,
+ &#39;beaut&#39;: 1.6,
+ &#39;beauteous&#39;: 2.5,
+ &#39;beauteously&#39;: 2.6,
+ ...}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if a word is in the lexicon</span>
+<span class="n">test_word</span> <span class="o">=</span> <span class="s1">&#39;sweet&#39;</span> <span class="c1"># The word to check for</span>
+
+<span class="c1"># Get the word&#39;s score or print a message for missing words</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">lexicon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">test_word</span><span class="p">,</span> <span class="s1">&#39;No score for that word&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to do our analysis, we will use a very small sample of 8 user reviews. Each review is a simple text string inside a list variable called <code class="docutils literal notranslate"><span class="pre">product_reviews</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a list of product reviews</span>
+
+<span class="n">product_reviews</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;I love this product. It helps me get so much work done. I tell everyone about what a great thing it is.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;This product is defective. I feel like it is broken because it does not do what it promises. Do not buy this.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Do yourself a favor and buy this product as soon as possible. I recommend it to everyone I know. It has saved me so much time!&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;This product is overpriced and useless. It was a waste of money and it made all my hair fall out.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Works like a dream and it is a bargain! It solves my problems with ease. I bought two!&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Do not buy! This product is a ripoff. I wish it was better, but it fails constantly. What a mistake!&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;This thing is garbage. Do yourself a favor and save the money. Mine is a dumpster fire and fell apart.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;I adore this product. =) It makes my life so much easier. And it is a deal!&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will analyze each product and assign it a “normalized, weighted composite score” based on summing the valence scores of each word in the lexicon (with some adjustments based on word order and other rules). VADER measures the proportion of text that falls into positive, negative, and neutral sentiment. The result is a sentiment score that falls between -1 (the most negative) and +1 (the most positive). (This is different from the lexicon scores that fall between -4 to +4!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For each review in our `product_reviews` list</span>
+<span class="c1"># Store a polarity score in `scores`</span>
+<span class="c1"># Then print the score followed by the review</span>
+<span class="k">for</span> <span class="n">review</span> <span class="ow">in</span> <span class="n">product_reviews</span><span class="p">:</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">review</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;compound&#39;</span><span class="p">],</span> <span class="n">review</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8979 I love this product. It helps me get so much work done. I tell everyone about what a great thing it is.
+-0.2263 This product is defective. I feel like it is broken because it does not do what it promises. Do not buy this.
+0.807 Do yourself a favor and buy this product as soon as possible. I recommend it to everyone I know. It has saved me so much time!
+-0.6808 This product is overpriced and useless. It was a waste of money and it made all my hair fall out.
+0.7772 Works like a dream and it is a bargain! It solves my problems with ease. I bought two!
+-0.6792 Do not buy! This product is a ripoff. I wish it was better, but it fails constantly. What a mistake!
+0.4404 This thing is garbage. Do yourself a favor and save the money. Mine is a dumpster fire and fell apart.
+0.8799 I adore this product. =) It makes my life so much easier. And it is a deal!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our simple analysis does a fairly good job of assessing positive and negative sentiment. Notice that our second to last review was not very accurate though:</p>
+<blockquote>
+<div><p>0.5423 This thing is garbage. Do yourself a favor and save the money. Mine started on fire and fell apart.</p>
+</div></blockquote>
+<p>The VADER lexicon contains the following entries:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Token</p></th>
+<th class="head"><p>Mean-Sentiment Rating</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>favor</p></td>
+<td><p>1.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>fire</p></td>
+<td><p>-1.4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>VADER assigns a value of -1.4 for “fire” but “fire” can also have a positive connotation, such as “straight fire.” However, words like “garbage” and “dumpster,” as in “dumpster fire,” are less ambiguous. If a specific token is not found in the VADER lexicon, it is considered to be neutral. Like any other statistical approach, the process benefits from having more data. In this case, the sentences are very short and several significant words do not happen to exist in our lexicon.</p>
+</section>
+<section id="adding-tokens-to-the-vader-lexicon">
+<h2>Adding Tokens to the VADER Lexicon<a class="headerlink" href="#adding-tokens-to-the-vader-lexicon" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sa.lexicon</span></code> is a simple dictionary, so we can add words that we want included. There are some guidelines for best scoring practices included in the academic paper linked on <a class="reference external" href="https://github.com/cjhutto/vaderSentiment">VADER’s github repository</a>. (Remember that lexicon tokens are scored from -4 to +4.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding the dictionary of `new_words`</span>
+<span class="c1"># to sa.lexicon</span>
+
+<span class="n">new_words</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;garbage&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="s1">&#39;dumpster&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">3.1</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">sa</span><span class="o">.</span><span class="n">lexicon</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try our analysis again with the new lexicon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For each review in our `product_reviews` list</span>
+<span class="c1"># Store a polarity score in `scores`</span>
+<span class="c1"># Then print the score followed by the review</span>
+
+<span class="k">for</span> <span class="n">review</span> <span class="ow">in</span> <span class="n">product_reviews</span><span class="p">:</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">review</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;compound&#39;</span><span class="p">],</span> <span class="n">review</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8979 I love this product. It helps me get so much work done. I tell everyone about what a great thing it is.
+-0.2263 This product is defective. I feel like it is broken because it does not do what it promises. Do not buy this.
+0.807 Do yourself a favor and buy this product as soon as possible. I recommend it to everyone I know. It has saved me so much time!
+-0.6808 This product is overpriced and useless. It was a waste of money and it made all my hair fall out.
+0.7772 Works like a dream and it is a bargain! It solves my problems with ease. I bought two!
+-0.6792 Do not buy! This product is a ripoff. I wish it was better, but it fails constantly. What a mistake!
+-0.5574 This thing is garbage. Do yourself a favor and save the money. Mine is a dumpster fire and fell apart.
+0.8799 I adore this product. =) It makes my life so much easier. And it is a deal!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sentiment-analysis-with-machine-learning">
+<h2>Sentiment analysis with machine learning<a class="headerlink" href="#sentiment-analysis-with-machine-learning" title="Link to this heading">#</a></h2>
+<p>The primary advantage of using a machine learning classifier for sentiment analysis is there is no need to maintain a lexicon, assign sentiment scores to particular words, develop linguistic rules based on grammatical structures (negation, intensifiers), or keep track of novel expressions (slang, emoticons, etc.).</p>
+<p>The very best models for sentiment analysis will be trained or tuned on the type of data you are analyzing. We always recommend trying existing models first though, since training a model from scratch takes significant resources, both on the computational side and on the labor side for data quality assurance. If you are interested in training your own models, then you may want to invest in high-end hardware, especially a computer with a powerful graphics processing unit (GPU). If your data or model requires significant resources, consider purchasing cloud-computing resources.</p>
+<p>There are many existing models that are a great place to start with sentiment analysis. Let’s try using an existing model with the popular <a class="reference external" href="https://github.com/huggingface/transformers">transfomers</a> library from <a class="reference external" href="https://huggingface.co/">HuggingFace</a>. We will use a <a class="reference external" href="https://huggingface.co/datasets/LoganKells/amazon_product_reviews_video_games/">dataset of Amazon game reviews</a> created by Logan Kells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the transformers package</span>
+<span class="o">%</span><span class="k">pip</span> install -q transformers
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install TensorFlow, a popular library for machine learning</span>
+<span class="o">%</span><span class="k">pip</span> install TensorFlow
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the tf_keras package</span>
+<span class="o">%</span><span class="k">pip</span> install tf_keras
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+
+<span class="c1"># The file URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://huggingface.co/datasets/LoganKells/amazon_product_reviews_video_games/resolve/main/data.csv&#39;</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Download the file</span>
+<span class="n">path_url</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_folder</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">path_url</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+<span class="c1">## Success message</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data downloaded.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data downloaded.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Pandas and Read Data CSV file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the size of the dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(50000, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Preview the dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>reviewerID</th>
+      <th>asin</th>
+      <th>reviewerName</th>
+      <th>helpful</th>
+      <th>reviewText</th>
+      <th>overall</th>
+      <th>summary</th>
+      <th>unixReviewTime</th>
+      <th>reviewTime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>A2HD75EMZR8QLN</td>
+      <td>0700099867</td>
+      <td>123</td>
+      <td>[8, 12]</td>
+      <td>Installing the game was a struggle (because of...</td>
+      <td>0.0</td>
+      <td>Pay to unlock content? I don't think so.</td>
+      <td>1341792000</td>
+      <td>07 9, 2012</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>A3UR8NLLY1ZHCX</td>
+      <td>0700099867</td>
+      <td>Alejandro Henao "Electronic Junky"</td>
+      <td>[0, 0]</td>
+      <td>If you like rally cars get this game you will ...</td>
+      <td>3.0</td>
+      <td>Good rally game</td>
+      <td>1372550400</td>
+      <td>06 30, 2013</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>A1INA0F5CWW3J4</td>
+      <td>0700099867</td>
+      <td>Amazon Shopper "Mr.Repsol"</td>
+      <td>[0, 0]</td>
+      <td>1st shipment received a book instead of the ga...</td>
+      <td>0.0</td>
+      <td>Wrong key</td>
+      <td>1403913600</td>
+      <td>06 28, 2014</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>A361M14PU2GUEG</td>
+      <td>0700099867</td>
+      <td>Angry Ryan "Ryan A. Forrest"</td>
+      <td>[2, 2]</td>
+      <td>I had Dirt 2 on Xbox 360 and it was an okay ga...</td>
+      <td>3.0</td>
+      <td>DIRT 3</td>
+      <td>1308009600</td>
+      <td>06 14, 2011</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>A2UTRVO4FDCBH6</td>
+      <td>0700099867</td>
+      <td>A.R.G.</td>
+      <td>[0, 0]</td>
+      <td>Overall this is a well done racing game, with ...</td>
+      <td>3.0</td>
+      <td>Good racing game, terrible Windows Live Requir...</td>
+      <td>1368230400</td>
+      <td>05 11, 2013</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a list of the first 100 review texts</span>
+<span class="n">review_texts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reviewText&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using pipeline class to make predictions from models available in the Hub in an easy way </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
+<span class="n">sentiment_pipeline</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;sentiment-analysis&quot;</span><span class="p">)</span>
+
+<span class="n">sentiment_scores</span> <span class="o">=</span> <span class="n">sentiment_pipeline</span><span class="p">(</span><span class="n">review_texts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No model was supplied, defaulted to distilbert/distilbert-base-uncased-finetuned-sst-2-english and revision 714eb0f (https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english).
+Using a pipeline without specifying a model name and revision in production is not recommended.
+Device set to use mps:0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine each review to see how the model did</span>
+<span class="n">review</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Print Sentiment</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentiment_scores</span><span class="p">[</span><span class="n">review</span><span class="p">])</span>
+
+<span class="c1"># Print Review</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">review_texts</span><span class="p">[</span><span class="n">review</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: 0.9992536902427673}
+Installing the game was a struggle (because of games for windows live bugs).Some championship races and cars can only be &quot;unlocked&quot; by buying them as an addon to the game. I paid nearly 30 dollars when the game was new. I don&#39;t like the idea that I have to keep paying to keep playing.I noticed no improvement in the physics or graphics compared to Dirt 2.I tossed it in the garbage and vowed never to buy another codemasters game. I&#39;m really tired of arcade style rally/racing games anyway.I&#39;ll continue to get my fix from Richard Burns Rally, and you should to. :)http://www.amazon.com/Richard-Burns-Rally-PC/dp/B000C97156/ref=sr_1_1?ie=UTF8&amp;qid;=1341886844&amp;sr;=8-1&amp;keywords;=richard+burns+rallyThank you for reading my review! If you enjoyed it, be sure to rate it as helpful.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show reviews with lower certainty scores</span>
+<span class="k">for</span> <span class="n">review_number</span><span class="p">,</span> <span class="n">sentiment_score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentiment_scores</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sentiment_score</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">.9</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sentiment_score</span><span class="p">,</span> <span class="n">review_texts</span><span class="p">[</span><span class="n">review_number</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: 0.8348784446716309} I have been playing car racing games since their early beginning on PC. I currently have a logitech G25 force feedback wheel to play with.I have played most of the Colin Mc Rae, Need for speed, Grid and Dirt2 games before. I also tried my hands at more simulation oriented games like GTR, GTR2, GP Legends...Dirt2 came in as a nice and pleasant surprise. Dirt3 tops it off.As I am sure many will detail everything about this game, I will limit myself to the most important points for me.Pros:- Amazing graphics- Amazing physics- Challenging but entertaining racesCons:- Gymkhana- InterfaceWhat went through the conceptors mind about gymkhana? Racing is not easy for most but gymkhana is really a pain in the neck.I saw the videos of Ken Block on Youtube and indeed he is really impressive. Am I even dreaming of doing the same? No!Racing require good racing skills to start but Gymkhana requires a perfect control of the vehicles and most of us will never achieve such level. So I find the attemps slightly pointless and extremely frustrating.Now, what about the interface? Simply put, it does not remotely compare with Dirt2&#39;s interface. It is messy, I had to search online to figure out where to find my best times. There are not enough info about the cars, the races, the sponsors... It leaves a lot to desire. A complete miss.Conclusion:As far as rallye racing. This game is the best out there today.If you are one who needs crazy challenges, try the gymkhana and good luck!In spite of my criticism, I definitely do not regreat this purchase. 
+
+{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: 0.8938910365104675} I enjoyed the first Hawx game. However they left out some key things in Hawx 21) No coop mode - I really enjoyed that2) Can&#39;t choose your own plane right off the bat. You have to use whatever they tell you.Those two things will make me not play this game anymore! 
+
+{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: 0.5815169215202332} Have had this skin for almost 2 months and so far there are no signs of wear or tear which is good. Its sticky just enough to be grippy but not overly so. It protects the controller fairly well. Keeps it from getting dirty as fast especially if you have a white controller.Overall it feels good and is comfortable even in long play periods. The only problem I have is there is annoying little piece up by the triggers on both sides. Its right in between the trigger and the bumper buttons and there is no tension on the piece so when you switch between the bumper and triggers it can sometimes flip up and your finger will catch it. Not really a deal breaker or a big deal or anything since I plan on cutting it off anyways. Plan on buy another so far after this one falls apart. Will update my review if it doesnt last long. 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForTextAnalysis/Advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-for-sentiment-analysis">Methods for Sentiment Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-based-algorithms">Rule-Based Algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-models">Machine Learning Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vader">VADER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-vader-algorithm">Applying the VADER Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-tokens-to-the-vader-lexicon">Adding Tokens to the VADER Lexicon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis-with-machine-learning">Sentiment analysis with machine learning</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

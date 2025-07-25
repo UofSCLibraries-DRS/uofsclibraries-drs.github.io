@@ -1,0 +1,1034 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Concordance and Collocation &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForTextAnalysis/GettingStarted/concordance';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForTextAnalysis/GettingStarted/concordance.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/PythonForTextAnalysis/GettingStarted/concordance.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Concordance and Collocation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance">Concordance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance-with-constellate-data">Concordance with Constellate Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collocations">Collocations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
+<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="concordance-and-collocation">
+<h1>Concordance and Collocation<a class="headerlink" href="#concordance-and-collocation" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong> This notebook describes how to create a concordance and collocation starting from text files and from a Constellate dataset file.</p>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Intermediate</p>
+<p><strong>Completion Time:</strong> 45 minutes</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p>Python Basics Series (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong> None</p>
+<p><strong>Data Format:</strong> Text, Constellate JSON File</p>
+<p><strong>Libraries Used:</strong> NLTK</p>
+<p><strong>Research Pipeline:</strong> None</p>
+<hr class="docutils" />
+<section id="concordance">
+<h2>Concordance<a class="headerlink" href="#concordance" title="Link to this heading">#</a></h2>
+<p>The concordance has a long history in humanities study and Roberto Busa’s concordance Index Thomisticus—started in 1946—is arguably the first digital humanities project. Before computers were common, they were printed in large volumes such as John Bartlett’s 1982 reference book <em>A Complete Concordance to Shakespeare</em>—it was 1909 pages pages long!</p>
+<p>A concordance gives the context of a given word or phrase in a body of texts. For example, a literary scholar might ask: how often and in what context does Shakespeare use the phrase “honest Iago” in Othello? A historian might examine a particular politician’s speeches, looking for examples of a particular <a class="reference external" href="https://en.wikipedia.org/wiki/Dog_whistle_(politics)https://en.wikipedia.org/wiki/Dog_whistle_(politics)">dog whistle</a>.</p>
+<p><font color="red">Read more</font></p>
+<ul class="simple">
+<li><p>Geoffrey Rockwell and Stéfan Sinclair. <a class="reference external" href="http://www.digitalhumanities.org/dhq/vol/14/3/000456/000456.html">Tremendous Mechanical Labor: Father Busa’s Algorithm</a> (2020)</p></li>
+<li><p>Julianne Nyhan and Marco Passarotti, eds. <a class="reference external" href="https://www.amazon.com/One-Origin-Digital-Humanities-Roberto/dp/3030183114/">One Origin of Digital Humanities: Fr Roberto Busa in His Own Words</a> (2019)</p></li>
+<li><p>Julianne Nyhan and Melissa Terras. <a class="reference external" href="https://discovery.ucl.ac.uk/id/eprint/10052279/9/Nyhan_DH2017.redacted.pdf">Uncovering ‘hidden contributions to the history of Digital Humanities: the Index Thomisticus’ femal keypunch operators</a> (2017)</p></li>
+<li><p>Steven E. Jones <a class="reference external" href="https://www.routledge.com/Roberto-Busa-S-J-and-the-Emergence-of-Humanities-Computing-The-Priest/Jones/p/book/9781138587250">Roberto Busa, S.J., and the Emergence of Humanities Computing</a> (2016)</p></li>
+</ul>
+<hr class="docutils" />
+<p>We will be working with The Folger Shakespeare, made freely available by the <a class="reference external" href="https://shakespeare.folger.edu/">The Folger Shakespeare Library</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data for this lesson</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">download_urls</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;https://shakespeare.folger.edu/downloads/txt/shakespeares-works_TXT_FolgerShakespeare.zip&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">download_urls</span><span class="p">:</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span> <span class="o">+</span> <span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the text files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;../data/shakespeares-works_TXT_FolgerShakespeare.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zf</span><span class="p">:</span>
+    <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s1">&#39;../data/shakespeare/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have our data downloaded and extracted, we will load a single text for our analysis. Feel free to choose a different Shakespeare text to change the analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open a text</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/shakespeare/othello_TXT_FolgerShakespeare.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we lowercase our text and use the Natural Language Toolkit (NLTK) to tokenize it. Tokenizing breaks up the the document into individual words. Finally, we use our tokens to create an NLTK Text object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tokenize one of the files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">,</span> <span class="n">download_dir</span><span class="o">=</span><span class="s1">&#39;../data/nltk_data&#39;</span><span class="p">)</span>
+<span class="n">file_contents</span> <span class="o">=</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to ../data/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify that we have created an NLTK Text object</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nltk.text.Text
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can create a concordance with the <code class="docutils literal notranslate"><span class="pre">.concordance()</span></code> method. We pass in a string and the results are printed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for the given word</span>
+<span class="n">text</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="s1">&#39;honest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 42 matches:
+e &#39;s old , cashiered . whip me such honest knaves ! others there are who , tri
+ee not to haunt about my doors . in honest plainness thou hast heard me say my
+rs , cassio , and officers exit . ] honest iago , my desdemona must i leave to
+ree and open nature that thinks men honest that but seem to be so , and will a
+ the pegs that make this music , as honest as i am . othello come . let us to 
+i look to &#39;t . othello iago is most honest . michael , goodnight . tomorrow wi
+an engraffed infirmity . it were an honest action to say so to the moor . iago
+ty . what is the matter , masters ? honest iago , that looks dead with grievin
+o , my reputation ! iago as i am an honest man , i thought you had received so
+test , in the sincerity of love and honest kindness . cassio i think it freely
+ to the watch . cassio good night , honest iago . [ cassio exits . ] iago and 
+when this advice is free i give and honest , probal to thinking , and indeed t
+nclining desdemona to subdue in any honest suit . she &#39;s framed as fruitful as
+ows , as i do now . for whiles this honest fool plies desdemona to repair his 
+it . ] cassio dost thou hear , mine honest friend ? clown no , i hear not your
+friend ? clown no , i hear not your honest friend . i hear you . cassio prithe
+ver knew a florentine more kind and honest . [ enter emilia . ] emilia good mo
+were his . desdemona o , that &#39;s an honest fellow ! do not doubt , cassio , bu
+ cunning , i have no judgment in an honest face . i prithee call him back . ot
+n&#39;st thou aught in that ? is he not honest ? iago honest , my lord ? othello h
+t in that ? is he not honest ? iago honest , my lord ? othello honest -- ay , 
+t ? iago honest , my lord ? othello honest -- ay , honest . iago my lord , for
+ , my lord ? othello honest -- ay , honest . iago my lord , for aught i know .
+ i dare be sworn i think that he is honest . othello i think so too . iago men
+ago why then , i think cassio &#39;s an honest man . othello nay , yet there &#39;s mo
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the first 25 matches are printed along with 80 characters on each side of our string text. We can specify that more lines should be shown using a <code class="docutils literal notranslate"><span class="pre">lines</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> argument that accept integers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for the given word</span>
+<span class="c1"># Increasing lines shown and number of characters</span>
+<span class="n">text</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="s1">&#39;honest&#39;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 42 of 42 matches:
+ and when he &#39;s old , cashiered . whip me such honest knaves ! others there are who , trimmed in for
+ charged thee not to haunt about my doors . in honest plainness thou hast heard me say my daughter i
+ the senators , cassio , and officers exit . ] honest iago , my desdemona must i leave to thee . i p
+r is of a free and open nature that thinks men honest that but seem to be so , and will as tenderly 
+ll set down the pegs that make this music , as honest as i am . othello come . let us to the castle.
+l eye will i look to &#39;t . othello iago is most honest . michael , goodnight . tomorrow with your ear
+ith one of an engraffed infirmity . it were an honest action to say so to the moor . iago not i , fo
+her propriety . what is the matter , masters ? honest iago , that looks dead with grieving , speak .
+ation , iago , my reputation ! iago as i am an honest man , i thought you had received some bodily w
+ iago i protest , in the sincerity of love and honest kindness . cassio i think it freely ; and beti
+nt . i must to the watch . cassio good night , honest iago . [ cassio exits . ] iago and what &#39;s he 
+ villain , when this advice is free i give and honest , probal to thinking , and indeed the course t
+easy th &#39; inclining desdemona to subdue in any honest suit . she &#39;s framed as fruitful as the free e
+heavenly shows , as i do now . for whiles this honest fool plies desdemona to repair his fortune , a
+usicians exit . ] cassio dost thou hear , mine honest friend ? clown no , i hear not your honest fri
+ine honest friend ? clown no , i hear not your honest friend . i hear you . cassio prithee , keep up
+ts . ] i never knew a florentine more kind and honest . [ enter emilia . ] emilia good morrow , good
+ the cause were his . desdemona o , that &#39;s an honest fellow ! do not doubt , cassio , but i will ha
+ and not in cunning , i have no judgment in an honest face . i prithee call him back . othello went 
+ed ! discern&#39;st thou aught in that ? is he not honest ? iago honest , my lord ? othello honest -- ay
+t thou aught in that ? is he not honest ? iago honest , my lord ? othello honest -- ay , honest . ia
+e not honest ? iago honest , my lord ? othello honest -- ay , honest . iago my lord , for aught i kn
+iago honest , my lord ? othello honest -- ay , honest . iago my lord , for aught i know . othello wh
+el cassio , i dare be sworn i think that he is honest . othello i think so too . iago men should be 
+ey seem . iago why then , i think cassio &#39;s an honest man . othello nay , yet there &#39;s more in this 
+t much moved . i do not think but desdemona &#39;s honest . iago long live she so ! and long live you to
+take my leave . othello why did i marry ? this honest creature doubtless sees and knows more , much 
+ note , take note , o world : to be direct and honest is not safe. -- i thank you for this profit , 
+ffense . othello nay , stay . thou shouldst be honest . iago i should be wise ; for honesty &#39;s a foo
+or . othello by the world , i think my wife be honest and think she is not . i think that thou art j
+be wise . yet we see nothing done . she may be honest yet . tell me but this : have you not sometime
+e . emilia i durst , my lord , to wager she is honest , lay down my soul at stake . if you think oth
+ with the serpent &#39;s curse , for if she be not honest , chaste , and true , there &#39;s no man happy . 
+ . therefore be double damned . swear thou art honest . desdemona heaven doth truly know it . othell
+ll . desdemona i hope my noble lord esteems me honest . othello o , ay , as summer flies are in the 
+companions thou &#39;dst unfold , and put in every honest hand a whip to lash the rascals naked through 
+ othello , [ aside ] &#39;t is he ! o brave iago , honest and just , that hast such noble sense of thy f
+pet ! bianca i am no strumpet , but of life as honest as you that thus abuse me . emilia as i ? faug
+t say so . othello no . his mouth is stopped . honest iago hath ta&#39;en order for &#39;t . desdemona o , m
+ ay , &#39;t was he that told me on her first . an honest man he is , and hates the slime that sticks on
+nderstand the word ? my friend , thy husband ; honest , honest iago . emilia if he say so , may his 
+ the word ? my friend , thy husband ; honest , honest iago . emilia if he say so , may his perniciou
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to supply a bigram, trigram, or longer construction, they are supplied as individual strings within a Python list. (If you try to supply a string with a space in the middle, there will be no results.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a concordance for a sequence of words</span>
+<span class="n">text</span><span class="o">.</span><span class="n">concordance</span><span class="p">([</span><span class="s1">&#39;honest&#39;</span><span class="p">,</span> <span class="s1">&#39;iago&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 5 of 5 matches:
+ , cassio , and officers exit . ] honest iago , my desdemona must i leave to th
+ . what is the matter , masters ? honest iago , that looks dead with grieving ,
+o the watch . cassio good night , honest iago . [ cassio exits . ] iago and wha
+hello no . his mouth is stopped . honest iago hath ta&#39;en order for &#39;t . desdemo
+y friend , thy husband ; honest , honest iago . emilia if he say so , may his p
+</pre></div>
+</div>
+</div>
+</div>
+<p>This method works well for a quick preview of the lines, but if we want to save this concordance for later analysis we can use the <code class="docutils literal notranslate"><span class="pre">.concordance_list()</span></code> method. The <code class="docutils literal notranslate"><span class="pre">.concordance_list()</span></code> method outputs a list, but the elements of that list <em>are not</em> simple strings. They are ConcordanceLine objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output the concordance data</span>
+<span class="n">output_list</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">concordance_list</span><span class="p">([</span><span class="s1">&#39;honest&#39;</span><span class="p">,</span> <span class="s1">&#39;iago&#39;</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">output_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nltk.text.ConcordanceLine
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can view individual lines by using a Python list index followed by <code class="docutils literal notranslate"><span class="pre">.line</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;] othello my life upon her faith ! [ the duke , the senators , cassio , and officers exit . ] honest iago , my desdemona must i leave to thee . i prithee let thy wife attend on her , and bring them a&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to save our concordance, we can write to a file line-by-line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Writing the concordance to a text file</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/concordance.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">output_list</span><span class="p">)):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lastly, NLTK can create a dispersion plot that helps visualize where tokens occur in the document. This can reveal the way words are used in the document over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span><span class="o">.</span><span class="n">dispersion_plot</span><span class="p">([</span><span class="s1">&#39;honest&#39;</span><span class="p">,</span> <span class="s1">&#39;fool&#39;</span><span class="p">,</span> <span class="s1">&#39;noble&#39;</span><span class="p">,</span> <span class="s1">&#39;virtue&#39;</span><span class="p">,</span> <span class="s1">&#39;doubt&#39;</span><span class="p">,</span> <span class="s1">&#39;love&#39;</span><span class="p">,</span> <span class="s1">&#39;hate&#39;</span><span class="p">,</span> <span class="s1">&#39;villain&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/281b16c78d557ff2db371ea086de0dd6c54b581cab0f02da492c52462f8126db.png" src="../../../_images/281b16c78d557ff2db371ea086de0dd6c54b581cab0f02da492c52462f8126db.png" />
+</div>
+</div>
+</section>
+<section id="concordance-with-constellate-data">
+<h2>Concordance with Constellate Data<a class="headerlink" href="#concordance-with-constellate-data" title="Link to this heading">#</a></h2>
+<p>In order to create a concordance from a Constellate text, you will need to make sure you have access to the “full-text” version of the document. In the Dataset Builder, there is an option for “full-text” only.</p>
+<p>Secondly, in the dataset dashboard, you should request the JSON-L file which contains the full text. Under the tile for the dataset, choose “Download” &gt; “More Download Options”. Then click “Request” under “Metadata, ngrams, and full-text.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a variable `dataset_id` to hold our dataset ID</span>
+<span class="c1"># The default dataset is Full-Text books on Frederick Douglass</span>
+<span class="c1"># from Docsouth Data</span>
+<span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;435d4b79-d600-36f9-60df-f1f27afb7d37&quot;</span>
+
+<span class="c1"># Import the `constellate` client</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">constellate</span>
+
+<span class="c1"># To download the full dataset (up to a limit of 25,000 documents),</span>
+<span class="c1"># request it first in the dataset dashboard. See the Constellate Client</span>
+<span class="c1"># documentation at: https://constellate.org/docs/constellate-client</span>
+<span class="c1"># Then use the `constellate.download` method show below.</span>
+<span class="n">dataset_file</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">,</span> <span class="s1">&#39;jsonl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are only 63 documents in this dataset, so we can easily search through to pick out one of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine the documents in the dataset</span>
+
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">constellate</span><span class="o">.</span><span class="n">dataset_reader</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">document_id</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">document_title</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="n">document_author</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;creator&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ID: </span><span class="si">{</span><span class="n">document_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Title: </span><span class="si">{</span><span class="n">document_title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Author: </span><span class="si">{</span><span class="n">document_author</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s use Frederick Douglass’s:</p>
+<blockquote>
+<div><p>NARRATIVE OF THE LIFE OF FREDERICK DOUGLASS,  AN AMERICAN SLAVE. Written by Himself:  Electronic Edition.</p>
+</div></blockquote>
+<p>The corresponding ID is: <code class="docutils literal notranslate"><span class="pre">http://docsouth.unc.edu/neh/douglass/menu.html</span></code></p>
+<p>Note that this is also a URL which takes us to the Docsouth project where the document is described.</p>
+<p>We can select the document by matching on the document <code class="docutils literal notranslate"><span class="pre">'id'</span></code> key and then copy the full-text, which is stored as the value for the key <code class="docutils literal notranslate"><span class="pre">'fullText'</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve the full-text of the document selected</span>
+<span class="c1"># Here we select </span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">constellate</span><span class="o">.</span><span class="n">dataset_reader</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">document</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;http://docsouth.unc.edu/neh/douglass/menu.html&#39;</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fullText&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will out the contents to a text file, so we have a local copy of the document.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the text to a file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/document.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And then read the document back in. (Writing the document out to a file and reading it back also removes all the Python escape characters.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the text from the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/document.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we tokenize the document using the Natural Language Toolkit (NLTK).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tokenize the file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="n">file_contents</span> <span class="o">=</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we are ready to create a concordance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="s1">&#39;freedom&#39;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can write our concordance out to a new file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output the concordance data</span>
+<span class="n">output_list</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">concordance_list</span><span class="p">(</span><span class="s1">&#39;freedom&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Writing the concordance to a text file</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/concordance.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">output_list</span><span class="p">)):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And visualize the distribution of words across the text in a lexical dispersion plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span><span class="o">.</span><span class="n">dispersion_plot</span><span class="p">([</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="s1">&#39;knowledge&#39;</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;desire&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="collocations">
+<h2>Collocations<a class="headerlink" href="#collocations" title="Link to this heading">#</a></h2>
+<p>Collocations are concepts in a text that cannot be expressed in a single word. English speakers can usually recognize collocations when we see them.</p>
+<p>Consider the concepts mentioned in this sentence:</p>
+<blockquote>
+<div><p>The machine learning algorithm helped solve a major problem in social science research.</p>
+</div></blockquote>
+<p>There are bigrams and trigrams which are collocations, cohesive units that describe a larger concept:</p>
+<ul class="simple">
+<li><p>‘machine learning algorithm’ (a three-word, trigram)</p></li>
+<li><p>‘major problem’ (a two-word, bigram)</p></li>
+<li><p>‘social science research’(a three-word, trigram)</p></li>
+</ul>
+<p>Yet other bigrams and trigrams in the sentence are not collocations:</p>
+<ul class="simple">
+<li><p>‘The machine’</p></li>
+<li><p>‘learning algorithm helped’</p></li>
+<li><p>‘helped solve a’</p></li>
+<li><p>‘problem in social’</p></li>
+</ul>
+<p>Identifying a collocation is more complicated than simply finding words that commonly co-occur. The phrase ‘of the’ occurs in many texts, but it is not a collocation since it does not relate to a larger, defined concept.</p>
+<p>Linguists and Natural Language Processing researchers have sought to create a mathematical method for discovering collocations. Here are some of the effective methods:</p>
+<ul class="simple">
+<li><p>Finding frequent bigrams and trigrams (while removing spaces, stop words, articles, prepositions, and pronouns)</p></li>
+<li><p>Pointwise Mutual Information (measuring how likely a word is to appear alone vs. paired with another)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test">t-test</a> (while removing spaces, stop words, articles, prepositions, and pronouns)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Chi-squared_test">chi-squared test</a></p></li>
+</ul>
+<p>All of these methods can be effective. We will demonstrate Pointwise Mutual Information (PMI).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open a text</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/document.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tokenize one of the files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="n">file_contents</span> <span class="o">=</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">removed_punctuation</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()]</span> <span class="c1"># We remove all punctuation with a list comprehension</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">removed_punctuation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.collocations</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">bigram_measures</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">collocations</span><span class="o">.</span><span class="n">BigramAssocMeasures</span><span class="p">()</span>
+<span class="n">trigram_measures</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">collocations</span><span class="o">.</span><span class="n">TrigramAssocMeasures</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">pmi</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pointwise Mutual Information is very sensitive to words that are “highly-connected” but also occur very infrequently. To get good results, we need to filter out bigrams that rarely occur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter out Bigrams that occur less than three times</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">apply_freq_filter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">pmi</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also discover common trigram collocations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finder</span> <span class="o">=</span> <span class="n">TrigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">apply_freq_filter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#finder.apply_word_filter(lambda w: w in (&#39;I&#39;, &#39;me&#39;)) Remove particular words with a lambda function</span>
+<span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">trigram_measures</span><span class="o">.</span><span class="n">pmi</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForTextAnalysis/GettingStarted"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance">Concordance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concordance-with-constellate-data">Concordance with Constellate Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collocations">Collocations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -14,11 +14,11 @@ parts:
 
   - caption: Python for Text Analysis
     chapters:
-    - file: src/TextMining/IntroductionTextAnalysis
-    - file: src/TextMining/AdvancedTextAnalysis
-    - file: src/TextMining/MultiLingualNer
-    - file: src/TextMining/TextPreprocessing/TextPreprocessingMethods
-      title: Example 
+    - file: src/PythonForTextAnalysis/GettingStarted/GettingStarted
+      title: Getting Started
+    - file: src/PythonForTextAnalysis/Advanced/AdvancedTextAnalysis
+    - file: src/PythonForTextAnalysis/ProjectExamples/TextPreprocessingMethods
+      title: Project Example 
 
   - caption: R for Data Analysis
     chapters:
