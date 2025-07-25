@@ -1,0 +1,864 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Latent Dirichlet Allocation (LDA) Topic Modeling &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForTextAnalysis/Advanced/topic-modeling';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForTextAnalysis/Advanced/topic-modeling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/PythonForTextAnalysis/Advanced/topic-modeling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Latent Dirichlet Allocation (LDA) Topic Modeling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-topic-modeling">What is Topic Modeling?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-your-dataset">Import your dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-stopwords-list">Load Stopwords List</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-function-to-process-tokens">Define a Function to Process Tokens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perplexity">Perplexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-a-list-of-topics">Display a List of Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-topic-distances">Visualize the Topic Distances</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
+<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="latent-dirichlet-allocation-lda-topic-modeling">
+<h1>Latent Dirichlet Allocation (LDA) Topic Modeling<a class="headerlink" href="#latent-dirichlet-allocation-lda-topic-modeling" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong>
+This <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">notebook</a> demonstrates how to do topic modeling. The following processes are described:</p>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">constellate</span></code> client to retrieve a dataset</p></li>
+<li><p>Filtering based on a pre-processed ID list</p></li>
+<li><p>Filtering based on a <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stop words list</a></p></li>
+<li><p>Cleaning the tokens in the dataset</p></li>
+<li><p>Creating a <a class="reference external" href="https://www.tutorialspoint.com/gensim/gensim_creating_a_dictionary.htm">gensim dictionary</a></p></li>
+<li><p>Creating a <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> <a class="reference external" href="https://www.geeksforgeeks.org/nlp/bag-of-words-bow-model-in-nlp/">bag of words</a> <a class="reference external" href="https://www.tutorialspoint.com/gensim/gensim_creating_a_bag_of_words_corpus.htm">corpus</a></p></li>
+<li><p>Computing a topic list using <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a></p></li>
+<li><p>Visualizing the topic list with <code class="docutils literal notranslate"><span class="pre">pyldavis</span></code></p></li>
+</ul>
+<p><strong>Use Case:</strong> For Researchers (Mostly code without explanation, not ideal for learners)</p>
+<p><strong>Difficulty:</strong> Intermediate</p>
+<p><strong>Completion time:</strong> 60 minutes</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p>Python Basics Series (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../Python/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a></p></li>
+<li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/intermediate/python-intermediate-2.html"><span class="std std-doc">Python Intermediate 2</span></a></p></li>
+<li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/pandas/pandas-1.html"><span class="std std-doc">Pandas I</span></a></p></li>
+<li><p><a class="reference internal" href="../GettingStarted/creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a></p></li>
+<li><p>A familiarity with <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> is helpful but not required.</p></li>
+</ul>
+<p><strong>Data Format:</strong> <a class="reference external" href="https://jsonlines.org">JSON Lines (.jsonl)</a></p>
+<p><strong>Libraries Used:</strong></p>
+<ul class="simple">
+<li><p>constellate client to collect, unzip, and read our dataset</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a> to load a preprocessing list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csv</span></code> to load a custom stopwords list</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> to accomplish the topic modeling</p></li>
+<li><p><a class="reference external" href="https://www.nltk.org/">NLTK</a> to create a stopwords list (if no list is supplied)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyldavis</span></code> to visualize our topic model</p></li>
+</ul>
+<p><strong>Research Pipeline</strong></p>
+<ol class="arabic simple">
+<li><p>Build a dataset</p></li>
+<li><p>Create a “Pre-Processing CSV” with <a class="reference internal" href="../../Python/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a> (Optional)</p></li>
+<li><p>Create a “Custom Stopwords List” with <a class="reference internal" href="../GettingStarted/creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a> (Optional)</p></li>
+<li><p>Complete the Topic Modeling analysis with this notebook</p></li>
+</ol>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suppress Deprecation Warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+<span class="c1"># Import modules and libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">constellate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gensim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">CoherenceModel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyLDAvis.gensim</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="what-is-topic-modeling">
+<h2>What is Topic Modeling?<a class="headerlink" href="#what-is-topic-modeling" title="Link to this heading">#</a></h2>
+<p><strong>Topic modeling</strong> is a <strong>machine learning</strong> technique that attempts to discover groupings of words (called topics) that commonly occur together in a body of texts. The body of texts could be anything from journal articles to newspaper articles to tweets.</p>
+<p><strong>Topic modeling</strong> is an unsupervised, clustering technique for text. We give the machine a series of texts that it then attempts to cluster the texts into a given number of topics. There is also a <em>supervised</em>, clustering technique called <strong>Topic Classification</strong>, where we supply the machine with examples of pre-labeled topics and then see if the machine can identify them given the examples.</p>
+<p><strong>Topic modeling</strong> is usually considered an exploratory technique; it helps us discover new patterns within a set of texts. <strong>Topic Classification</strong>, using labeled data, is intended to be a predictive technique; we want it to find more things like the examples we give it.</p>
+<p><font color='red'>Read more</font></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://towardsdatascience.com/latent-dirichlet-allocation-intuition-math-implementation-and-visualisation-63ccb616e094">“Latent Dirichlet Allocation: Intuition, math, implementation and visualisation with pyLDAvis” Ioana</a> 2020</p></li>
+<li><p><a class="reference external" href="https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf?TB_iframe=true&amp;amp;width=370.8&amp;amp;height=658.8">“Latent Dirichlet Allocation” Blei, Ng, Jordan</a> 2003</p></li>
+</ul>
+</section>
+<section id="import-your-dataset">
+<h2>Import your dataset<a class="headerlink" href="#import-your-dataset" title="Link to this heading">#</a></h2>
+<p>The next code cell tries to import your dataset trying each of the following methods:</p>
+<ol class="arabic simple">
+<li><p>Search for a custom dataset in the data folder</p></li>
+<li><p>Download a full dataset that has been requested</p></li>
+<li><p>Download a sampled dataset (1500 items) that builds automatically when a dataset is created</p></li>
+</ol>
+<p>If you are using a <a class="reference external" href="https://docs.mapbox.com/help/glossary/dataset-id/#:~:text=A%20dataset%20ID%20is%20a,using%20the%20Mapbox%20Datasets%20API.">dataset ID</a>, replace the default dataset ID in the next code cell.</p>
+<p>If you don’t have a dataset ID, you can:</p>
+<ul class="simple">
+<li><p>Use the sample dataset ID already in the code cell</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-science/what-is-dataset/#how-to-create-a-dataset">Create a new dataset</a></p></li>
+<li><p>Use a dataset ID from other pre-built sample datasets</p></li>
+</ul>
+<p>The Constellate client will download datasets automatically using either the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> or <code class="docutils literal notranslate"><span class="pre">.get_dataset()</span></code> method.</p>
+<ul class="simple">
+<li><p>Full datasets are downloaded using the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> method. They must be requested first in the builder environment.</p></li>
+<li><p>Sampled datasets (1500 items) are downloaded using the <code class="docutils literal notranslate"><span class="pre">.get_dataset()</span></code> method. They are built automatically when a dataset is created.</p></li>
+</ul>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">constellate</span></code> client library to automatically retrieve the dataset in the JSON file format.</p>
+<p>Enter a <a class="reference external" href="https://docs.mapbox.com/help/glossary/dataset-id/#:~:text=A%20dataset%20ID%20is%20a,using%20the%20Mapbox%20Datasets%20API.">dataset ID</a> in the next code cell.</p>
+<p>If you don’t have a dataset ID, you can:</p>
+<ul class="simple">
+<li><p>Use the sample dataset ID already in the code cell</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-science/what-is-dataset/#how-to-create-a-dataset">Create a new dataset</a></p></li>
+<li><p>Use a dataset ID from other pre-built sample datasets</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;8d0b285f-48cf-66fb-4836-6bac965d63cc&quot;</span>
+<span class="c1"># Check to see if a dataset file exists</span>
+<span class="c1"># If not, download a dataset using the Constellate Client</span>
+<span class="c1"># The default dataset is Independent Voices 1960-1990</span>
+
+<span class="c1"># Independent Voices is an open access digital collection of alternative press newspapers, magazines and journals,</span>
+<span class="c1"># drawn from the special collections of participating libraries. These periodicals were produced by feminists, </span>
+<span class="c1"># dissident GIs, campus radicals, Native Americans, anti-war activists, Black Power advocates, Hispanics, </span>
+<span class="c1"># LGBT activists, the extreme right-wing press and alternative literary magazines </span>
+<span class="c1"># during the latter half of the 20th century.</span>
+
+<span class="n">dataset_file</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span> <span class="o">/</span><span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;my_data.jsonl.gz&#39;</span> <span class="c1"># Make sure this filepath matches your dataset filename</span>
+
+<span class="k">if</span> <span class="n">dataset_file</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span> 
+        <span class="n">dataset_file</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">,</span> <span class="s1">&#39;jsonl&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span> 
+        <span class="n">dataset_file</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-stopwords-list">
+<h2>Load Stopwords List<a class="headerlink" href="#load-stopwords-list" title="Link to this heading">#</a></h2>
+<p>If you have created a stopword list in the stopwords notebook, we will import it here. (You can always modify the CSV file to add or subtract words then reload the list.) Otherwise, we’ll load the NLTK <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stopwords</a> list automatically.</p>
+<p>We recommend storing your stopwords in a CSV file as shown in the <a class="reference internal" href="../GettingStarted/creating-stopwords-list.html"><span class="std std-doc">Creating Stopwords List</span></a> notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a custom data/stop_words.csv if available</span>
+<span class="c1"># Otherwise, load the nltk stopwords list in English</span>
+
+<span class="c1"># Create an empty Python list to hold the stopwords</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># The filename of the custom data/stop_words.csv file</span>
+<span class="n">stopwords_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span> <span class="o">/</span><span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;stop_words.csv&#39;</span>
+
+<span class="k">if</span> <span class="n">stopwords_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+    <span class="k">with</span> <span class="n">stopwords_path</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">stop_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Custom stopwords list loaded from CSV&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Load the NLTK stopwords list</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
+    <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NLTK stopwords list loaded&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preview stop words</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-a-function-to-process-tokens">
+<h2>Define a Function to Process Tokens<a class="headerlink" href="#define-a-function-to-process-tokens" title="Link to this heading">#</a></h2>
+<p>Next, we create a short function to clean up our tokens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">process_token</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()):</span>
+        <span class="k">return</span>
+    <span class="k">return</span> <span class="n">token</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Limit to n documents. Set to None to use all documents.</span>
+
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">constellate</span><span class="o">.</span><span class="n">dataset_reader</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">):</span>
+    <span class="n">processed_document</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unigrams</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unigramCount&quot;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="k">for</span> <span class="n">gram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">unigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">clean_gram</span> <span class="o">=</span> <span class="n">process_token</span><span class="p">(</span><span class="n">gram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">clean_gram</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">processed_document</span> <span class="o">+=</span> <span class="p">[</span><span class="n">clean_gram</span><span class="p">]</span> <span class="o">*</span> <span class="n">count</span> <span class="c1"># Add the unigram as many times as it was counted</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">processed_document</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">documents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_document</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unigrams collected for </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> documents...&#39;</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">limit</span><span class="p">):</span>
+       <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;All unigrams collected for </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> documents.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build a gensim dictionary corpus and then train the model. More information about parameters can be found at the <a class="reference external" href="https://radimrehurek.com/gensim/models/ldamodel.html">Gensim LDA Model page</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build the gensim dictionary</span>
+<span class="n">dictionary</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="n">num_topics</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># Change the number of topics</span>
+<span class="n">passes</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># The number of passes used to train the model</span>
+<span class="c1"># Remove terms that appear in less than 50 documents and terms that occur in more than 90% of documents.</span>
+<span class="n">dictionary</span><span class="o">.</span><span class="n">filter_extremes</span><span class="p">(</span><span class="n">no_below</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">no_above</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bow_corpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bow_corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Train the LDA model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">LdaModel</span><span class="p">(</span>
+    <span class="n">corpus</span><span class="o">=</span><span class="n">bow_corpus</span><span class="p">,</span>
+    <span class="n">id2word</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span>
+    <span class="n">num_topics</span><span class="o">=</span><span class="n">num_topics</span><span class="p">,</span>
+    <span class="n">passes</span><span class="o">=</span><span class="n">passes</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perplexity">
+<h2>Perplexity<a class="headerlink" href="#perplexity" title="Link to this heading">#</a></h2>
+<p>After each pass, the LDA model will output a “perplexity” score that measures the “held out log-likelihood”. Perplexity is a measure of how “surpised” the machine is to see certain data. In other words, perplexity measures how successfully a trained topic model predicts new data. The model may be trained many times with different parameters, optimizing for the lowest possible perplexity.</p>
+<p>In general, the perplexity score should trend downward as the machine “learns” what to expect from the data. While a low perplexity score may signal the machine has learned the documents’ patterns, that does not mean that the topics formed from a model with low perplexity will form the most coherent topics. (See <a class="reference external" href="https://papers.nips.cc/paper/2009/hash/f92586a25bb3145facd64ab20fd554ff-Abstract.html">“Reading Tea Leaves: How Humans Interpret Topic Models” Chang, et al. 2009</a>.)</p>
+<p>## Topic Coherence</p>
+<p>The failure of perplexity scores to consistently create “good” topics has led to new methods in “topic coherence”. Here we demonstrate two of these methods with Gensim but there are additional methods available. Ideally, a researcher would run many topic models, discovering the optimum settings for topic coherence.</p>
+<p>Ultimately, however, the best judgment of topic coherence is a disciplinary expert, particularly someone with familiarity with the materials in question.</p>
+<p><font color='red'>Read more</font></p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://dirichlet.net/pdf/mimno11optimizing.pdf">“Optimizing Semantic Coherence in Topic Models” Mimno, et al. 2011</a></p></li>
+<li><p><a class="reference external" href="https://mimno.infosci.cornell.edu/info6150/readings/N10-1012.pdf">“Automatic Evaluation of Topic Coherence” Newman, et al. 2010</a>)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the coherence score using UMass</span>
+<span class="c1"># u_mass is measured from -14 to 14, higher is better</span>
+<span class="n">coherence_model_lda</span> <span class="o">=</span> <span class="n">CoherenceModel</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">corpus</span><span class="o">=</span><span class="n">bow_corpus</span><span class="p">,</span>
+    <span class="n">dictionary</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> 
+    <span class="n">coherence</span><span class="o">=</span><span class="s1">&#39;u_mass&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Compute Coherence Score using UMass</span>
+<span class="n">coherence_lda</span> <span class="o">=</span> <span class="n">coherence_model_lda</span><span class="o">.</span><span class="n">get_coherence</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Coherence Score: &#39;</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="display-a-list-of-topics">
+<h2>Display a List of Topics<a class="headerlink" href="#display-a-list-of-topics" title="Link to this heading">#</a></h2>
+<p>Print the most significant terms, as determined by the model, for each topic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">topic_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_topics</span><span class="p">):</span>
+    <span class="n">word_ids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_topic_terms</span><span class="p">(</span><span class="n">topic_num</span><span class="p">)</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">wid</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">word_ids</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">id2token</span><span class="p">[</span><span class="n">wid</span><span class="p">]</span>
+        <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">topic_num</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-topic-distances">
+<h2>Visualize the Topic Distances<a class="headerlink" href="#visualize-the-topic-distances" title="Link to this heading">#</a></h2>
+<p>Visualize the model using <a class="reference external" href="https://pyldavis.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">pyLDAvis</span></code></a>. The visualization will be output to an html file in the data folder. (Right-click on the html file and choose “Open in New Browser Tab.”)</p>
+<p>Try choosing a topic and adjusting the λ slider. When λ approaches 0, the words in a given document occur almost entirely in that topic. When λ approaches 1, the words occur more often in other topics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export this visualization as an HTML file</span>
+<span class="c1"># An internet connection is still required to view the HTML</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pyLDAvis</span><span class="o">.</span><span class="n">gensim</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">bow_corpus</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">)</span>
+<span class="n">pyLDAvis</span><span class="o">.</span><span class="n">save_html</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;../data/my_visualization.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForTextAnalysis/Advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-topic-modeling">What is Topic Modeling?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-your-dataset">Import your dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-stopwords-list">Load Stopwords List</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-function-to-process-tokens">Define a Function to Process Tokens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perplexity">Perplexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-a-list-of-topics">Display a List of Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-topic-distances">Visualize the Topic Distances</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

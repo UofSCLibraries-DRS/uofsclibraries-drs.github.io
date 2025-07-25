@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exploring Word Frequencies &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForTextAnalysis/GettingStarted/exploring-word-frequencies';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForTextAnalysis/GettingStarted/exploring-word-frequencies.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/PythonForTextAnalysis/GettingStarted/exploring-word-frequencies.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring Word Frequencies</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-your-dataset">Import your dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-unigram-counts-from-the-json-file-no-cleaning">Extract Unigram Counts from the JSON file (No cleaning)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-most-common-unigrams">Find Most Common Unigrams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-issues-to-consider">Some issues to consider</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-unigram-counts-from-the-json-file-with-cleaning">Extract Unigram Counts from the JSON File (with cleaning)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-stopwords-list">Load Stopwords List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-unigrams-again-with-extra-cleaning-steps">Gather unigrams again with extra cleaning steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-results">Display Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-results-to-a-csv-file">Export Results to a CSV File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-word-cloud-to-visualize-the-data">Create a Word Cloud to Visualize the Data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png" align=left alt="CC BY license logo" /><br /><br />
+Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
+<strong>For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.</strong><br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="exploring-word-frequencies">
+<h1>Exploring Word Frequencies<a class="headerlink" href="#exploring-word-frequencies" title="Link to this heading">#</a></h1>
+<p><strong>Description:</strong>
+This <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">notebook</a> shows how to find the most common words in a
+dataset. The following processes are described:</p>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">constellate</span></code> client to create a Pandas DataFrame</p></li>
+<li><p>Filtering based on a pre-processed ID list</p></li>
+<li><p>Filtering based on a <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stop words list</a></p></li>
+<li><p>Using a <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> object to get the most common words</p></li>
+</ul>
+<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Intermediate</p>
+<p><strong>Completion time:</strong> 60 minutes</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p>Python Basics (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/intermediate/python-intermediate-2.html"><span class="std std-doc">Python Intermediate 2</span></a></p></li>
+<li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/pandas/pandas-1.html"><span class="std std-doc">Pandas I</span></a></p></li>
+<li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/counter-objects.html"><span class="std std-doc">Counter Objects</span></a></p></li>
+<li><p><a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a></p></li>
+</ul>
+<p><strong>Data Format:</strong> <a class="reference external" href="https://jsonlines.org">JSON Lines (.jsonl)</a></p>
+<p><strong>Libraries Used:</strong></p>
+<ul class="simple">
+<li><p>constellate client to collect, unzip, and read our dataset</p></li>
+<li><p><a class="reference external" href="https://www.nltk.org/">NLTK</a> to help <a class="reference external" href="https://www.w3schools.com/python/pandas/pandas_cleaning_wrong_data.asp">clean</a> up our dataset</p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/python/python-counter-objects-elements/">Counter</a> from <strong>Collections</strong> to help sum up our word frequencies</p></li>
+</ul>
+<p><strong>Research Pipeline:</strong></p>
+<ol class="arabic simple">
+<li><p>Build a dataset</p></li>
+<li><p>Create a “Pre-Processing CSV” with <a class="reference internal" href="../../Python/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a> (Optional)</p></li>
+<li><p>Create a “Custom Stopwords List” with <a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a> (Optional)</p></li>
+<li><p>Complete the word frequencies analysis with this notebook</p></li>
+</ol>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules and libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">constellate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="c1"># For making wordclouds</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="import-your-dataset">
+<h2>Import your dataset<a class="headerlink" href="#import-your-dataset" title="Link to this heading">#</a></h2>
+<p>The next code cell tries to import your dataset trying each of the following methods:</p>
+<ol class="arabic simple">
+<li><p>Search for a custom dataset in the data folder</p></li>
+<li><p>Download a full dataset that has been requested</p></li>
+<li><p>Download a sampled dataset (1500 items) that builds automatically when a dataset is created</p></li>
+</ol>
+<p>If you are using a dataset ID, replace the default dataset ID in the next code cell.</p>
+<p>If you don’t have a dataset ID, you can:</p>
+<ul class="simple">
+<li><p>Use the sample dataset ID already in the code cell</p></li>
+<li><p>Create a new dataset</p></li>
+<li><p>Use a dataset ID from other pre-built sample datasets</p></li>
+</ul>
+<p>The Constellate client will download datasets automatically using either the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> or <code class="docutils literal notranslate"><span class="pre">.get_dataset()</span></code> method.</p>
+<ul class="simple">
+<li><p>Full datasets are downloaded using the <code class="docutils literal notranslate"><span class="pre">.download()</span></code> method. They must be requested first in the builder environment.</p></li>
+<li><p>Sampled datasets (1500 items) are downloaded using the <code class="docutils literal notranslate"><span class="pre">.get_dataset()</span></code> method. They are built automatically when a dataset is created.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_id</span> <span class="o">=</span> <span class="s2">&quot;7e41317e-740f-e86a-4729-20dab492e925&quot;</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Check to see if a dataset file exists</span>
+<span class="c1"># If not, download a dataset using the Constellate Client</span>
+<span class="c1"># The default dataset is Shakespeare Quarterly, 1950-present</span>
+<span class="n">dataset_file</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;my_data.jsonl.gz&#39;</span> <span class="c1"># Make sure this filepath matches your dataset filename</span>
+
+<span class="k">if</span> <span class="n">dataset_file</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span> 
+        <span class="n">dataset_file</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">,</span> <span class="s1">&#39;jsonl&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span> 
+        <span class="n">dataset_file</span> <span class="o">=</span> <span class="n">constellate</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="n">dataset_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-unigram-counts-from-the-json-file-no-cleaning">
+<h2>Extract Unigram Counts from the JSON file (No cleaning)<a class="headerlink" href="#extract-unigram-counts-from-the-json-file-no-cleaning" title="Link to this heading">#</a></h2>
+<p>The dataset file is a compressed JSON Lines file (jsonl.gz) that contains all the metadata information found in the metadata CSV <em>plus</em> the textual data necessary for analysis including:</p>
+<ul class="simple">
+<li><p>Unigram Counts</p></li>
+<li><p>Bigram Counts</p></li>
+<li><p>Trigram Counts</p></li>
+<li><p>Full-text (if available)</p></li>
+</ul>
+<p>To complete our analysis, we are going to pull out the unigram counts for each document and store them in a Counter() object. We will import <code class="docutils literal notranslate"><span class="pre">Counter</span></code> which will allow us to use Counter() objects for counting unigrams. Then we will initialize an empty Counter() object <code class="docutils literal notranslate"><span class="pre">word_frequency</span></code> to hold all of our unigram counts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Counter()</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># Create an empty Counter object called `word_frequency`</span>
+<span class="n">word_frequency</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can read in each document using the <code class="docutils literal notranslate"><span class="pre">.dataset_reader()</span></code> method. This method unzips each document and yields the document’s data one-by-one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gather unigramCounts from documents</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">constellate</span><span class="o">.</span><span class="n">dataset_reader</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">):</span>
+    <span class="n">unigrams</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unigramCount&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">for</span> <span class="n">gram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">unigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">word_frequency</span><span class="p">[</span><span class="n">gram</span><span class="p">]</span> <span class="o">+=</span> <span class="n">count</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Print success message</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The unigrams from </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> documents were collected.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="find-most-common-unigrams">
+<h3>Find Most Common Unigrams<a class="headerlink" href="#find-most-common-unigrams" title="Link to this heading">#</a></h3>
+<p>Now that we have a list of the frequency of all the unigrams in our corpus, we need to sort them to find which are most common</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">gram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">word_frequency</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">gram</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="some-issues-to-consider">
+<h3>Some issues to consider<a class="headerlink" href="#some-issues-to-consider" title="Link to this heading">#</a></h3>
+<p>We have successfully created a word frequency list. There are a couple small issues, however, that we still need to address:</p>
+<ol class="arabic simple">
+<li><p>There are many <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/#what-are-stop-words">function words</a>, words like “the”, “in”, and “of” that are grammatically important but do not carry as much semantic meaning like <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/#what-are-stop-words">content words</a>, such as nouns and verbs.</p></li>
+<li><p>The words represented here are actually case-sensitive <a class="reference external" href="https://www.w3schools.com/python/python_strings.asp">strings</a>. That means that the string “the” is a different from the string “The”. You may notice this in your results above.</p></li>
+</ol>
+</section>
+</section>
+<section id="extract-unigram-counts-from-the-json-file-with-cleaning">
+<h2>Extract Unigram Counts from the JSON File (with cleaning)<a class="headerlink" href="#extract-unigram-counts-from-the-json-file-with-cleaning" title="Link to this heading">#</a></h2>
+<p>To address these issues, we need to find a way to remove common <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/#what-are-stop-words">function words</a> and combine <a class="reference external" href="https://www.w3schools.com/python/python_strings.asp">strings</a> that may have capital letters in them. We can address these issues by:</p>
+<ol class="arabic simple">
+<li><p>Using a <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stopwords</a> list to remove common <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/#what-are-stop-words">function words</a></p></li>
+<li><p>Lowercasing all the characters in each string to combine our counts</p></li>
+</ol>
+<section id="load-stopwords-list">
+<h3>Load Stopwords List<a class="headerlink" href="#load-stopwords-list" title="Link to this heading">#</a></h3>
+<p>If you have created a stopword list in the stopwords notebook, we will import it here. (You can always modify the CSV file to add or subtract words then reload the list.) Otherwise, we’ll load the NLTK <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stopwords</a> list automatically.</p>
+<p>We recommend storing your stopwords in a CSV file as shown in the <a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating Stopwords List</span></a> notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a custom data/stop_words.csv if available</span>
+<span class="c1"># Otherwise, load the nltk stopwords list in English</span>
+
+<span class="c1"># Create an empty Python list to hold the stopwords</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># The filename of the custom data/stop_words.csv file</span>
+<span class="n">stopwords_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;stop_words.csv&#39;</span>
+
+<span class="k">if</span> <span class="n">stopwords_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+    <span class="k">with</span> <span class="n">stopwords_path</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">stop_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Custom stopwords list loaded from CSV&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Load the NLTK stopwords list</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
+    <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NLTK stopwords list loaded&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preview stop words</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gather-unigrams-again-with-extra-cleaning-steps">
+<h3>Gather unigrams again with extra cleaning steps<a class="headerlink" href="#gather-unigrams-again-with-extra-cleaning-steps" title="Link to this heading">#</a></h3>
+<p>In addition to using a stopwords list, we will clean up the tokens by lowercasing all tokens and combining them. This will combine tokens with different capitalization such as “quarterly” and “Quarterly.” We will also remove any tokens that are not alphanumeric.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gather unigramCounts from documents in `filtered_id_list` if available</span>
+<span class="c1"># and apply the processing.</span>
+
+<span class="n">word_frequency</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">constellate</span><span class="o">.</span><span class="n">dataset_reader</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">):</span>
+    <span class="n">unigrams</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unigramCount&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">for</span> <span class="n">gram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">unigrams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">clean_gram</span> <span class="o">=</span> <span class="n">gram</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">clean_gram</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">clean_gram</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clean_gram</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">word_frequency</span><span class="p">[</span><span class="n">clean_gram</span><span class="p">]</span> <span class="o">+=</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="display-results">
+<h2>Display Results<a class="headerlink" href="#display-results" title="Link to this heading">#</a></h2>
+<p>Finally, we will display the 20 most common words by using the <code class="docutils literal notranslate"><span class="pre">.most_common()</span></code> method on the <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the most common processed unigrams and their counts</span>
+<span class="k">for</span> <span class="n">gram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">word_frequency</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">gram</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="export-results-to-a-csv-file">
+<h2>Export Results to a CSV File<a class="headerlink" href="#export-results-to-a-csv-file" title="Link to this heading">#</a></h2>
+<p>The word frequency data can be exported to a CSV file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add output method to csv</span>
+
+<span class="n">csv_file</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;..&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span> <span class="o">/</span> <span class="s1">&#39;word_counts.csv&#39;</span>
+
+<span class="k">with</span> <span class="n">csv_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;unigram&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">gram</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">word_frequency</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">gram</span><span class="p">,</span> <span class="n">count</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-word-cloud-to-visualize-the-data">
+<h2>Create a Word Cloud to Visualize the Data<a class="headerlink" href="#create-a-word-cloud-to-visualize-the-data" title="Link to this heading">#</a></h2>
+<p>A visualization using the WordCloud library in Python. To learn more about customizing a wordcloud, <a class="reference external" href="http://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html">see the documentation</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Download cloud image for our word cloud shape ###</span>
+<span class="c1"># It is not required to have a shape to create a word cloud</span>
+<span class="n">download_url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/sample_cloud.png&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">download_url</span><span class="p">,</span> <span class="s1">&#39;../data/sample_cloud.png&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cloud shape downloaded.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a wordcloud from our data</span>
+
+<span class="c1"># Adding a mask shape of a cloud to your word cloud</span>
+<span class="c1"># By default, the shape will be a rectangle</span>
+<span class="c1"># You can specify any shape you like based on an image file</span>
+<span class="n">cloud_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../data/sample_cloud.png&#39;</span><span class="p">))</span> <span class="c1"># Specifies the location of the mask shape</span>
+<span class="n">cloud_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cloud_mask</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cloud_mask</span><span class="p">)</span> <span class="c1"># this line will take all values greater than 3 and make them 255 (white)</span>
+
+<span class="c1">### Specify word cloud details</span>
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="c1"># Change the pixel width of the image if blurry</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="c1"># Change the pixel height of the image if blurry</span>
+    <span class="n">background_color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="c1"># Change the background color</span>
+    <span class="n">colormap</span> <span class="o">=</span> <span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="c1"># The colors of the words, see https://matplotlib.org/stable/tutorials/colors/colormaps.html</span>
+    <span class="n">max_words</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="c1"># Change the max number of words shown</span>
+    <span class="n">min_font_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="c1"># Do not show small text</span>
+    
+    <span class="c1"># Add a shape and outline (known as a mask) to your wordcloud</span>
+    <span class="n">contour_color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="c1"># The outline color of your mask shape</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">cloud_mask</span><span class="p">,</span> <span class="c1"># </span>
+    <span class="n">contour_width</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">word_frequency</span><span class="p">)</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># Change the image size displayed</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForTextAnalysis/GettingStarted"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-your-dataset">Import your dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-unigram-counts-from-the-json-file-no-cleaning">Extract Unigram Counts from the JSON file (No cleaning)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-most-common-unigrams">Find Most Common Unigrams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-issues-to-consider">Some issues to consider</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-unigram-counts-from-the-json-file-with-cleaning">Extract Unigram Counts from the JSON File (with cleaning)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-stopwords-list">Load Stopwords List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-unigrams-again-with-extra-cleaning-steps">Gather unigrams again with extra cleaning steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-results">Display Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-results-to-a-csv-file">Export Results to a CSV File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-word-cloud-to-visualize-the-data">Create a Word Cloud to Visualize the Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

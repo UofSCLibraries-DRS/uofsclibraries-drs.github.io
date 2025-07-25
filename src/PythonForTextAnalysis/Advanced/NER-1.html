@@ -1,0 +1,1345 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MultiLingual NER &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/PythonForTextAnalysis/Advanced/NER-1';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MachineLearning/RCode/R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/PythonForTextAnalysis/Advanced/NER-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/PythonForTextAnalysis/Advanced/NER-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MultiLingual NER</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MultiLingual NER</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-named-entity-recognition">Introduction to Named Entity Recognition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-entity-recognition">Named Entity Recognition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing">Natural Language Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizer">Tokenizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pos-tagger">POS tagger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-encoding">Text Encoding</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-little-bit-history-about-text-encoding">A little bit history about text encoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii-american-standard-code-for-information-interchange">ASCII (American Standard Code for Information Interchange)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utf-8">UTF-8</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ord-and-chr">ord( ) and chr( )</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-all-this-mean-to-named-entity-recognition">What does all this mean to Named Entity Recognition?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-within-utf-8">Problems within UTF-8</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-normalization">Unicode normalization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-ner-2">Start Next Lesson: <span class="xref myst">NER 2</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-challenge-solutions">Coding Challenge! Solutions</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>This notebook was created by William Mattingly for the 2022 Text Analysis Pedagogy Institute, with support from the <a class="reference external" href="https://neh.gov">National Endowment for the Humanities</a>, <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a>, and <a class="reference external" href="https://new.library.arizona.edu/">University of Arizona Libraries</a>.</p>
+<p>This notebook is adapted by Zhuo Chen under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a>.</p>
+<p>For questions/comments/improvements, email <a class="reference external" href="mailto:zhuo&#46;chen&#37;&#52;&#48;ithaka&#46;org">zhuo<span>&#46;</span>chen<span>&#64;</span>ithaka<span>&#46;</span>org</a> or <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="multilingual-ner">
+<h1>MultiLingual NER<a class="headerlink" href="#multilingual-ner" title="Link to this heading">#</a></h1>
+<p>This is lesson 1 of 3 in the educational series on <strong>Named Entity Recognition</strong>. This notebook is intended to show the basic problems one faces in multilingual texts.</p>
+<p><strong>Description:</strong> This notebook describes how to:</p>
+<ul class="simple">
+<li><p>Understand Named Entity Recognition (NER) as a concept</p></li>
+<li><p>Understand text encoding</p></li>
+<li><p>Understand how to solve encoding-issues</p></li>
+<li><p>Understand the complexities of multilingual corpora</p></li>
+</ul>
+<p><strong>Use case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
+<p><strong>Difficulty:</strong> Intermediate</p>
+<p><strong>Completion time:</strong> 90 minutes</p>
+<p><strong>Knowledge Required:</strong></p>
+<ul class="simple">
+<li><p>Python basics (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">start learning Python basics</span></a>)</p></li>
+</ul>
+<p><strong>Knowledge Recommended:</strong></p>
+<ul class="simple">
+<li><p>Natural Language Processing</p></li>
+</ul>
+<p><strong>Data Format</strong>: .txt</p>
+<p><strong>Libraries Used</strong>: spaCy</p>
+<p><strong>Research Pipeline</strong>: None</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-named-entity-recognition">
+<h1>Introduction to Named Entity Recognition<a class="headerlink" href="#introduction-to-named-entity-recognition" title="Link to this heading">#</a></h1>
+<section id="named-entity-recognition">
+<h2>Named Entity Recognition<a class="headerlink" href="#named-entity-recognition" title="Link to this heading">#</a></h2>
+<p><strong>Entities</strong> are words in a text that correspond to a specific type of data. For example, we may find the following types of entities in a text.</p>
+<ul class="simple">
+<li><p>numerical, such as cardinal numbers;</p></li>
+<li><p>temporal, such as dates;</p></li>
+<li><p>nominal, such as names of people and places;</p></li>
+<li><p>political, such as geopolitical entities (GPE).</p></li>
+</ul>
+<p>Named entity recognition, or NER, is the process by which a system takes an input of a text and outputs the identification of entities.</p>
+<section id="a-simple-example">
+<h3>A simple example<a class="headerlink" href="#a-simple-example" title="Link to this heading">#</a></h3>
+<p>Let’s use the following sentence as an example.</p>
+<p><em>Martha, a senior, moved to Spain where she will be playing basketball until 05 June 2022 or until she can’t play any longer.</em></p>
+<p>First, there is “Martha”, a person’s name. Different NER models may give the label of PERSON or PER to it.</p>
+<p>Second, there is “Spain”, a country name. It is a GPE, or Geopolitical Entity.</p>
+<p>Finally, there is “05 June 2022”, a date. It is a DATE entity.</p>
+<p>In this series, we are going to use the SpaCy library to do NER. Here is a preview of how spaCy identifies entities in a text string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install required library spacy</span>
+<span class="o">%</span><span class="k">pip</span> install spacy # Install spacy
+
+<span class="c1"># download the small English NLP model from spacy</span>
+<span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm<span class="w"> </span>#<span class="w"> </span><span class="k">for</span><span class="w"> </span>English<span class="w"> </span>NER
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import spacy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the small English model</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a doc object out of the text string</span>
+<span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Martha, a senior, moved to Spain where she will be playing basketball until 05 June 2022 </span>
+<span class="s2">or until she can&#39;t play any longer.&quot;&quot;&quot;</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+<span class="c1"># Get the entities from the doc</span>
+<span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ent</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Martha PERSON
+Spain GPE
+05 June 2022 DATE
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="natural-language-processing">
+<h2>Natural Language Processing<a class="headerlink" href="#natural-language-processing" title="Link to this heading">#</a></h2>
+<p>Natual Language Processing (NLP) is the process by which a researcher uses a computer system to parse human language and extract important information from texts.</p>
+<p>How do we extract information from texts? We do it through a series of pipelines that perform some operations on the data at hand.</p>
+<center><img src='https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/NER_NLP_pipeline.png' width=700></center>
+<p>Named entity recognition is a branch of natural language processing. From the graph, you may notice that named entity recognition comes later in NLP. This is because it needs to receive a tokenized text and, in some languages, it needs to understand a word’s part-of-speech (POS) to perform well.</p>
+<section id="tokenizer">
+<h3>Tokenizer<a class="headerlink" href="#tokenizer" title="Link to this heading">#</a></h3>
+<p>The job of a tokenizer is to break a text into individual tokens. Tokens are items in a text that have some linguistic meaning. They can be words, such as “Martha”, but they can also be punctuation marks, such as “,” in the relative clause “, a senior,”. Likewise, “n’t” in the contraction “can’t” would also be recognized as a token since “n’t” in English corresponds to the word “not”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the tokens in the doc object we created</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Martha
+,
+a
+senior
+,
+moved
+to
+Spain
+where
+she
+will
+be
+playing
+basketball
+until
+05
+June
+2022
+
+
+or
+until
+she
+ca
+n&#39;t
+play
+any
+longer
+.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pos-tagger">
+<h3>POS tagger<a class="headerlink" href="#pos-tagger" title="Link to this heading">#</a></h3>
+<p>A common pipeline after a tokenizer is a POS tagger whose job is to identify the parts-of-speech, or POS, in the text. Let us consider an example sentence:</p>
+<p>The boy took the ball to the store.</p>
+<p>The nominative (subject), “boy”, comes first in the sentence, followed by the verb, “took”, then followed by the accusative (object), “ball”, and finally the dative (indirect object), “store”. The words “the” and “to” also contain vital information. “The” occurs twice and tells the reader that it’s not just any ball, it’s the ball; likewise, it’s not just a store, but the store. The period too tells us something important. This is a statement, not a question.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the visualizer in spaCy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
+
+<span class="c1"># Visualize the POS tags and syntactic dependencies using displacy.serve() function</span>
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all pos tags</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">spacy</span><span class="o">.</span><span class="n">parts_of_speech</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;,
+ &#39;ADJ&#39;,
+ &#39;ADP&#39;,
+ &#39;ADV&#39;,
+ &#39;AUX&#39;,
+ &#39;CCONJ&#39;,
+ &#39;CONJ&#39;,
+ &#39;DET&#39;,
+ &#39;EOL&#39;,
+ &#39;IDS&#39;,
+ &#39;INTJ&#39;,
+ &#39;NAMES&#39;,
+ &#39;NOUN&#39;,
+ &#39;NUM&#39;,
+ &#39;PART&#39;,
+ &#39;PRON&#39;,
+ &#39;PROPN&#39;,
+ &#39;PUNCT&#39;,
+ &#39;SCONJ&#39;,
+ &#39;SPACE&#39;,
+ &#39;SYM&#39;,
+ &#39;VERB&#39;,
+ &#39;X&#39;,
+ &#39;__builtins__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__file__&#39;,
+ &#39;__loader__&#39;,
+ &#39;__name__&#39;,
+ &#39;__package__&#39;,
+ &#39;__spec__&#39;,
+ &#39;__test__&#39;,
+ &#39;univ_pos_t&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the meaning of a certain tag</span>
+<span class="n">spacy</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s1">&#39;PROPN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;proper noun&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="text-encoding">
+<h1>Text Encoding<a class="headerlink" href="#text-encoding" title="Link to this heading">#</a></h1>
+<p>Before we tokenize a text, we have to know what encoding it uses.</p>
+<p>When we say “plain text”, we are actually being really sloppy. There is no such thing as “plain text”! It does not make sense to have a text without knowing what encoding it uses.</p>
+<p>Have you ever received an email in which you find the text is unintelligible because there are random question marks in it? Did you wonder why?</p>
+<section id="a-little-bit-history-about-text-encoding">
+<h2>A little bit history about text encoding<a class="headerlink" href="#a-little-bit-history-about-text-encoding" title="Link to this heading">#</a></h2>
+<section id="ascii-american-standard-code-for-information-interchange">
+<h3>ASCII (American Standard Code for Information Interchange)<a class="headerlink" href="#ascii-american-standard-code-for-information-interchange" title="Link to this heading">#</a></h3>
+<p>There was an old time when the only characters that mattered were good old unaccented English letters. ASCII is a code which was able to represent every character using a number between 32 and 127 (Codes below 32 were called unprintable and for control characters, e.g. the backspace). For example, the ASCII code of the letter A is 65. As you know, computers use a binary system and therefore the number 65 is actually encoded as a 8-bit number.</p>
+<p>A <span class="math notranslate nohighlight">\(\rightarrow\)</span> 0100 0001</p>
+<p>8-bit allows up to <span class="math notranslate nohighlight">\(2^{8}=256\)</span> characters and we have only had 128 (with numbers 0-127). That means we can use the numbers 128 to 255 to represent other characters! English, of course, is not the only language that matters. Therefore, people speaking different languages chose to use the numbers 128 to 255 for the characters in their own language. This means that two different characters from two different languages may be represented by the same number in their respective encoding standard. This is no good, because when Americans would send their résumés to Israel they would arrive as rגsumגs.</p>
+</section>
+<section id="utf-8">
+<h3>UTF-8<a class="headerlink" href="#utf-8" title="Link to this heading">#</a></h3>
+<p>Can’t we have a single character set that includes every reasonable writing system on the planet? Yes we can!
+Here comes the brilliant idea of UTF-8. UTF stands for Unicode Tranformation Format. 8 means 8-bit.</p>
+<p>Every letter in every alphabet is assigned a number written like this: U+0041. It is called a <em>code point</em>. The U+ means “Unicode” and the numbers are hexadecimal. In Python, code points are written in the form \uXXXX, where XXXX is the number in 4-digit hexadecimal form. The English letter A is assigned the number U+0041.</p>
+<p>UTF-8 was designed for backward compatibility with ASCII: the first 128 characters of Unicode, which correspond one-to-one with ASCII, are encoded using a single byte with the same binary value as ASCII.</p>
+</section>
+</section>
+<section id="ord-and-chr">
+<h2>ord( ) and chr( )<a class="headerlink" href="#ord-and-chr" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ord()</span></code> and <code class="docutils literal notranslate"><span class="pre">chr()</span></code> are built-in functions in Python.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ord()</span></code> function takes a single Unicode character and returns its integer Unicode code point value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use ord() to convert a Unicode character string to its integer code point value</span>
+
+<span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;ø&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>248
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">chr()</span></code> function does the opposite. It takes an integer and returns the corresponding Unicode character.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use chr() to convert a number to a character</span>
+
+<span class="nb">chr</span><span class="p">(</span><span class="mi">248</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;ø&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The brief historical review gives us an idea of how messy it was with regard to text encoding before UTF-8. There were and actually still are so many different encoding methods out there. Right now I am viewing a webpage in Safari. I can take a peek at how many different encoding methods there are by just choosing View &gt; Text Encoding. For you, depending on your browser, you may find the text encoding in a different place.</p>
+<center><img src='https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/NER_DifferentEncodings.png' width=500></center><h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p>Go to a website of your choice. Change the text encoding of the page to a different one. What happens after you change the encoding? Keep changing the text encoding to different encoding methods and see what happens. Last, change the text encoding to utf8.</p>
+<p>When you are viewing a webpage, the website is sending a sequence of integers to your web browser, with a recommendation about how they are supposed to be translated into characters. So, if your character encoding does not match the one intended by the web page, you will see garbled text. For example, let’s go to the news page of Google Hong Kong <a class="reference external" href="https://news.google.com/home?hl=zh-HK&amp;amp;gl=HK&amp;amp;ceid=HK:zh-Hant">https://news.google.com/home?hl=zh-HK&amp;gl=HK&amp;ceid=HK:zh-Hant</a>. On this page, you see some traditional Chinese characters and they are displayed correctly.</p>
+<center><img src='https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/NER_WebsiteChineseCharacters.png' width=900></center>
+<p>As soon as I change the text encoding to ISO 8859-8, which is used to encode Hebrew characters, you see that the text becomes garbage.</p>
+<center><img src='https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/NER_ChineseCharacterParsedByHebrewEncoding.png' width=900></center></section>
+<section id="an-example">
+<h2>An example<a class="headerlink" href="#an-example" title="Link to this heading">#</a></h2>
+<p>Let’s use the text file polish-lat2.txt in NLTK as an example. As the name suggests, this file is in Polish and is encoded as Latin2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import nltk and download the sample files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;unicode_samples&#39;</span><span class="p">,</span> <span class="n">download_dir</span><span class="o">=</span><span class="s1">&#39;../data/nltk_data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package unicode_samples to
+[nltk_data]     ../data/nltk_data...
+[nltk_data]   Unzipping corpora/unicode_samples.zip.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../data/nltk_data&#39;</span><span class="p">)</span>
+
+<span class="c1"># Locate the file</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;corpora/unicode_samples/polish-lat2.txt&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Python3 to read the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Państwowa. Jej dawne zbiory znane pod nazwą
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemców pod koniec II wojny światowej na Dolny Śląsk, zostały
+odnalezione po 1945 r. na terytorium Polski. Trafiły do Biblioteki
+Jagiellońskiej w Krakowie, obejmują ponad 500 tys. zabytkowych
+archiwaliów, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Everything looks fine. This is because we have specified the encoding method of the original file correctly. What will happen if we read the file using the wrong encoding method? For example, if we open the file and specify the encoding as utf8 instead of latin2, what will happen?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the wrong encoding utf8 to read the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnicodeDecodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Use the wrong encoding utf8 to read the file</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen codecs&gt;:322,</span> in <span class="ni">decode</span><span class="nt">(self, input, final)</span>
+
+<span class="ne">UnicodeDecodeError</span>: &#39;utf-8&#39; codec can&#39;t decode byte 0xf1 in position 20: invalid continuation byte
+</pre></div>
+</div>
+</div>
+</div>
+<p>We get an error! This is because in different encodings, the inventory of characters are different and the valid bytes the characters are encoded into are different as well. In our example, 0xf1 is a valid byte in latin2 but is not a valid byte in utf8.</p>
+<p>In real life, instead of an error message, we often see a question mark � or a box  􏿾 in place of the character that cannot be correctly rendered.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specify that when error occurs, fill in replacement character</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pol_data_replace</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pol_data_replace</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Pa�stwowa. Jej dawne zbiory znane pod nazw�
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemc�w pod koniec II wojny �wiatowej na Dolny �l�sk, zosta�y
+odnalezione po 1945 r. na terytorium Polski. Trafi�y do Biblioteki
+Jagiello�skiej w Krakowie, obejmuj� ponad 500 tys. zabytkowych
+archiwali�w, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s encode the Polish data into bytes in latin2. The letter b prefixed to the string indicates that this is a byte string. You may wonder why some characters stay the same but others are turned into hex bytes. This is because only non-ASCII characters are converted to hex decimal representations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encode the Polish data into latin2 bytes</span>
+<span class="n">pol_bytes</span> <span class="o">=</span> <span class="n">pol_data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin2&#39;</span><span class="p">)</span>
+<span class="n">pol_bytes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;Pruska Biblioteka Pa\xf1stwowa. Jej dawne zbiory znane pod nazw\xb1\n&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez\nNiemc\xf3w pod koniec II wojny \xb6wiatowej na Dolny \xa6l\xb1sk, zosta\xb3y\nodnalezione po 1945 r. na terytorium Polski. Trafi\xb3y do Biblioteki\nJagiello\xf1skiej w Krakowie, obejmuj\xb1 ponad 500 tys. zabytkowych\narchiwali\xf3w, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-all-this-mean-to-named-entity-recognition">
+<h2>What does all this mean to Named Entity Recognition?<a class="headerlink" href="#what-does-all-this-mean-to-named-entity-recognition" title="Link to this heading">#</a></h2>
+<p>Now, we understand why ‘plain text’ is just a mystery. Computers ultimately only get a sequence of numbers and what characters those numbers translate to depends on the encoding.</p>
+<p>For those who work with multilingual corpora, especially those who work with texts that were created before the modern day, you will encounter at some point corpora that contain multiple encodings. We can use Python, however, to read a different encoding, standardize it into utf-8, and then continue to open that file as a utf-8 file consistently in the future.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Python3 to read the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin2&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pol_data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Państwowa. Jej dawne zbiory znane pod nazwą
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemców pod koniec II wojny światowej na Dolny Śląsk, zostały
+odnalezione po 1945 r. na terytorium Polski. Trafiły do Biblioteki
+Jagiellońskiej w Krakowie, obejmują ponad 500 tys. zabytkowych
+archiwaliów, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the data with the encoding utf8 to another file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/pol_lat2_to_utf8.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pol_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the new file using utf8</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/pol_lat2_to_utf8.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pol_utf8</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pol_utf8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pruska Biblioteka Państwowa. Jej dawne zbiory znane pod nazwą
+&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez
+Niemców pod koniec II wojny światowej na Dolny Śląsk, zostały
+odnalezione po 1945 r. na terytorium Polski. Trafiły do Biblioteki
+Jagiellońskiej w Krakowie, obejmują ponad 500 tys. zabytkowych
+archiwaliów, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recall the non-ASCII character ń that gives us an issue? We can see how it looks like at the byte level in utf8.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encode the Polish data into utf8 bytes</span>
+<span class="n">pol_utf8_bytes</span> <span class="o">=</span> <span class="n">pol_utf8</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="n">pol_utf8_bytes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;Pruska Biblioteka Pa\xc5\x84stwowa. Jej dawne zbiory znane pod nazw\xc4\x85\n&quot;Berlinka&quot; to skarb kultury i sztuki niemieckiej. Przewiezione przez\nNiemc\xc3\xb3w pod koniec II wojny \xc5\x9bwiatowej na Dolny \xc5\x9al\xc4\x85sk, zosta\xc5\x82y\nodnalezione po 1945 r. na terytorium Polski. Trafi\xc5\x82y do Biblioteki\nJagiello\xc5\x84skiej w Krakowie, obejmuj\xc4\x85 ponad 500 tys. zabytkowych\narchiwali\xc3\xb3w, m.in. manuskrypty Goethego, Mozarta, Beethovena, Bacha.\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we print out the Polish data from the file encoded in latin2 and from the one encoded in utf8, we get two strings on the screen that look exactly the same. However, when we get the byte strings from the two files, we see that even if two characters look the same to our naked eye, e.g. ń, they are different at the byte level. This means the computer will see them as two different characters.</p>
+<p>Again, for those who work with multilingual corpora, you will encounter at some point corpora that contain multiple encodings. So, always convert your data to utf8 before proceeding to tokenization and NER.</p>
+<h2 style="color:red; display:inline">Coding Challenge! &lt; / &gt; </h2>
+<p>Here is a txt file that is encoded in ISO-8859-15. Can you convert it to a utf-8 file?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Check if a data folder exists. If not, create it.</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/&#39;</span><span class="p">)</span>
+<span class="n">data_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Download the file</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/iso_text.txt&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span> <span class="o">+</span> <span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>   
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample file ready.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample file ready.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problems-within-utf-8">
+<h2>Problems within UTF-8<a class="headerlink" href="#problems-within-utf-8" title="Link to this heading">#</a></h2>
+<p>Our problems with encodings, unfortunately, do not end with UTF-8. Once we have encoded our texts into UTF-8, we can still have issues with characters that look the same but being encoded differently. This is particularly true with accented characters.</p>
+<p>Here we have two characters that look exactly the same and are also deemed the same by the computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two characters that look exactly the same are deemed the same</span>
+<span class="s2">&quot;Ç&quot;</span> <span class="o">==</span> <span class="s2">&quot;Ç&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we also have two characters that look exactly the same but this time they are deemed as two different characters by the computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two characters that look exactly the same are not deemed the same</span>
+<span class="s2">&quot;Ç&quot;</span> <span class="o">==</span> <span class="s2">&quot;Ç&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The two characters are regarded as different by the computer because at the byte level, they are different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print out the unicode strings for the two characters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç Ç
+</pre></div>
+</div>
+</div>
+</div>
+<p>One of them is seen as a single character, the accented C.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Latin capital letter C with cedilla</span>
+<span class="n">accent_c</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accent_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç
+</pre></div>
+</div>
+</div>
+</div>
+<p>The other is seen as a compound character, consisting of two characters, one being the Latin letter C and the other being the ‘combining cedilla’ character.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;Latin capital letter C&#39; and &#39;combining cedilla&#39; characters together</span>
+<span class="n">compound_c</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">compound_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç
+</pre></div>
+</div>
+</div>
+</div>
+<p>The ‘combining cedilla’ character can be combined with other letters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Another example of compound character</span>
+<span class="s2">&quot;J</span><span class="se">\u0327</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;J̧&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a look at the two parts of the compound C</span>
+<span class="s2">&quot;</span><span class="se">\u0043</span><span class="s2"> </span><span class="se">\u0327</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;C ̧&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the compound C and the accented C are different at the byte level, they are not considered the same by the computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two different byte strings for the two characters</span>
+<span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<section id="unicode-normalization">
+<h3>Unicode normalization<a class="headerlink" href="#unicode-normalization" title="Link to this heading">#</a></h3>
+<p>In NER though, we will not want our NER model to interpret the two characters as two different characters. Therefore, we will need to first normalize them to make them the same at the byte level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">unicodedata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Abbreviation</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Form D</p></td>
+<td><p>NFD</p></td>
+<td><p><em>Canonical</em> decomposition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ç</span></code> → <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">̧</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Form C</p></td>
+<td><p>NFC</p></td>
+<td><p><em>Canoncial</em> decomposition followed by <em>canonical</em> composition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ç</span></code> → <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">̧</span></code> → <code class="docutils literal notranslate"><span class="pre">Ç</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Source</span><span class="p">:</span> <span class="n">James</span> <span class="n">Briggs</span> <span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">towardsdatascience</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">what</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">earth</span><span class="o">-</span><span class="ow">is</span><span class="o">-</span><span class="n">unicode</span><span class="o">-</span><span class="n">normalization</span><span class="o">-</span><span class="mi">56</span><span class="n">c005c55ad0</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compound C and accented C</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">compound_c</span><span class="p">,</span> <span class="n">accent_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç Ç
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00C7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u0043\u0327</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ç Ç
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Decompose the accented character using Normal Form D</span>
+<span class="n">nfd_accent</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">&#39;NFD&#39;</span><span class="p">,</span> <span class="n">accent_c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">compound_c</span> <span class="o">==</span> <span class="n">nfd_accent</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Decompose and then compose using Normal Form C</span>
+<span class="n">nfc_compound</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">&#39;NFC&#39;</span><span class="p">,</span> <span class="n">compound_c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accent_c</span> <span class="o">==</span> <span class="n">nfc_compound</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<p>Tim Scott from Computerphile explains UTF-8</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=MijmeoH9LT4"><img alt="utf8" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/video/NER_utf8.png" /></a></p>
+<p>James Briggs Explains Unicode Normalization</p>
+<p><a class="reference external" href="https://www.youtube.com/embed/9Od9-DV9kd8"><img alt="unicodenormalization" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/video/NER_unicodenormalization.png" /></a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<p>Bird, S., Klein, E., &amp; Loper, E. (2009). <em>Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit</em>. O’Reilly Media, Inc.</p>
+<p>Spolsky, J. (2003, October 8). The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!). Joel on Software. <a class="reference external" href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/</a></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lesson-complete">
+<h1>Lesson Complete<a class="headerlink" href="#lesson-complete" title="Link to this heading">#</a></h1>
+<p>Congratulations! You have completed <em>NER 1</em>.</p>
+<section id="start-next-lesson-ner-2">
+<h2>Start Next Lesson: <a class="reference internal" href="NER-2.html"><span class="std std-doc">NER 2</span></a><a class="headerlink" href="#start-next-lesson-ner-2" title="Link to this heading">#</a></h2>
+</section>
+<section id="coding-challenge-solutions">
+<h2>Coding Challenge! Solutions<a class="headerlink" href="#coding-challenge-solutions" title="Link to this heading">#</a></h2>
+<p>There are often many ways to solve programming problems. Here are a few possible ways to solve the challenges, but there are certainly more!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert an ISO-8859-15 file to utf-8</span>
+
+<span class="c1"># Get the sample file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/iso_text.txt&#39;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../data/&#39;</span> <span class="o">+</span> <span class="n">url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>   
+
+<span class="c1"># Open the file in the correct encoding method and read in the data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/iso_text.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;iso-8859-15&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># create a new file in utf8 encoding and write in the data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/iso_to_utf8.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    
+<span class="c1"># Check the new file can be opened in utf8 encoding</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/iso_to_utf8.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/PythonForTextAnalysis/Advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MultiLingual NER</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-named-entity-recognition">Introduction to Named Entity Recognition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-entity-recognition">Named Entity Recognition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing">Natural Language Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizer">Tokenizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pos-tagger">POS tagger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#text-encoding">Text Encoding</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-little-bit-history-about-text-encoding">A little bit history about text encoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii-american-standard-code-for-information-interchange">ASCII (American Standard Code for Information Interchange)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utf-8">UTF-8</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ord-and-chr">ord( ) and chr( )</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-all-this-mean-to-named-entity-recognition">What does all this mean to Named Entity Recognition?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-within-utf-8">Problems within UTF-8</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-normalization">Unicode normalization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-complete">Lesson Complete</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-next-lesson-ner-2">Start Next Lesson: <span class="xref myst">NER 2</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-challenge-solutions">Coding Challenge! Solutions</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
