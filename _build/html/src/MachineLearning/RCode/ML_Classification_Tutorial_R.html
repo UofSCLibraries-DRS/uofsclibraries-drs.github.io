@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,16 +409,18 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Machine Learning Tutorial in R: From Data Cleaning to Classification (Using Iris Dataset)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-libraries">Step 1: Load Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-iris-dataset-a-built-in-dataset-in-r">Step 2: Load Iris Dataset, a built-in dataset in R</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-data-cleaning">Step 3: Data Cleaning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-exploratory-data-analysis">Step 4: Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-the-required-libraries-packages">Step 1: Install the Required Libraries/Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-libraries">Step 2: Load Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-load-iris-dataset-a-built-in-dataset-in-r">Step 3: Load Iris Dataset, a built-in dataset in R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-exploratory-data-analysis">Step 3: Exploratory Data Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-split-the-data">Step 5: Split the Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-feature-scaling">Step 6: Feature Scaling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-train-classifier">Step 7: Train Classifier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-model">Step 8: Evaluate Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-data-cleaning">Step 4: Data Cleaning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-split-the-data">Step 5: Split the Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-feature-scaling">Step 6: Feature Scaling</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-train-classifier">Step 7: Train Classifier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-model">Step 8: Evaluate Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-output">Summary of Output</a></li>
 </ul>
 </li>
 </ul>
@@ -435,9 +437,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-tutorial-in-r-from-data-cleaning-to-classification-using-iris-dataset">
 <h1>Machine Learning Tutorial in R: From Data Cleaning to Classification (Using Iris Dataset)<a class="headerlink" href="#machine-learning-tutorial-in-r-from-data-cleaning-to-classification-using-iris-dataset" title="Link to this heading">#</a></h1>
-<p>This notebook demonstrates a complete machine learning workflow in R—from data cleaning to model evaluation—using the Iris dataset. It’s a beginner-friendly guide to building and assessing a classification model step by step.</p>
-<section id="step-1-load-libraries">
-<h2>Step 1: Load Libraries<a class="headerlink" href="#step-1-load-libraries" title="Link to this heading">#</a></h2>
+<p>This notebook demonstrates a complete machine learning workflow in R—from data cleaning to model evaluation—using the Iris dataset.</p>
+<section id="step-1-install-the-required-libraries-packages">
+<h2>Step 1: Install the Required Libraries/Packages<a class="headerlink" href="#step-1-install-the-required-libraries-packages" title="Link to this heading">#</a></h2>
 <p>Before we begin working on machine learning tasks in R, we need to install and load several essential packages:</p>
 <p>These commands install the following libraries:</p>
 <ul class="simple">
@@ -456,6 +458,9 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="step-2-load-libraries">
+<h2>Step 2: Load Libraries<a class="headerlink" href="#step-2-load-libraries" title="Link to this heading">#</a></h2>
 <p>Once installed, we can load the libraries. This makes the functions from each package available in our R environment so we can use them in the rest of our analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -468,45 +473,112 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="step-2-load-iris-dataset-a-built-in-dataset-in-r">
-<h2>Step 2: Load Iris Dataset, a built-in dataset in R<a class="headerlink" href="#step-2-load-iris-dataset-a-built-in-dataset-in-r" title="Link to this heading">#</a></h2>
-<p>We begin by loading the built-in <strong>Iris dataset</strong>, a classic dataset in R used for demonstrating machine learning techniques. It contains measurements of iris flowers from three species. We assign the dataset to a new variable <code class="docutils literal notranslate"><span class="pre">df</span></code> for convenience. To standardize our workflow, we rename the fifth column—originally labeled <code class="docutils literal notranslate"><span class="pre">Species</span></code>—to <code class="docutils literal notranslate"><span class="pre">target</span></code>, which is a common convention when preparing data for classification tasks.</p>
+<section id="step-3-load-iris-dataset-a-built-in-dataset-in-r">
+<h2>Step 3: Load Iris Dataset, a built-in dataset in R<a class="headerlink" href="#step-3-load-iris-dataset-a-built-in-dataset-in-r" title="Link to this heading">#</a></h2>
+<p>This section begins by loading the built-in <strong>Iris</strong> dataset into a variable called <code class="docutils literal notranslate"><span class="pre">df</span></code>. The Iris dataset is a classic dataset in machine learning, containing measurements of sepal length, sepal width, petal length, and petal width for 150 iris flowers across three species. To get an initial sense of the data, the <code class="docutils literal notranslate"><span class="pre">head(df)</span></code> function is used to display the first six rows, providing a quick preview of the dataset’s structure and values. Similarly, <code class="docutils literal notranslate"><span class="pre">tail(df,</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">10)</span></code> shows the last ten rows, offering a look at how the dataset ends and helping to identify any potential issues or patterns in the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Iris Dataset, a built-in dataset in R</span>
 <span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span>
+
+<span class="c1"># Display the first 6 rows of a data frame df</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Display the last 10 rows of df</span>
+<span class="nf">tail</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 x 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 10 x 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>141</th><td>6.7</td><td>3.1</td><td>5.6</td><td>2.4</td><td>virginica</td></tr>
+	<tr><th scope=row>142</th><td>6.9</td><td>3.1</td><td>5.1</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>143</th><td>5.8</td><td>2.7</td><td>5.1</td><td>1.9</td><td>virginica</td></tr>
+	<tr><th scope=row>144</th><td>6.8</td><td>3.2</td><td>5.9</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>145</th><td>6.7</td><td>3.3</td><td>5.7</td><td>2.5</td><td>virginica</td></tr>
+	<tr><th scope=row>146</th><td>6.7</td><td>3.0</td><td>5.2</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>147</th><td>6.3</td><td>2.5</td><td>5.0</td><td>1.9</td><td>virginica</td></tr>
+	<tr><th scope=row>148</th><td>6.5</td><td>3.0</td><td>5.2</td><td>2.0</td><td>virginica</td></tr>
+	<tr><th scope=row>149</th><td>6.2</td><td>3.4</td><td>5.4</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>150</th><td>5.9</td><td>3.0</td><td>5.1</td><td>1.8</td><td>virginica</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="step-3-exploratory-data-analysis">
+<h2>Step 3: Exploratory Data Analysis<a class="headerlink" href="#step-3-exploratory-data-analysis" title="Link to this heading">#</a></h2>
+<p>This block of code provides essential information about the structure and contents of the dataset. The <code class="docutils literal notranslate"><span class="pre">str(df)</span></code> function reveals the internal structure of the data frame, including the number of rows and columns, the column names, and the data type of each column—helpful for understanding how the data is organized. Next, <code class="docutils literal notranslate"><span class="pre">summary(df)</span></code> generates descriptive statistics (such as mean, median, min, max, and quartiles) for all numerical features, offering a quick overview of the distribution and range of the values. Finally, to make the dataset more intuitive for machine learning tasks, the fifth column (originally named “Species”) is renamed to <code class="docutils literal notranslate"><span class="pre">&quot;target&quot;</span></code> using <code class="docutils literal notranslate"><span class="pre">colnames(df)[5]</span> <span class="pre">&lt;-</span> <span class="pre">&quot;target&quot;</span></code>, clearly designating it as the variable we aim to predict.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#find the number of rows and columns, column names, and datatype of columns</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># find the summary statistics of all the numerical features</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="c1"># Rename target column for consistency; the column 5 (&quot;species&quot;) is renamed as &quot;target&quot;</span>
 <span class="nf">colnames</span><span class="p">(</span><span class="n">df</span><span class="p">)[</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;target&quot;</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="step-3-data-cleaning">
-<h2>Step 3: Data Cleaning<a class="headerlink" href="#step-3-data-cleaning" title="Link to this heading">#</a></h2>
-<p>Although the Iris dataset is well-structured and does not contain missing values, it’s still good practice to check for them before performing any data analysis or machine learning. We use the <code class="docutils literal notranslate"><span class="pre">anyNA(df)</span></code> function to quickly verify if any missing (<code class="docutils literal notranslate"><span class="pre">NA</span></code>) values are present in the dataset. This function returns <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> if there are missing values and <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> otherwise, helping us ensure data quality before proceeding.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-4-data-cleaning">
+<h1>Step 4: Data Cleaning<a class="headerlink" href="#step-4-data-cleaning" title="Link to this heading">#</a></h1>
+<p>This section focuses on exploring and visualizing the dataset to better understand its structure before building a machine learning model. First, <code class="docutils literal notranslate"><span class="pre">anyNA(df)</span></code> checks for any missing values in the dataset—although the Iris dataset is clean, it’s good practice to confirm this before proceeding. Next, a bar chart is created using <code class="docutils literal notranslate"><span class="pre">ggplot()</span></code> to visualize the distribution of the <code class="docutils literal notranslate"><span class="pre">target</span></code> variable (i.e., the flower species). This helps assess class balance, which is important for model training. Lastly, a heatmap of correlations is generated using <code class="docutils literal notranslate"><span class="pre">corrplot()</span></code>, which calculates pairwise correlations between the four numerical features (sepal and petal measurements) and visually represents their relationships. In a heatmap, brighter or darker colors typically indicate stronger positive or negative correlations, helping you quickly identify which features move together or in opposite directions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># No missing values in iris; but check anyway; </span>
 <span class="nf">anyNA</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">FALSE</div></div>
-</div>
-</section>
-<section id="step-4-exploratory-data-analysis">
-<h2>Step 4: Exploratory Data Analysis<a class="headerlink" href="#step-4-exploratory-data-analysis" title="Link to this heading">#</a></h2>
-<p>Next, we explore the structure and basic characteristics of the dataset. The <code class="docutils literal notranslate"><span class="pre">str(df)</span></code> function reveals the number of rows and columns, the column names, and the data types of each column, giving us a quick overview of the dataset’s format. We follow this with <code class="docutils literal notranslate"><span class="pre">summary(df)</span></code>, which provides summary statistics—such as mean, median, min, and max—for each numerical feature, helping us understand the data’s distribution and scale. To visualize the class distribution of our target variable, we use <code class="docutils literal notranslate"><span class="pre">ggplot()</span></code> with <code class="docutils literal notranslate"><span class="pre">geom_bar()</span></code> to create a bar plot that shows how many examples belong to each iris species. Finally, we use the <code class="docutils literal notranslate"><span class="pre">corrplot()</span></code> function to create a heatmap showing the correlation between the four numerical features (sepal length, sepal width, petal length, and petal width). This helps us identify which features are strongly related, which can influence model performance and feature selection.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of rows and columns, column names, and datatype of columns</span>
-<span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="c1"># find the summary statistics of all the numerical features</span>
-<span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="c1"># Plot the number of classes in target variable (column y)</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">target</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;steelblue&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
@@ -518,59 +590,33 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	150 obs. of  5 variables:
- $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
- $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
- $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
- $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
- $ target      : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
- Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
- 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
- Median :5.800   Median :3.000   Median :4.350   Median :1.300  
- Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
- 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
- Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
-        target  
- setosa    :50  
- versicolor:50  
- virginica :50  
-                
-                
-                
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="../../../_images/dba5be7e8a27b89ba9d6d72fe718aded59089cd9ba3c2ef6cf28c840ef18f798.png"><img alt="../../../_images/dba5be7e8a27b89ba9d6d72fe718aded59089cd9ba3c2ef6cf28c840ef18f798.png" src="../../../_images/dba5be7e8a27b89ba9d6d72fe718aded59089cd9ba3c2ef6cf28c840ef18f798.png" style="width: 420px; height: 420px;" />
+<div class="output text_html">FALSE</div><a class="reference internal image-reference" href="../../../_images/dba5be7e8a27b89ba9d6d72fe718aded59089cd9ba3c2ef6cf28c840ef18f798.png"><img alt="../../../_images/dba5be7e8a27b89ba9d6d72fe718aded59089cd9ba3c2ef6cf28c840ef18f798.png" src="../../../_images/dba5be7e8a27b89ba9d6d72fe718aded59089cd9ba3c2ef6cf28c840ef18f798.png" style="width: 420px; height: 420px;" />
 </a>
 <a class="reference internal image-reference" href="../../../_images/3479487583a212f007e469eba422772d931add36d5fe1895a8cc8c1dfc61030f.png"><img alt="../../../_images/3479487583a212f007e469eba422772d931add36d5fe1895a8cc8c1dfc61030f.png" src="../../../_images/3479487583a212f007e469eba422772d931add36d5fe1895a8cc8c1dfc61030f.png" style="width: 420px; height: 420px;" />
 </a>
 </div>
 </div>
 </section>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-5-split-the-data">
 <h1>Step 5: Split the Data<a class="headerlink" href="#step-5-split-the-data" title="Link to this heading">#</a></h1>
-<p>To prepare for training and evaluating our machine learning model, we split the dataset into training and testing sets. We use an 80/20 split, meaning 80% of the data is used to train the model and 20% is reserved for testing its performance. The <code class="docutils literal notranslate"><span class="pre">set.seed(42)</span></code> function ensures that the random split is reproducible, so results remain consistent each time the code is run. We then use <code class="docutils literal notranslate"><span class="pre">createDataPartition()</span></code> from the <strong><code class="docutils literal notranslate"><span class="pre">caret</span></code></strong> package to split the data while preserving the proportion of classes in the target variable. The resulting <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> datasets will be used for building and evaluating our classification model.</p>
+<p>This section prepares the data for machine learning by splitting it into training and testing sets. Using <code class="docutils literal notranslate"><span class="pre">set.seed(42)</span></code> ensures that the random split is reproducible, meaning you’ll get the same results each time you run the code. The <code class="docutils literal notranslate"><span class="pre">createDataPartition()</span></code> function from the <strong>caret</strong> package is used to randomly divide the dataset, while preserving the proportion of each class in the <code class="docutils literal notranslate"><span class="pre">target</span></code> variable. In this example, 80% of the data is used for training (<code class="docutils literal notranslate"><span class="pre">train</span></code>) and 20% for testing (<code class="docutils literal notranslate"><span class="pre">test</span></code>). However, other common split ratios include 70/30 or 75/25, depending on the size of the dataset and the need for training versus evaluation. A larger training set (like 80%) gives the model more data to learn from, while a larger test set (like 30%) provides a more robust evaluation. The ideal split often depends on the problem context and the amount of available data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data randomly into training and testing set in 80/20 ratio. We could split it in 70/30 or 75/25 ratio also.</span>
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span><span class="w"> </span><span class="c1"># set a random seed to replicate the results</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span><span class="w"> </span><span class="c1"># set a random seed to replicate the results</span>
 <span class="n">trainIndex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 <span class="n">train</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">trainIndex</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<span class="n">test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="n">trainIndex</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="n">trainIndex</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="c1"># whatever is left after assigning to &quot;train&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="step-6-feature-scaling">
-<h2>Step 6: Feature Scaling<a class="headerlink" href="#step-6-feature-scaling" title="Link to this heading">#</a></h2>
-<p>Before training our model, we apply <strong>feature scaling</strong> to ensure that all numerical features contribute equally. Features in a dataset can have very different ranges—for example, one may range from 0 to 1, while another ranges up to 2500. Without scaling, features with larger magnitudes could disproportionately influence the model. To address this, we use the <code class="docutils literal notranslate"><span class="pre">preProcess()</span></code> function from the <strong><code class="docutils literal notranslate"><span class="pre">caret</span></code></strong> package to <strong>center</strong> (subtract the mean) and <strong>scale</strong> (divide by standard deviation) the feature columns in the training set. We then apply the same transformation to both the training and testing feature sets using <code class="docutils literal notranslate"><span class="pre">predict()</span></code>. Importantly, only the numerical features are scaled—not the target labels.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-6-feature-scaling">
+<h1>Step 6: Feature Scaling<a class="headerlink" href="#step-6-feature-scaling" title="Link to this heading">#</a></h1>
+<p>This section focuses on <strong>feature scaling</strong>, an important preprocessing step in many machine learning workflows. Since the numerical features in the Iris dataset have different value ranges—for instance, <code class="docutils literal notranslate"><span class="pre">Petal.Width</span></code> ranges up to 2.5 while <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> goes up to 7.9—scaling is used to standardize the values. Using the <code class="docutils literal notranslate"><span class="pre">preProcess()</span></code> function from the <strong>caret</strong> package with the <code class="docutils literal notranslate"><span class="pre">&quot;center&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;scale&quot;</span></code> methods, the features in the training data are transformed so that they have a mean of 0 and a standard deviation of 1. This ensures that no single feature disproportionately influences the model due to its magnitude. The scaling model learned from the training data is then applied to both the training and testing features using <code class="docutils literal notranslate"><span class="pre">predict()</span></code>. Note that <strong>only the input features (columns 1 to 4) are scaled</strong>—the target variable (<code class="docutils literal notranslate"><span class="pre">target</span></code>) remains unchanged.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 6: Feature Scaling</span>
-<span class="c1">#Numerical value of feature may be of different magnitudes (for example, max value of  &quot;mean smoothness&quot; is 0.163400 wheras max value &quot;mean area&quot; is 2501.00. </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Numerical value of feature may be of different magnitudes (for example, max value of  &quot;Petal.Width&quot; is 2.5 wheras max value &quot;Sepal.Length&quot; is 7.9. </span>
 <span class="c1">#Hence, we scale the features to transform them to a similar scale (between 0 and 1), </span>
 <span class="c1">#so the feature with high numerical values does not dominate the model creation. Only feature values are scaled, NOT the target values.```</span>
 <span class="n">preproc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">train</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;scale&quot;</span><span class="p">))</span>
@@ -581,25 +627,23 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="step-7-train-classifier">
-<h2>Step 7: Train Classifier<a class="headerlink" href="#step-7-train-classifier" title="Link to this heading">#</a></h2>
-<p>With our features scaled and data split, we’re ready to train a classification model. In this example, we use the <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#">Random Forest</a> algorithm, a powerful ensemble method that builds multiple decision trees and aggregates their predictions for improved accuracy and robustness. We train the model using the <code class="docutils literal notranslate"><span class="pre">randomForest()</span></code> function, providing the scaled training features (<code class="docutils literal notranslate"><span class="pre">train_scaled</span></code>) as input <code class="docutils literal notranslate"><span class="pre">x</span></code> and the target labels (<code class="docutils literal notranslate"><span class="pre">train$target</span></code>) as <code class="docutils literal notranslate"><span class="pre">y</span></code>. This step builds a classifier that learns patterns in the training data to distinguish between the iris species. While we’re using Random Forest here, other popular classifiers—such as <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html">Decision Trees</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">Logistic Regression</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/naive_bayes.html">Naive Bayes</a>, or <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#">XGBoost</a>—could also be used depending on the problem and desired performance.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="step-7-train-classifier">
+<h1>Step 7: Train Classifier<a class="headerlink" href="#step-7-train-classifier" title="Link to this heading">#</a></h1>
+<p>This line of code demonstrates how to train a machine learning model—in this case, a <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#">Random Forest</a> classifier—using the preprocessed training data. The <code class="docutils literal notranslate"><span class="pre">randomForest()</span></code> function takes the scaled feature values (<code class="docutils literal notranslate"><span class="pre">train_scaled</span></code>) as input (<code class="docutils literal notranslate"><span class="pre">x</span></code>) and the corresponding class labels (<code class="docutils literal notranslate"><span class="pre">train$target</span></code>) as output (<code class="docutils literal notranslate"><span class="pre">y</span></code>). Random Forest is a powerful ensemble learning method that builds multiple decision trees and combines their predictions to improve accuracy and reduce overfitting. While this example uses Random Forest, other popular classification algorithms such as <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html">Decision Tree</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">Logistic Regression</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/naive_bayes.html">Naive Bayes</a>, and <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#">XGBoost</a> can also be used depending on the problem and dataset characteristics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train Classifier</span>
-<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">randomForest</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train_scaled</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train</span><span class="o">$</span><span class="n">target</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">randomForest</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train_scaled</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train</span><span class="o">$</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="step-8-evaluate-model">
-<h2>Step 8: Evaluate Model<a class="headerlink" href="#step-8-evaluate-model" title="Link to this heading">#</a></h2>
-<p>After training the model, we evaluate its performance on the unseen test data. Using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function, we generate predictions for the scaled test features (<code class="docutils literal notranslate"><span class="pre">test_scaled</span></code>). We then compare these predictions against the true labels (<code class="docutils literal notranslate"><span class="pre">test$target</span></code>) by creating a <strong>confusion matrix</strong> with <code class="docutils literal notranslate"><span class="pre">confusionMatrix()</span></code> from the <strong>caret</strong> package. This matrix summarizes how well the model correctly classified each iris species, showing counts of true positives, false positives, true negatives, and false negatives, along with accuracy and other performance metrics. Evaluating on test data helps us understand how well the model generalizes to new, unseen samples.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="step-8-evaluate-model">
+<h1>Step 8: Evaluate Model<a class="headerlink" href="#step-8-evaluate-model" title="Link to this heading">#</a></h1>
+<p>This code uses the trained Random Forest model to make predictions on the scaled test dataset. The <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function generates predicted class labels (<code class="docutils literal notranslate"><span class="pre">pred</span></code>) for each example in the test set based on the learned patterns from the training data. Then, <code class="docutils literal notranslate"><span class="pre">confusionMatrix()</span></code> compares these predictions to the true target values (<code class="docutils literal notranslate"><span class="pre">test$target</span></code>) to evaluate the model’s performance. The confusion matrix provides detailed insight into how well the model classified each class, showing counts of true positives, false positives, true negatives, and false negatives, which help assess accuracy, precision, recall, and other important metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate Model</span>
-<span class="n">pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test_scaled</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test_scaled</span><span class="p">)</span>
 <span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="o">$</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -639,6 +683,9 @@ Balanced Accuracy           1.0000            0.9250           0.9250
 </div>
 </div>
 </div>
+<section id="summary-of-output">
+<h2>Summary of Output<a class="headerlink" href="#summary-of-output" title="Link to this heading">#</a></h2>
+<p>The model achieved an overall accuracy of approximately 93%, indicating strong performance in correctly classifying the Iris species. Sensitivity and specificity values are high across all classes, showing the model effectively identifies each species with few misclassifications. The balanced accuracy values near or above 90% for all classes further confirm that the model performs consistently well across the different species.</p>
 </section>
 </section>
 
@@ -689,16 +736,18 @@ Balanced Accuracy           1.0000            0.9250           0.9250
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Machine Learning Tutorial in R: From Data Cleaning to Classification (Using Iris Dataset)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-libraries">Step 1: Load Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-iris-dataset-a-built-in-dataset-in-r">Step 2: Load Iris Dataset, a built-in dataset in R</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-data-cleaning">Step 3: Data Cleaning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-exploratory-data-analysis">Step 4: Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-the-required-libraries-packages">Step 1: Install the Required Libraries/Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-libraries">Step 2: Load Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-load-iris-dataset-a-built-in-dataset-in-r">Step 3: Load Iris Dataset, a built-in dataset in R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-exploratory-data-analysis">Step 3: Exploratory Data Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-split-the-data">Step 5: Split the Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-feature-scaling">Step 6: Feature Scaling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-train-classifier">Step 7: Train Classifier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-model">Step 8: Evaluate Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-data-cleaning">Step 4: Data Cleaning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-split-the-data">Step 5: Split the Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-feature-scaling">Step 6: Feature Scaling</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-train-classifier">Step 7: Train Classifier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-model">Step 8: Evaluate Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-output">Summary of Output</a></li>
 </ul>
 </li>
 </ul>
