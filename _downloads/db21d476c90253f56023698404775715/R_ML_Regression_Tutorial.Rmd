@@ -1,0 +1,131 @@
+---
+title: "Machine Learning Tutorial: Regression in R"
+Task: Create a ML model to predict Petal.Length (target, numerical) using Sepal.Length    Sepal.Width, Petal.Width, and Species as features.
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### ML Tutorial: Regression Pipeline in R
+
+This notebook walks through a regression task using the **Iris** dataset.
+
+###Step 1: Install and Load Packages
+
+```{r}
+# Install if needed:
+# install.packages(c("tidyverse", "caret", "randomForest", "ggplot2", "Metrics", "corrplot"))
+
+library(tidyverse)
+library(caret)
+library(randomForest)
+library(ggplot2)
+library(Metrics)
+library(MASS)
+library(corrplot)
+```
+
+#### Step 2: Load the Dataset
+
+```{r}
+df <- iris
+# Display the first 6 rows of a data frame df
+head(df)
+
+# Display the last 10 rows of df
+tail(df, n = 10)
+```
+
+#### Step 3: Data Cleaning (checking for missing data)
+
+```{r}
+print("The number of missing values in the data:")
+sum(is.na(df)) # count of missing values
+
+print("summary statistics of the data")
+summary(df)
+```
+#### Step 4: Exploratory Data Analysis (EDA)
+```{r}
+# Distribution of target
+ggplot(df, aes(x = Petal.Length)) +
+  geom_histogram(fill = "steelblue", bins = 30) +
+  labs(title = "Distribution of petal length", x = "Petal.Length")
+
+# Correlation heatmap between all numerical columns (except Species)
+cor_matrix <- cor(subset(df, select = -Species))
+  # Removes the first column
+corrplot(cor_matrix, method = "color")
+```
+
+We see that the highest correlation is between Petal.Width and Petal.Length and also between Sepal.Length and Petal.Length. 
+
+#### Step 5: Split the Data
+
+```{r}
+set.seed(123)
+split <- createDataPartition(df$Petal.Length, p = 0.8, list = FALSE)
+train <- df[split, ]
+test <- df[-split, ]
+```
+
+#### Step 6: Preprocessing (Centering & Scaling)
+
+```{r}
+pre_proc <- preProcess(train, method = c("center", "scale"))
+train_scaled <- predict(pre_proc, train)
+test_scaled <- predict(pre_proc, test)
+```
+
+#### Step 7: Train Regression Models (For example, Linear Regression and Random Forest Regression. Other regression models like Naive Bayes, Gradient Boosting, Decision Tree can be used too.
+
+###### Linear Regression
+
+```{r}
+model_lm <- lm(Petal.Length ~ ., data = train_scaled)
+summary(model_lm)
+```
+
+##### Random Forest
+
+```{r}
+set.seed(42)
+model_rf <- randomForest(Petal.Length ~ ., data = train_scaled, ntree = 100)
+model_rf
+```
+
+###Step 8: Evaluate the two models using metrics like R-square, Mean Absolute Error (MAE), and Mean Square Error (MSE)
+
+```{r}
+# Predictions
+pred_lm <- predict(model_lm, newdata = test_scaled)
+pred_rf <- predict(model_rf, newdata = test_scaled)
+actual <- test_scaled$Petal.Length
+
+# Metrics
+lm_r2 <- R2(pred_lm, actual)
+rf_r2 <- R2(pred_rf, actual)
+
+lm_mae <- mae(actual, pred_lm)
+rf_mae <- mae(actual, pred_rf)
+
+lm_mse <- mse(actual, pred_lm)
+rf_mse <- mse(actual, pred_rf)
+
+cat("Linear Regression:\n")
+cat("R²:", lm_r2, "\nMAE:", lm_mae, "\nMSE:", lm_mse, "\n\n")
+
+cat("Random Forest:\n")
+cat("R²:", rf_r2, "\nMAE:", rf_mae, "\nMSE:", rf_mse)
+```
+
+#### Step 9: Save and Load the Model
+```{r}
+# Save the model
+saveRDS(model_lm, file = "linear_model.rds")
+
+# Load later
+# model <- readRDS("linear_model.rds")
+```
