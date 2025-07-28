@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Machine Learning Tutorial: Regression in R &#8212; USC Libraries - DRS Resources for Data Literacy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/MachineLearning/RCode/R_ML_Regression_Tutorial';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-light" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>
+    <script>document.write(`<img src="../../../_static/USC_Libraries_logo_horizontal_RGB_2C.png" class="logo__image only-dark" alt="USC Libraries - DRS Resources for Data Literacy - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics.html">Data Cleaning Basics</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForDataAnalysis/DataVisualization/DataVisualization.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForTextAnalysis/Advanced/AdvancedTextAnalysis.html">Advanced Text Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForTextAnalysis/ProjectExamples/TextPreprocessingMethods.html">Project Example</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForDataAnalysis/Data_Wrangling.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R for Text Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../RForTextAnalysis/GettingStarted/GettingStarted.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../PythonCode/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="R.html">R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AppDevelopment/AppDevelopment.html">Getting Started</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UofSCLibraries-DRS/uofsclibraries-drs.github.io/issues/new?title=Issue%20on%20page%20%2Fsrc/MachineLearning/RCode/R_ML_Regression_Tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/MachineLearning/RCode/R_ML_Regression_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Machine Learning Tutorial: Regression in R</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-and-load-packages">Step 1: Install and Load Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-the-dataset">Step 2: Load the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-data-cleaning-checking-for-missing-data">Step 3: Data Cleaning (checking for missing data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-exploratory-data-analysis-eda">Step 4: Exploratory Data Analysis (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-plot-of-a-key-feature">1. Distribution Plot of a Key Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-heatmap-of-numerical-features">2. Correlation Heatmap of Numerical Features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-split-the-data">Step 5: Split the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-preprocessing-centering-scaling">Step 6: Preprocessing (Centering &amp; Scaling)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-train-regression-models">Step 7: Train Regression Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-the-two-models-using-metrics-like-r-square-mean-absolute-error-mae-and-mean-square-error-mse">Step 8: Evaluate the two models using metrics like R-square, Mean Absolute Error (MAE), and Mean Square Error (MSE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-save-and-load-the-model">Step 9: Save and Load the Model</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-tutorial-regression-in-r">
+<h1>Machine Learning Tutorial: Regression in R<a class="headerlink" href="#machine-learning-tutorial-regression-in-r" title="Link to this heading">#</a></h1>
+<p>This notebook walks through a regression task using the <strong>Iris</strong> dataset.</p>
+<section id="step-1-install-and-load-packages">
+<h2>Step 1: Install and Load Packages<a class="headerlink" href="#step-1-install-and-load-packages" title="Link to this heading">#</a></h2>
+<p>This code loads all the R packages needed for the regression tutorial:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">tidyverse</span></code></strong>: A collection of packages for data manipulation and visualization (e.g., <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">caret</span></code></strong>: Provides tools for training and evaluating machine learning models.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">randomForest</span></code></strong>: Implements the Random Forest algorithm for regression or classification.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></strong>: Used for creating informative and elegant data visualizations.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Metrics</span></code></strong>: Offers performance evaluation metrics like RMSE and MAE.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">MASS</span></code></strong>: Contains datasets and functions for statistical modeling (used here for the <code class="docutils literal notranslate"><span class="pre">Boston</span></code> dataset).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">corrplot</span></code></strong>: Used to visualize correlations between features using correlation matrices.</p></li>
+</ul>
+<p>The commented <code class="docutils literal notranslate"><span class="pre">install.packages()</span></code> line reminds users to install these packages first if they are not already installed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install if needed:</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;caret&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;randomForest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ggplot2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Metrics&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;corrplot&quot;</span><span class="p">))</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">randomForest</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">Metrics</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">corrplot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-load-the-dataset">
+<h2>Step 2: Load the Dataset<a class="headerlink" href="#step-2-load-the-dataset" title="Link to this heading">#</a></h2>
+<p>We begin by loading the built-in <strong>Iris</strong> dataset into a variable called <code class="docutils literal notranslate"><span class="pre">df</span></code>. This dataset is widely used in machine learning tutorials and contains 150 samples of iris flowers across three species (<em>setosa</em>, <em>versicolor</em>, and <em>virginica</em>). Each sample includes four numerical features: sepal length, sepal width, petal length, and petal width.</p>
+<p>To get an initial look at the data, we use two functions:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">head(df)</span></code></strong>: Displays the first six rows of the dataset, allowing us to quickly check the format and feature values.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">tail(df,</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">10)</span></code></strong>: Shows the last ten rows of the dataset, helping us spot any unusual entries or patterns at the end of the data frame.</p></li>
+</ul>
+<p>These preview functions are useful for gaining a quick understanding of the dataset before diving into data exploration or modeling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span>
+<span class="c1"># Display the first 6 rows of a data frame df</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Display the last 10 rows of df</span>
+<span class="nf">tail</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 x 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 10 x 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>141</th><td>6.7</td><td>3.1</td><td>5.6</td><td>2.4</td><td>virginica</td></tr>
+	<tr><th scope=row>142</th><td>6.9</td><td>3.1</td><td>5.1</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>143</th><td>5.8</td><td>2.7</td><td>5.1</td><td>1.9</td><td>virginica</td></tr>
+	<tr><th scope=row>144</th><td>6.8</td><td>3.2</td><td>5.9</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>145</th><td>6.7</td><td>3.3</td><td>5.7</td><td>2.5</td><td>virginica</td></tr>
+	<tr><th scope=row>146</th><td>6.7</td><td>3.0</td><td>5.2</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>147</th><td>6.3</td><td>2.5</td><td>5.0</td><td>1.9</td><td>virginica</td></tr>
+	<tr><th scope=row>148</th><td>6.5</td><td>3.0</td><td>5.2</td><td>2.0</td><td>virginica</td></tr>
+	<tr><th scope=row>149</th><td>6.2</td><td>3.4</td><td>5.4</td><td>2.3</td><td>virginica</td></tr>
+	<tr><th scope=row>150</th><td>5.9</td><td>3.0</td><td>5.1</td><td>1.8</td><td>virginica</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="step-3-data-cleaning-checking-for-missing-data">
+<h2>Step 3: Data Cleaning (checking for missing data)<a class="headerlink" href="#step-3-data-cleaning-checking-for-missing-data" title="Link to this heading">#</a></h2>
+<p>Before proceeding with data preprocessing or model training, it’s important to understand the quality and distribution of the dataset. In this step, we perform two key checks:</p>
+<ul class="simple">
+<li><p><strong>Missing Values</strong>:
+Using <code class="docutils literal notranslate"><span class="pre">sum(is.na(df))</span></code>, we check for any missing (<code class="docutils literal notranslate"><span class="pre">NA</span></code>) values in the dataset. Although the Iris dataset is clean by default, verifying the absence of missing data is a good habit in any machine learning pipeline.</p></li>
+<li><p><strong>Summary Statistics</strong>:
+The <code class="docutils literal notranslate"><span class="pre">summary(df)</span></code> function provides descriptive statistics for each column in the dataset. For numerical variables, it displays metrics such as <strong>minimum</strong>, <strong>1st quartile</strong>, <strong>median</strong>, <strong>mean</strong>, <strong>3rd quartile</strong>, and <strong>maximum</strong> values. For categorical variables (like species), it shows the number of occurrences for each category.</p></li>
+</ul>
+<p>These checks help ensure data quality and give you a clearer picture of how features are distributed before scaling or modeling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;The number of missing values in the data:&quot;</span><span class="p">)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">))</span><span class="w"> </span><span class="c1"># count of missing values</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;summary statistics of the data&quot;</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;The number of missing values in the data:&quot;
+</pre></div>
+</div>
+<div class="output text_html">0</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;summary statistics of the data&quot;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-exploratory-data-analysis-eda">
+<h2>Step 4: Exploratory Data Analysis (EDA)<a class="headerlink" href="#step-4-exploratory-data-analysis-eda" title="Link to this heading">#</a></h2>
+<p>Before training any machine learning model, it’s valuable to visualize the distribution of key features and explore relationships between them. This step provides two important visualizations:</p>
+<section id="distribution-plot-of-a-key-feature">
+<h3>1. Distribution Plot of a Key Feature<a class="headerlink" href="#distribution-plot-of-a-key-feature" title="Link to this heading">#</a></h3>
+<p>We begin by visualizing the distribution of <strong><code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code></strong>, one of the most informative features in the Iris dataset. Using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>, a histogram is plotted to show how frequently each petal length value occurs:</p>
+<p>This histogram helps identify the shape of the distribution (e.g., skewed, normal, multimodal), and whether there are outliers or distinct clusters that could impact model performance.</p>
+</section>
+<section id="correlation-heatmap-of-numerical-features">
+<h3>2. Correlation Heatmap of Numerical Features<a class="headerlink" href="#correlation-heatmap-of-numerical-features" title="Link to this heading">#</a></h3>
+<p>Next, we compute and visualize the <strong>correlation matrix</strong> for all numerical features in the dataset (excluding the categorical <code class="docutils literal notranslate"><span class="pre">Species</span></code> column). The correlation matrix shows how strongly each pair of numerical features is linearly related.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cor()</span></code></strong>: Calculates pairwise Pearson correlation coefficients.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">corrplot()</span></code></strong>: Produces a color-coded heatmap where stronger correlations appear as more vivid colors.</p>
+<ul>
+<li><p>Values near 1 indicate strong positive correlation.</p></li>
+<li><p>Values near -1 indicate strong negative correlation.</p></li>
+<li><p>Values near 0 indicate little to no correlation.</p></li>
+</ul>
+</li>
+</ul>
+<p>Understanding these relationships helps identify redundant features and supports feature selection or dimensionality reduction if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distribution of target</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distribution of petal length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Petal.Length&quot;</span><span class="p">)</span>
+
+<span class="c1"># Correlation heatmap between all numerical columns (except Species)</span>
+<span class="n">cor_matrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cor</span><span class="p">(</span><span class="nf">subset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">Species</span><span class="p">))</span>
+<span class="w">  </span><span class="c1"># Removes the first column</span>
+<span class="nf">corrplot</span><span class="p">(</span><span class="n">cor_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;color&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/44f40539775a0fb33159ca81ff0b6899a7f3747ee1d4adda9d39a89cf277ed71.png"><img alt="../../../_images/44f40539775a0fb33159ca81ff0b6899a7f3747ee1d4adda9d39a89cf277ed71.png" src="../../../_images/44f40539775a0fb33159ca81ff0b6899a7f3747ee1d4adda9d39a89cf277ed71.png" style="width: 420px; height: 420px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/2809f42ac6cf1952bc51c50ec12e68baf2e06ab4884dbc15c87a1d5f13f7dffb.png"><img alt="../../../_images/2809f42ac6cf1952bc51c50ec12e68baf2e06ab4884dbc15c87a1d5f13f7dffb.png" src="../../../_images/2809f42ac6cf1952bc51c50ec12e68baf2e06ab4884dbc15c87a1d5f13f7dffb.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>We see that the highest correlation is between Petal.Width and Petal.Length and also between Sepal.Length and Petal.Length.</p>
+</section>
+</section>
+<section id="step-5-split-the-data">
+<h2>Step 5: Split the Data<a class="headerlink" href="#step-5-split-the-data" title="Link to this heading">#</a></h2>
+<p>To evaluate the performance of a machine learning model, it’s essential to divide the dataset into two parts:</p>
+<ul class="simple">
+<li><p><strong>Training set</strong>: Used to train the model.</p></li>
+<li><p><strong>Testing set</strong>: Used to evaluate how well the model generalizes to unseen data.</p></li>
+</ul>
+<p>In this step, we perform an 80/20 split using the <code class="docutils literal notranslate"><span class="pre">createDataPartition()</span></code> function from the <strong>caret</strong> package. This function ensures that the distribution of the target variable is preserved in both subsets (also known as <em>stratified sampling</em>).</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">set.seed(123)</span></code></strong> ensures that the data split is reproducible.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">createDataPartition()</span></code></strong> randomly selects 80% of the data for training (<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">0.8</span></code>), while preserving the distribution of the target variable (<code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code> in this case).</p></li>
+<li><p>The remaining 20% becomes the <strong>testing set</strong>.</p></li>
+</ul>
+<p>This prepares the data for model training and evaluation in a way that helps prevent overfitting and ensures more reliable performance metrics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
+<span class="n">split</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">train</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">split</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="n">split</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-preprocessing-centering-scaling">
+<h2>Step 6: Preprocessing (Centering &amp; Scaling)<a class="headerlink" href="#step-6-preprocessing-centering-scaling" title="Link to this heading">#</a></h2>
+<p>Before training many machine learning models—especially those that are distance-based or sensitive to feature magnitude—it’s important to <strong>standardize</strong> the input features. In this step, we apply <strong>feature scaling</strong> to ensure that all numerical variables contribute equally to the model.</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">preProcess()</span></code> function from the <strong>caret</strong> package to scale the data:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">preProcess()</span></code></strong> creates a preprocessing model that centers (subtracts the mean) and scales (divides by standard deviation) each numeric column.</p></li>
+<li><p>This ensures each feature has a <strong>mean of 0</strong> and a <strong>standard deviation of 1</strong>, standardizing their ranges.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">predict()</span></code></strong> then applies that preprocessing model to both the training and test sets.</p></li>
+</ul>
+<p>This step helps improve model stability and training efficiency, particularly for algorithms sensitive to scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pre_proc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;scale&quot;</span><span class="p">))</span>
+<span class="n">train_scaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">,</span><span class="w"> </span><span class="n">train</span><span class="p">)</span>
+<span class="n">test_scaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-7-train-regression-models">
+<h3>Step 7: Train Regression Models<a class="headerlink" href="#step-7-train-regression-models" title="Link to this heading">#</a></h3>
+<p>For example, <a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">Logistical Regression</a> and <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#">Random Forest Regression</a>. Other regression models like <a class="reference external" href="https://scikit-learn.org/stable/modules/naive_bayes.html">Naive Bayes</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#">Gradient Boosting</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html">Decision Tree</a> can be used too.</p>
+</section>
+<section id="linear-regression">
+<h3>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h3>
+<p>With the features scaled and the data split, we’re now ready to train our machine learning model. In this step, we build a <strong>linear regression model</strong> to predict <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code> using all other features in the dataset.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lm()</span></code></strong> fits a <strong>linear regression model</strong> where the target variable is <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code>, and the predictors are all other columns in the data (indicated by the formula <code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">.</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">train_scaled</span></code></strong> is used so the model benefits from normalized feature values.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">summary(model_lm)</span></code></strong> displays the model’s coefficients, R-squared value, residual statistics, and significance levels (p-values) for each predictor.</p></li>
+</ul>
+<p><strong>What does the output tell us?</strong></p>
+<ul class="simple">
+<li><p>The <strong>coefficients</strong> show how each feature affects <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code>.</p></li>
+<li><p>The <strong>R-squared value</strong> indicates how much of the variance in <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code> is explained by the model.</p></li>
+<li><p>Low <strong>p-values</strong> (&lt; 0.05) suggest statistically significant predictors.</p></li>
+</ul>
+<p>This baseline model gives us an interpretable starting point to evaluate regression performance and feature importance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Petal.Length</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train_scaled</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Petal.Length ~ ., data = train_scaled)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.42093 -0.09442  0.00209  0.08944  0.34538 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       -0.67534    0.08585  -7.867 2.10e-12 ***
+Sepal.Length       0.29376    0.02633  11.158  &lt; 2e-16 ***
+Sepal.Width       -0.05599    0.02242  -2.498 0.013906 *  
+Petal.Width        0.22670    0.05646   4.016 0.000106 ***
+Speciesversicolor  0.87303    0.10685   8.171 4.28e-13 ***
+Speciesvirginica   1.15782    0.15100   7.668 5.90e-12 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.1504 on 116 degrees of freedom
+Multiple R-squared:  0.9783,	Adjusted R-squared:  0.9774 
+F-statistic:  1047 on 5 and 116 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-forest">
+<h3>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h3>
+<p>To improve predictive performance beyond a simple linear model, we now train a <strong>Random Forest regression model</strong>. Random Forest is an <strong>ensemble learning algorithm</strong> that builds multiple decision trees and averages their results to make more accurate and robust predictions.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">randomForest()</span></code></strong> fits a regression model that predicts <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code> using all other features (<code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">.</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ntree</span> <span class="pre">=</span> <span class="pre">100</span></code></strong> specifies the number of decision trees to grow in the forest. More trees can improve accuracy, but also increase training time.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">set.seed(42)</span></code></strong> ensures reproducibility so you get the same results each time.</p></li>
+<li><p>The final line prints the trained model object, which includes performance statistics like <strong>% variance explained</strong> and <strong>Mean Squared Residuals</strong>.</p></li>
+</ul>
+<p><strong>Why use Random Forest?</strong>
+It handles non-linear relationships, is less sensitive to outliers, and typically yields higher accuracy than linear models—making it a strong choice for real-world regression tasks.</p>
+<p>This model will be evaluated and compared with the linear model in the next step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span>
+<span class="n">model_rf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Petal.Length</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train_scaled</span><span class="p">,</span><span class="w"> </span><span class="n">ntree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<span class="n">model_rf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+ randomForest(formula = Petal.Length ~ ., data = train_scaled,      ntree = 100) 
+               Type of random forest: regression
+                     Number of trees: 100
+No. of variables tried at each split: 1
+
+          Mean of squared residuals: 0.02834505
+                    % Var explained: 97.14
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-8-evaluate-the-two-models-using-metrics-like-r-square-mean-absolute-error-mae-and-mean-square-error-mse">
+<h2>Step 8: Evaluate the two models using metrics like R-square, Mean Absolute Error (MAE), and Mean Square Error (MSE)<a class="headerlink" href="#step-8-evaluate-the-two-models-using-metrics-like-r-square-mean-absolute-error-mae-and-mean-square-error-mse" title="Link to this heading">#</a></h2>
+<p>Now that we have trained both a <strong>Linear Regression</strong> and a <strong>Random Forest</strong> model, this step focuses on using these models to predict petal lengths on the test data and evaluate their accuracy using common regression metrics.</p>
+<ul class="simple">
+<li><p><strong>R² (Coefficient of Determination)</strong>: Measures the proportion of variance in the target variable explained by the model. Values closer to 1 indicate better fit.</p></li>
+<li><p><strong>MAE (Mean Absolute Error)</strong>: Average absolute difference between predicted and actual values. Lower values mean better predictive accuracy.</p></li>
+<li><p><strong>MSE (Mean Squared Error)</strong>: Average squared difference between predicted and actual values, penalizing larger errors more heavily.</p></li>
+</ul>
+<p><strong>What this does:</strong></p>
+<ul class="simple">
+<li><p>Predicts <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code> for the test set using both models.</p></li>
+<li><p>Compares predictions to actual values using the metrics above.</p></li>
+<li><p>Prints the metrics so you can compare which model performs better.</p></li>
+</ul>
+<p><strong>Interpreting results</strong>:
+Look for higher R² and lower MAE/MSE to identify the better model. Random Forest often outperforms linear regression on complex data due to its ability to capture non-linear patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predictions</span>
+<span class="n">pred_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model_lm</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test_scaled</span><span class="p">)</span>
+<span class="n">pred_rf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model_rf</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test_scaled</span><span class="p">)</span>
+<span class="n">actual</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">test_scaled</span><span class="o">$</span><span class="n">Petal.Length</span>
+
+<span class="c1"># Metrics</span>
+<span class="n">lm_r2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">R2</span><span class="p">(</span><span class="n">pred_lm</span><span class="p">,</span><span class="w"> </span><span class="n">actual</span><span class="p">)</span>
+<span class="n">rf_r2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">R2</span><span class="p">(</span><span class="n">pred_rf</span><span class="p">,</span><span class="w"> </span><span class="n">actual</span><span class="p">)</span>
+
+<span class="n">lm_mae</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mae</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="n">pred_lm</span><span class="p">)</span>
+<span class="n">rf_mae</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mae</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="n">pred_rf</span><span class="p">)</span>
+
+<span class="n">lm_mse</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mse</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="n">pred_lm</span><span class="p">)</span>
+<span class="n">rf_mse</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mse</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span><span class="w"> </span><span class="n">pred_rf</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Linear Regression:\n&quot;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;R²:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lm_r2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\nMAE:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lm_mae</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\nMSE:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lm_mse</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\n\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Random Forest:\n&quot;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;R²:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rf_r2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\nMAE:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rf_mae</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\nMSE:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rf_mse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear Regression:
+R&lt;U+00B2&gt;: 0.9782547 
+MAE: 0.1072505 
+MSE: 0.02078893 
+
+Random Forest:
+R&lt;U+00B2&gt;: 0.9687633 
+MAE: 0.1156793 
+MSE: 0.03029699
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-9-save-and-load-the-model">
+<h2>Step 9: Save and Load the Model<a class="headerlink" href="#step-9-save-and-load-the-model" title="Link to this heading">#</a></h2>
+<p>Once a model is trained and performs well, it’s useful to save it to disk so you can reuse it later without retraining. This step shows how to <strong>save</strong> and <strong>load</strong> your linear regression model in R using the <code class="docutils literal notranslate"><span class="pre">saveRDS()</span></code> and <code class="docutils literal notranslate"><span class="pre">readRDS()</span></code> functions.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">saveRDS()</span></code></strong> serializes the model object and writes it to disk as an <code class="docutils literal notranslate"><span class="pre">.rds</span></code> file.</p></li>
+<li><p>The saved model can be loaded back into R later with <strong><code class="docutils literal notranslate"><span class="pre">readRDS()</span></code></strong>, restoring the exact trained model.</p></li>
+<li><p>This workflow is useful for deploying models, sharing with others, or continuing analysis in future sessions without repeating costly training.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the model</span>
+<span class="nf">saveRDS</span><span class="p">(</span><span class="n">model_lm</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;linear_model.rds&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load later</span>
+<span class="c1"># model &lt;- readRDS(&quot;linear_model.rds&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./src/MachineLearning/RCode"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-and-load-packages">Step 1: Install and Load Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-the-dataset">Step 2: Load the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-data-cleaning-checking-for-missing-data">Step 3: Data Cleaning (checking for missing data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-exploratory-data-analysis-eda">Step 4: Exploratory Data Analysis (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-plot-of-a-key-feature">1. Distribution Plot of a Key Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-heatmap-of-numerical-features">2. Correlation Heatmap of Numerical Features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-split-the-data">Step 5: Split the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-preprocessing-centering-scaling">Step 6: Preprocessing (Centering &amp; Scaling)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-train-regression-models">Step 7: Train Regression Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-the-two-models-using-metrics-like-r-square-mean-absolute-error-mae-and-mean-square-error-mse">Step 8: Evaluate the two models using metrics like R-square, Mean Absolute Error (MAE), and Mean Square Error (MSE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-save-and-load-the-model">Step 9: Save and Load the Model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By University of South Carolina Libraries
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
