@@ -9,4 +9,4 @@ This tutorial walks you through a basic machine learning workflow in R using the
 
 This tutorial guides you through a complete regression workflow in R using the Iris dataset. It demonstrates how to load and explore the data, perform preprocessing like centering and scaling, and conduct exploratory data analysis to understand variable relationships. The dataset is then split into training and testing sets, and two regression models—Linear Regression and Random Forest—are trained to predict petal length based on other floral measurements and species. Finally, model performance is evaluated using metrics such as R-squared, Mean Absolute Error (MAE), and Mean Squared Error (MSE), offering a practical, hands-on introduction to regression modeling in R.
 
-[Regression Tutorial](./R_ML_Regression_Tutorial.nb.html)
+[Regression Tutorial](./R_ML_Regression_Tutorial.ipynb)
