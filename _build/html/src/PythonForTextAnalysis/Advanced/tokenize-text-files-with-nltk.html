@@ -430,8 +430,7 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
-<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
-For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br /></p>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="tokenize-text-files-with-nltk">
 <h1>Tokenize Text Files with NLTK<a class="headerlink" href="#tokenize-text-files-with-nltk" title="Link to this heading">#</a></h1>
@@ -442,9 +441,6 @@ This notebook takes as input:</p>
 <li><p>Metadata CSV file called ‘metadata.csv’ in the data folder (optional)</p></li>
 </ul>
 <p>and outputs a single JSON-L file containing the unigrams, bigrams, trigrams, full-text, and metadata.</p>
-<p><strong>Use Case:</strong> For Researchers (Mostly code without explanation, not ideal for learners)</p>
-<p><strong>Difficulty:</strong> Advanced</p>
-<p><strong>Completion time:</strong> 10-15 minutes</p>
 <p><strong>Knowledge Required:</strong></p>
 <ul class="simple">
 <li><p>Python Basics (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics 1</span></a>)</p></li>
@@ -453,24 +449,6 @@ This notebook takes as input:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/intermediate/python-intermediate-2.html"><span class="std std-doc">Python Intermediate 2</span></a></p></li>
 </ul>
-<p><strong>Data Format:</strong> .txt, .csv, .jsonl</p>
-<p><strong>Libraries Used:</strong></p>
-<ul class="simple">
-<li><p>os</p></li>
-<li><p>json</p></li>
-<li><p>NLTK</p></li>
-<li><p>gzip</p></li>
-<li><p>nltk.corpus</p></li>
-<li><p>collections</p></li>
-<li><p>pandas</p></li>
-</ul>
-<p><strong>Research Pipeline:</strong></p>
-<ol class="arabic simple">
-<li><p>Scan documents</p></li>
-<li><p>OCR files</p></li>
-<li><p>Clean up texts</p></li>
-<li><p><strong>Tokenize text files</strong> (this notebook)</p></li>
-</ol>
 <hr class="docutils" />
 <section id="data-inputs">
 <h2>Data Inputs<a class="headerlink" href="#data-inputs" title="Link to this heading">#</a></h2>
