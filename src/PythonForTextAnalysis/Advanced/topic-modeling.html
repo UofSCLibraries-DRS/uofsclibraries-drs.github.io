@@ -425,8 +425,7 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img align="left" src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png"><br /></p>
-<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
-For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.<br /></p>
+<p>Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br /></p>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="latent-dirichlet-allocation-lda-topic-modeling">
 <h1>Latent Dirichlet Allocation (LDA) Topic Modeling<a class="headerlink" href="#latent-dirichlet-allocation-lda-topic-modeling" title="Link to this heading">#</a></h1>
@@ -442,38 +441,18 @@ This <a class="reference external" href="https://jupyter-notebook.readthedocs.io
 <li><p>Computing a topic list using <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a></p></li>
 <li><p>Visualizing the topic list with <code class="docutils literal notranslate"><span class="pre">pyldavis</span></code></p></li>
 </ul>
-<p><strong>Use Case:</strong> For Researchers (Mostly code without explanation, not ideal for learners)</p>
-<p><strong>Difficulty:</strong> Intermediate</p>
-<p><strong>Completion time:</strong> 60 minutes</p>
 <p><strong>Knowledge Required:</strong></p>
 <ul class="simple">
 <li><p>Python Basics Series (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
 </ul>
 <p><strong>Knowledge Recommended:</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../Python/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a></p></li>
+<li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/pandas/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a></p></li>
 <li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/intermediate/python-intermediate-2.html"><span class="std std-doc">Python Intermediate 2</span></a></p></li>
 <li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/pandas/pandas-1.html"><span class="std std-doc">Pandas I</span></a></p></li>
 <li><p><a class="reference internal" href="../GettingStarted/creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a></p></li>
 <li><p>A familiarity with <a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> is helpful but not required.</p></li>
 </ul>
-<p><strong>Data Format:</strong> <a class="reference external" href="https://jsonlines.org">JSON Lines (.jsonl)</a></p>
-<p><strong>Libraries Used:</strong></p>
-<ul class="simple">
-<li><p>constellate client to collect, unzip, and read our dataset</p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a> to load a preprocessing list</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">csv</span></code> to load a custom stopwords list</p></li>
-<li><p><a class="reference external" href="https://www.geeksforgeeks.org/nlp-gensim-tutorial-complete-guide-for-beginners/">gensim</a> to accomplish the topic modeling</p></li>
-<li><p><a class="reference external" href="https://www.nltk.org/">NLTK</a> to create a stopwords list (if no list is supplied)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pyldavis</span></code> to visualize our topic model</p></li>
-</ul>
-<p><strong>Research Pipeline</strong></p>
-<ol class="arabic simple">
-<li><p>Build a dataset</p></li>
-<li><p>Create a “Pre-Processing CSV” with <a class="reference internal" href="../../Python/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a> (Optional)</p></li>
-<li><p>Create a “Custom Stopwords List” with <a class="reference internal" href="../GettingStarted/creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a> (Optional)</p></li>
-<li><p>Complete the Topic Modeling analysis with this notebook</p></li>
-</ol>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">

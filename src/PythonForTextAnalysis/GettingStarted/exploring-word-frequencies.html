@@ -432,8 +432,7 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img src="https://ithaka-labs.s3.amazonaws.com/static-files/images/tdm/tdmdocs/CC_BY.png" align=left alt="CC BY license logo" /><br /><br />
-Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br />
-<strong>For questions/comments/improvements, email <a class="reference external" href="mailto:nathan&#46;kelber&#37;&#52;&#48;ithaka&#46;org">nathan<span>&#46;</span>kelber<span>&#64;</span>ithaka<span>&#46;</span>org</a>.</strong><br /></p>
+Created by <a class="reference external" href="http://nkelber.com">Nathan Kelber</a> and Ted Lawless for <a class="reference external" href="https://labs.jstor.org/">JSTOR Labs</a> under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY License</a><br /></p>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="exploring-word-frequencies">
 <h1>Exploring Word Frequencies<a class="headerlink" href="#exploring-word-frequencies" title="Link to this heading">#</a></h1>
@@ -446,9 +445,6 @@ dataset. The following processes are described:</p>
 <li><p>Filtering based on a <a class="reference external" href="https://www.geeksforgeeks.org/nlp/removing-stop-words-nltk-python/">stop words list</a></p></li>
 <li><p>Using a <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> object to get the most common words</p></li>
 </ul>
-<p><strong>Use Case:</strong> For Learners (Detailed explanation, not ideal for researchers)</p>
-<p><strong>Difficulty:</strong> Intermediate</p>
-<p><strong>Completion time:</strong> 60 minutes</p>
 <p><strong>Knowledge Required:</strong></p>
 <ul class="simple">
 <li><p>Python Basics (<a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/python-basics-1.html"><span class="std std-doc">Start Python Basics I</span></a>)</p></li>
@@ -460,20 +456,6 @@ dataset. The following processes are described:</p>
 <li><p><a class="reference internal" href="../../PythonForDataAnalysis/GettingStarted/basic/counter-objects.html"><span class="std std-doc">Counter Objects</span></a></p></li>
 <li><p><a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a></p></li>
 </ul>
-<p><strong>Data Format:</strong> <a class="reference external" href="https://jsonlines.org">JSON Lines (.jsonl)</a></p>
-<p><strong>Libraries Used:</strong></p>
-<ul class="simple">
-<li><p>constellate client to collect, unzip, and read our dataset</p></li>
-<li><p><a class="reference external" href="https://www.nltk.org/">NLTK</a> to help <a class="reference external" href="https://www.w3schools.com/python/pandas/pandas_cleaning_wrong_data.asp">clean</a> up our dataset</p></li>
-<li><p><a class="reference external" href="https://www.geeksforgeeks.org/python/python-counter-objects-elements/">Counter</a> from <strong>Collections</strong> to help sum up our word frequencies</p></li>
-</ul>
-<p><strong>Research Pipeline:</strong></p>
-<ol class="arabic simple">
-<li><p>Build a dataset</p></li>
-<li><p>Create a “Pre-Processing CSV” with <a class="reference internal" href="../../Python/exploring-metadata.html"><span class="std std-doc">Exploring Metadata</span></a> (Optional)</p></li>
-<li><p>Create a “Custom Stopwords List” with <a class="reference internal" href="creating-stopwords-list.html"><span class="std std-doc">Creating a Stopwords List</span></a> (Optional)</p></li>
-<li><p>Complete the word frequencies analysis with this notebook</p></li>
-</ol>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
