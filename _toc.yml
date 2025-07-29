@@ -11,6 +11,8 @@ parts:
     - file: src/PythonForDataAnalysis/GettingData/GettingData
     - file: src/PythonForDataAnalysis/DataCleaningBasics/DataCleaning_Basics
     - file: src/PythonForDataAnalysis/DataVisualization/DataVisualization
+    - file: src/PythonForDataAnalysis/ProjectExamples/Quantitative_Analysis
+      title: Project Example
 
   - caption: Python for Text Analysis
     chapters:
@@ -33,7 +35,9 @@ parts:
   - caption: Machine Learning
     chapters:
     - file: src/MachineLearning/PythonCode/Python
+      title: Python
     - file: src/MachineLearning/RCode/R
+      title: R
     
   - caption: App Development
     chapters:
