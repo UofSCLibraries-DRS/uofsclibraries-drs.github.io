@@ -14,6 +14,8 @@ These five basic Python tutorials teach the fundamentals of Python programming, 
 [Python Basics 5](./basic/python-basics-5.ipynb)
 <br>
 [Counter Objects](./basic/counter-objects.ipynb)
+<br>
+[Regular Expressions](./basic/regular-expressions.ipynb)
 
 ## Intermediate Python Tutorials
 These intermediate Python tutorials build on the basics by introducing more advanced concepts and tools. They cover comprehensions for lists, dictionaries, and sets; working with different file types (like .txt, .csv, .json); using the pathlib library for file manipulation; and the principles of object-oriented programming (OOP), including how to define and use classes. The series concludes with an explanation of generators, their syntax, and the benefits of using them for efficient data processing.
@@ -44,3 +46,5 @@ The intermediate Pandas tutorials focus on optimizing performance and enhancing 
 [Pandas Intermediate 2](./pandas/pandas-intermediate-2.ipynb)
 <br>
 [Pandas Intermediate 3](./pandas/pandas-intermediate-3.ipynb)
+<br>
+[Exploring Metadeta](./pandas/exploring-metadata.ipynb)
