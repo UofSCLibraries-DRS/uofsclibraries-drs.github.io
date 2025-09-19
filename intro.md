@@ -4,6 +4,8 @@ Welcome to the University of South Carolina Libraries [Data Services](https://sc
 
 These notebooks support many stages of the research process, including data management, analysis, and visualization. Most of these guides are in Python, but there are a few R tutorials as well. The notebooks provide structured, hands-on lessons that guide users through analyzing metadata, counting words, creating visualizations, and applying natural language processing techniques. They are beginner-friendly and ideal for learning Python programming and digital humanities methods in an accessible, reproducible format. Each notebook includes annotated code, explanatory text, and interactive elements that help users learn both technical and conceptual skills. 
 
+## These notebooks are created using Python 3 and related packages with compatible versions. There may be some issues in running these notebooks due to the Python version (such as using Python 2), which can be easily fixed by using the correct version.
+
 ## Getting Started 
 Since command line skills can be useful, we start with a notebook introducing those concepts. Project Jupyter is an open-source platform comprising standards, a community, and tools. Jupyter Notebook allows users to combine code, data, equations, and narrative text in a single interactive document. 
 
