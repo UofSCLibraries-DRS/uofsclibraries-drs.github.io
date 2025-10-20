@@ -826,7 +826,7 @@ document.write(`
 <p>Suppose we would like to find out all the runners whose name has the four letters ‘t’, ‘a’, ‘p’, ‘i’ in the given order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># get all names with &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
 <span class="n">bm_22</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 </pre></div>
@@ -850,7 +850,7 @@ document.write(`
 <p>Let’s grab all names with ‘t’, ‘a’, ‘p’, ‘i’ again and get the execution time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># get all names with &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
 <span class="n">bm_22_pa</span><span class="p">[</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 </pre></div>
@@ -927,7 +927,7 @@ document.write(`
 <p>Let’s first get all names containing ‘t’, ‘a’, ‘p’, ‘i’ using the <code class="docutils literal notranslate"><span class="pre">loc</span></code> indexer with NumPy as the backend.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># get all names containing &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
 <span class="n">huge_name_col</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">huge_name_col</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 </pre></div>
@@ -950,7 +950,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># get all names containing &#39;t&#39;, &#39;a&#39;, &#39;p&#39;, &#39;i&#39;</span>
 <span class="n">huge_name_col_pa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">huge_name_col_pa</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.*t.*a.*p.*i&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 </pre></div>
@@ -1026,7 +1026,7 @@ dtype: double[pyarrow]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># calculate the mean, with NumPy as backend</span>
 <span class="n">nums</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1040,7 +1040,7 @@ dtype: double[pyarrow]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># calculate the mean, with PyArrow as backend</span>
 <span class="n">nums_pa</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1480,7 +1480,7 @@ dtype: double[pyarrow]
 <p>Here are a few solutions for exercises in this lesson.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># find out how many runners are named James, with NumPy as backend</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;James &#39;</span><span class="p">)])</span>
 </pre></div>
@@ -1494,7 +1494,7 @@ dtype: double[pyarrow]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># find out how many runners are named James, with pyarrow as backend</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;James &#39;</span><span class="p">)])</span>
 </pre></div>
@@ -1508,7 +1508,7 @@ dtype: double[pyarrow]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># find out how many runners are named Mary, with NumPy as backend</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">bm_22</span><span class="p">[</span><span class="n">bm_22</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Mary &#39;</span><span class="p">)])</span>
 </pre></div>
@@ -1522,7 +1522,7 @@ dtype: double[pyarrow]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
 <span class="c1"># find out how many runners are named Mary, with pyarrow as backend</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="n">bm_22_pa</span><span class="p">[</span><span class="s1">&#39;FullName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Mary &#39;</span><span class="p">)])</span>
 </pre></div>
@@ -1647,7 +1647,7 @@ dtype: int64
         },
         kernelOptions: {
             name: "python3",
-            path: "./src\PythonForDataAnalysis\GettingStarted\pandas"
+            path: "./src/PythonForDataAnalysis/GettingStarted/pandas"
         },
         predefinedOutput: true
     }

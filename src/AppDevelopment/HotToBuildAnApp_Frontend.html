@@ -410,26 +410,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laying-out-the-framework">Laying Out the Framework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seting-up-the-app">Seting Up the App</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installations">Installations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-navigation">Setting Up Navigation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-code-does">What This Code Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-navigation">Setting Up Navigation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-code-does">What This Code Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-screens-files">Creating Screens Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-title-screen">Creating the Title Screen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-overview">Code Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-screen-does">What This Screen Does</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-screens-files">Creating Screens Files</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-title-screen">Creating the Title Screen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-overview">Code Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-screen-does">What This Screen Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-options-screen">Creating the Options Screen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">What This Screen Does</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-options-screen">Creating the Options Screen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">What This Screen Does</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-conversion-screen">Creating the Conversion Screen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Code Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">What This Screen Does</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-conversion-screen">Creating the Conversion Screen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Code Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">What This Screen Does</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps-deploying-the-app">Next Steps: Deploying the App</a><ul class="nav section-nav flex-column">
@@ -447,7 +443,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="how-to-build-an-app-frontend">
+  <section id="how-to-build-an-app-frontend">
 <h1>How to Build an App – Frontend<a class="headerlink" href="#how-to-build-an-app-frontend" title="Link to this heading">#</a></h1>
 <section id="laying-out-the-framework">
 <h2>Laying Out the Framework<a class="headerlink" href="#laying-out-the-framework" title="Link to this heading">#</a></h2>
@@ -523,9 +519,10 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 <hr class="docutils" />
 <section id="what-this-code-does">
-<h3>What This Code Does<a class="headerlink" href="#what-this-code-does" title="Link to this heading">#</a></h3>
+<h2>What This Code Does<a class="headerlink" href="#what-this-code-does" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>NavigationContainer</strong> wraps the entire app and manages navigation state.</p></li>
 <li><p><strong>createNativeStackNavigator</strong> creates a stack-based navigation system, allowing users to move between screens.</p></li>
@@ -542,7 +539,6 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 <hr class="docutils" />
 <p>Next, you can create the <code class="docutils literal notranslate"><span class="pre">screens</span></code> folder and add these three screen components.</p>
 </section>
-</section>
 <section id="creating-screens-files">
 <h2>Creating Screens Files<a class="headerlink" href="#creating-screens-files" title="Link to this heading">#</a></h2>
 <p>To organize your frontend code, create a <code class="docutils literal notranslate"><span class="pre">screens</span></code> folder inside your <code class="docutils literal notranslate"><span class="pre">frontend</span></code> project directory with the following structure:</p>
@@ -555,12 +551,13 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </pre></div>
 </div>
 <p>Each of these files will contain the React Native components for the corresponding screens in your app.</p>
+</section>
 <section id="creating-the-title-screen">
-<h3>Creating the Title Screen<a class="headerlink" href="#creating-the-title-screen" title="Link to this heading">#</a></h3>
+<h2>Creating the Title Screen<a class="headerlink" href="#creating-the-title-screen" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TitleScreen</span></code> serves as the welcome screen of our app. It features a beautiful gradient background, animated entrance effects, and a “Start Converting” button that navigates users to the next screen.</p>
 <hr class="docutils" />
 <section id="code-overview">
-<h4>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading">#</a></h4>
+<h3>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading">#</a></h3>
 <div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="c1">// TitleScreen.js</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useRef</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">View</span><span class="p">,</span><span class="w"> </span><span class="nx">Text</span><span class="p">,</span><span class="w"> </span><span class="nx">TouchableOpacity</span><span class="p">,</span><span class="w"> </span><span class="nx">StyleSheet</span><span class="p">,</span><span class="w"> </span><span class="nx">Animated</span><span class="p">,</span><span class="w"> </span><span class="nx">Dimensions</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-native&#39;</span><span class="p">;</span>
@@ -809,7 +806,7 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </section>
 <hr class="docutils" />
 <section id="what-this-screen-does">
-<h4>What This Screen Does<a class="headerlink" href="#what-this-screen-does" title="Link to this heading">#</a></h4>
+<h3>What This Screen Does<a class="headerlink" href="#what-this-screen-does" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Uses <a class="reference external" href="https://docs.expo.dev/versions/latest/sdk/linear-gradient/">Expo’s LinearGradient</a> for a vibrant background.</p></li>
 <li><p>Animates the title and button with React Native’s <a class="reference external" href="https://reactnative.dev/docs/animated">Animated API</a> for smooth fade, scale, and slide effects.</p></li>
@@ -819,11 +816,11 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </section>
 </section>
 <section id="creating-the-options-screen">
-<h3>Creating the Options Screen<a class="headerlink" href="#creating-the-options-screen" title="Link to this heading">#</a></h3>
+<h2>Creating the Options Screen<a class="headerlink" href="#creating-the-options-screen" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">OptionsScreen</span></code> allows users to select which category of units they want to convert: Length, Weight, Cooking, or Temperature. It continues the app’s clean, animated style with buttons that navigate to the conversion screen.</p>
 <hr class="docutils" />
 <section id="id1">
-<h4>Code Overview<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h3>Code Overview<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="c1">// OptionsScreen.js</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useRef</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">View</span><span class="p">,</span><span class="w"> </span><span class="nx">Text</span><span class="p">,</span><span class="w"> </span><span class="nx">TouchableOpacity</span><span class="p">,</span><span class="w"> </span><span class="nx">StyleSheet</span><span class="p">,</span><span class="w"> </span><span class="nx">Animated</span><span class="p">,</span><span class="w"> </span><span class="nx">Dimensions</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-native&#39;</span><span class="p">;</span>
@@ -1112,7 +1109,7 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </section>
 <hr class="docutils" />
 <section id="id2">
-<h4>What This Screen Does<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<h3>What This Screen Does<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Provides a <a class="reference external" href="https://docs.expo.dev/versions/latest/sdk/linear-gradient/">gradient background</a> consistent with the app’s design.</p></li>
 <li><p>Uses React Native’s <a class="reference external" href="https://reactnative.dev/docs/animated">Animated API</a> to fade in and slide up the header and buttons smoothly.</p></li>
@@ -1124,11 +1121,11 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </section>
 </section>
 <section id="creating-the-conversion-screen">
-<h3>Creating the Conversion Screen<a class="headerlink" href="#creating-the-conversion-screen" title="Link to this heading">#</a></h3>
+<h2>Creating the Conversion Screen<a class="headerlink" href="#creating-the-conversion-screen" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">ConversionScreen</span></code> allows users to input a value, select units to convert from and to, and then perform the conversion. It features a beautiful gradient background, animated entrance effects, smooth unit swapping, and a responsive convert button that triggers a backend API call.</p>
 <hr class="docutils" />
 <section id="id3">
-<h4>Code Overview<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<h3>Code Overview<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="c1">// ConversionScreen.js</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useRef</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">View</span><span class="p">,</span><span class="w"> </span><span class="nx">Text</span><span class="p">,</span><span class="w"> </span><span class="nx">TextInput</span><span class="p">,</span><span class="w"> </span><span class="nx">TouchableOpacity</span><span class="p">,</span><span class="w"> </span><span class="nx">StyleSheet</span><span class="p">,</span><span class="w"> </span><span class="nx">Animated</span><span class="p">,</span><span class="w"> </span><span class="nx">Dimensions</span><span class="p">,</span><span class="w"> </span><span class="nx">Alert</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-native&#39;</span><span class="p">;</span>
@@ -1550,7 +1547,7 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 </section>
 <hr class="docutils" />
 <section id="id4">
-<h4>What This Screen Does<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<h3>What This Screen Does<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Uses <a class="reference external" href="https://docs.expo.dev/versions/latest/sdk/linear-gradient/">Expo’s LinearGradient</a> for a smooth, colorful background.</p></li>
 <li><p>Animates the header, inputs, buttons, and result with React Native’s <a class="reference external" href="https://reactnative.dev/docs/animated">Animated API</a> for a polished experience.</p></li>
@@ -1559,7 +1556,6 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 <li><p>Sends conversion requests to a backend API and shows the result with animation.</p></li>
 <li><p>Includes a back button to return to the Options screen.</p></li>
 </ul>
-</section>
 </section>
 </section>
 <section id="next-steps-deploying-the-app">
@@ -1598,7 +1594,7 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
         },
         kernelOptions: {
             name: "python3",
-            path: "./src\AppDevelopment"
+            path: "./src/AppDevelopment"
         },
         predefinedOutput: true
     }
@@ -1634,26 +1630,22 @@ npm<span class="w"> </span>install<span class="w"> </span>@react-navigation/nati
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laying-out-the-framework">Laying Out the Framework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seting-up-the-app">Seting Up the App</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installations">Installations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-navigation">Setting Up Navigation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-code-does">What This Code Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-navigation">Setting Up Navigation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-code-does">What This Code Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-screens-files">Creating Screens Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-title-screen">Creating the Title Screen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-overview">Code Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-screen-does">What This Screen Does</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-screens-files">Creating Screens Files</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-title-screen">Creating the Title Screen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-overview">Code Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-screen-does">What This Screen Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-options-screen">Creating the Options Screen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">What This Screen Does</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-options-screen">Creating the Options Screen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">What This Screen Does</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-conversion-screen">Creating the Conversion Screen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Code Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">What This Screen Does</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-conversion-screen">Creating the Conversion Screen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Code Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">What This Screen Does</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps-deploying-the-app">Next Steps: Deploying the App</a><ul class="nav section-nav flex-column">
