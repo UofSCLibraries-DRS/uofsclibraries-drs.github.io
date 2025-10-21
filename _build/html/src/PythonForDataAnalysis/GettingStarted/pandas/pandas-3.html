@@ -3281,7 +3281,7 @@ Name: number, dtype: int64
 <p>Let’s use a for loop to add two columns and get the execution time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">row</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 </pre></div>
@@ -3296,7 +3296,7 @@ Name: number, dtype: int64
 <p>Let’s add two columns in a vectorized way and get the execution time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -n 10
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -n 10
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -4551,7 +4551,7 @@ Name: CountryOfResName, dtype: object
         },
         kernelOptions: {
             name: "python3",
-            path: "./src/PythonForDataAnalysis/GettingStarted/pandas"
+            path: "./src\PythonForDataAnalysis\GettingStarted\pandas"
         },
         predefinedOutput: true
     }
