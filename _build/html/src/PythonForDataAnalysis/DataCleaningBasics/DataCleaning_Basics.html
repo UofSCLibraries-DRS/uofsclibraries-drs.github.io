@@ -434,20 +434,20 @@ document.write(`
 <h2>Step 1: Reading Data<a class="headerlink" href="#step-1-reading-data" title="Link to this heading">#</a></h2>
 <p>Data can be read from various file formats such as CSV, JSON, and EXCEL files. Read more about it <a class="reference external" href="https://www.prowesstics.com/blogs/python-data-file-formats/">here</a></p>
 <p>This code demonstrates how to load and customize a dataset using the Pandas library. It shows how to read a full CSV file into a DataFrame or, alternatively, import only specific columns using the <code class="docutils literal notranslate"><span class="pre">usecols</span></code> parameter to focus on relevant data like year, leading cause, and number of deaths. Another option illustrated is how to remove unnecessary columns after loading the dataset using the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> method to streamline the data for analysis.</p>
-<p>Here is the <a class="reference download internal" download="" href="../../../_downloads/2e275ea1c3b040619ec56cba40761dff/NYC_Leading_Death_Causes.csv"><span class="xref download myst">data</span></a> from the New York City Open Data <a class="reference external" href="https://opendata.cityofnewyork.us/">portal</a> we used but, if you have data you would rather use, feel free to use it. Just make sure to change the path in the data variable.</p>
+<p>Here is the <a class="reference internal" href="#./NYC_Leading_Death_Causes.csv"><span class="xref myst">data</span></a> from the New York City Open Data <a class="reference external" href="https://opendata.cityofnewyork.us/">portal</a> we used but, if you have data you would rather use, feel free to use it. Just make sure to change the path in the data variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;NYC_Leading_Death_Causes.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;NYC_Leading_Diseases.csv&quot;</span><span class="p">)</span>
 
-<span class="c1"># If we want to upload only certain columns of the dataset --- example Year, Leading Cause and Deaths</span>
-<span class="c1">#new_df = pd.read_csv(&#39;NYC_Leading_Death_Causes.csv&#39;, usecols = [&#39;Year&#39;,&#39;Leading Cause&#39;, &#39;Deaths&#39;])</span>
+<span class="c1"># If we want to upload only certain columns of the dataset --- example Year, Leading Cause and Fatality</span>
+<span class="c1">#new_df = pd.read_csv(&#39;NYC_Leading_Death_Causes.csv&#39;, usecols = [&#39;Year&#39;,&#39;Leading Cause&#39;, &#39;Fatality&#39;])</span>
 
 <span class="c1"># OR</span>
 <span class="c1"># pandas drop columns using list of column names </span>
-<span class="c1">#new_df = df.drop([&#39;Sex&#39;,&#39;Death Rate&#39;, &#39;Age Adjusted Death Rate&#39;], axis=1)</span>
+<span class="c1">#new_df = df.drop([&#39;Sex&#39;,&#39;Race Ethnicity&#39;], axis=1)</span>
 </pre></div>
 </div>
 </div>
@@ -531,7 +531,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1096, 7)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1096, 5)
 </pre></div>
 </div>
 </div>
@@ -567,9 +567,7 @@ document.write(`
       <th>Leading Cause</th>
       <th>Sex</th>
       <th>Race Ethnicity</th>
-      <th>Deaths</th>
-      <th>Death Rate</th>
-      <th>Age Adjusted Death Rate</th>
+      <th>Fatality</th>
     </tr>
   </thead>
   <tbody>
@@ -580,8 +578,6 @@ document.write(`
       <td>F</td>
       <td>Hispanic</td>
       <td>228</td>
-      <td>18.7</td>
-      <td>23.1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -590,8 +586,6 @@ document.write(`
       <td>F</td>
       <td>Hispanic</td>
       <td>68</td>
-      <td>5.8</td>
-      <td>6.6</td>
     </tr>
     <tr>
       <th>2</th>
@@ -600,8 +594,6 @@ document.write(`
       <td>M</td>
       <td>White Non-Hispanic</td>
       <td>271</td>
-      <td>20.1</td>
-      <td>17.9</td>
     </tr>
     <tr>
       <th>3</th>
@@ -610,8 +602,6 @@ document.write(`
       <td>M</td>
       <td>Hispanic</td>
       <td>140</td>
-      <td>12.3</td>
-      <td>21.4</td>
     </tr>
     <tr>
       <th>4</th>
@@ -620,8 +610,6 @@ document.write(`
       <td>M</td>
       <td>Black Non-Hispanic</td>
       <td>255</td>
-      <td>30</td>
-      <td>30</td>
     </tr>
     <tr>
       <th>5</th>
@@ -629,8 +617,6 @@ document.write(`
       <td>Mental and Behavioral Disorders due to Acciden...</td>
       <td>F</td>
       <td>Other Race/ Ethnicity</td>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
@@ -640,8 +626,6 @@ document.write(`
       <td>F</td>
       <td>Asian and Pacific Islander</td>
       <td>102</td>
-      <td>17.5</td>
-      <td>20.7</td>
     </tr>
     <tr>
       <th>7</th>
@@ -650,8 +634,6 @@ document.write(`
       <td>M</td>
       <td>Asian and Pacific Islander</td>
       <td>26</td>
-      <td>5.1</td>
-      <td>7.2</td>
     </tr>
     <tr>
       <th>8</th>
@@ -660,8 +642,6 @@ document.write(`
       <td>F</td>
       <td>White Non-Hispanic</td>
       <td>2140</td>
-      <td>149.7</td>
-      <td>93.9</td>
     </tr>
     <tr>
       <th>9</th>
@@ -669,8 +649,6 @@ document.write(`
       <td>Alzheimer's Disease (G30)</td>
       <td>F</td>
       <td>Other Race/ Ethnicity</td>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
   </tbody>
@@ -708,9 +686,7 @@ document.write(`
       <th>Leading Cause</th>
       <th>Sex</th>
       <th>Race Ethnicity</th>
-      <th>Deaths</th>
-      <th>Death Rate</th>
-      <th>Age Adjusted Death Rate</th>
+      <th>Fatality</th>
     </tr>
   </thead>
   <tbody>
@@ -721,8 +697,6 @@ document.write(`
       <td>F</td>
       <td>Asian and Pacific Islander</td>
       <td>13</td>
-      <td>2.4</td>
-      <td>3.3</td>
     </tr>
     <tr>
       <th>1085</th>
@@ -731,8 +705,6 @@ document.write(`
       <td>F</td>
       <td>Not Stated/Unknown</td>
       <td>12</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>1086</th>
@@ -741,8 +713,6 @@ document.write(`
       <td>F</td>
       <td>Black Non-Hispanic</td>
       <td>248</td>
-      <td>23.6</td>
-      <td>22.1</td>
     </tr>
     <tr>
       <th>1087</th>
@@ -750,8 +720,6 @@ document.write(`
       <td>Atherosclerosis (I70)</td>
       <td>F</td>
       <td>Not Stated/Unknown</td>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
@@ -761,8 +729,6 @@ document.write(`
       <td>F</td>
       <td>Black Non-Hispanic</td>
       <td>1536</td>
-      <td>146.4</td>
-      <td>126.4</td>
     </tr>
     <tr>
       <th>1089</th>
@@ -771,8 +737,6 @@ document.write(`
       <td>F</td>
       <td>Black Non-Hispanic</td>
       <td>75</td>
-      <td>7.2</td>
-      <td>6.7</td>
     </tr>
     <tr>
       <th>1090</th>
@@ -780,8 +744,6 @@ document.write(`
       <td>Chronic Liver Disease and Cirrhosis (K70, K73)</td>
       <td>F</td>
       <td>Other Race/ Ethnicity</td>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
@@ -791,8 +753,6 @@ document.write(`
       <td>F</td>
       <td>Not Stated/Unknown</td>
       <td>6</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>1092</th>
@@ -801,8 +761,6 @@ document.write(`
       <td>F</td>
       <td>White Non-Hispanic</td>
       <td>169</td>
-      <td>11.9</td>
-      <td>7.4</td>
     </tr>
     <tr>
       <th>1093</th>
@@ -811,8 +769,6 @@ document.write(`
       <td>M</td>
       <td>White Non-Hispanic</td>
       <td>3236</td>
-      <td>240.5</td>
-      <td>205.6</td>
     </tr>
     <tr>
       <th>1094</th>
@@ -821,8 +777,6 @@ document.write(`
       <td>M</td>
       <td>White Non-Hispanic</td>
       <td>191</td>
-      <td>14.2</td>
-      <td>13</td>
     </tr>
     <tr>
       <th>1095</th>
@@ -831,8 +785,6 @@ document.write(`
       <td>M</td>
       <td>Black Non-Hispanic</td>
       <td>148</td>
-      <td>17.2</td>
-      <td>20.9</td>
     </tr>
   </tbody>
 </table>
@@ -847,9 +799,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Leading Cause&#39;, &#39;Sex&#39;, &#39;Race Ethnicity&#39;, &#39;Deaths&#39;,
-       &#39;Death Rate&#39;, &#39;Age Adjusted Death Rate&#39;],
-      dtype=&#39;object&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Leading Cause&#39;, &#39;Sex&#39;, &#39;Race Ethnicity&#39;, &#39;Fatality&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -862,15 +812,12 @@ document.write(`
 <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
 
 <span class="c1"># #Rename multiple column</span>
-<span class="c1">#df.rename(columns = {&#39;Leading Cause&#39;:&#39;Leading_Cause&#39;, &#39;Race Ethnicity&#39;:&#39;Race_Ethnicity&#39;, </span>
-                              <span class="c1">#&#39;Death Rate&#39;:&#39;Death_Rate&#39;, &#39;Age Adjusted Death Rate&#39;: &#39;Age_Adjusted_Death_Rate&#39;}, inplace = True)</span>
+<span class="c1">#df.rename(columns = {&#39;Leading Cause&#39;:&#39;Leading_Cause&#39;, &#39;Race Ethnicity&#39;:&#39;Race_Ethnicity&#39;}, inplace = True)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Leading Cause&#39;, &#39;Gender&#39;, &#39;Race Ethnicity&#39;, &#39;Deaths&#39;,
-       &#39;Death Rate&#39;, &#39;Age Adjusted Death Rate&#39;],
-      dtype=&#39;object&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Leading Cause&#39;, &#39;Gender&#39;, &#39;Race Ethnicity&#39;, &#39;Fatality&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -884,13 +831,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                       1096
-Leading Cause              1096
-Gender                     1096
-Race Ethnicity             1096
-Deaths                     1096
-Death Rate                 1096
-Age Adjusted Death Rate    1096
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year              1096
+Leading Cause     1096
+Gender            1096
+Race Ethnicity    1096
+Fatality          1096
 dtype: int64
 </pre></div>
 </div>
@@ -927,9 +872,7 @@ dtype: int64
       <th>Leading Cause</th>
       <th>Gender</th>
       <th>Race Ethnicity</th>
-      <th>Deaths</th>
-      <th>Death Rate</th>
-      <th>Age Adjusted Death Rate</th>
+      <th>Fatality</th>
     </tr>
   </thead>
   <tbody>
@@ -940,8 +883,6 @@ dtype: int64
       <td>F</td>
       <td>Hispanic</td>
       <td>228</td>
-      <td>18.7</td>
-      <td>23.1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -950,8 +891,6 @@ dtype: int64
       <td>F</td>
       <td>Hispanic</td>
       <td>68</td>
-      <td>5.8</td>
-      <td>6.6</td>
     </tr>
     <tr>
       <th>2</th>
@@ -960,8 +899,6 @@ dtype: int64
       <td>M</td>
       <td>White Non-Hispanic</td>
       <td>271</td>
-      <td>20.1</td>
-      <td>17.9</td>
     </tr>
     <tr>
       <th>3</th>
@@ -970,8 +907,6 @@ dtype: int64
       <td>M</td>
       <td>Hispanic</td>
       <td>140</td>
-      <td>12.3</td>
-      <td>21.4</td>
     </tr>
     <tr>
       <th>4</th>
@@ -980,13 +915,9 @@ dtype: int64
       <td>M</td>
       <td>Black Non-Hispanic</td>
       <td>255</td>
-      <td>30</td>
-      <td>30</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1000,8 +931,6 @@ dtype: int64
       <td>F</td>
       <td>Not Stated/Unknown</td>
       <td>6</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>1092</th>
@@ -1010,8 +939,6 @@ dtype: int64
       <td>F</td>
       <td>White Non-Hispanic</td>
       <td>169</td>
-      <td>11.9</td>
-      <td>7.4</td>
     </tr>
     <tr>
       <th>1093</th>
@@ -1020,8 +947,6 @@ dtype: int64
       <td>M</td>
       <td>White Non-Hispanic</td>
       <td>3236</td>
-      <td>240.5</td>
-      <td>205.6</td>
     </tr>
     <tr>
       <th>1094</th>
@@ -1030,8 +955,6 @@ dtype: int64
       <td>M</td>
       <td>White Non-Hispanic</td>
       <td>191</td>
-      <td>14.2</td>
-      <td>13</td>
     </tr>
     <tr>
       <th>1095</th>
@@ -1040,12 +963,10 @@ dtype: int64
       <td>M</td>
       <td>Black Non-Hispanic</td>
       <td>148</td>
-      <td>17.2</td>
-      <td>20.9</td>
     </tr>
   </tbody>
 </table>
-<p>1096 rows × 7 columns</p>
+<p>1096 rows × 5 columns</p>
 </div></div></div>
 </div>
 <p>This code uses <code class="docutils literal notranslate"><span class="pre">iloc</span></code> to access a specific subset of the DataFrame by integer position. It selects rows from index 100 to 124 (which corresponds to the 101st through 125th rows, since indexing starts at 0) and columns from index 4 to 6 (the 5th, 6th, and 7th columns). This allows you to extract and work with a precise slice of the data based on row and column positions rather than labels.</p>
@@ -1075,161 +996,109 @@ dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Deaths</th>
-      <th>Death Rate</th>
-      <th>Age Adjusted Death Rate</th>
+      <th>Fatality</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>100</th>
       <td>1940</td>
-      <td>226.8</td>
-      <td>280.7</td>
     </tr>
     <tr>
       <th>101</th>
       <td>3366</td>
-      <td>234.5</td>
-      <td>160.5</td>
     </tr>
     <tr>
       <th>102</th>
       <td>563</td>
-      <td>39.7</td>
-      <td>20.4</td>
     </tr>
     <tr>
       <th>103</th>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
       <th>104</th>
       <td>180</td>
-      <td>12.7</td>
-      <td>6.7</td>
     </tr>
     <tr>
       <th>105</th>
       <td>7</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>106</th>
       <td>47</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>107</th>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
       <th>108</th>
       <td>63</td>
-      <td>5.3</td>
-      <td>6.2</td>
     </tr>
     <tr>
       <th>109</th>
       <td>10</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>110</th>
       <td>36</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>111</th>
       <td>1230</td>
-      <td>116.8</td>
-      <td>113.4</td>
     </tr>
     <tr>
       <th>112</th>
       <td>279</td>
-      <td>26.5</td>
-      <td>25.3</td>
     </tr>
     <tr>
       <th>113</th>
       <td>37</td>
-      <td>6.7</td>
-      <td>8</td>
     </tr>
     <tr>
       <th>114</th>
       <td>6</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>115</th>
       <td>1852</td>
-      <td>176.5</td>
-      <td>148.4</td>
     </tr>
     <tr>
       <th>116</th>
       <td>530</td>
-      <td>39.6</td>
-      <td>32.9</td>
     </tr>
     <tr>
       <th>117</th>
       <td>11</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>118</th>
       <td>554</td>
-      <td>96.5</td>
-      <td>118.5</td>
     </tr>
     <tr>
       <th>119</th>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
       <th>120</th>
       <td>.</td>
-      <td>.</td>
-      <td>.</td>
     </tr>
     <tr>
       <th>121</th>
       <td>186</td>
-      <td>21.5</td>
-      <td>21.5</td>
     </tr>
     <tr>
       <th>122</th>
-      <td>.</td>
-      <td>.</td>
       <td>.</td>
     </tr>
     <tr>
       <th>123</th>
       <td>235</td>
-      <td>20.6</td>
-      <td>38.9</td>
     </tr>
     <tr>
       <th>124</th>
       <td>2282</td>
-      <td>217.7</td>
-      <td>194.2</td>
     </tr>
   </tbody>
 </table>
@@ -1295,7 +1164,7 @@ Name: Year, Length: 1096, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
     <span class="n">df</span><span class="o">.</span><span class="n">Leading</span> <span class="n">Cause</span>
                <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
@@ -1324,9 +1193,9 @@ Name: Year, Length: 1096, dtype: int64
 32   2009  Assault (Homicide: Y87.1, X85-Y09)      M  Black Non-Hispanic   
 149  2009  Assault (Homicide: Y87.1, X85-Y09)      M  Black Non-Hispanic   
 
-    Deaths Death Rate Age Adjusted Death Rate  
-32     255         30                      30  
-149    255         30                      30  
+    Fatality  
+32       255  
+149      255  
 </pre></div>
 </div>
 </div>
@@ -1359,13 +1228,11 @@ the length of the df after deleting duplicate rows is 1094
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                        int64
-Leading Cause              object
-Sex                        object
-Race Ethnicity             object
-Deaths                     object
-Death Rate                 object
-Age Adjusted Death Rate    object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year               int64
+Leading Cause     object
+Gender            object
+Race Ethnicity    object
+Fatality          object
 dtype: object
 </pre></div>
 </div>
@@ -1376,7 +1243,7 @@ dtype: object
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the total number of deaths in 8 years; datatype of &quot;Deaths&quot; column is &quot;object&quot;</span>
 <span class="c1"># without converting the column to numeric, the matematical operation &quot;sum&quot; returns a garbage result</span>
-<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1386,26 +1253,26 @@ dtype: object
 </div>
 </div>
 </div>
-<p>This code prepares the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column for numerical analysis by cleaning and converting its values. First, <code class="docutils literal notranslate"><span class="pre">df1.replace('.',</span> <span class="pre">np.nan)</span></code> replaces any occurrences of the string <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code> in the entire DataFrame with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not a Number), which represents missing or undefined values. Then, <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(df1[&quot;Deaths&quot;])</span></code> converts the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column from an object (text) type to a numeric type (<code class="docutils literal notranslate"><span class="pre">float64</span></code> by default), allowing for accurate mathematical operations like summing or averaging. This step is essential when the column contains non-numeric characters that would otherwise interfere with calculations.</p>
+<p>This code prepares the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> column for numerical analysis by cleaning and converting its values. First, <code class="docutils literal notranslate"><span class="pre">df1.replace('.',</span> <span class="pre">np.nan)</span></code> replaces any occurrences of the string <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code> in the entire DataFrame with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not a Number), which represents missing or undefined values. Then, <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(df1[&quot;Fatality&quot;])</span></code> converts the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> column from an object (text) type to a numeric type (<code class="docutils literal notranslate"><span class="pre">float64</span></code> by default), allowing for accurate mathematical operations like summing or averaging. This step is essential when the column contains non-numeric characters that would otherwise interfere with calculations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#replace &quot;.&quot; with &quot;NaN&quot; and change datatype of &quot;Deaths&quot; to float</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>This code calculates the total number of deaths by summing the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column <strong>after</strong> it has been successfully converted to a numeric data type. Unlike earlier, when the column was stored as an object and resulted in a string concatenation, this time the <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> function performs a proper mathematical operation. The result is the accurate total number of deaths across the dataset, which can now be used for further analysis or reporting.</p>
+<p>This code calculates the total number of deaths by summing the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> column <strong>after</strong> it has been successfully converted to a numeric data type. Unlike earlier, when the column was stored as an object and resulted in a string concatenation, this time the <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> function performs a proper mathematical operation. The result is the accurate total number of deaths across the dataset, which can now be used for further analysis or reporting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finding the total number of deaths after converting the datatype of &quot;Deaths&quot; column into Numeric, returns correct result</span>
-<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(424998.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>424998.0
 </pre></div>
 </div>
 </div>
@@ -1456,22 +1323,22 @@ dtype: object
 </div>
 </div>
 </div>
-<p>This code calculates the total number of deaths using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function to aggregate data based on specific categories. First, it groups the data by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and then sums the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column within each year, showing the total number of deaths for every year in the dataset. This helps reveal trends over time. Next, it groups the data by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> (previously renamed from <code class="docutils literal notranslate"><span class="pre">&quot;Sex&quot;</span></code>) and sums the deaths for each gender, giving a comparison of the total number of deaths among males and females. This grouped analysis is useful for identifying patterns and making category-based comparisons in the data.</p>
+<p>This code calculates the total number of deaths using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function to aggregate data based on specific categories. First, it groups the data by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and then sums the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> column within each year, showing the total number of deaths for every year in the dataset. This helps reveal trends over time. Next, it groups the data by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> (previously renamed from <code class="docutils literal notranslate"><span class="pre">&quot;Sex&quot;</span></code>) and sums the deaths for each gender, giving a comparison of the total number of deaths among males and females. This grouped analysis is useful for identifying patterns and making category-based comparisons in the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................using &quot;groupby&quot; function</span>
 <span class="c1">#By year</span>
-<span class="n">totalDeaths_year</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total number of deaths every year:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalDeaths_year</span><span class="p">)</span>
+<span class="n">totalFatal_year</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total number of Fatalities every year:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalFatal_year</span><span class="p">)</span>
 
 <span class="c1">#By Gender</span>
-<span class="n">totalDeaths_gender</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Gender&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The total number of deaths of males and females are:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalDeaths_gender</span><span class="p">)</span>
+<span class="n">totalFatal_gender</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Gender&quot;</span><span class="p">)[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The total number of fatalities of males and females are:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalFatal_gender</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of deaths every year:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of Fatalities every year:
  Year
 2007    53996.0
 2008    54138.0
@@ -1481,32 +1348,32 @@ dtype: object
 2012    52420.0
 2013    53387.0
 2014    53006.0
-Name: Deaths, dtype: float64
+Name: Fatality, dtype: float64
 
- The total number of deaths of males and females are:
+ The total number of fatalities of males and females are:
  Gender
 F    217071.0
 M    207927.0
-Name: Deaths, dtype: float64
+Name: Fatality, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>This code calculates and visualizes the total number of deaths by race/ethnicity using grouping and sorting techniques. First, it groups the DataFrame by the <code class="docutils literal notranslate"><span class="pre">&quot;Race</span> <span class="pre">Ethnicity&quot;</span></code> column and sums the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column for each group. The <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False)</span></code> function then arranges the results in descending order, showing which ethnic groups had the highest to lowest number of deaths. Then, <code class="docutils literal notranslate"><span class="pre">totalDeaths_Race.plot.bar()</span></code> creates a bar chart to visually represent these totals, with a title <code class="docutils literal notranslate"><span class="pre">&quot;Total</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">deaths</span> <span class="pre">by</span> <span class="pre">Ethnicity&quot;</span></code>. This visualization makes it easier to compare death counts across different racial and ethnic groups.</p>
+<p>This code calculates and visualizes the total number of deaths by race/ethnicity using grouping and sorting techniques. First, it groups the DataFrame by the <code class="docutils literal notranslate"><span class="pre">&quot;Race</span> <span class="pre">Ethnicity&quot;</span></code> column and sums the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> column for each group. The <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False)</span></code> function then arranges the results in descending order, showing which ethnic groups had the highest to lowest number of deaths. Then, <code class="docutils literal notranslate"><span class="pre">totalFatal_Race.plot.bar()</span></code> creates a bar chart to visually represent these totals, with a title <code class="docutils literal notranslate"><span class="pre">&quot;Total</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">fatalities</span> <span class="pre">by</span> <span class="pre">Ethnicity&quot;</span></code>. This visualization makes it easier to compare death counts across different racial and ethnic groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................</span>
 <span class="c1">#By Race Ethnicity and sort the answers in descending order</span>
-<span class="n">totalDeaths_Race</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Race Ethnicity&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total number of deaths by Ethnicity:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalDeaths_Race</span><span class="p">)</span>
+<span class="n">totalFatal_Race</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Race Ethnicity&quot;</span><span class="p">)[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total number of fatalities by Ethnicity:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalFatal_Race</span><span class="p">)</span>
 
 <span class="c1"># Make a bar diagram for the total deaths by Race</span>
-<span class="n">totalDeaths_Race</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Total number of deaths by Ethnicity&quot;</span><span class="p">)</span>
+<span class="n">totalFatal_Race</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Total number of fatalities by Ethnicity&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of deaths by Ethnicity:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of fatalities by Ethnicity:
  Race Ethnicity
 White Non-Hispanic            206487.0
 Black Non-Hispanic            111116.0
@@ -1514,39 +1381,39 @@ Hispanic                       74802.0
 Asian and Pacific Islander     26355.0
 Not Stated/Unknown              4099.0
 Other Race/ Ethnicity           2139.0
-Name: Deaths, dtype: float64
+Name: Fatality, dtype: float64
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Total number of deaths by Ethnicity&#39;}, xlabel=&#39;Race Ethnicity&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Total number of fatalities by Ethnicity&#39;}, xlabel=&#39;Race Ethnicity&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/99aa1e65fec2e03814cf4c431806436f5422fb2470be8a329c980f8fdfd791f4.png" src="../../../_images/99aa1e65fec2e03814cf4c431806436f5422fb2470be8a329c980f8fdfd791f4.png" />
+<img alt="../../../_images/87b987126f95e1aa8288ca4f4ce1170b9344fc664a8f25d0e530713c7e383b13.png" src="../../../_images/87b987126f95e1aa8288ca4f4ce1170b9344fc664a8f25d0e530713c7e383b13.png" />
 </div>
 </div>
-<p>This code calculates the total number of deaths for each <strong>Leading Cause of Death</strong>, identifies the <strong>top 5 causes</strong>, saves the results to a new CSV file, and visualizes them in a bar chart. It groups the dataset by <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code> and sums the deaths in each category. The <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False).head()</span></code> part sorts these totals in descending order and selects the top 5 leading causes with the highest death counts. Then, <code class="docutils literal notranslate"><span class="pre">totalDeaths_LC.to_csv(&quot;Deaths_LC.csv&quot;)</span></code> writes this summarized result to a new CSV file named <strong>“Deaths_LC.csv”</strong>. Finally, <code class="docutils literal notranslate"><span class="pre">totalDeaths_LC.plot.bar()</span></code> creates a bar chart that visually displays these top 5 causes of death, making it easier to interpret and compare their impact.</p>
+<p>This code calculates the total number of deaths for each <strong>Leading Cause of Fatalities</strong>, identifies the <strong>top 5 causes</strong>, saves the results to a new CSV file, and visualizes them in a bar chart. It groups the dataset by <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code> and sums the fatalities in each category. The <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False).head()</span></code> part sorts these totals in descending order and selects the top 5 leading causes with the highest fatality counts. Then, <code class="docutils literal notranslate"><span class="pre">totalFatal_LC.to_csv(&quot;Fatal_LC.csv&quot;)</span></code> writes this summarized result to a new CSV file named <strong>“Fatal_LC.csv”</strong>. Finally, <code class="docutils literal notranslate"><span class="pre">totalDeaths_LC.plot.bar()</span></code> creates a bar chart that visually displays these top 5 causes of death, making it easier to interpret and compare their impact.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FIND THE TOTAL NUMBER OF DEATHS.................</span>
 <span class="c1"># By Leading Cause of Death and write the answer in seperate file &quot;Death_LC.csv&quot;. Find only top 5 causes</span>
 
-<span class="n">totalDeaths_LC</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Leading Cause&quot;</span><span class="p">)[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">totalDeaths_LC</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Deaths_LC.csv&quot;</span><span class="p">)</span> <span class="c1"># write the result in another file</span>
-<span class="n">totalDeaths_LC</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<span class="n">totalFatal_LC</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Leading Cause&quot;</span><span class="p">)[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">totalFatal_LC</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Fatal_LC.csv&quot;</span><span class="p">)</span> <span class="c1"># write the result in another file</span>
+<span class="n">totalFatal_LC</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Count of Top 5 Leading Causes of Fatalities&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Leading Cause&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Count of Top 5 Leading Causes of Fatalities&#39;}, xlabel=&#39;Leading Cause&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/47f10375dbb4afd083cae652de0349d792d193e3cbffcc31b19ce3e7fcf5b3f6.png" src="../../../_images/47f10375dbb4afd083cae652de0349d792d193e3cbffcc31b19ce3e7fcf5b3f6.png" />
+<img alt="../../../_images/5cf0502eca2a196a66e339cf5df5d6ba8abeaa160bd82b7bbc5b7da9c0196485.png" src="../../../_images/5cf0502eca2a196a66e339cf5df5d6ba8abeaa160bd82b7bbc5b7da9c0196485.png" />
 </div>
 </div>
-<p>This code calculates the <strong>number of deaths for each year, broken down by gender</strong> using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function with multiple grouping columns. It groups the DataFrame first by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and then by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code>, and for each combination, it sums the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> column. This results in a multi-level index (also called a hierarchical index) where each row represents the total deaths for a specific gender in a specific year. The final output provides a detailed breakdown of how death counts vary by gender across different years, which is helpful for identifying trends or disparities over time.</p>
+<p>This code calculates the <strong>number of fatalities for each year, broken down by gender</strong> using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> function with multiple grouping columns. It groups the DataFrame first by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and then by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code>, and for each combination, it sums the values in the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> column. This results in a multi-level index (also called a hierarchical index) where each row represents the total fatalities for a specific gender in a specific year. The final output provides a detailed breakdown of how fatality counts vary by gender across different years, which is helpful for identifying trends or disparities over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Number of deaths every year by Gender.......</span>
-<span class="n">total_lc_gender</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span><span class="s2">&quot;Gender&quot;</span><span class="p">])[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">total_lc_gender</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span><span class="s2">&quot;Gender&quot;</span><span class="p">])[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">total_lc_gender</span><span class="p">)</span>
 </pre></div>
@@ -1570,28 +1437,28 @@ Name: Deaths, dtype: float64
       M         26254.0
 2014  F         26916.0
       M         26090.0
-Name: Deaths, dtype: float64
+Name: Fatality, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>This code groups the data by both <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> and sums the <code class="docutils literal notranslate"><span class="pre">&quot;Deaths&quot;</span></code> for each combination. The <code class="docutils literal notranslate"><span class="pre">.unstack('Gender')</span></code> method pivots the <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> level of the grouped data into separate columns—typically one for <code class="docutils literal notranslate"><span class="pre">&quot;F&quot;</span></code> (Female) and one for <code class="docutils literal notranslate"><span class="pre">&quot;M&quot;</span></code> (Male)—creating a table where each row represents a year and each column shows the total deaths by gender. Then, <code class="docutils literal notranslate"><span class="pre">df2[['F','M']].plot(...)</span></code> generates a <strong>stacked bar graph</strong> using these gender-based totals, with bars stacked vertically to show each year’s total deaths divided into male and female contributions. The <code class="docutils literal notranslate"><span class="pre">figsize=(12,6)</span></code> ensures the plot is wide and readable, and the title highlights the focus on gender distribution across years.</p>
+<p>This code groups the data by both <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> and sums the <code class="docutils literal notranslate"><span class="pre">&quot;Fatality&quot;</span></code> for each combination. The <code class="docutils literal notranslate"><span class="pre">.unstack('Gender')</span></code> method pivots the <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code> level of the grouped data into separate columns—typically one for <code class="docutils literal notranslate"><span class="pre">&quot;F&quot;</span></code> (Female) and one for <code class="docutils literal notranslate"><span class="pre">&quot;M&quot;</span></code> (Male)—creating a table where each row represents a year and each column shows the total deaths by gender. Then, <code class="docutils literal notranslate"><span class="pre">df2[['F','M']].plot(...)</span></code> generates a <strong>stacked bar graph</strong> using these gender-based totals, with bars stacked vertically to show each year’s total fatalities divided into male and female contributions. The <code class="docutils literal notranslate"><span class="pre">figsize=(12,6)</span></code> ensures the plot is wide and readable, and the title highlights the focus on gender distribution across years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw a stacked bar graph of each year showing Male/female proportion in total deaths</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])[</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;Gender&#39;</span><span class="p">)</span>
-<span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Gender Distribution in Deaths Each Year&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])[</span><span class="s1">&#39;Fatality&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;Gender&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Gender Distribution in Fatalities Each Year&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Gender Distribution in Deaths Each Year&#39;}, xlabel=&#39;Year&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Gender Distribution in Fatalities Each Year&#39;}, xlabel=&#39;Year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/aa844cb5785ca8249712f991219033a21e36aa1f575d5e0a8df56bed07f98ba6.png" src="../../../_images/aa844cb5785ca8249712f991219033a21e36aa1f575d5e0a8df56bed07f98ba6.png" />
+<img alt="../../../_images/04adbad649160df909b9506cd6b7523b8f775aee8522ef6de3a00496d2168e0d.png" src="../../../_images/04adbad649160df909b9506cd6b7523b8f775aee8522ef6de3a00496d2168e0d.png" />
 </div>
 </div>
-<p>This code creates a <strong>grouped bar chart</strong> to visually compare male and female death counts for each year. Using the <code class="docutils literal notranslate"><span class="pre">df2</span></code> DataFrame (which contains total deaths grouped by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and separated by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code>), the <code class="docutils literal notranslate"><span class="pre">.plot.bar()</span></code> function generates side-by-side bars for each year, with one bar for females and one for males. The <code class="docutils literal notranslate"><span class="pre">width=0.55</span></code> parameter controls the thickness of the bars, while <code class="docutils literal notranslate"><span class="pre">figsize=(12,5)</span></code> sets the overall size of the plot for better visibility. The bars are colored green and red to distinguish between genders. The <code class="docutils literal notranslate"><span class="pre">.legend(bbox_to_anchor=(1.2,</span> <span class="pre">0.5))</span></code> command positions the legend outside the main plot area, making it clearer and less cluttered. This grouped bar chart makes it easy to compare gender-specific death counts across multiple years.</p>
+<p>This code creates a <strong>grouped bar chart</strong> to visually compare male and female death counts for each year. Using the <code class="docutils literal notranslate"><span class="pre">df2</span></code> DataFrame (which contains total fatalities grouped by <code class="docutils literal notranslate"><span class="pre">&quot;Year&quot;</span></code> and separated by <code class="docutils literal notranslate"><span class="pre">&quot;Gender&quot;</span></code>), the <code class="docutils literal notranslate"><span class="pre">.plot.bar()</span></code> function generates side-by-side bars for each year, with one bar for females and one for males. The <code class="docutils literal notranslate"><span class="pre">width=0.55</span></code> parameter controls the thickness of the bars, while <code class="docutils literal notranslate"><span class="pre">figsize=(12,5)</span></code> sets the overall size of the plot for better visibility. The bars are colored green and red to distinguish between genders. The <code class="docutils literal notranslate"><span class="pre">.legend(bbox_to_anchor=(1.2,</span> <span class="pre">0.5))</span></code> command positions the legend outside the main plot area, making it clearer and less cluttered. This grouped bar chart makes it easy to compare gender-specific death counts across multiple years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw a GROUPED bar graph of each year showing the comparison of Male/female deaths each year</span>
@@ -1599,15 +1466,15 @@ Name: Deaths, dtype: float64
 <span class="c1"># legend = False ---  Turns the Legend off</span>
 <span class="c1"># figsize ----------  Sets size of plot in inches</span>
 <span class="c1"># legend(bbox_to_anchor = (....)) --------- sets the position of the legend</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison of Male/female deaths Each Year&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="s2">&quot;red&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison of Male/Female Fatalities Each Year&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="s2">&quot;red&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1244d17d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x222631745f0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/d59cdffef56ec0403088be8a48b7b6c27a24a5799c1a001eda7d27f6305d72ab.png" src="../../../_images/d59cdffef56ec0403088be8a48b7b6c27a24a5799c1a001eda7d27f6305d72ab.png" />
+<img alt="../../../_images/4b2b12f83bf83fbd108aad6a4367be27c9a076c80ea84a17f0776cae74d4e409.png" src="../../../_images/4b2b12f83bf83fbd108aad6a4367be27c9a076c80ea84a17f0776cae74d4e409.png" />
 </div>
 </div>
 <p>This code removes all rows from the DataFrame <code class="docutils literal notranslate"><span class="pre">df1</span></code> that contain <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (missing values) in <strong>any</strong> column using the <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> method. After the rows are dropped, the length of the new DataFrame is printed to show how much data remains. Then, it calculates the total number of deaths from the cleaned dataset.</p>
@@ -1619,15 +1486,15 @@ Name: Deaths, dtype: float64
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of df1 after dropping all rows that have NaN in ANY column is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
 
-<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Fatality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The length of df1 after dropping all rows that have NaN in ANY column is: 708
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The length of df1 after dropping all rows that have NaN in ANY column is: 956
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(418760.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>424998.0
 </pre></div>
 </div>
 </div>
