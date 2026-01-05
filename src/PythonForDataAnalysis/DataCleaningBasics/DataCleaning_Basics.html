@@ -185,7 +185,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../GettingData/GettingData.html">Getting Data (APIs, Web Scraping)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Cleaning Basics</a></li>
 
-
 <li class="toctree-l1"><a class="reference internal" href="../DataVisualization/DataVisualization.html">Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProjectExamples/Quantitative_Analysis.html">Project Example</a></li>
 </ul>
@@ -410,9 +409,9 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Cleaning Basics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-data">Step 1: Reading Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">Step 2: Exploring Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">Data Analysis and Visualization</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -429,13 +428,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-cleaning-basics">
+  <section id="data-cleaning-basics">
 <h1>Data Cleaning Basics<a class="headerlink" href="#data-cleaning-basics" title="Link to this heading">#</a></h1>
 <section id="step-1-reading-data">
 <h2>Step 1: Reading Data<a class="headerlink" href="#step-1-reading-data" title="Link to this heading">#</a></h2>
-<p>Data can be read from various file formats such as CSV, JSON, and EXCEL files. Read more about it <a class="reference external" href="https://www.prowesstics.com/blogs/python-data-file-formats/">here</a>.</p>
+<p>Data can be read from various file formats such as CSV, JSON, and EXCEL files. Read more about it <a class="reference external" href="https://www.prowesstics.com/blogs/python-data-file-formats/">here</a></p>
 <p>This code demonstrates how to load and customize a dataset using the Pandas library. It shows how to read a full CSV file into a DataFrame or, alternatively, import only specific columns using the <code class="docutils literal notranslate"><span class="pre">usecols</span></code> parameter to focus on relevant data like year, leading cause, and number of deaths. Another option illustrated is how to remove unnecessary columns after loading the dataset using the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> method to streamline the data for analysis.</p>
-<p>Here is the <a class="reference download internal" download="" href="../../../_downloads/2e275ea1c3b040619ec56cba40761dff/NYC_Leading_Death_Causes.csv"><span class="xref download myst">data</span></a> we used but, if you have data you would rather use, feel free to use it. Just make sure to change the path in the data variable.</p>
+<p>Here is the <a class="reference download internal" download="" href="../../../_downloads/2e275ea1c3b040619ec56cba40761dff/NYC_Leading_Death_Causes.csv"><span class="xref download myst">data</span></a> from the New York City Open Data <a class="reference external" href="https://opendata.cityofnewyork.us/">portal</a> we used but, if you have data you would rather use, feel free to use it. Just make sure to change the path in the data variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -1305,9 +1304,8 @@ Name: Year, Length: 1096, dtype: int64
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-cleaning">
-<h1>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h1>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
 <p>This code handles duplicate rows in the DataFrame by identifying all rows that are duplicates except for their first occurrence. The <code class="docutils literal notranslate"><span class="pre">duplicated()</span></code> function returns a Boolean series marking True for every duplicate row after the first one based on all columns by default. By using this Boolean series to filter <code class="docutils literal notranslate"><span class="pre">df</span></code>, the code creates a new DataFrame <code class="docutils literal notranslate"><span class="pre">dupRowsDF</span></code> containing only these duplicate rows. Printing <code class="docutils literal notranslate"><span class="pre">dupRowsDF</span></code> lets you see which rows have repeated values across the entire dataset, which is useful for data cleaning and ensuring data quality.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1363,7 +1361,7 @@ the length of the df after deleting duplicate rows is 1094
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                        int64
 Leading Cause              object
-Gender                     object
+Sex                        object
 Race Ethnicity             object
 Deaths                     object
 Death Rate                 object
@@ -1413,7 +1411,8 @@ dtype: object
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-analysis-and-visualization">
+</section>
+<section id="data-analysis-and-visualization">
 <h1>Data Analysis and Visualization<a class="headerlink" href="#data-analysis-and-visualization" title="Link to this heading">#</a></h1>
 <p>This code identifies all the unique causes of death listed in the <code class="docutils literal notranslate"><span class="pre">&quot;Leading</span> <span class="pre">Cause&quot;</span></code> column. The <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> function returns an array of distinct labels (i.e., categories) found in that column, which helps in understanding the different qualitative or categorical values present in the data. The second line prints the total number of unique causes by using <code class="docutils literal notranslate"><span class="pre">len(causeDeath)</span></code>, which counts how many distinct death causes are represented in the dataset. This is useful for summarizing and preparing for grouped analysis or visualization.</p>
 <div class="cell docutils container">
@@ -1716,9 +1715,9 @@ Name: Deaths, dtype: float64
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Cleaning Basics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-data">Step 1: Reading Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-exploring-data">Step 2: Exploring Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-visualization">Data Analysis and Visualization</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
